@@ -3,7 +3,6 @@ services:
   frontend:
     build:
       context: frontend/jobfinder/
-#    command: bash -c "npm run serve"
     ports:
       - "8080:8080"
     volumes:
