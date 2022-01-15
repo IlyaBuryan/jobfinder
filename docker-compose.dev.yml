@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: frontend/jobfinder/
+#    command: bash -c "npm run serve"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend/jobfinder:/client
+    restart: on-failure
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - ../db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PORT=${DB_PORT}
+    restart: on-failure
+  backend:
+    build:
+      context: backend/jobfinder/
+    command: bash -c "python manage.py makemigrations
+      && python manage.py migrate
+      && python manage.py create_django_superuser
+      && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend/jobfinder:/code
+      - .env:/code/.env
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    depends_on:
+      - db
