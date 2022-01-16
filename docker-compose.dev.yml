@@ -6,7 +6,7 @@ services:
     environment:
       - NUXT_HOST=0.0.0.0
       - NUXT_PORT=3000
-    command: npm run dev
+    command: sh -c "npm install --save nuxt && npm run dev"
     ports:
       - "3000:3000"
     volumes:
