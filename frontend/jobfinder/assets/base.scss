@@ -1,0 +1,28 @@
+@import './fonts';
+@import './variables';
+
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Roboto, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: $background-color;
+  color: #fff;
+}
+
+// slide-top styles
+.slide-top-enter-active,
+.slide-top-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+  overflow-y: hidden;
+}
+.slide-top-enter,
+.slide-top-leave-to {
+  overflow-y: auto;
+  opacity: 0;
+  transform: translate3d(0, -15px, 0);
+}
