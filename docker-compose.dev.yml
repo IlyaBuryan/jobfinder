@@ -3,8 +3,12 @@ services:
   frontend:
     build:
       context: frontend/jobfinder/
+    environment:
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+    command: sh -c "npm install --save nuxt && npm run dev"
     ports:
-      - "8080:8080"
+      - "3000:3000"
     volumes:
       - ./frontend/jobfinder:/client
     restart: on-failure
