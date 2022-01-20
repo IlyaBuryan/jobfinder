@@ -264,7 +264,7 @@
 
         <!-- Newsletter -->
         <section class="bg-img text-center">
-          <div class="container">
+          <div class="container container__footer">
             <h2><strong>Подпишись</strong></h2>
             <h6 class="font-alt">Получай еженедельный топ новых вакансий на свой e-mail</h6>
             <br><br>
@@ -299,6 +299,9 @@ export default {
 </script>
 
 <style lang="scss">
+.container {
+  width: 100%;
+}
 body {
   font-family: Open Sans,sans-serif;
   font-size: 16px;
