@@ -1,9 +1,22 @@
 <template>
-  <div class="default-layout" :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`">
+  <div>
+    <Header />
+
+    <Footer />
+
+    <div class="container">
+      <nuxt />
+    </div>
 
   </div>
 </template>
 
-<style>
+<script>
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Header.vue'
 
-</style>
+export default {
+  components: {Header, Footer}
+
+}
+</script>

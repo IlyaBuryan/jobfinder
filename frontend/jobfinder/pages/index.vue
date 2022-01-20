@@ -2,94 +2,15 @@
   <div class="container">
     <body class="nav-on-header">
 
-      <!-- Navigation bar -->
-      <nav class="navbar">
-        <div class="container">
-
-          <!-- Logo -->
-          <div class="pull-left">
-            <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
-
-            <div class="logo-wrapper">
-              <a class="logo" href="index.html"><img src="/assets/img/logo.png" alt="logo"></a>
-              <a class="logo-alt" href="index.html"><img src="assets/img/logo-alt.png" alt="logo-alt"></a>
-            </div>
-
-          </div>
-          <!-- END Logo -->
-
-          <!-- Navigation menu -->
-          <ul class="nav-menu">
-            <li>
-              <a class="nav-menu__ul active" href="index.html">Главная</a>
-              <ul class="nav-menu__ul_el">
-                <li><a class="active" href="index.html">Вариант 1</a></li>
-                <li><a href="index-2.html">Вариант 2</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="nav-menu__ul" href="#">Вакансии</a>
-              <ul class="nav-menu__ul_el">
-                <li><a href="job-list-1.html">Вакансия - 1</a></li>
-                <li><a href="job-list-2.html">Вакансия - 2</a></li>
-                <li><a href="job-list-3.html">Вакансия - 3</a></li>
-                <li><a href="job-detail.html">Инфо о вакансии</a></li>
-                <li><a href="job-add.html">Добавить вакансию</a></li>
-                <li><a href="job-manage.html">Редактировать вакансии</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="nav-menu__ul" href="#">Резюме</a>
-              <ul class="nav-menu__ul_el">
-                <li><a href="resume-list.html">Просмотреть резюме</a></li>
-                <li><a href="resume-detail.html">Инфо о резюме</a></li>
-                <li><a href="resume-add.html">Создать резюме</a></li>
-                <li><a href="resume-manage.html">Редактировать резюме</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="nav-menu__ul" href="#">Компании</a>
-              <ul class="nav-menu__ul_el">
-                <li><a href="company-list.html">Просмотреть компании</a></li>
-                <li><a href="company-detail.html">Инфо о компании</a></li>
-                <li><a href="company-add.html">Создать компанию</a></li>
-                <li><a href="company-manage.html">Редактировать компании</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="nav-menu__ul" href="#">Страницы</a>
-              <ul class="nav-menu__ul_el">
-                <li><a href="page-about.html">О нас</a></li>
-                <li><a href="page-contact.html">Контакты</a></li>
-                <li><a href="page-faq.html">FAQ</a></li>
-                <li><a href="page-pricing.html">Наши цены</a></li>
-                <li><a href="page-typography.html">Типографские услуги</a></li>
-                <li><a href="page-ui-elements.html">UI элементы</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!-- END Navigation menu -->
-
-          <!-- User account -->
-          <div class="pull-right user-login">
-            <a class="btn btn-sm btn-primary" href="user-login.html">Авторизоваться</a> или <a
-              href="user-register.html">Зарегистрироваться</a>
-          </div>
-          <!-- END User account -->
-
-        </div>
-      </nav>
-      <!-- END Navigation bar -->
-
-
       <!-- Site header -->
       <header class="site-header size-lg text-center" :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`">
-        <div class="container">
+        <div class="container main-window">
           <div class="col-xs-12">
             <br><br>
             <h2>Мы предлагаем <mark>1,259</mark> вакансии прямо сейчас!</h2>
             <h5 class="font-alt">Найди работу по душе уже через минуту</h5>
             <br><br><br>
+          </div>
             <form class="header-job-search">
               <div class="input-keyword">
                 <input type="text" class="form-control" placeholder="Наименование должности, навыки или название компании">
@@ -101,10 +22,9 @@
 
               <div class="btn-search">
                 <button class="btn btn-primary" type="submit">Найти работу</button>
-                <a href="job-list.html">Расширенный поиск</a>
+                <button type="button" class="wsearch-btn"><a href="job-list.html">Расширенный поиск</a></button>
               </div>
             </form>
-          </div>
 
         </div>
       </header>
@@ -364,75 +284,6 @@
       </main>
       <!-- END Main container -->
 
-
-      <!-- Site footer -->
-      <footer class="site-footer">
-
-        <!-- Top section -->
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <h6>О нас</h6>
-              <p class="text-justify">Мы создаем передовые технологии на всех доступных платформах для того, чтобы
-                работодатели могли быстро найти подходящего сотрудника, а соискатели — хорошую работу.</p>
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-              <h6>Наша компания</h6>
-              <ul class="footer-links">
-                <li><a href="page-about.html">О нас</a></li>
-                <li><a href="page-typography.html">Как это работает</a></li>
-                <li><a href="page-faq.html">FAQ</a></li>
-                <li><a href="page-typography.html">Политика безопасности</a></li>
-                <li><a href="page-contact.html">Наши контакты</a></li>
-              </ul>
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-              <h6>Самые популярные вакансии</h6>
-              <ul class="footer-links">
-                <li><a href="job-list.html">Фронт-энд девелопер</a></li>
-                <li><a href="job-list.html">Android девелопер</a></li>
-                <li><a href="job-list.html">iOS девелопер</a></li>
-                <li><a href="job-list.html">Full stack девелопер</a></li>
-                <li><a href="job-list.html">Руководитель проекта</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <hr>
-        </div>
-        <!-- END Top section -->
-
-        <!-- Bottom section -->
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-              <p class="copyright-text">Copyrights &copy; 2022 Все права защищены <a
-                  href="http://themeforest.net/user/shamsoft">Python Style Group</a>.</p>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <ul class="social-icons">
-                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- END Bottom section -->
-
-      </footer>
-      <!-- END Site footer -->
-
-
-      <!-- Back to top button -->
-      <a id="scroll-up" href="#"><i class="ti-angle-up"></i></a>
-      <!-- END Back to top button -->
-
       <!-- Scripts -->
       <script src="assets/js/app.min.js"></script>
       <script src="assets/js/custom.js"></script>
@@ -456,6 +307,14 @@ body {
 }
 .navbar {
   display: flex;
+  .header-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+.logo-wrapper {
+  display: flex;
 }
 .nav-menu {
   margin: 0;
@@ -472,7 +331,34 @@ body {
     }
   }
 }
+.pull-right {
+  display: flex;
+  align-items: center;
+}
+.or {
+  padding: 0 15px;
+  margin: 0;
+}
+.regbtn {
+  // height: 100%;
+  border: 1px solid grey;
+}
+.main-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
 .site-header {
   display: flex;
+  height: 700px;
+}
+.header-job-search {
+  display: flex;
+  justify-content: center;
+}
+.wsearch-btn {
+  height: 100%;
+  border: none;
 }
 </style>
