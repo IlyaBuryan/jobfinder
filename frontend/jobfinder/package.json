@@ -9,7 +9,6 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-<<<<<<< HEAD
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
@@ -25,8 +24,7 @@
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "sass": "^1.49.0",
-    "sass-loader": "10.2.1"
-=======
+    "sass-loader": "10.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
@@ -50,22 +48,16 @@
     "vue-custom-scrollbar": "^1.4.1",
     "vue-multiselect": "^2.1.6",
     "vue-slick-carousel": "^1.0.6",
-    "vue-slider-component": "^3.2.15"
-  },
-  "devDependencies": {
+    "vue-slider-component": "^3.2.15",
     "@babel/eslint-parser": "^7.14.7",
     "@nuxt/types": "~2.15.0",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.12.1",
-    "fibers": "^5.0.0",
-    "sass": "^1.32.12",
-    "sass-loader": "10"
+    "eslint-plugin-vue": "^7.12.1"
   },
   "resolutions": {
     "@nuxtjs/element-ui/**/sass": "1.32.12"
->>>>>>> 5cd14148a2fc7067faf7ff5887e37e569619c56b
   }
 }
