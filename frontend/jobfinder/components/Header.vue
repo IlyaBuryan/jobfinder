@@ -106,7 +106,7 @@ export default {
 
 .header-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .logo-wrapper {
