@@ -1,15 +1,17 @@
 <template>
   <div class="main__wrapp">
     <body class="nav-on-header">
-
       <!-- Site header -->
-      <header class="site-header size-lg text-center" :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`">
+      <header
+        class="site-header size-lg text-center"
+        :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`"
+      >
         <div class="container main-window">
           <div class="col-xs-12">
             <br><br>
             <h2 class="main-window__header">Мы предлагаем <mark>1,259</mark> вакансии прямо сейчас!</h2>
             <h5 class="font-alt">Найди работу по душе уже через минуту</h5>
-            <br><br><br>
+            <br /><br /><br />
           </div>
 
             <form class="header-job-search">
@@ -44,16 +46,21 @@
               </div>
             </form>
 
+            <div class="btn-search">
+              <button class="btn btn-primary" type="submit">
+                Найти работу
+              </button>
+              <button type="button" class="wsearch-btn">
+                <a href="job-list.html">Расширенный поиск</a>
+              </button>
+            </div>
+          </form>
         </div>
       </header>
       <!-- END Site header -->
 
-
       <!-- Main container -->
       <main>
-
-
-
         <!-- Recent jobs -->
         <section class="body">
           <div class="body__container">
@@ -63,12 +70,11 @@
             </header>
 
             <div class="row item-blocks-connected">
-
               <!-- Job item -->
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-google.jpg" alt="">
+                    <img src="assets/img/logo-google.jpg" alt="" />
                     <div class="hgroup">
                       <h4>Senior front-end developer</h4>
                       <h5>Google</h5>
@@ -81,7 +87,6 @@
                 </a>
               </div>
               <!-- END Job item -->
-
 
               <!-- Job item -->
               <div class="col-xs-12">
@@ -105,7 +110,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-envato.png" alt="">
+                    <img src="assets/img/logo-envato.png" alt="" />
                     <div class="hgroup">
                       <h4>Full Stack Web Developer</h4>
                       <h5>Envato</h5>
@@ -123,7 +128,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-facebook.png" alt="">
+                    <img src="assets/img/logo-facebook.png" alt="" />
                     <div class="hgroup">
                       <h4>Web Applications Developer</h4>
                       <h5>Facebook</h5>
@@ -141,7 +146,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-microsoft.jpg" alt="">
+                    <img src="assets/img/logo-microsoft.jpg" alt="" />
                     <div class="hgroup">
                       <h4>Sr. SQL Server Developer</h4>
                       <h5>Microsoft</h5>
@@ -154,20 +159,21 @@
                 </a>
               </div>
               <!-- END Job item -->
-
             </div>
 
-            <br><br>
-            <p class="text-center"><a class="btn btn-info" href="job-list.html">Просмотреть все вакансии</a></p>
+            <br /><br />
+            <p class="text-center">
+              <a class="btn btn-info" href="job-list.html"
+                >Просмотреть все вакансии</a
+              >
+            </p>
           </div>
         </section>
         <!-- END Recent jobs -->
 
-
         <!-- Facts -->
         <section class="bg-img bg-repeat no-overlay section-sm">
           <div class="container">
-
             <div class="row">
               <div class="counter col-md-3 col-sm-6">
                 <p><span data-from="0" data-to="6890"></span>+</p>
@@ -189,44 +195,51 @@
                 <h6>Компаний</h6>
               </div>
             </div>
-
           </div>
         </section>
         <!-- END Facts -->
 
-
         <!-- How it works -->
         <section>
           <div class="container">
-
             <div class="col-sm-12 col-md-6">
               <header class="section-header text-left">
                 <span>Технология работы</span>
                 <h2>Как это устроено</h2>
               </header>
 
-              <p class="lead">Pellentesque et pulvinar orci. Suspendisse sed euismod purus. Pellentesque nunc ex, ultrices
-                eu enim non, consectetur interdum nisl. Nam congue interdum mauris, sed ultrices augue lacinia in. Praesent
-                turpis purus, faucibus in tempor vel, dictum ac eros.</p>
-              <p>Nulla quis felis et orci luctus semper sit amet id dui. Aenean ultricies lectus nunc, vel rhoncus odio
-                sagittis eu. Sed at felis eu tortor mattis imperdiet et sed tortor. Nullam ac porttitor arcu. Vivamus
-                tristique elit id tempor lacinia. Donec auctor at nibh eget tincidunt. Nulla facilisi. Nunc condimentum
-                dictum mattis.</p>
+              <p class="lead">
+                Pellentesque et pulvinar orci. Suspendisse sed euismod purus.
+                Pellentesque nunc ex, ultrices eu enim non, consectetur interdum
+                nisl. Nam congue interdum mauris, sed ultrices augue lacinia in.
+                Praesent turpis purus, faucibus in tempor vel, dictum ac eros.
+              </p>
+              <p>
+                Nulla quis felis et orci luctus semper sit amet id dui. Aenean
+                ultricies lectus nunc, vel rhoncus odio sagittis eu. Sed at
+                felis eu tortor mattis imperdiet et sed tortor. Nullam ac
+                porttitor arcu. Vivamus tristique elit id tempor lacinia. Donec
+                auctor at nibh eget tincidunt. Nulla facilisi. Nunc condimentum
+                dictum mattis.
+              </p>
 
-
-              <br><br>
-              <a class="btn btn-primary" href="page-typography.html">Подробнее</a>
+              <br /><br />
+              <a class="btn btn-primary" href="page-typography.html"
+                >Подробнее</a
+              >
             </div>
 
             <div class="col-sm-12 col-md-6 hidden-xs hidden-sm">
-              <br>
-              <img class="center-block" src="assets/img/how-it-works.png" alt="how it works">
+              <br />
+              <img
+                class="center-block"
+                src="assets/img/how-it-works.png"
+                alt="how it works"
+              />
             </div>
-
           </div>
         </section>
         <!-- END How it works -->
-
 
         <!-- Categories -->
         <section class="bg-alt">
@@ -241,13 +254,19 @@
               <a href="job-list-1.html">
                 <i class="fa fa-laptop"></i>
                 <h6>Technology</h6>
-                <p>Designer, Developer, IT Service, Front-end developer, Project management</p>
+                <p>
+                  Designer, Developer, IT Service, Front-end developer, Project
+                  management
+                </p>
               </a>
 
               <a href="job-list-2.html">
                 <i class="fa fa-line-chart"></i>
                 <h6>Accounting</h6>
-                <p>Finance, Tax service, Payroll manager, Book keeper, Human resource</p>
+                <p>
+                  Finance, Tax service, Payroll manager, Book keeper, Human
+                  resource
+                </p>
               </a>
 
               <a href="job-list-3.html">
@@ -274,38 +293,41 @@
                 <p>Federal, Law, Human resource, Manager, Biologist</p>
               </a>
             </div>
-
           </div>
         </section>
         <!-- END Categories -->
-
 
         <!-- Newsletter -->
         <section class="bg-img text-center">
           <div class="container">
             <h2><strong>Подпишись</strong></h2>
-            <h6 class="font-alt">Получай еженедельный топ новых вакансий на свой e-mail</h6>
-            <br><br>
+            <h6 class="font-alt">
+              Получай еженедельный топ новых вакансий на свой e-mail
+            </h6>
+            <br /><br />
             <form class="form-subscribe" action="#">
               <div class="input-group">
-                <input type="text" class="form-control input-lg" placeholder="Твой e-mail">
+                <input
+                  type="text"
+                  class="form-control input-lg"
+                  placeholder="Твой e-mail"
+                />
                 <span class="input-group-btn">
-                  <button class="btn btn-success btn-lg" type="submit">Подписаться</button>
+                  <button class="btn btn-success btn-lg" type="submit">
+                    Подписаться
+                  </button>
                 </span>
               </div>
             </form>
           </div>
         </section>
         <!-- END Newsletter -->
-
-
       </main>
       <!-- END Main container -->
 
       <!-- Scripts -->
       <script src="assets/js/app.min.js"></script>
       <script src="assets/js/custom.js"></script>
-
     </body>
   </div>
 </template>
@@ -459,7 +481,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
 }
 .site-header {
   display: flex;
