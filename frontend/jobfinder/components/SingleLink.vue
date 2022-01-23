@@ -1,14 +1,12 @@
 <template>
-  <li>
-    <NuxtLink :to="job[2]">{{ job[1] }}</NuxtLink>
-  </li>
+  <NuxtLink :to="job.link">{{ job.text }}</NuxtLink>
 </template>
 
 <script>
 export default {
   props: {
     job: {
-      type: Array,
+      type: Object,
     },
   },
 };

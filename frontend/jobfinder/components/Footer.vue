@@ -17,8 +17,8 @@
           <div class="col-xs-6 col-md-3">
             <h6>Наша компания</h6>
             <ul class="footer-links">
-              <div v-for="item in OurCompany" :key="item[0]">
-                <FooterLink :job="item" />
+              <div v-for="item in OurCompany" :key="item.id">
+                <li><SingleLink :job="item" /></li>
               </div>
             </ul>
           </div>
@@ -26,8 +26,8 @@
           <div class="col-xs-6 col-md-3">
             <h6>Самые популярные вакансии</h6>
             <ul class="footer-links">
-              <div v-for="item in topVacancies" :key="item[0]">
-                <FooterLink :job="item" />
+              <div v-for="item in topVacancies" :key="item.id">
+                <li><SingleLink :job="item" /></li>
               </div>
             </ul>
           </div>
@@ -86,23 +86,23 @@
 </template>
 
 <script>
-import FooterLink from "@/components/FooterLink.vue";
+import SingleLink from "@/components/SingleLink.vue";
 export default {
-  components: { FooterLink },
+  components: { SingleLink },
   data: () => ({
     topVacancies: [
-      [1, "Фронт-энд девелопер", "/"],
-      [2, "Android девелопер", "/"],
-      [3, "iOS девелопер", "/"],
-      [4, "Full stack девелопер", "/"],
-      [5, "Руководитель проекта", "/"],
+      { id: 1, text: "Фронт-энд девелопер", link: "/" },
+      { id: 2, text: "Android девелопер", link: "/" },
+      { id: 3, text: "iOS девелопер", link: "/" },
+      { id: 4, text: "Full stack девелопер", link: "/" },
+      { id: 5, text: "Руководитель проекта", link: "/" },
     ],
     OurCompany: [
-      [1, "О нас", "/company-detail"],
-      [2, "Как это работает", "/how-it-works"],
-      [3, "FAQ", "/faq"],
-      [4, "Политика безопасности", "/private-policy"],
-      [5, "Наши контакты", "/contacts"],
+      { id: 1, text: "О нас", link: "/" },
+      { id: 2, text: "Как это работает", link: "/" },
+      { id: 3, text: "FAQ", link: "/" },
+      { id: 4, text: "Политика безопасности", link: "/" },
+      { id: 5, text: "Наши контакты", link: "/" },
     ],
   }),
 };
