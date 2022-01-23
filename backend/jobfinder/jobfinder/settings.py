@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,7 +9,7 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 ADMIN_USER = os.getenv('ADMIN_USER')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 
-ALLOWED_HOSTS = os.getenv('PROD_ALLOWED_HOSTS').split(" ")
+ALLOWED_HOSTS = ['*']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
