@@ -1,84 +1,206 @@
 <template>
-  <div>
- <!-- Navigation bar -->
-    <nav class="navbar">
-      <div class="header-wrap">
-
-        <!-- Logo -->
-        <div class="pull-left">
-          <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
-
-          <div class="logo-wrapper">
-            <a class="logo" href="index.html"><img src="/assets/img/logo.png" alt="logo"></a>
-            <a class="logo-alt" href="index.html"><img :src="`${require('/assets/img/logo.png')}`" alt="logo-alt"></a>
-          </div>
-
-        </div>
-        <!-- END Logo -->
-
-        <!-- Navigation menu -->
-        <ul class="nav-menu">
-          <li>
-            <a class="nav-menu__ul active" href="index.html">Главная</a>
-            <ul class="nav-menu__ul_el">
-              <li><a class="active" href="index.html">Вариант 1</a></li>
-              <li><a href="index-2.html">Вариант 2</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-menu__ul" href="#">Вакансии</a>
-            <ul class="nav-menu__ul_el">
-              <li><a href="job-list-1.html">Вакансия - 1</a></li>
-              <li><a href="job-list-2.html">Вакансия - 2</a></li>
-              <li><a href="job-list-3.html">Вакансия - 3</a></li>
-              <li><a href="job-detail.html">Инфо о вакансии</a></li>
-              <li><a href="job-add.html">Добавить вакансию</a></li>
-              <li><a href="job-manage.html">Редактировать вакансии</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-menu__ul" href="#">Резюме</a>
-            <ul class="nav-menu__ul_el">
-              <li><a href="resume-list.html">Просмотреть резюме</a></li>
-              <li><a href="resume-detail.html">Инфо о резюме</a></li>
-              <li><a href="resume-add.html">Создать резюме</a></li>
-              <li><a href="resume-manage.html">Редактировать резюме</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-menu__ul" href="#">Компании</a>
-            <ul class="nav-menu__ul_el">
-              <li><a href="company-list.html">Просмотреть компании</a></li>
-              <li><a href="company-detail.html">Инфо о компании</a></li>
-              <li><a href="company-add.html">Создать компанию</a></li>
-              <li><a href="company-manage.html">Редактировать компании</a></li>
-            </ul>
-          </li>
-          <li>
-            <a class="nav-menu__ul" href="#">Страницы</a>
-            <ul class="nav-menu__ul_el">
-              <li><a href="page-about.html">О нас</a></li>
-              <li><a href="page-contact.html">Контакты</a></li>
-              <li><a href="page-faq.html">FAQ</a></li>
-              <li><a href="page-pricing.html">Наши цены</a></li>
-              <li><a href="page-typography.html">Типографские услуги</a></li>
-              <li><a href="page-ui-elements.html">UI элементы</a></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- END Navigation menu -->
-
-        <!-- User account -->
-        <div class="pull-right user-login">
-          <a class="btn btn-sm btn-primary" href="user-login.html">Авторизоваться</a>
-          <p class="or"> или </p>
-          <a class="regbtn" href="user-register.html">Зарегистрироваться</a>
-        </div>
-        <!-- END User account -->
-
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <div class="header-wrap">
+      <!-- Logo -->
+      <div class="logo-wrapper">
+        <NuxtLink class="logo" to="/">
+          <img :src="`${require('/assets/img/logo.png')}`" alt="logo" />
+        </NuxtLink>
       </div>
-    </nav>
-    <!-- END Navigation bar -->
-  </div>
+      <!-- END Logo -->
+
+      <!-- Navigation menu -->
+      <ul class="menu-wrapper">
+        <li @mouseover="mouseOnMain = true" @mouseleave="mouseOnMain = false">
+          <NuxtLink class="active" to="/">Главная</NuxtLink>
+          <ul v-if="mouseOnMain" class="nav-menu__ul_el">
+            <li>
+              <NuxtLink to="/">Вариант 1</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/">Вариант 2</NuxtLink>
+            </li>
+          </ul>
+        </li>
+        <li
+          @mouseover="mouseOnVacancies = true"
+          @mouseleave="mouseOnVacancies = false"
+        >
+          <NuxtLink to="/">Вакансии</NuxtLink>
+          <ul v-if="mouseOnVacancies" class="nav-menu__ul_el">
+            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+          </ul>
+        </li>
+        <li
+          @mouseover="mouseOnResume = true"
+          @mouseleave="mouseOnResume = false"
+        >
+          <NuxtLink to="/">Резюме</NuxtLink>
+          <ul v-if="mouseOnResume" class="nav-menu__ul_el">
+            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+          </ul>
+        </li>
+        <li
+          @mouseover="mouseOnCompanies = true"
+          @mouseleave="mouseOnCompanies = false"
+        >
+          <NuxtLink to="/">Компании</NuxtLink>
+          <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
+            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+          </ul>
+        </li>
+        <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
+          <NuxtLink to="/">Страницы</NuxtLink>
+          <ul v-if="mouseOnPages" class="nav-menu__ul_el">
+            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
+            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- END Navigation menu -->
+
+      <!-- User account -->
+      <div class="login-wrapper">
+        <NuxtLink class="btn btn-primary" to="/login">
+          Авторизоваться
+        </NuxtLink>
+        <p class="or">или</p>
+        <NuxtLink class="btn btn-outline-primary" to="/register">
+          Зарегистрироваться
+        </NuxtLink>
+      </div>
+      <!-- END User account -->
+    </div>
+  </nav>
+  <!-- END Navigation bar -->
 </template>
 
+<script>
+import SingleLink from "@/components/SingleLink.vue";
+export default {
+  components: { SingleLink },
+  data: () => ({
+    mouseOnMain: false,
+    mouseOnVacancies: false,
+    mouseOnResume: false,
+    mouseOnCompanies: false,
+    mouseOnPages: false,
+  }),
+};
+</script>
+
+<style scoped >
+.navbar {
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+}
+
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  align-items: center;
+  justify-content: center;
+  max-width: 20%;
+}
+
+.menu-wrapper {
+  margin: 0;
+  padding: 0;
+  min-width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-wrapper .nuxt-link-active {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 12px;
+  line-height: 60px;
+  color: #fff;
+  transition: color 0.2s linear;
+}
+
+.menu-wrapper .nuxt-link-active:hover {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.menu-wrapper .active {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menu-wrapper > li {
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0 12px;
+  line-height: 60px;
+  color: #bbb;
+  padding: 0;
+}
+
+.menu-wrapper > li > ul {
+  margin: 0;
+  padding: 0 0 0 25px;
+  width: 200px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 100;
+  background-color: #fff;
+}
+
+.menu-wrapper > li > ul > li > .nuxt-link-active {
+  font-family: Open Sans, sans-serif;
+  text-transform: none;
+  letter-spacing: 1px;
+  line-height: 32px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  white-space: nowrap;
+  display: block;
+  min-width: 150px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #7e8890;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.menu-wrapper > li > ul:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #fff;
+}
+
+.login-wrapper {
+  max-width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+</style>
