@@ -3,6 +3,7 @@ services:
   frontend:
     build:
       context: frontend/jobfinder/
+    command: sh -c "npm install --save nuxt && npm run dev"
     ports:
       - "3000:3000"
     volumes:
