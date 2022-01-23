@@ -1,18 +1,22 @@
 <template>
   <div>
- <!-- Navigation bar -->
+    <!-- Navigation bar -->
     <nav class="navbar">
       <div class="header-wrap">
-
         <!-- Logo -->
         <div class="pull-left">
-          <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
+          <a class="navbar-toggle" href="#" data-toggle="offcanvas"
+            ><i class="ti-menu"></i
+          ></a>
 
           <div class="logo-wrapper">
-            <a class="logo" href="index.html"><img src="/assets/img/logo.png" alt="logo"></a>
-            <a class="logo-alt" href="index.html"><img :src="`${require('/assets/img/logo.png')}`" alt="logo-alt"></a>
+            <a class="logo" href="index.html"
+              ><img src="/assets/img/logo.png" alt="logo"
+            /></a>
+            <a class="logo-alt" href="index.html"
+              ><img :src="`${require('/assets/img/logo.png')}`" alt="logo-alt"
+            /></a>
           </div>
-
         </div>
         <!-- END Logo -->
 
@@ -70,15 +74,24 @@
 
         <!-- User account -->
         <div class="pull-right user-login">
-          <a class="btn btn-sm btn-primary" href="user-login.html">Авторизоваться</a>
-          <p class="or"> или </p>
+          <a class="btn btn-sm btn-primary" href="user-login.html"
+            >Авторизоваться</a
+          >
+          <p class="or">или</p>
           <a class="regbtn" href="user-register.html">Зарегистрироваться</a>
         </div>
         <!-- END User account -->
-
       </div>
     </nav>
     <!-- END Navigation bar -->
   </div>
 </template>
 
+<script>
+</script>
+
+<style scoped>
+.navbar {
+  background-color: black;
+}
+</style>
