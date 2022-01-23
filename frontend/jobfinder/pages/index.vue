@@ -452,16 +452,11 @@ body {
     }
   }
 }
-.navbar {
+.header-meta {
   display: flex;
-  .header-wrap {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-}
-.logo-wrapper {
-  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .nav-menu {
   margin: 0;
@@ -477,18 +472,6 @@ body {
       display: none;
     }
   }
-}
-.pull-right {
-  display: flex;
-  align-items: center;
-}
-.or {
-  padding: 0 15px;
-  margin: 0;
-}
-.regbtn {
-  // height: 100%;
-  border: 1px solid grey;
 }
 .main-window {
   display: flex;

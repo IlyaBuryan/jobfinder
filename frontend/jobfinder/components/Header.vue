@@ -102,6 +102,8 @@ export default {
   width: 100%;
   background-color: transparent;
   position: absolute;
+  display: flex;
+  justify-content: center;
 }
 
 .header-wrap {
