@@ -14,44 +14,34 @@
             <br /><br /><br />
           </div>
 
-            <form class="header-job-search">
-              <div class="input-keyword" prop="name">
-                <input
-                type="text"
-                  v-model="findForm.name"
-                  :placeholder="'Наименование должности'" class="form-control">
-              </div>
+          <form class="header-job-search">
+            <div class="input-keyword" prop="name">
+              <input
+              type="text"
+                v-model="findForm.name"
+                :placeholder="'Наименование должности'" class="form-control">
+            </div>
 
-              <div class="input-location" prop="city">
-                <input type="text" class="form-control" :placeholder="'Город'">
-              </div>
-
-              <div class="btn-search">
-                <button
-                  round
-                  :loading="loading"
-                  @click="onSubmit"
-                  class="btn btn-primary"
-                  type="submit">Найти работу
-                </button>
-                <button
-                  round
-                  :loading="loading"
-                  @click="onSearch"
-                  type="button"
-                  class="wsearch-btn"
-                >
-                  {{ 'расширенный поиск' }}
-                </button>
-              </div>
-            </form>
+            <div class="input-location" prop="city">
+              <input type="text" class="form-control" :placeholder="'Город'">
+            </div>
 
             <div class="btn-search">
-              <button class="btn btn-primary" type="submit">
-                Найти работу
+              <button
+                round
+                :loading="loading"
+                @click="onSubmit"
+                class="btn btn-primary"
+                type="submit">Найти работу
               </button>
-              <button type="button" class="wsearch-btn">
-                <a href="job-list.html">Расширенный поиск</a>
+              <button
+                round
+                :loading="loading"
+                @click="onSearch"
+                type="button"
+                class="wsearch-btn"
+              >
+                {{ 'расширенный поиск' }}
               </button>
             </div>
           </form>
@@ -69,12 +59,12 @@
               <h2 class="body-header__head">Новейшие вакансии</h2>
             </header>
 
-            <div class="row item-blocks-connected">
+            <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="assets/img/logo-google.jpg" alt="" />
+              <div class="body__container_vacancy-item">
+                <a class="body__container_vacancy-item--link" href="job-detail.html">
+                  <div class="body__container_vacancy-item--link_info">
+                    <img src="../assets/img/logo-google.jpg" alt="" />
                     <div class="hgroup">
                       <h4>Senior front-end developer</h4>
                       <h5>Google</h5>
@@ -83,7 +73,7 @@
                       <span class="location">Menlo park, CA</span>
                       <span class="label label-success">Full-time</span>
                     </div>
-                  </header>
+                  </div>
                 </a>
               </div>
               <!-- END Job item -->
@@ -110,7 +100,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-envato.png" alt="" />
+                    <img src="../assets/img/logo-envato.png" alt="" />
                     <div class="hgroup">
                       <h4>Full Stack Web Developer</h4>
                       <h5>Envato</h5>
@@ -128,7 +118,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-facebook.png" alt="" />
+                    <img src="../assets/img/logo-facebook.png" alt="" />
                     <div class="hgroup">
                       <h4>Web Applications Developer</h4>
                       <h5>Facebook</h5>
@@ -146,7 +136,7 @@
               <div class="col-xs-12">
                 <a class="item-block" href="job-detail.html">
                   <header>
-                    <img src="assets/img/logo-microsoft.jpg" alt="" />
+                    <img src="../assets/img/logo-microsoft.jpg" alt="" />
                     <div class="hgroup">
                       <h4>Sr. SQL Server Developer</h4>
                       <h5>Microsoft</h5>
@@ -428,27 +418,45 @@ h5 {
 
   }
 }
-.item-blocks-connected {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 body {
   font-family: Arial,sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: #7e8890;
 }
-.navbar {
-  display: flex;
-  .header-wrap {
+.body {
+  &__container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    &_vacancy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      &-item {
+        display: flex;
+        width: 100%;
+        &--link {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          &_info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
-.logo-wrapper {
+.header-meta {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .nav-menu {
   margin: 0;
@@ -464,18 +472,6 @@ body {
       display: none;
     }
   }
-}
-.pull-right {
-  display: flex;
-  align-items: center;
-}
-.or {
-  padding: 0 15px;
-  margin: 0;
-}
-.regbtn {
-  // height: 100%;
-  border: 1px solid grey;
 }
 .main-window {
   display: flex;

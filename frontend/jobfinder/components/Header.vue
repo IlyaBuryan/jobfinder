@@ -102,11 +102,13 @@ export default {
   width: 100%;
   background-color: transparent;
   position: absolute;
+  display: flex;
+  justify-content: center;
 }
 
 .header-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .logo-wrapper {
