@@ -338,7 +338,24 @@ export default {
         ],
         city: [{ required: true, message: 'название города обязательно', trigger: 'blur' }]
       },
-      loading: false
+      loading: false,
+      vacancyList: [
+        {
+          id: 1, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
+        },
+        {
+          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('../assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Google', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 4, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 5, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Владивосток', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+      ]
     }
   },
   methods: {
