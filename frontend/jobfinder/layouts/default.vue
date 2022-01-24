@@ -2,7 +2,7 @@
   <div>
     <Header />
 
-    <div class="container">
+    <div class="main-container">
       <nuxt />
     </div>
     <Footer />
@@ -18,3 +18,11 @@ export default {
 
 }
 </script>
+
+<style scoped lang="scss">
+.main-container {
+  max-width: 100%;
+  display: flex;
+}
+
+</style>
