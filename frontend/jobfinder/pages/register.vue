@@ -2,14 +2,23 @@
   <body class="login-page">
     <main>
       <div class="login-block">
-        <img src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Авторизация</h1>
+        <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
+        <h1>Зарегистрироваться</h1>
 
         <form action="#">
           <div class="form-group">
             <div class="input-group">
+              <span class="input-group-addon"><i class="ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Ваше имя" />
+            </div>
+          </div>
+
+          <hr class="hr-xs" />
+
+          <div class="form-group">
+            <div class="input-group">
               <span class="input-group-addon"><i class="ti-email"></i></span>
-              <input type="text" class="form-control" placeholder="Email" />
+              <input type="text" class="form-control" placeholder="Ваш email" />
             </div>
           </div>
 
@@ -21,17 +30,17 @@
               <input
                 type="password"
                 class="form-control"
-                placeholder="Password"
+                placeholder="Введите пароль"
               />
             </div>
           </div>
 
           <button class="btn btn-primary btn-block" type="submit">
-            Авторизоваться
+            Зарегистрироваться
           </button>
 
           <div class="login-footer">
-            <h6>или залогиниться через</h6>
+            <h6>или зарегистрируйтесь через</h6>
             <ul class="social-icons">
               <li>
                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -48,10 +57,14 @@
       </div>
 
       <div class="login-links">
-        <a class="pull-left" href="user-forget-pass.html">Forget Password?</a>
-        <a class="pull-right" href="user-register.html">Register an account</a>
+        <p class="text-center">
+          Уже есть учетная запись?
+          <a class="txt-brand" href="user-login.html">Login</a>
+        </p>
       </div>
     </main>
+
+    <!-- Scripts -->
     <script src="assets/js/app.min.js"></script>
     <script src="assets/js/custom.js"></script>
   </body>
@@ -59,11 +72,14 @@
 
 <script>
 export default {
-  layout: "login_auth",
+  layout: "login_reg",
 };
 </script>
 
 <style lang="scss">
+.logo-form {
+  width: 360px;
+}
 h1 {
   display: block;
   font-size: 2em;
@@ -75,7 +91,6 @@ h1 {
 }
 .login-page {
   background-color: #e5e7ed;
-  min-height: 100vh;
 }
 .login-block {
   background-color: #fff;
@@ -83,6 +98,10 @@ h1 {
   box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -240px -285px;
 }
 .login-block .form-group {
   margin-top: 15px;
