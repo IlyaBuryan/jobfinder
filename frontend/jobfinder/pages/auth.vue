@@ -48,12 +48,12 @@
       </div>
 
       <div class="login-links">
-        <a class="pull-left" href="user-forget-pass.html">Forget Password?</a>
-        <a class="pull-right" href="user-register.html">Register an account</a>
+        <a class="pull-left" href="user-forget-pass.html">Забыли пароль?</a>
+        <nuxt-link class="pull-right" to="/login"
+          >Создать учетную запись</nuxt-link
+        >
       </div>
     </main>
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/js/custom.js"></script>
   </body>
 </template>
 

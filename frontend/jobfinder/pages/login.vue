@@ -59,14 +59,10 @@
       <div class="login-links">
         <p class="text-center">
           Уже есть учетная запись?
-          <a class="txt-brand" href="user-login.html">Login</a>
+          <nuxt-link class="txt-brand" to="/auth">Auth</nuxt-link>
         </p>
       </div>
     </main>
-
-    <!-- Scripts -->
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/js/custom.js"></script>
   </body>
 </template>
 
