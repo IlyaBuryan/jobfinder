@@ -7,11 +7,6 @@ from rest_framework.routers import DefaultRouter
 
 from authapp.views import CustomUserModelViewSet
 
-from authapp.views import CustomUserListView
-
-from authapp.views import CustomUserCreateView
-
-from authapp.views import CustomUserDetailView
 
 router = DefaultRouter()
 router.register('authapp', CustomUserModelViewSet)
@@ -36,8 +31,5 @@ urlpatterns = [
          name='schema-redoc'),
 
     path('api/v1/', include(router.urls)),
-    # user
-    path('api/v1/users/', CustomUserListView.as_view()),
-    path('api/v1/user/create/', CustomUserCreateView.as_view()),
-    path('api/v1/user/<int:pk>/', CustomUserDetailView.as_view()),
+
 ]

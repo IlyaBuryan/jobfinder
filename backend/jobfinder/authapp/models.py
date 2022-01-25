@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     ROLE_TYPES = (
-        (1, 'Администратор'),
+        (1, 'Модератор'),
         (2, 'Работник'),
         (3, 'Компания'),
     )
