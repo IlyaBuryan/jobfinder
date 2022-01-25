@@ -44,7 +44,7 @@
             <p class="copyright-text">
               Copyrights &copy; 2022 Все права защищены
               <a href="http://themeforest.net/user/shamsoft"
-                >"Python Style Group"</a
+                >"Python's Style Group"</a
               >.
             </p>
           </div>
