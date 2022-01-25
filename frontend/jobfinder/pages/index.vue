@@ -61,93 +61,20 @@
 
             <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="body__container_vacancy-item">
-                <a class="body__container_vacancy-item--link" href="job-detail.html">
-                  <div class="body__container_vacancy-item--link_info">
-                    <img src="../assets/img/logo-google.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Senior front-end developer</h4>
-                      <h5>Google</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Menlo park, CA</span>
-                      <span class="label label-success">Full-time</span>
-                    </div>
+              <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
+                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
+                <div class="vacancy-item__info">
+                  <div class="vacancy-item__info_main">
+                    <div class="vacancy-item__info_main-name">{{ item.title }}</div>
+                    <div class="vacancy-item__info_main-city">{{ item.location}}</div>
                   </div>
-                </a>
+                  <div class="vacancy-item__info_add">
+                    <div class="vacancy-item__info_add-company">{{ item.company }}</div>
+                    <div class="vacancy-item__info_add-worktime">{{ item.worktime }}</div>
+                  </div>
+                </div>
               </div>
-              <!-- END Job item -->
 
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-linkedin.png" alt="">
-                    <div class="hgroup">
-                      <h4>Software Engineer (Entry or Senior)</h4>
-                      <h5>Linkedin</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Livermore, CA</span>
-                      <span class="label label-warning">Part-time</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-envato.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Full Stack Web Developer</h4>
-                      <h5>Envato</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">San Francisco, CA</span>
-                      <span class="label label-info">Freelance</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-facebook.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Web Applications Developer</h4>
-                      <h5>Facebook</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Lexington, MA</span>
-                      <span class="label label-danger">Internship</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-microsoft.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Sr. SQL Server Developer</h4>
-                      <h5>Microsoft</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Palo Alto, CA</span>
-                      <span class="label label-success">Remote</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
               <!-- END Job item -->
             </div>
 
@@ -347,13 +274,13 @@ export default {
           id: 2, title: 'Software Engineer (Entry or Senior)', img: require('../assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
         },
         {
-          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Google', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 4, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 4, title: 'Web Applications Developer', img: require('../assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 5, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Владивосток', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 5, title: 'Sr. SQL Server Developer', img: require('../assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
         },
       ]
     }
@@ -390,11 +317,6 @@ export default {
   line-height: 1.4;
   color: white;
   font-weight: 800;
-}
-h5 {
-  font-family: Arial,sans-serif;
-  font-size: 20px;
-  color: white;
 }
 .site-header mark {
   color: #29aafe;;
@@ -451,20 +373,63 @@ body {
       flex-direction: column;
       align-items: center;
       width: 90%;
-      &-item {
-        display: flex;
-        width: 100%;
-        &--link {
-          width: 100%;
-          display: flex;
-          justify-content: space-around;
-          &_info {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-          }
-        }
+
+    }
+  }
+}
+.vacancy-item {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-around;
+  margin: 30px 0;
+  &::after {
+    border: 1px solid #29aafe;
+  }
+  &__img {
+    display: flex;
+    padding: 0 30px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      &-name {
+        font-size: 36px;
+        line-height: 40px;
+        color: #55595c;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+      }
+      &-city {
+        color: #96a2b2;
+        line-height: 35px;
+        font-size: 30px;
+      }
+    }
+    &_add {
+      display: flex;
+      justify-content: space-between;
+      &-company {
+        font-size: 30px;
+        color: #96a2b2;
+      }
+      &-worktime {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 30px;
+        color: white;
+        font-weight: 400;
+        border-radius: 0;
+        padding: 4px 6px;
+        margin-top: 6px;
+        margin-left: 16px;
+        opacity: .85;
+        background-color: #5cb85c;
       }
     }
   }

@@ -200,4 +200,7 @@ export default {
   justify-content: center;
   flex-direction: row;
 }
+.or {
+  margin: 0 30px;
+}
 </style>
