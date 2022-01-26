@@ -100,6 +100,7 @@ export default {
   width: 100%;
   background-color: transparent;
   position: absolute;
+  top: 50px;
   display: flex;
   justify-content: center;
 }
