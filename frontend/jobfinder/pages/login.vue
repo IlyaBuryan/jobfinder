@@ -2,23 +2,14 @@
   <body class="login-page">
     <main>
       <div class="login-block">
-        <img src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Войти в свой аккаунт</h1>
+        <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
+        <h1>Авторизация</h1>
 
         <form action="#">
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon"><i class="ti-user"></i></span>
-              <input type="text" class="form-control" placeholder="Ваше имя" />
-            </div>
-          </div>
-
-          <hr class="hr-xs" />
-
-          <div class="form-group">
-            <div class="input-group">
               <span class="input-group-addon"><i class="ti-email"></i></span>
-              <input type="text" class="form-control" placeholder="Ваш email" />
+              <input type="text" class="form-control" placeholder="Email" />
             </div>
           </div>
 
@@ -30,17 +21,17 @@
               <input
                 type="password"
                 class="form-control"
-                placeholder="Введите пароль"
+                placeholder="Password"
               />
             </div>
           </div>
 
           <button class="btn btn-primary btn-block" type="submit">
-            Зарегистрироваться
+            Авторизоваться
           </button>
 
           <div class="login-footer">
-            <h6>или зарегистрируйтесь через</h6>
+            <h6>или залогиниться через</h6>
             <ul class="social-icons">
               <li>
                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -57,16 +48,12 @@
       </div>
 
       <div class="login-links">
-        <p class="text-center">
-          Уже есть учетная запись?
-          <a class="txt-brand" href="user-login.html">Login</a>
-        </p>
+        <nuxt-link class="pull-left" to="/#">Забыли пароль?</nuxt-link>
+        <nuxt-link class="pull-right" to="/register"
+          >Зарегистрироваться</nuxt-link
+        >
       </div>
     </main>
-
-    <!-- Scripts -->
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/js/custom.js"></script>
   </body>
 </template>
 
@@ -77,6 +64,9 @@ export default {
 </script>
 
 <style lang="scss">
+.logo-form {
+  width: 360px;
+}
 h1 {
   display: block;
   font-size: 2em;
@@ -88,7 +78,6 @@ h1 {
 }
 .login-page {
   background-color: #e5e7ed;
-  min-height: 100vh;
 }
 .login-block {
   background-color: #fff;
@@ -96,6 +85,10 @@ h1 {
   box-shadow: 0 3px 50px 0 rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -240px -285px;
 }
 .login-block .form-group {
   margin-top: 15px;
@@ -163,7 +156,6 @@ h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .fa-twitter:before {
   content: "\f099";
 }
