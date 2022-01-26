@@ -1,9 +1,6 @@
 from django.core.validators import MaxLengthValidator
 from django.db import models
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
-
+from authapp.models import CustomUser
 
 class CompanyCard(models.Model):
     name = models.CharField(verbose_name='Наименование организации', max_length=64)
@@ -26,7 +23,7 @@ class CompanyCard(models.Model):
                     message='Превышена максимально допустимая длина')])
     description = models.TextField(verbose_name='Описание', validators=[MaxLengthValidator(limit_value=2000,
                     message='Превышена максимально допустимая длина')])
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
 
 
 class Vacancy(models.Model):
