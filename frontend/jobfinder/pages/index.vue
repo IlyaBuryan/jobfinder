@@ -14,44 +14,34 @@
             <br /><br /><br />
           </div>
 
-            <form class="header-job-search">
-              <div class="input-keyword" prop="name">
-                <input
-                type="text"
-                  v-model="findForm.name"
-                  :placeholder="'Наименование должности'" class="form-control">
-              </div>
+          <form class="header-job-search">
+            <div class="input-keyword" prop="name">
+              <input
+              type="text"
+                v-model="findForm.name"
+                :placeholder="'Наименование должности'" class="form-control">
+            </div>
 
-              <div class="input-location" prop="city">
-                <input type="text" class="form-control" :placeholder="'Город'">
-              </div>
-
-              <div class="btn-search">
-                <button
-                  round
-                  :loading="loading"
-                  @click="onSubmit"
-                  class="btn btn-primary"
-                  type="submit">Найти работу
-                </button>
-                <button
-                  round
-                  :loading="loading"
-                  @click="onSearch"
-                  type="button"
-                  class="wsearch-btn"
-                >
-                  {{ 'расширенный поиск' }}
-                </button>
-              </div>
-            </form>
+            <div class="input-location" prop="city">
+              <input type="text" class="form-control" :placeholder="'Город'">
+            </div>
 
             <div class="btn-search">
-              <button class="btn btn-primary" type="submit">
-                Найти работу
+              <button
+                round
+                :loading="loading"
+                @click="onSubmit"
+                class="btn btn-primary"
+                type="submit">Найти работу
               </button>
-              <button type="button" class="wsearch-btn">
-                <a href="job-list.html">Расширенный поиск</a>
+              <button
+                round
+                :loading="loading"
+                @click="onSearch"
+                type="button"
+                class="wsearch-btn"
+              >
+                {{ 'расширенный поиск' }}
               </button>
             </div>
           </form>
@@ -69,95 +59,22 @@
               <h2 class="body-header__head">Новейшие вакансии</h2>
             </header>
 
-            <div class="row item-blocks-connected">
+            <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="assets/img/logo-google.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Senior front-end developer</h4>
-                      <h5>Google</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Menlo park, CA</span>
-                      <span class="label label-success">Full-time</span>
-                    </div>
-                  </header>
-                </a>
+              <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
+                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
+                <div class="vacancy-item__info">
+                  <div class="vacancy-item__info_main">
+                    <div class="vacancy-item__info_main-name">{{ item.title }}</div>
+                    <div class="vacancy-item__info_main-city">{{ item.location}}</div>
+                  </div>
+                  <div class="vacancy-item__info_add">
+                    <div class="vacancy-item__info_add-company">{{ item.company }}</div>
+                    <div class="vacancy-item__info_add-worktime">{{ item.worktime }}</div>
+                  </div>
+                </div>
               </div>
-              <!-- END Job item -->
 
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-linkedin.png" alt="">
-                    <div class="hgroup">
-                      <h4>Software Engineer (Entry or Senior)</h4>
-                      <h5>Linkedin</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Livermore, CA</span>
-                      <span class="label label-warning">Part-time</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="assets/img/logo-envato.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Full Stack Web Developer</h4>
-                      <h5>Envato</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">San Francisco, CA</span>
-                      <span class="label label-info">Freelance</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="assets/img/logo-facebook.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Web Applications Developer</h4>
-                      <h5>Facebook</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Lexington, MA</span>
-                      <span class="label label-danger">Internship</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="assets/img/logo-microsoft.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Sr. SQL Server Developer</h4>
-                      <h5>Microsoft</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Palo Alto, CA</span>
-                      <span class="label label-success">Remote</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
               <!-- END Job item -->
             </div>
 
@@ -348,7 +265,24 @@ export default {
         ],
         city: [{ required: true, message: 'название города обязательно', trigger: 'blur' }]
       },
-      loading: false
+      loading: false,
+      vacancyList: [
+        {
+          id: 1, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
+        },
+        {
+          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('../assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 4, title: 'Web Applications Developer', img: require('../assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 5, title: 'Sr. SQL Server Developer', img: require('../assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
+        },
+      ]
     }
   },
   methods: {
@@ -383,11 +317,6 @@ export default {
   line-height: 1.4;
   color: white;
   font-weight: 800;
-}
-h5 {
-  font-family: Arial,sans-serif;
-  font-size: 20px;
-  color: white;
 }
 .site-header mark {
   color: #29aafe;;
@@ -428,27 +357,91 @@ h5 {
 
   }
 }
-.item-blocks-connected {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 body {
   font-family: Arial,sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: #7e8890;
 }
-.navbar {
-  display: flex;
-  .header-wrap {
+.body {
+  &__container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    &_vacancy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+
+    }
   }
 }
-.logo-wrapper {
+.vacancy-item {
   display: flex;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-around;
+  margin: 30px 0;
+  transition-property: border;
+  transition-duration: .2s;
+  &:hover {
+    border: 1px solid #29aafe;
+  }
+  &__img {
+    display: flex;
+    padding: 0 30px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 30px;
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      &-name {
+        font-size: 36px;
+        line-height: 40px;
+        color: #55595c;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+      }
+      &-city {
+        color: #96a2b2;
+        line-height: 35px;
+        font-size: 30px;
+      }
+    }
+    &_add {
+      display: flex;
+      justify-content: space-between;
+      &-company {
+        font-size: 30px;
+        color: #96a2b2;
+      }
+      &-worktime {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 30px;
+        color: white;
+        font-weight: 400;
+        border-radius: 0;
+        padding: 4px 6px;
+        margin-top: 6px;
+        margin-left: 16px;
+        opacity: .85;
+        background-color: #5cb85c;
+      }
+    }
+  }
+}
+.header-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .nav-menu {
   margin: 0;
@@ -464,18 +457,6 @@ body {
       display: none;
     }
   }
-}
-.pull-right {
-  display: flex;
-  align-items: center;
-}
-.or {
-  padding: 0 15px;
-  margin: 0;
-}
-.regbtn {
-  // height: 100%;
-  border: 1px solid grey;
 }
 .main-window {
   display: flex;

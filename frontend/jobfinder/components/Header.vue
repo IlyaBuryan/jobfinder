@@ -69,12 +69,10 @@
 
       <!-- User account -->
       <div class="login-wrapper">
-        <NuxtLink class="btn btn-primary" to="/login">
-          Авторизоваться
-        </NuxtLink>
+        <NuxtLink class="btn btn-primary" to="/login"> Авторизация </NuxtLink>
         <p class="or">или</p>
         <NuxtLink class="btn btn-outline-primary" to="/register">
-          Зарегистрироваться
+          Регистрация
         </NuxtLink>
       </div>
       <!-- END User account -->
@@ -102,6 +100,9 @@ export default {
   width: 100%;
   background-color: transparent;
   position: absolute;
+  top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .header-wrap {
@@ -112,13 +113,11 @@ export default {
 .logo-wrapper {
   align-items: center;
   justify-content: center;
-  max-width: 20%;
 }
 
 .menu-wrapper {
   margin: 0;
   padding: 0;
-  min-width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -197,10 +196,12 @@ export default {
 }
 
 .login-wrapper {
-  max-width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+.or {
+  margin: 0 30px;
 }
 </style>
