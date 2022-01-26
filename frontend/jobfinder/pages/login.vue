@@ -48,9 +48,7 @@
       </div>
 
       <div class="login-links">
-        <nuxt-link class="pull-left" to="/pass-restore"
-          >Забыли пароль?</nuxt-link
-        >
+        <nuxt-link class="pull-left" to="/#">Забыли пароль?</nuxt-link>
         <nuxt-link class="pull-right" to="/register"
           >Зарегистрироваться</nuxt-link
         >
