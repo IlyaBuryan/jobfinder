@@ -21,7 +21,7 @@ class CompanyCard(models.Model):
         (11, 'Другое')
     )
     category = models.IntegerField(verbose_name='Отрасль', choices=categories)
-    itn = models.IntegerField(verbose_name='ИНН')
+    itn = models.BigIntegerField(verbose_name='ИНН')
     company_details = models.TextField(verbose_name='Сведения о компании', validators=[MaxLengthValidator(limit_value=1000,
                     message='Превышена максимально допустимая длина')])
     description = models.TextField(verbose_name='Описание', validators=[MaxLengthValidator(limit_value=2000,
