@@ -3,6 +3,7 @@
     <main>
       <div class="login-block">
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
+        <h1>Регситрация</h1>
 
         <form action="#">
           <div class="form-group">
@@ -50,13 +51,16 @@
       </div>
 
       <div class="login-links">
-        <p class="text-center">
+        <p class="text-center" />
           Уже есть учетная запись?
+      </div>
+    </main>
   </body>
 </template>
 
 <script>
 export default {
+  layout: "login_reg",
 };
 </script>
 
