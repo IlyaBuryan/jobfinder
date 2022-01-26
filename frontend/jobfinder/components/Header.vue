@@ -100,6 +100,7 @@ export default {
   width: 100%;
   background-color: transparent;
   position: absolute;
+  top: 50px;
   display: flex;
   justify-content: center;
 }
@@ -199,5 +200,8 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+.or {
+  margin: 0 30px;
 }
 </style>

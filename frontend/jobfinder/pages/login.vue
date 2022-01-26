@@ -48,18 +48,12 @@
       </div>
 
       <div class="login-links">
-        <nuxt-link class="pull-left" to="/#">Забыли пароль?</nuxt-link>
-        <nuxt-link class="pull-right" to="/register"
-          >Зарегистрироваться</nuxt-link
-        >
-      </div>
-    </main>
   </body>
 </template>
 
 <script>
 export default {
-  layout: "login_auth",
+  layout: "login_reg",
 };
 </script>
 

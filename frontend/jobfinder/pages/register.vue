@@ -3,7 +3,6 @@
     <main>
       <div class="login-block">
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Регистрация</h1>
 
         <form action="#">
           <div class="form-group">
@@ -12,14 +11,12 @@
               <input type="text" class="form-control" placeholder="Ваше имя" />
             </div>
           </div>
-          <hr class="hr-xs" />
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-email"></i></span>
               <input type="text" class="form-control" placeholder="Ваш email" />
             </div>
           </div>
-
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-unlock"></i></span>
@@ -55,16 +52,11 @@
       <div class="login-links">
         <p class="text-center">
           Уже есть учетная запись?
-          <nuxt-link class="txt-brand" to="/login">Login</nuxt-link>
-        </p>
-      </div>
-    </main>
   </body>
 </template>
 
 <script>
 export default {
-  layout: "login_auth",
 };
 </script>
 
