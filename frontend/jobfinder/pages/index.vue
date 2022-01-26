@@ -383,7 +383,9 @@ body {
   width: 100%;
   justify-content: space-around;
   margin: 30px 0;
-  &::after {
+  transition-property: border;
+  transition-duration: .2s;
+  &:hover {
     border: 1px solid #29aafe;
   }
   &__img {
@@ -393,8 +395,9 @@ body {
   &__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    padding: 0 30px;
     &_main {
       display: flex;
       justify-content: space-between;
