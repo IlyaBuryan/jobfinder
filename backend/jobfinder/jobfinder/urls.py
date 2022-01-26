@@ -4,8 +4,7 @@ from rest_framework import permissions
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from companyapp.views import CompanyCardModelViewSet, CompanyCardListView, CompanyCardCreateView, \
-    CompanyCardDetailView, VacancyModelViewSet, VacancyListView, VacancyCreateView, VacancyDetailView
+from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -25,14 +24,6 @@ router.register('vacancyapp', VacancyModelViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),
-    #company
-    path('api/v1/companies', CompanyCardListView.as_view()),
-    path('api/v1/company/create/', CompanyCardCreateView.as_view()),
-    path('api/v1/company/detail/<int:pk>/', CompanyCardDetailView.as_view()),
-    #vacancy
-    path('api/v1/vacancies', VacancyListView.as_view()),
-    path('api/v1/vacancy/create/', VacancyCreateView.as_view()),
-    path('api/v1/vacancy/detail/<int:pk>/', VacancyDetailView.as_view()),
 
 # Auto documentation
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
