@@ -1,5 +1,3 @@
 __pycache__/
 .idea
 .env
-companyapp/migrations/0001_initial.py
-companyapp/migrations/0002_alter_companycard_itn.py
