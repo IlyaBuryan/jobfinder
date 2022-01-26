@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions, generics, status
+from rest_framework import viewsets, status
 
 from authapp.models import CustomUser
 from authapp.serializers import CustomUserModelSerializer

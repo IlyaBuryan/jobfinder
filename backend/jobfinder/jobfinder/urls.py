@@ -10,7 +10,7 @@ from authapp.views import CustomUserModelViewSet
 
 
 router = DefaultRouter()
-router.register('users', CustomUserModelViewSet)
+router.register('user', CustomUserModelViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -32,9 +32,9 @@ urlpatterns = [
          name='schema-redoc'),
 
     path('api/v1/', include(router.urls)),
-    path('api/v1/base-auth/', include('rest_framework.urls')),
-    path('api/v1/auth/', include('djoser.urls')),
-    path('api/v1/djoser-auth/', include('djoser.urls.jwt')),
+    path('api/v1/api-auth/', include('rest_framework.urls')),
+    #path('api/v1/djoser-auth/', include('djoser.urls')),
+    #path('api/v1/djoser-auth/', include('djoser.urls.jwt')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
