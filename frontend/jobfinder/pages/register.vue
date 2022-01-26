@@ -3,7 +3,6 @@
     <main>
       <div class="login-block">
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Зарегистрироваться</h1>
 
         <form action="#">
           <div class="form-group">
@@ -12,18 +11,12 @@
               <input type="text" class="form-control" placeholder="Ваше имя" />
             </div>
           </div>
-
-          <hr class="hr-xs" />
-
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-email"></i></span>
               <input type="text" class="form-control" placeholder="Ваш email" />
             </div>
           </div>
-
-          <hr class="hr-xs" />
-
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-unlock"></i></span>
@@ -59,20 +52,11 @@
       <div class="login-links">
         <p class="text-center">
           Уже есть учетная запись?
-          <a class="txt-brand" href="user-login.html">Login</a>
-        </p>
-      </div>
-    </main>
-
-    <!-- Scripts -->
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/js/custom.js"></script>
   </body>
 </template>
 
 <script>
 export default {
-  layout: "login_reg",
 };
 </script>
 
@@ -169,7 +153,6 @@ h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .fa-twitter:before {
   content: "\f099";
 }

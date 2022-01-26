@@ -48,12 +48,6 @@
       </div>
 
       <div class="login-links">
-        <a class="pull-left" href="user-forget-pass.html">Forget Password?</a>
-        <a class="pull-right" href="user-register.html">Register an account</a>
-      </div>
-    </main>
-    <script src="assets/js/app.min.js"></script>
-    <script src="assets/js/custom.js"></script>
   </body>
 </template>
 
@@ -156,7 +150,6 @@ h1 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .fa-twitter:before {
   content: "\f099";
 }
