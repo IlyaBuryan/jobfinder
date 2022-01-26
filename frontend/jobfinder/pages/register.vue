@@ -50,13 +50,15 @@
       </div>
 
       <div class="login-links">
-        <p class="text-center">
-          Уже есть учетная запись?
+        <p class="text-center">Уже есть учетная запись?</p>
+      </div>
+    </main>
   </body>
 </template>
 
 <script>
 export default {
+  layout: "login_reg",
 };
 </script>
 
