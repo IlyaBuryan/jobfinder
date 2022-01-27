@@ -80,7 +80,7 @@
 
             <br /><br />
             <p class="text-center">
-              <a class="btn btn-info" href="job-list.html"
+              <a class="btn btn-more" href="job-list.html"
                 >Просмотреть все вакансии</a
               >
             </p>
@@ -118,26 +118,46 @@
 
         <!-- How it works -->
         <section>
-          <div class="container">
-            <div class="col-sm-12 col-md-6">
-              <header class="section-header text-left">
-                <span>Технология работы</span>
-                <h2>Как это устроено</h2>
+          <div class="text__container">
+            <div class="text__container_left">
+              <header class="text__container_left-title">
+                <span class="text__container_left-title--text">Поиск работы</span>
+                <div class="text__container_left-title--head">Как правильно искать работу</div>
               </header>
 
-              <p class="lead">
-                Pellentesque et pulvinar orci. Suspendisse sed euismod purus.
-                Pellentesque nunc ex, ultrices eu enim non, consectetur interdum
-                nisl. Nam congue interdum mauris, sed ultrices augue lacinia in.
-                Praesent turpis purus, faucibus in tempor vel, dictum ac eros.
+              <p class="story">
+                Искать работу – тоже работа. Это инструкция из 5 пунктов для человека
+                из любой индустрии и любого уровня, будь то первая работа после университета
+                или руководящая должность высокоуровневого специалиста.
               </p>
               <p>
-                Nulla quis felis et orci luctus semper sit amet id dui. Aenean
-                ultricies lectus nunc, vel rhoncus odio sagittis eu. Sed at
-                felis eu tortor mattis imperdiet et sed tortor. Nullam ac
-                porttitor arcu. Vivamus tristique elit id tempor lacinia. Donec
-                auctor at nibh eget tincidunt. Nulla facilisi. Nunc condimentum
-                dictum mattis.
+                1. Выбор индустрии
+                Индустрия – почва, на которой вы будете расти следующее время. Это может быть
+                диджитал, маркетинг, IT, финансы, продажи и т. д.
+                Если у вас нет опыта, подумайте, в какой сфере было бы интересно развиваться,
+                чем хотелось бы заниматься, чтобы работа приносила удовольствие.
+              </p>
+              <p>
+                2. Выбор компании.
+                Сайты для поиска работы – простой, но не эффективный способ. После изучения
+                индустрии обратите внимание на компании, которые кажутся привлекательными,
+                исходя из ваших ожиданий.
+
+                -- Выберите 10 таких компаний.
+                -- Найдите открытые вакансии в общем доступе.
+                -- Оцените, какие требования ставит компания, и какие есть у вас.
+                -- Подготовьте резюме, выделите ключевые навыки, которые соответствуют вакансии. Идеальных кандидатов с полным набором требований нет. Достаточно обладать несколькими важными. Не бойтесь рисковать!
+              </p>
+              <p>
+                3. Представьте свою роль в компании.
+                Приобретенная специальность не так важна. Всегда можно изменить
+                профессиональную жизнь в лучшую сторону. Главное в карьере – это
+                приобретенные навыки (hard skills) и личностные качества (soft skills).
+
+                Если каждый день читать профильные статьи и смотреть лекции, посещать
+                курсы и вебинары, то в какой-то момент вы начнете разбираться в сфере
+                вашего изучения и сформируете экспертное мнение. После нужно закрепить
+                это в практике, но начало положено.
               </p>
 
               <br /><br />
@@ -146,12 +166,12 @@
               >
             </div>
 
-            <div class="col-sm-12 col-md-6 hidden-xs hidden-sm">
+            <div class="text__container_right">
               <br />
               <img
                 class="center-block"
-                src="assets/img/how-it-works.png"
-                alt="how it works"
+                src="../assets/img/Work_Life.jpg"
+                alt="how fined job"
               />
             </div>
           </div>
@@ -159,57 +179,65 @@
         <!-- END How it works -->
 
         <!-- Categories -->
-        <section class="bg-alt">
-          <div class="container">
-            <header class="section-header">
-              <span>Категории</span>
-              <h2>Популярные категории</h2>
-              <p>Здесь самые популярные категории</p>
+        <section class="category__container">
+          <div class="category__container_wrap">
+            <header class="category__container_header">
+              <span class="category__container_header-title">Категории</span>
+              <h2 class="category__container_header-head">Популярные категории</h2>
+              <p class="category__container_header-note">Здесь самые популярные категории</p>
             </header>
+          </div>
+          <div class="category__block">
+            <div class="category__item">
+              <div class="category__item_img"><img class="category-img" src="../assets/img/Слой 2.png"></div>
+              <div class="category__item_title">Technology</div>
+              <div class="category__item_descr">Designer, Developer, IT Service, Front-end developer, Project
+                  management</div>
 
-            <div class="category-grid">
-              <a href="job-list-1.html">
-                <i class="fa fa-laptop"></i>
-                <h6>Technology</h6>
-                <p>
-                  Designer, Developer, IT Service, Front-end developer, Project
-                  management
-                </p>
-              </a>
-
-              <a href="job-list-2.html">
-                <i class="fa fa-line-chart"></i>
-                <h6>Accounting</h6>
-                <p>
-                  Finance, Tax service, Payroll manager, Book keeper, Human
-                  resource
-                </p>
-              </a>
-
-              <a href="job-list-3.html">
-                <i class="fa fa-medkit"></i>
-                <h6>Medical</h6>
-                <p>Doctor, Nurse, Hospotal, Dental service, Massagist</p>
-              </a>
-
-              <a href="job-list-1.html">
-                <i class="fa fa-cutlery"></i>
-                <h6>Food</h6>
-                <p>Restaurant, Food service, Coffe shop, Cashier, Waitress</p>
-              </a>
-
-              <a href="job-list-2.html">
-                <i class="fa fa-newspaper-o"></i>
-                <h6>Media</h6>
-                <p>Journalism, Newspaper, Reporter, Writer, Cameraman</p>
-              </a>
-
-              <a href="job-list-3.html">
-                <i class="fa fa-institution"></i>
-                <h6>Government</h6>
-                <p>Federal, Law, Human resource, Manager, Biologist</p>
-              </a>
             </div>
+          </div>
+          <div class="category-grid">
+            <a href="job-list-1.html">
+              <i class="fa fa-laptop"></i>
+              <h6>Technology</h6>
+              <p>
+                Designer, Developer, IT Service, Front-end developer, Project
+                management
+              </p>
+            </a>
+
+            <a href="job-list-2.html">
+              <i class="fa fa-line-chart"></i>
+              <h6>Accounting</h6>
+              <p>
+                Finance, Tax service, Payroll manager, Book keeper, Human
+                resource
+              </p>
+            </a>
+
+            <a href="job-list-3.html">
+              <i class="fa fa-medkit"></i>
+              <h6>Medical</h6>
+              <p>Doctor, Nurse, Hospotal, Dental service, Massagist</p>
+            </a>
+
+            <a href="job-list-1.html">
+              <i class="fa fa-cutlery"></i>
+              <h6>Food</h6>
+              <p>Restaurant, Food service, Coffe shop, Cashier, Waitress</p>
+            </a>
+
+            <a href="job-list-2.html">
+              <i class="fa fa-newspaper-o"></i>
+              <h6>Media</h6>
+              <p>Journalism, Newspaper, Reporter, Writer, Cameraman</p>
+            </a>
+
+            <a href="job-list-3.html">
+              <i class="fa fa-institution"></i>
+              <h6>Government</h6>
+              <p>Federal, Law, Human resource, Manager, Biologist</p>
+            </a>
           </div>
         </section>
         <!-- END Categories -->
@@ -282,8 +310,19 @@ export default {
         {
           id: 5, title: 'Sr. SQL Server Developer', img: require('../assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
         },
+      ],
+      categoryList: [
+        { id: 1, name: 'Технологии', img: require('../assets/img/Слой 2.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('../assets/img/Слой 3.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('../assets/img/Слой 4.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('../assets/img/Слой 5.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('../assets/img/Слой 6.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('../assets/img/Слой 7.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
       ]
     }
+  },
+  mounted() {
+    this.getNewestVacancy()
   },
   methods: {
     onSubmit () {
@@ -301,12 +340,32 @@ export default {
     },
     onSearch () {
       console.log('Уже ищу!!!')
+    },
+    getNewestVacancy () {
+      console.log ('newest vacancy')
     }
   }
 }
 </script>
 
 <style lang="scss">
+.main-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.site-header {
+  display: flex;
+  height: 700px;
+}
+.header-job-search {
+  display: flex;
+  justify-content: center;
+}
+.wsearch-btn {
+  height: 100%;
+  border: none;
+}
 .main__wrapp {
   width: 100%;
 }
@@ -458,21 +517,46 @@ body {
     }
   }
 }
-.main-window {
+.btn-more {
+    width: 250px;
+    height: 50px;
+    color: #fff;
+    background-color: #5bb7ed;
+    border-color: #5bb7ed;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.text__container {
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
+  &_left {
+    width: 40%;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      &--text {
+        color: #84878a;
+        font-family: Arial,sans-serif;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      &--head {
+        padding: 48px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 46px;
+        font-family: Arial,sans-serif;
+        color: #55595c;
+        text-transform: capitalize;
+        margin: 16px 0;
+        line-height: 1.4;
+        font-weight: 800;
+      }
+    }
+  }
 }
-.site-header {
-  display: flex;
-  height: 700px;
-}
-.header-job-search {
-  display: flex;
-  justify-content: center;
-}
-.wsearch-btn {
-  height: 100%;
-  border: none;
-}
+
 </style>
