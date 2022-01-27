@@ -49,14 +49,15 @@
         </form>
       </div>
 
-      <div class="login-links">
-        <p class="text-center">
-          Уже есть учетная запись?
+      <!-- <div class="login-links"> -->
+      <p class="text-center">Уже есть учетная запись?</p>
+    </main>
   </body>
 </template>
 
 <script>
 export default {
+  layout: "login_reg",
 };
 </script>
 
