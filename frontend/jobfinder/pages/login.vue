@@ -47,7 +47,8 @@
         </form>
       </div>
 
-      <div class="login-links">
+      <!-- <div class="login-links"> -->
+    </main>
   </body>
 </template>
 
