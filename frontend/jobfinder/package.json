@@ -45,6 +45,7 @@
     "qonfucius-nuxt-fontawesome": "^1.0.1",
     "sass": "^1.49.0",
     "sass-loader": "10.2.1",
+    "universal-cookie": "^4.0.4",
     "v-click-outside": "^3.1.2",
     "v-show-slide": "^1.8.3",
     "vue-avatar-cropper": "^5.0.1",

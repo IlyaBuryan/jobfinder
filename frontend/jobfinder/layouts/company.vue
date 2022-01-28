@@ -1,7 +1,6 @@
 <template>
   <div>
     <Header />
-
     <div class="main-container">
       <nuxt />
     </div>
@@ -20,7 +19,8 @@ export default {
 
 <style scoped lang="scss">
 .main-container {
-  max-width: 100%;
+  width: 100%;
   display: flex;
+  justify-content: center;
 }
 </style>
