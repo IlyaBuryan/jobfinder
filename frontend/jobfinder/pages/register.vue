@@ -49,11 +49,6 @@
           </div>
         </form>
       </div>
-
-      <div class="login-links">
-        <p class="text-center" />
-          Уже есть учетная запись?
-      </div>
     </main>
   </body>
 </template>
