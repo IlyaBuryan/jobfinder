@@ -188,60 +188,13 @@
             </header>
           </div>
           <div class="category__block">
-            <div class="category__item">
-              <div class="category__item_img"><img class="category-img" src="../assets/img/Слой 2.png"></div>
-              <div class="category__item_title">Technology</div>
-              <div class="category__item_descr">Designer, Developer, IT Service, Front-end developer, Project
-                  management</div>
-
+            <div class="category__item" v-for="(category, id) in categoryList" :key="id">
+              <div class="category__item_img"><img class="category-img" :src="category.img"></div>
+              <div class="category__item_title">{{ category.name }}</div>
+              <div class="category__item_descr">{{ category.includes }}</div>
             </div>
           </div>
-          <div class="category-grid">
-            <a href="job-list-1.html">
-              <i class="fa fa-laptop"></i>
-              <h6>Technology</h6>
-              <p>
-                Designer, Developer, IT Service, Front-end developer, Project
-                management
-              </p>
-            </a>
-
-            <a href="job-list-2.html">
-              <i class="fa fa-line-chart"></i>
-              <h6>Accounting</h6>
-              <p>
-                Finance, Tax service, Payroll manager, Book keeper, Human
-                resource
-              </p>
-            </a>
-
-            <a href="job-list-3.html">
-              <i class="fa fa-medkit"></i>
-              <h6>Medical</h6>
-              <p>Doctor, Nurse, Hospotal, Dental service, Massagist</p>
-            </a>
-
-            <a href="job-list-1.html">
-              <i class="fa fa-cutlery"></i>
-              <h6>Food</h6>
-              <p>Restaurant, Food service, Coffe shop, Cashier, Waitress</p>
-            </a>
-
-            <a href="job-list-2.html">
-              <i class="fa fa-newspaper-o"></i>
-              <h6>Media</h6>
-              <p>Journalism, Newspaper, Reporter, Writer, Cameraman</p>
-            </a>
-
-            <a href="job-list-3.html">
-              <i class="fa fa-institution"></i>
-              <h6>Government</h6>
-              <p>Federal, Law, Human resource, Manager, Biologist</p>
-            </a>
-          </div>
         </section>
-        <!-- END Categories -->
-
         <!-- Newsletter -->
         <section class="bg-img text-center">
           <div class="container">
@@ -557,6 +510,100 @@ body {
       }
     }
   }
+}
+.category__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-title {
+      color: #84878a;
+      font-family: Arial,sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    &-head {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 46px;
+      font-family: Arial,sans-serif;
+      color: #55595c;
+      text-transform: capitalize;
+      margin: 16px 0;
+      line-height: 1.4;
+      font-weight: 800;
+      &::after {
+        content: "";
+        width: 60px;
+        height: 2px;
+        background-color: #29aafe;
+        margin-top: 50px;
+      }
+    }
+    &-note {
+      color: #84878a;
+      font-family: Arial,sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+}
+.category__block {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
+  justify-content: space-around;
+}
+.category__item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+  padding: 30px;
+  transition-property: background-color;
+  transition-duration: .5s;
+  &_img {
+    width: 185px;
+  }
+  &_title {
+    display: flex;
+    font-size: 28px;
+    font-family: Arial,sans-serif;
+    color: #55595c;
+    text-transform: capitalize;
+    padding: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+    transition-property: color;
+    transition-duration: .5s;
+  }
+  &_descr {
+    display: flex;
+    padding: 24px;
+    text-align: center;
+    color: #96a2b2;
+    font-size: 20px;
+    line-height: 30px;
+    transition-property: color;
+    transition-duration: .5s;
+  }
+}
+.category__item:hover {
+  background-color: #29aafe;
+}
+.category__item:hover .category__item_title{
+  color: white;
+}
+.category__item:hover .category__item_descr{
+  color: white;
 }
 
 </style>
