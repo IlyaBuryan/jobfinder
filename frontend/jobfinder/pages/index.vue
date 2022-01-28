@@ -196,10 +196,11 @@
           </div>
         </section>
         <!-- Newsletter -->
-        <section class="bg-img text-center">
-          <div class="container">
-            <h2><strong>Подпишись</strong></h2>
-            <h6 class="font-alt">
+        <section class="subscribe"
+        :style="`background: url(${require('../assets/img/bg-facts.jpg')}) no-repeat center`">
+          <div class="subscribe__container">
+            <h2><strong class="subscribe__container_title">Подпишись</strong></h2>
+            <h6 class="subscribe__container_note">
               Получай еженедельный топ новых вакансий на свой e-mail
             </h6>
             <br /><br />
@@ -207,7 +208,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  class="form-control input-lg"
+                  class="form-control-input input-lg"
                   placeholder="Твой e-mail"
                 />
                 <span class="input-group-btn">
@@ -575,6 +576,8 @@ body {
   }
   &_title {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 28px;
     font-family: Arial,sans-serif;
     color: #55595c;
@@ -584,6 +587,13 @@ body {
     font-weight: 600;
     transition-property: color;
     transition-duration: .5s;
+    &::after {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color:  #96a2b2;
+      margin-top: 50px;
+}
   }
   &_descr {
     display: flex;
@@ -602,8 +612,49 @@ body {
 .category__item:hover .category__item_title{
   color: white;
 }
+.category__item:hover .category__item_title::after {
+  content: "";
+  background-color: white;
+}
 .category__item:hover .category__item_descr{
   color: white;
+}
+.subscribe {
+  display: flex;
+  justify-content: center;
+  &__container {
+    display: flex;
+    height: 600px;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    &_title {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 46px;
+      font-family: Arial,sans-serif;
+      color: white;
+      text-transform: capitalize;
+      margin: 16px 0;
+      line-height: 1.4;
+      font-weight: 800;
+    }
+    &_note {
+      display: flex;
+      padding: 24px;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 600
+    }
+    .form-control-input {
+      height: 48px;
+      width: 80%;
+    }
+  }
 }
 
 </style>
