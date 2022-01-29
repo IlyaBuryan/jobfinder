@@ -266,12 +266,12 @@ export default {
         },
       ],
       categoryList: [
-        { id: 1, name: 'Технологии', img: require('../assets/img/Слой 2.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
-        { id: 2, name: 'Финансы', img: require('../assets/img/Слой 3.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
-        { id: 3, name: 'Медицина', img: require('../assets/img/Слой 4.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
-        { id: 4, name: 'Производство продуктов', img: require('../assets/img/Слой 5.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
-        { id: 5, name: 'Медиа', img: require('../assets/img/Слой 6.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
-        { id: 6, name: 'Государственная служба', img: require('../assets/img/Слой 7.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
+        { id: 1, name: 'Технологии', img: require('../assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('../assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('../assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('../assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('../assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('../assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
       ]
     }
   },
