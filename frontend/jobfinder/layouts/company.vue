@@ -23,4 +23,8 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+.navbar {
+  z-index: 11;
+}
 </style>

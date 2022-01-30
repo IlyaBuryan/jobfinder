@@ -3,9 +3,9 @@
     <form class="form-data">
       <header class="page-header">
         <div class="container page-name">
-          <h1 class="text-center">Добавьте свою компанию</h1>
+          <h1 class="text-center">Добавьте вакансию</h1>
           <p class="lead text-center">
-            Создайте профиль своей компании и сделайте его доступным онлайн.
+            Добавьте вакансию к вашей компании. Привлекайте работников!
           </p>
         </div>
 
@@ -17,60 +17,43 @@
           <form class="form_container">
             <!-- Fields -->
             <div class="form-group">
-              <label for="nameComp">Название компании</label>
+              <label for="posComp">Должность</label>
               <input
                 type="text"
-                id="nameComp"
-                placeholder="Название"
+                id="posComp"
+                placeholder="Должность"
                 class="form-control"
-                v-model="company.name"
+                v-model="vacancy.position"
               />
             </div>
             <div class="form-group">
-              <label for="catComp">Категория компании</label>
-              <select
-                v-model="company.category"
-                class="form-control"
-                aria-label="Default select example"
-              >
-                <option disabled value="">Выберите один из вариантов</option>
-                <option
-                  v-for="option in options"
-                  :key="option[0]"
-                  v-bind:value="option[0]"
-                >
-                  {{ option[1] }}
-                </option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="itnComp">ИНН компании</label>
-              <input
-                type="number"
-                id="itnComp"
-                placeholder="ИНН"
-                class="form-control"
-                v-model="company.itn"
-              />
-            </div>
-            <div class="form-group">
-              <label for="detComp">Детали</label>
+              <label for="condComp">Условия</label>
               <textarea
                 type="text"
-                id="detComp"
-                placeholder="Детали"
+                id="condComp"
+                placeholder="Условия"
                 class="form-control"
-                v-model="company.company_details"
+                v-model="vacancy.conditions"
               />
             </div>
             <div class="form-group">
-              <label for="descComp">Описание компании</label>
+              <label for="dutiesComp">Обязанности</label>
               <textarea
                 type="text"
-                id="descComp"
-                placeholder="Описание"
+                id="dutiesComp"
+                placeholder="Обязанности"
                 class="form-control"
-                v-model="company.description"
+                v-model="vacancy.duties"
+              />
+            </div>
+            <div class="form-group">
+              <label for="reqComp">Требования</label>
+              <textarea
+                type="text"
+                id="reqComp"
+                placeholder="Требования"
+                class="form-control"
+                v-model="vacancy.requirements"
               />
             </div>
             <!-- END Fields -->
@@ -128,30 +111,13 @@ export default {
   data: () => ({
     permission: "pending",
     user: {},
-    company: {
-      name: "",
-      category: "",
-      itn: "",
-      company_details: "",
-      description: "",
+    vacancy: {
+      position: "",
+      conditions: "",
+      duties: "",
+      requirements: "",
     },
     error: false,
-    options: [
-      [1, "Автомобильный бизнес"],
-      [2, "Гостиницы, рестораны, общепит, кейтеринг"],
-      [3, "Государственные организации"],
-      [4, "Добывающая отрасль"],
-      [5, "ЖКХ"],
-      [6, "Строительство, недвижимость, эксплуатация, проектирование"],
-      [7, "Услуги для бизнеса"],
-      [8, "Финансовый сектор"],
-      [
-        9,
-        "Электроника, приборостроение, бытовая техника, компьютеры и оргтехника",
-      ],
-      [10, "Энергетика"],
-      [11, "Другое"],
-    ],
   }),
 
   async mounted() {
@@ -213,26 +179,35 @@ export default {
       cookies.set("token", token, { path: "/" });
     },
 
-    sendCreateReq(event) {
+    async sendCreateReq(event) {
       event.preventDefault();
-      this.company.user = this.user.id;
 
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
 
+      let ccIds = await axios
+        .get(`${baseUrl()}/companyapp/`, {
+          headers,
+        })
+        .then((response) => {
+          return response.data;
+        })
+        .catch((error) => console.log(error));
+
+      this.vacancy.company_card = ccIds[0].id;
+
       axios
-        .post(`${baseUrl()}/companyapp/`, this.company, {
+        .post(`${baseUrl()}/vacancyapp/`, this.vacancy, {
           headers,
         })
         .then((response) => {
           console.log(response.data);
-          this.company = {
-            name: "",
-            category: "",
-            itn: "",
-            company_details: "",
-            description: "",
+          this.vacancy = {
+            position: "",
+            conditions: "",
+            duties: "",
+            requirements: "",
           };
         })
         .catch(() => (this.error = true));

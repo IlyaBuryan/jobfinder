@@ -51,7 +51,8 @@
         >
           <NuxtLink to="/">Компании</NuxtLink>
           <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
-            <li><NuxtLink to="/companyCard">Карточка компании</NuxtLink></li>
+            <li><NuxtLink to="/companyCard">Заполнить карточку</NuxtLink></li>
+            <li><NuxtLink to="/companyVacancy">Создать вакансию</NuxtLink></li>
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
