@@ -61,7 +61,7 @@
 
             <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="vacancy-item" v-for="(item, id) in testVacancyList" :key="id">
+              <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
                 <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
                 <div class="vacancy-item__info">
                   <div class="vacancy-item__info_main">
@@ -170,7 +170,7 @@
               <br />
               <img
                 class="center-block"
-                src="~/assets/img/Work_Life.jpg"
+                src="../assets/img/Work_Life.jpg"
                 alt="how fined job"
               />
             </div>
@@ -188,7 +188,7 @@
             </header>
           </div>
           <div class="category__block">
-            <div class="category__item" v-for="(category, id) in testCategoryList" :key="id">
+            <div class="category__item" v-for="(category, id) in categoryList" :key="id">
               <div class="category__item_img"><img class="category-img" :src="category.img"></div>
               <div class="category__item_title">{{ category.name }}</div>
               <div class="category__item_descr">{{ category.includes }}</div>
@@ -248,25 +248,30 @@ export default {
         city: [{ required: true, message: 'название города обязательно', trigger: 'blur' }]
       },
       loading: false,
-      vacancyList: [],
-      categoryList: [],
-      testVacancyList: [
+      vacancyList: [
         {
-          id: 1, title: 'Senior front-end developer', img: require('~/assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
+          id: 1, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
         },
         {
-          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('~/assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
+          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('../assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
         },
         {
-          id: 3, title: 'Full Stack Web Developer', img: require('~/assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 4, title: 'Web Applications Developer', img: require('~/assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 4, title: 'Web Applications Developer', img: require('../assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 5, title: 'Sr. SQL Server Developer', img: require('~/assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
+          id: 5, title: 'Sr. SQL Server Developer', img: require('../assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
         },
       ],
+      categoryList: [
+        { id: 1, name: 'Технологии', img: require('../assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('../assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('../assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('../assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('../assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('../assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
       ]
     }
   },
@@ -290,26 +295,8 @@ export default {
     onSearch () {
       console.log('Уже ищу!!!')
     },
-    async getNewestVacancy () {
-      try {
-        const response = await this.$axios.get('/api/v1/newestvacancy')
-        this.vacancyList = response.data.data
-        // eslint-disable-next-line no-console
-        console.log(this.vacancyList)
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
-    },
-    async getCategory () {
-      try {
-        const response = await this.$axios.get('/api/v1/categories')
-        this.categoryList = response.data.data
-        // eslint-disable-next-line no-console
-        console.log(this.categoryList)
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
-
+    getNewestVacancy () {
+      console.log ('newest vacancy')
     }
   }
 }
