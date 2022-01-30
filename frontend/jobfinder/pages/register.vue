@@ -3,7 +3,7 @@
     <main>
       <div class="login-block">
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Регситрация</h1>
+        <h1>Регистрация</h1>
 
         <form action="#">
           <div class="form-group">
