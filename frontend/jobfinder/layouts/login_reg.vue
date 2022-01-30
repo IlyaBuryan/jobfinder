@@ -10,6 +10,5 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #e5e7ed;
 }
 </style>
