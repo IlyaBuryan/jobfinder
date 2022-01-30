@@ -2,3 +2,5 @@ __pycache__/
 .idea
 .env
 /workerapp/migrations/0001_initial.py
+
+db.sqlite3

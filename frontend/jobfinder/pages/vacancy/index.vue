@@ -4,7 +4,7 @@
       <!-- Site header -->
       <header
         class="site-header size-lg text-center"
-        :style="`background: url(${require('~/assets/img/bg-banner1.jpg')}) no-repeat center`"
+        :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`"
       >
         <div class="container main-window">
           <div class="col-xs-12">
@@ -61,7 +61,7 @@
 
             <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
+              <div class="vacancy-item" v-for="(item, id) in testVacancyList" :key="id">
                 <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
                 <div class="vacancy-item__info">
                   <div class="vacancy-item__info_main">
@@ -188,7 +188,7 @@
             </header>
           </div>
           <div class="category__block">
-            <div class="category__item" v-for="(category, id) in categoryList" :key="id">
+            <div class="category__item" v-for="(category, id) in testCategoryList" :key="id">
               <div class="category__item_img"><img class="category-img" :src="category.img"></div>
               <div class="category__item_title">{{ category.name }}</div>
               <div class="category__item_descr">{{ category.includes }}</div>
@@ -196,11 +196,10 @@
           </div>
         </section>
         <!-- Newsletter -->
-        <section class="subscribe"
-        :style="`background: url(${require('~/assets/img/bg-facts.jpg')}) no-repeat center`">
-          <div class="subscribe__container">
-            <h2><strong class="subscribe__container_title">Подпишись</strong></h2>
-            <h6 class="subscribe__container_note">
+        <section class="bg-img text-center">
+          <div class="container">
+            <h2><strong>Подпишись</strong></h2>
+            <h6 class="font-alt">
               Получай еженедельный топ новых вакансий на свой e-mail
             </h6>
             <br /><br />
@@ -208,7 +207,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  class="form-control-input input-lg"
+                  class="form-control input-lg"
                   placeholder="Твой e-mail"
                 />
                 <span class="input-group-btn">
@@ -248,7 +247,9 @@ export default {
         city: [{ required: true, message: 'название города обязательно', trigger: 'blur' }]
       },
       loading: false,
-      vacancyList: [
+      vacancyList: [],
+      categoryList: [],
+      testVacancyList: [
         {
           id: 1, title: 'Senior front-end developer', img: require('~/assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
         },
@@ -265,13 +266,13 @@ export default {
           id: 5, title: 'Sr. SQL Server Developer', img: require('~/assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
         },
       ],
-      categoryList: [
-        { id: 1, name: 'Технологии', img: require('~/assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
-        { id: 2, name: 'Финансы', img: require('~/assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
-        { id: 3, name: 'Медицина', img: require('~/assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
-        { id: 4, name: 'Производство продуктов', img: require('~/assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
-        { id: 5, name: 'Медиа', img: require('~/assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
-        { id: 6, name: 'Государственная служба', img: require('~/assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
+      testCategoryList: [
+        { id: 1, name: 'Технологии', img: require('~/assets/img/2.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('~/assets/img/1.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('~/assets/img/5.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('~/assets/img/6.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('~/assets/img/3.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('~/assets/img/4.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
       ]
     }
   },
@@ -593,8 +594,6 @@ body {
   }
   &_title {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     font-size: 28px;
     font-family: Arial,sans-serif;
     color: #55595c;
@@ -604,13 +603,6 @@ body {
     font-weight: 600;
     transition-property: color;
     transition-duration: .5s;
-    &::after {
-      content: "";
-      width: 40px;
-      height: 2px;
-      background-color:  #96a2b2;
-      margin-top: 50px;
-}
   }
   &_descr {
     display: flex;
@@ -629,51 +621,8 @@ body {
 .category__item:hover .category__item_title{
   color: white;
 }
-.category__item:hover .category__item_title::after {
-  content: "";
-  background-color: white;
-}
 .category__item:hover .category__item_descr{
   color: white;
-}
-.subscribe {
-  display: flex;
-  justify-content: center;
-  &__container {
-    display: flex;
-    height: 600px;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    &_title {
-      padding: 48px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 46px;
-      font-family: Arial,sans-serif;
-      color: white;
-      text-transform: capitalize;
-      margin: 16px 0;
-      line-height: 1.4;
-      font-weight: 800;
-      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
-    }
-    &_note {
-      display: flex;
-      padding: 24px;
-      text-align: center;
-      color: white;
-      font-size: 30px;
-      line-height: 30px;
-      font-weight: 600;
-      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
-    }
-    .form-control-input {
-      height: 48px;
-      width: 80%;
-    }
-  }
 }
 
 </style>

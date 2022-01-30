@@ -1,5 +1,5 @@
 from workerapp.serializers import WorkerModelSerializer, ResumeModelSerializer, \
-    EducationModelSerializer
+    WorkExperienceModelSerializer
 from rest_framework import viewsets
 from workerapp.models import Worker
 
@@ -14,6 +14,6 @@ class ResumeModelViewSet(viewsets.ModelViewSet):
     serializer_class = ResumeModelSerializer
 
 
-class EducationModelViewSet(viewsets.ModelViewSet):
+class WorkExperienceModelViewSet(viewsets.ModelViewSet):
     queryset = Worker.objects.all()
-    serializer_class = EducationModelSerializer
+    serializer_class = WorkExperienceModelSerializer

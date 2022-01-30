@@ -42,7 +42,7 @@
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="copyright-text">
-              Copyrights &copy; 2022 Все права защищены
+              Copyrights &copy; {{ new Date().getFullYear() }} Все права защищены
               <a href="http://themeforest.net/user/shamsoft"
                 >"Python's Style Group"</a
               >.

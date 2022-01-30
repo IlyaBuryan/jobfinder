@@ -3,32 +3,38 @@
     <main>
       <div class="login-block">
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
-        <h1>Авторизация</h1>
+        <h1>Региcтрация</h1>
 
         <form action="#">
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon"><i class="ti-email"></i></span>
-              <input type="text" class="form-control" placeholder="Email" />
+              <span class="input-group-addon"><i class="ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Ваше имя" />
             </div>
           </div>
-          <hr />
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="ti-email"></i></span>
+              <input type="text" class="form-control" placeholder="Ваш email" />
+            </div>
+          </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-unlock"></i></span>
               <input
                 type="password"
                 class="form-control"
-                placeholder="Password"
+                placeholder="Введите пароль"
               />
             </div>
           </div>
+
           <button class="btn btn-primary btn-block" type="submit">
-            Авторизоваться
+            Зарегистрироваться
           </button>
 
           <div class="login-footer">
-            <h6>или залогиниться через</h6>
+            <h6>или зарегистрируйтесь через</h6>
             <ul class="social-icons">
               <li>
                 <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
@@ -44,11 +50,8 @@
         </form>
       </div>
       <div class="login-links">
-        <nuxt-link class="pull-left" to="/pass-restore"
-          >Забыли пароль?</nuxt-link
-        >
-        <nuxt-link class="pull-right" to="/register"
-          >Зарегистрируйтесь</nuxt-link
+        <nuxt-link class="pull-center" to="/login"
+          >Уже есть учетная запись. Авторизуйтесь.</nuxt-link
         >
       </div>
     </main>
@@ -152,6 +155,9 @@ export default {
   align-items: stretch;
   width: 100%;
 }
+.ti-user:before {
+  content: "\263A";
+}
 .ti-email:before {
   content: "\2709";
 }
@@ -224,10 +230,8 @@ a {
 .social-icons a.linkedin:hover {
   background-color: #007bb6;
 }
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
+.pull-center {
+  display: flex;
+  justify-content: center;
 }
 </style>

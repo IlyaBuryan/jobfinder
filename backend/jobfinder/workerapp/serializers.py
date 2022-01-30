@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from workerapp.models import Worker, Resume, Education
+from workerapp.models import Worker, Resume, WorkExperience
 
 
 class WorkerModelSerializer(ModelSerializer):
@@ -14,7 +14,7 @@ class ResumeModelSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class EducationModelSerializer(ModelSerializer):
+class WorkExperienceModelSerializer(ModelSerializer):
     class Meta:
-        model = Education
+        model = WorkExperience
         fields = '__all__'
