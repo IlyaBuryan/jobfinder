@@ -4,7 +4,7 @@
       <!-- Site header -->
       <header
         class="site-header size-lg text-center"
-        :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`"
+        :style="`background: url(${require('~/assets/img/bg-banner1.jpg')}) no-repeat center`"
       >
         <div class="container main-window">
           <div class="col-xs-12">
@@ -170,7 +170,7 @@
               <br />
               <img
                 class="center-block"
-                src="../assets/img/Work_Life.jpg"
+                src="~/assets/img/Work_Life.jpg"
                 alt="how fined job"
               />
             </div>
@@ -197,7 +197,7 @@
         </section>
         <!-- Newsletter -->
         <section class="subscribe"
-        :style="`background: url(${require('../assets/img/bg-facts.jpg')}) no-repeat center`">
+        :style="`background: url(${require('~/assets/img/bg-facts.jpg')}) no-repeat center`">
           <div class="subscribe__container">
             <h2><strong class="subscribe__container_title">Подпишись</strong></h2>
             <h6 class="subscribe__container_note">
@@ -250,28 +250,28 @@ export default {
       loading: false,
       vacancyList: [
         {
-          id: 1, title: 'Senior front-end developer', img: require('../assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
+          id: 1, title: 'Senior front-end developer', img: require('~/assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
         },
         {
-          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('../assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
+          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('~/assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
         },
         {
-          id: 3, title: 'Full Stack Web Developer', img: require('../assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 3, title: 'Full Stack Web Developer', img: require('~/assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 4, title: 'Web Applications Developer', img: require('../assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+          id: 4, title: 'Web Applications Developer', img: require('~/assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
         },
         {
-          id: 5, title: 'Sr. SQL Server Developer', img: require('../assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
+          id: 5, title: 'Sr. SQL Server Developer', img: require('~/assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
         },
       ],
       categoryList: [
-        { id: 1, name: 'Технологии', img: require('../assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
-        { id: 2, name: 'Финансы', img: require('../assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
-        { id: 3, name: 'Медицина', img: require('../assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
-        { id: 4, name: 'Производство продуктов', img: require('../assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
-        { id: 5, name: 'Медиа', img: require('../assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
-        { id: 6, name: 'Государственная служба', img: require('../assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
+        { id: 1, name: 'Технологии', img: require('~/assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('~/assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('~/assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('~/assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('~/assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('~/assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
       ]
     }
   },
@@ -295,8 +295,25 @@ export default {
     onSearch () {
       console.log('Уже ищу!!!')
     },
-    getNewestVacancy () {
-      console.log ('newest vacancy')
+    async getNewestVacancy () {
+      try {
+        const response = await this.$axios.get('/api/v1/newestvacancy')
+        this.vacancyList = response.data.data
+        // eslint-disable-next-line no-console
+        console.log(this.vacancyList)
+      } catch (e) {
+        this.$toast.error(e.response.data)
+      }
+    },
+    async getCategory () {
+      try {
+        const response = await this.$axios.get('/api/v1/categories')
+        this.categoryList = response.data.data
+        // eslint-disable-next-line no-console
+        console.log(this.categoryList)
+      } catch (e) {
+        this.$toast.error(e.response.data)
+      }
     }
   }
 }
@@ -640,6 +657,7 @@ body {
       margin: 16px 0;
       line-height: 1.4;
       font-weight: 800;
+      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
     }
     &_note {
       display: flex;
@@ -648,7 +666,8 @@ body {
       color: white;
       font-size: 30px;
       line-height: 30px;
-      font-weight: 600
+      font-weight: 600;
+      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
     }
     .form-control-input {
       height: 48px;
