@@ -315,7 +315,6 @@ export default {
       } catch (e) {
         this.$toast.error(e.response.data)
       }
-
     }
   }
 }
