@@ -51,9 +51,8 @@
         >
           <NuxtLink to="/">Компании</NuxtLink>
           <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
-            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+            <li><NuxtLink to="/companyCard">Заполнить карточку</NuxtLink></li>
+            <li><NuxtLink to="/companyVacancy">Создать вакансию</NuxtLink></li>
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
@@ -71,7 +70,7 @@
       <div class="login-wrapper">
         <NuxtLink class="btn btn-primary" to="/login"> Авторизация </NuxtLink>
         <p class="or">или</p>
-        <NuxtLink class="btn btn-outline-primary" to="/register">
+        <NuxtLink class="btn btn-outline-dark" to="/register">
           Регистрация
         </NuxtLink>
       </div>
@@ -167,7 +166,8 @@ export default {
   background-color: #fff;
 }
 
-.menu-wrapper > li > ul > li > .nuxt-link-active {
+.menu-wrapper > li > ul > li > .nuxt-link-active,
+.menu-wrapper > li > ul > li > a {
   font-family: Open Sans, sans-serif;
   text-transform: none;
   letter-spacing: 1px;
