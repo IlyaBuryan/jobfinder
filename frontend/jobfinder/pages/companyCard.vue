@@ -183,7 +183,9 @@
 </template>
 
 <script>
-import baseUrl from "../store/constants.js";
+// import baseUrl from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
+
 import Cookies from "universal-cookie";
 import axios from "axios";
 import AuthError from "@/components/Footer.vue";
@@ -214,7 +216,7 @@ export default {
         .then((response) => {
           const token = response.data;
           this.set_token(token.access);
-          console.log(token);
+          console.log(decode(token));
         })
         .catch((error) => console.log(error));
     },
