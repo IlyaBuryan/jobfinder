@@ -9,7 +9,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from authapp.views import CustomUserModelViewSet, LogoutAPIView, CustomUserRoleListView
+from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
 
 router = DefaultRouter()
