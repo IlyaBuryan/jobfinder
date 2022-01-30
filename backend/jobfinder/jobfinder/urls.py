@@ -9,7 +9,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from authapp.views import CustomUserModelViewSet
+from authapp.views import CustomUserModelViewSet, LogoutAPIView, CustomUserRoleListView
 
 
 router = DefaultRouter()
@@ -43,5 +43,5 @@ urlpatterns = [
     path('api/v1/api-auth/', include('rest_framework.urls')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
+    path('api/v1/logout/', LogoutAPIView.as_view(), name="logout")
 ]
