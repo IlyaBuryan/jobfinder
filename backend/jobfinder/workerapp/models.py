@@ -5,7 +5,6 @@ from authapp.models import CustomUser
 
 
 class Worker(models.Model):
-    id = models.BigIntegerField(primary_key=True, unique=True, verbose_name='ID')
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     phone = models.BigIntegerField(max_length=20, verbose_name='Телефон')
@@ -22,7 +21,6 @@ class WorkExperience(models.Model):
 
 
 class Resume(models.Model):
-    id = models.BigIntegerField(primary_key=True, unique=True, verbose_name='ID')
     position = models.CharField(max_length=100, verbose_name='Должность')
     types = (
         (1, 'Среднее'),

@@ -2,7 +2,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
-from workerapp.views import WorkerModelViewSet, ResumeModelViewSet
+from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet
@@ -34,6 +34,8 @@ router.register('vacancyapp', VacancyModelViewSet)
 
 router.register('worker', WorkerModelViewSet)
 router.register('resume', ResumeModelViewSet)
+router.register('work_experience', WorkExperienceModelViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
