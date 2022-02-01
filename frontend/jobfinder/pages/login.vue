@@ -5,11 +5,16 @@
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
         <h1>Авторизация</h1>
 
-        <form action="#">
+        <form>
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon"><i class="ti-email"></i></span>
-              <input type="text" class="form-control" placeholder="Email" />
+              <span class="input-group-addon"><i class="ti-user"></i></span>
+              <input
+                v-model="username"
+                type="text"
+                class="form-control"
+                placeholder="Username"
+              />
             </div>
           </div>
           <hr />
@@ -17,13 +22,14 @@
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-unlock"></i></span>
               <input
+                v-model="password"
                 type="password"
                 class="form-control"
                 placeholder="Password"
               />
             </div>
           </div>
-          <button class="btn btn-primary btn-block" type="submit">
+          <button class="btn btn-primary btn-block" v-on:click="auth">
             Авторизоваться
           </button>
 
@@ -56,8 +62,39 @@
 </template>
 
 <script>
+import { baseUrl, decode } from "../store/constants.js";
+import Cookies from "universal-cookie";
+import axios from "axios";
+
 export default {
   layout: "login_reg",
+
+  data: () => ({
+    username: "",
+    password: "",
+  }),
+  methods: {
+    auth() {
+      console.log("Начинаем отправлять запрос");
+      axios
+        .post(`${baseUrl()}/token/`, {
+          username: this.username,
+          password: this.password,
+        })
+        .then((response) => {
+          const token = response.data;
+          this.set_token(token.access);
+          console.log(token);
+          console.log("Ура мы авторизовались!");
+        })
+        .catch((error) => console.log(error));
+    },
+
+    set_token(token) {
+      const cookies = new Cookies();
+      cookies.set("token", token, { path: "/" });
+    },
+  },
 };
 </script>
 
@@ -152,8 +189,8 @@ export default {
   align-items: stretch;
   width: 100%;
 }
-.ti-email:before {
-  content: "\2709";
+.ti-user:before {
+  content: "\263A";
 }
 .ti-unlock:before {
   content: "\1F511";

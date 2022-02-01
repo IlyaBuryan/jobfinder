@@ -5,27 +5,50 @@
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
         <h1>Региcтрация</h1>
 
-        <form action="#">
+        <form @submit.prevent="submit">
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-user"></i></span>
-              <input type="text" class="form-control" placeholder="Ваше имя" />
+              <input
+                v-model="username"
+                type="text"
+                class="form-control"
+                placeholder="Ваше имя"
+              />
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-email"></i></span>
-              <input type="text" class="form-control" placeholder="Ваш email" />
+              <input
+                v-model="email"
+                type="text"
+                class="form-control"
+                placeholder="Ваш email"
+              />
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-unlock"></i></span>
               <input
+                v-model="password"
                 type="password"
                 class="form-control"
                 placeholder="Введите пароль"
               />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <label class="role"
+                >Роль
+                <select v-model="role" class="form-control">
+                  <option disabled value="">Выберите один из вариантов</option>
+                  <option value="2">Работник</option>
+                  <option value="3">Компания</option>
+                </select>
+              </label>
             </div>
           </div>
 
@@ -61,6 +84,29 @@
 <script>
 export default {
   layout: "login_reg",
+  data() {
+    return {
+      username: "",
+      email: "",
+      password: "",
+      role: "",
+    };
+  },
+  methods: {
+    async submit() {
+      await fetch("http://localhost:8000/api/v1/user/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          role: this.role,
+        }),
+      });
+      await this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -76,6 +122,11 @@ export default {
 }
 .logo-form {
   width: 360px;
+  margin-top: 150px;
+}
+.role {
+  display: flex;
+  align-items: center;
 }
 .login-block {
   background-color: #fff;
