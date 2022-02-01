@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     # Internal apps
     'authapp',
+    'workerapp',
     'companyapp',
 
     # External apps
