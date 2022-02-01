@@ -2,6 +2,7 @@ from django.core.validators import MaxLengthValidator
 from django.db import models
 from authapp.models import CustomUser
 
+
 class CompanyCard(models.Model):
     name = models.CharField(verbose_name='Наименование организации', max_length=64)
     categories = (
@@ -18,12 +19,15 @@ class CompanyCard(models.Model):
         (11, 'Другое')
     )
     category = models.IntegerField(verbose_name='Отрасль', choices=categories)
-    itn = models.BigIntegerField(verbose_name='ИНН')
+    itn = models.BigIntegerField(verbose_name='ИНН', unique=True)
     company_details = models.TextField(verbose_name='Сведения о компании', validators=[MaxLengthValidator(limit_value=1000,
                     message='Превышена максимально допустимая длина')])
     description = models.TextField(verbose_name='Описание', validators=[MaxLengthValidator(limit_value=2000,
                     message='Превышена максимально допустимая длина')])
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+
+    def get_categories(self):
+        return self.categories
 
 
 class Vacancy(models.Model):
@@ -36,5 +40,3 @@ class Vacancy(models.Model):
                                         message='Превышена максимально допустимая длина')])
     published_date = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
     company_card = models.ForeignKey(CompanyCard, verbose_name='Организация', on_delete=models.CASCADE)
-
-
