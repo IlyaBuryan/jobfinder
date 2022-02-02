@@ -8,7 +8,7 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 ADMIN_USER = os.getenv('ADMIN_USER')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 
-ALLOWED_HOSTS = os.getenv('PROD_ALLOWED_HOSTS').split(" ")
+ALLOWED_HOSTS = ['*']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     # Internal apps
     'authapp',
+    'messageapp',
 
     # External apps
     'rest_framework',

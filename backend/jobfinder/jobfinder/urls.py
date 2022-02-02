@@ -3,6 +3,9 @@ from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+
+from messageapp.wiews import MessageViewSet, MessageResumeViewSet, MessageVacansyViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -13,6 +16,12 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+
+router = DefaultRouter()
+
+router.register(r'message', MessageViewSet)
+router.register(r'message_resume', MessageResumeViewSet)
+router.register(r'message_vacansy', MessageVacansyViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
