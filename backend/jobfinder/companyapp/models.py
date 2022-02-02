@@ -25,7 +25,7 @@ class CompanyCard(models.Model):
                     message='Превышена максимально допустимая длина')])
     description = models.TextField(verbose_name='Описание', validators=[MaxLengthValidator(limit_value=2000,
                     message='Превышена максимально допустимая длина')])
-    user = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, related_name='company')
 
 
 class Vacancy(models.Model):
