@@ -1,7 +1,7 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ViewSet
-from .models import CompanyCard, Vacancy
+from .models import CompanyCard, Vacancy, categories_choices
 from .serializers import CompanyCardModelSerializer, VacancyModelSerializer
 
 
@@ -27,7 +27,5 @@ class VacancyModelViewSet(ModelViewSet):
 
 
 class CategoriesViewSet(ViewSet):
-
     def list(self, request):
-        companies = CompanyCard.objects.filter().first()
-        return Response(companies.get_categories())
+        return Response(categories_choices)
