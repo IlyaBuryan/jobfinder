@@ -80,9 +80,7 @@
 
             <br /><br />
             <p class="text-center">
-              <a class="btn btn-more" href="job-list.html"
-                >Просмотреть все вакансии</a
-              >
+              <NuxtLink class="btn btn-more" to="/vacancies.vue">Просмотреть все вакансии</NuxtLink>
             </p>
           </div>
         </section>
