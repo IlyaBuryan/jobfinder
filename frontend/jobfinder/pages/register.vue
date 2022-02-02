@@ -5,7 +5,7 @@
         <img class="logo-form" src="/_nuxt/assets/img/logo.png" alt="" />
         <h1>Региcтрация</h1>
 
-        <form @submit.prevent="submit">
+        <form>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="ti-user"></i></span>
@@ -52,7 +52,7 @@
             </div>
           </div>
 
-          <button class="btn btn-primary btn-block" type="submit">
+          <button class="btn btn-primary btn-block" v-on:click="submit">
             Зарегистрироваться
           </button>
 
@@ -93,7 +93,9 @@ export default {
     };
   },
   methods: {
-    async submit() {
+    async submit(event) {
+      console.log("Заходим методы отправки в БД");
+      event.preventDefault();
       await fetch("http://localhost:8000/api/v1/user/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

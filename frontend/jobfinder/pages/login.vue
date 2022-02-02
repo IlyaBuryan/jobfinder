@@ -74,8 +74,9 @@ export default {
     password: "",
   }),
   methods: {
-    auth() {
+    auth(event) {
       console.log("Начинаем отправлять запрос");
+      event.preventDefault();
       axios
         .post(`${baseUrl()}/token/`, {
           username: this.username,
