@@ -1,5 +1,5 @@
+from collections import OrderedDict
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from authapp.models import CustomUser
@@ -16,6 +16,11 @@ class CustomUserModelSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = CustomUser.objects.create_user(**validated_data)
         return user
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret = OrderedDict(list(filter(lambda x: x[1], ret.items())))
+        return ret
 
 
 class LogoutSerializer(serializers.Serializer):
