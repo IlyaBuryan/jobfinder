@@ -3,57 +3,55 @@
     <form class="form-data">
       <header class="page-header">
         <div class="container page-name">
-          <h1 class="text-center">Добавьте вакансию</h1>
-          <p class="lead text-center">
-            Добавьте вакансию к вашей компании. Привлекайте работников!
-          </p>
+          <h1 class="text-center">Добавьте информацию о себе</h1>
+          <p class="lead text-center">Расскажите больше о себе.</p>
         </div>
 
         <div class="container" v-if="permission == 'yes'">
-          <p v-if="error" class="alert alert-danger" role="alert">
-            Ошибка в заполнении формы. Обязательно заполните все поля!
+          <p v-if="error[0]" class="alert alert-danger" role="alert">
+            {{ error.join(", ") }}
           </p>
 
           <form class="form_container">
             <!-- Fields -->
             <div class="form-group">
-              <label for="posComp">Должность</label>
+              <label for="nameComp">Имя</label>
               <input
                 type="text"
-                id="posComp"
-                placeholder="Должность"
+                id="nameComp"
+                placeholder="Имя"
                 class="form-control"
-                v-model="vacancy.position"
+                v-model="worker.first_name"
               />
             </div>
             <div class="form-group">
-              <label for="condComp">Условия</label>
-              <textarea
+              <label for="nameComp">Фамилия</label>
+              <input
                 type="text"
-                id="condComp"
-                placeholder="Условия"
+                id="nameComp"
+                placeholder="Фамилия"
                 class="form-control"
-                v-model="vacancy.conditions"
+                v-model="worker.last_name"
               />
             </div>
             <div class="form-group">
-              <label for="dutiesComp">Обязанности</label>
-              <textarea
-                type="text"
-                id="dutiesComp"
-                placeholder="Обязанности"
+              <label for="phoneComp">Номер телефона</label>
+              <input
+                type="tel"
+                id="phoneComp"
+                placeholder="89991231213"
                 class="form-control"
-                v-model="vacancy.duties"
+                v-model="worker.phone"
               />
             </div>
             <div class="form-group">
-              <label for="reqComp">Требования</label>
-              <textarea
-                type="text"
-                id="reqComp"
-                placeholder="Требования"
+              <label for="dateComp">Дата рождения</label>
+              <input
+                type="date"
+                id="dateComp"
+                placeholder="Дата рождения"
                 class="form-control"
-                v-model="vacancy.requirements"
+                v-model="worker.birth_date"
               />
             </div>
             <!-- END Fields -->
@@ -111,13 +109,13 @@ export default {
   data: () => ({
     permission: "pending",
     user: {},
-    vacancy: {
-      position: "",
-      conditions: "",
-      duties: "",
-      requirements: "",
+    worker: {
+      first_name: "",
+      last_name: "",
+      phone: "",
+      birth_date: "",
     },
-    error: false,
+    error: [],
   }),
 
   async mounted() {
@@ -129,10 +127,17 @@ export default {
     checkPermission() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      if (token !== "" && this.user.role === 3) {
+      if (token !== "" && this.user.role === 2) {
         this.permission = "yes";
       } else {
         this.permission = "no";
+      }
+    },
+
+    checkForm() {
+      let pattern = /[0-9]{11}/;
+      if (this.worker.phone.search(pattern) == -1) {
+        this.error.push("Неправильный телефон");
       }
     },
 
@@ -158,38 +163,32 @@ export default {
       return headers;
     },
 
-    async sendCreateReq(event) {
+    sendCreateReq(event) {
       event.preventDefault();
+      this.worker.user = this.user.id;
+      this.error = [];
+      this.checkForm();
 
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
 
-      let ccIds = await axios
-        .get(`${baseUrl()}/companyapp/`, {
-          headers,
-        })
-        .then((response) => {
-          return response.data;
-        })
-        .catch((error) => console.log(error));
-
-      this.vacancy.company_card = ccIds[0].id;
-
       axios
-        .post(`${baseUrl()}/vacancyapp/`, this.vacancy, {
+        .post(`${baseUrl()}/worker/`, this.worker, {
           headers,
         })
         .then((response) => {
           console.log(response.data);
-          this.vacancy = {
-            position: "",
-            conditions: "",
-            duties: "",
-            requirements: "",
+          this.worker = {
+            first_name: "",
+            last_name: "",
+            phone: "",
+            birth_date: "",
           };
         })
-        .catch(() => (this.error = true));
+        .catch(() =>
+          this.error.push("Ошибка при отправке формы, проверьте ввод!")
+        );
     },
   },
 };

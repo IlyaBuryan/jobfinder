@@ -56,11 +56,9 @@
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
-          <NuxtLink to="/">Страницы</NuxtLink>
+          <NuxtLink to="/">Работники</NuxtLink>
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
-            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+            <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
           </ul>
         </li>
       </ul>

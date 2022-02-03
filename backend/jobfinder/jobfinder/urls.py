@@ -26,8 +26,6 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-
-router = DefaultRouter()
 router.register('companyapp', CompanyCardModelViewSet)
 router.register('vacancyapp', VacancyModelViewSet)
 
