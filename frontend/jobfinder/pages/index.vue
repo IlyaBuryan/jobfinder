@@ -3,7 +3,7 @@
     <body class="nav-on-header">
       <!-- Site header -->
       <header
-        class="site-header size-lg text-center"
+        class="site-header"
         :style="`background: url(${require('~/assets/img/bg-banner1.jpg')}) no-repeat center`"
       >
         <div class="container main-window">

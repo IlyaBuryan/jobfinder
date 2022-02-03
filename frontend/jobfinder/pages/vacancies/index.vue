@@ -1,8 +1,8 @@
 <template>
   <div class="main__wrapp">
     <!-- Page header -->
-    <header class="page-header bg-img" style="background-image: url(assets/img/bg-banner1.jpg);">
-      <div class="container page-name">
+    <header class="page-header bg-img">
+      <div class="head__container">
         <h1 class="text-center">Найти вакансии</h1>
         <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящей работы</p>
       </div>
@@ -393,7 +393,6 @@
 
 <script>
 export default {
-  layout: 'default',
   data () {
     return {
       loading: false,
@@ -442,6 +441,16 @@ export default {
 .main-container {
   display: flex;
   max-width: 100%;
+}
+.page-header {
+  display: flex;
+  height: 1100px;
+  flex-direction: column;
+  background: url('~/assets/img/bg-banner2.jpg') no-repeat center center;
+  background-size: cover;
+}
+.head__container {
+  max-width: 1800px;
   margin-top: 200px;
 }
 // .site-header {
