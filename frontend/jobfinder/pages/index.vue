@@ -80,7 +80,7 @@
 
             <br /><br />
             <p class="text-center">
-              <NuxtLink class="btn btn-more" to="/vacancies.vue">Просмотреть все вакансии</NuxtLink>
+              <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
           </div>
         </section>
