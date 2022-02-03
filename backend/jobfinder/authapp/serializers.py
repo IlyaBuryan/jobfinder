@@ -5,10 +5,13 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from authapp.models import CustomUser
 
 
-class CustomUserModelSerializer(ModelSerializer):
+class CustomUserModelSerializer(serializers.ModelSerializer):
+    company = serializers.PrimaryKeyRelatedField(read_only=True)
+    worker = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = CustomUser
-        fields = ('id', 'password', 'username', 'email', 'role')
+        fields = ('id', 'password', 'username', 'email', 'role', 'company', 'worker')
 
     def create(self, validated_data):
         user = CustomUser.objects.create_user(**validated_data)

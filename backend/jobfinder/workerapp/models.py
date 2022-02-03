@@ -9,7 +9,7 @@ class Worker(models.Model):
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     phone = models.BigIntegerField(verbose_name='Телефон')
     birth_date = models.DateField(verbose_name='Дата Рождения')
-    user = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, related_name='worker')
 
 
 class WorkExperience(models.Model):

@@ -5,7 +5,7 @@ from django.contrib import admin
 from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet
+from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
@@ -15,6 +15,12 @@ from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
+router.register('companyapp', CompanyCardModelViewSet)
+router.register('vacancyapp', VacancyModelViewSet)
+router.register('worker', WorkerModelViewSet)
+router.register('resume', ResumeModelViewSet)
+router.register('work_experience', WorkExperienceModelViewSet)
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -25,15 +31,6 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
-
-router.register('companyapp', CompanyCardModelViewSet)
-router.register('vacancyapp', VacancyModelViewSet)
-
-
-router.register('worker', WorkerModelViewSet)
-router.register('resume', ResumeModelViewSet)
-router.register('work_experience', WorkExperienceModelViewSet)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,5 +45,7 @@ urlpatterns = [
     path('api/v1/api-auth/', include('rest_framework.urls')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/logout/', LogoutAPIView.as_view(), name="logout")
+    path('api/v1/logout/', LogoutAPIView.as_view(), name="logout"),
+    path('api/v1/categories/', CategoriesViewSet.as_view({'get': 'list'}), name='categories'),
+
 ]
