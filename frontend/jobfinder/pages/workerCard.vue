@@ -74,7 +74,7 @@
                     class="btn btn-success btn-xl btn-round"
                     v-on:click="sendCreateReq"
                   >
-                    Добавьте информацию о своей компании.
+                    Добавьте информацию о .
                   </button>
                 </p>
               </div>
