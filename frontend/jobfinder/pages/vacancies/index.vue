@@ -444,14 +444,14 @@ export default {
 }
 .page-header {
   display: flex;
-  height: 1100px;
+  height: 700px;
   flex-direction: column;
-  background: url('~/assets/img/bg-banner2.jpg') no-repeat center center;
+  background: url('~/assets/img/bg-banner2.jpg') no-repeat bottom center;
   background-size: cover;
 }
 .head__container {
   max-width: 1800px;
-  margin-top: 200px;
+  margin-top: 150px;
 }
 // .site-header {
 //   display: flex;
