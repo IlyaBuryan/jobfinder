@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
-from messageapp.wiews import MessageViewSet, MessageResumeViewSet, MessageVacansyViewSet
+from messageapp.views import MessageModelViewSet
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -19,9 +19,8 @@ schema_view = get_schema_view(
 
 router = DefaultRouter()
 
-router.register(r'message', MessageViewSet)
-router.register(r'message_resume', MessageResumeViewSet)
-router.register(r'message_vacansy', MessageVacansyViewSet)
+router.register('message', MessageModelViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,3 +31,6 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
 ]
+
+
+##Пример: router.register('user', CustomUserModelViewSet). Можно зарегистрировать в едином стиле

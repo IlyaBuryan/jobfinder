@@ -1,19 +1,11 @@
 from rest_framework import viewsets
 
-from .models import Message, MessageResume, MessageVacansy
-from .serializers import MessageSerializer, MessageResumeSerializer, MessageVacansySerializer
+from .models import Message
+from .serializers import MessageModelSerializer
 
 
-class MessageViewSet(viewsets.ModelViewSet):
+class MessageModelViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all().order_by()
-    serializer_class = MessageSerializer
+    serializer_class = MessageModelSerializer
 
 
-class MessageResumeViewSet(viewsets.ModelViewSet):
-    queryset = MessageResume.objects.all().order_by()
-    serializer_class = MessageResumeSerializer
-
-
-class MessageVacansyViewSet(viewsets.ModelViewSet):
-    queryset = MessageVacansy.objects.all().order_by()
-    serializer_class = MessageVacansySerializer
