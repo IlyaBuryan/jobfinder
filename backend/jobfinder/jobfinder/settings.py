@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authapp',
     'workerapp',
     'companyapp',
+    'messageapp',
 
     # External apps
     'rest_framework',
