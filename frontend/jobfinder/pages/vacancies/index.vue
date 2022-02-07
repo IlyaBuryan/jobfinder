@@ -1,7 +1,7 @@
 <template>
   <div class="main__wrapp">
     <!-- Page header -->
-    <header class="page-header">
+    <header class="header">
       <div class="head__container">
         <h1 class="text-center">Найти вакансии</h1>
         <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящей работы</p>
@@ -159,7 +159,7 @@
           <!-- Job item -->
 
           <div class="vacancy-item" v-for="(item, id) in testVacancyList" :key="id">
-            <nuxt-link :to="`/vacancy/${item.id}`" style="textDecoration:none">
+            <nuxt-link :to="`/vacancies/${item.id}`" style="textDecoration:none">
               <div class="vacancy-item__block">
                 <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
                 <div class="vacancy-item__info">
@@ -287,17 +287,17 @@ export default {
     },
     onSearch () {
       console.log('Уже ищу!!!')
-    },
-    async getVacancy () {
-      try {
-        const response = await this.$axios.get('/api/v1/vacancy')
-        this.vacancyList = response.data.data
-        // eslint-disable-next-line no-console
-        console.log(this.vacancyList)
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
-    },
+    }
+    // async getVacancies () {
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/vacancies')
+    //     this.vacancyList = response.data.data
+    //     // eslint-disable-next-line no-console
+    //     console.log(this.vacancyList)
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
   }
 }
 </script>
@@ -308,7 +308,7 @@ export default {
   max-width: 100%;
   flex-direction: column;
 }
-.page-header {
+.header {
   display: flex;
   height: 700px;
   flex-direction: column;

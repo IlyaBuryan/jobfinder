@@ -1,126 +1,128 @@
 <template>
   <div class="vacancy_wrapp">
       <!-- Page header -->
-  <header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner2.jpg)">
-    <div class="container">
-      <div class="header-detail">
-        <img class="logo" src="assets/img/logo-google.jpg" alt="">
-        <div class="hgroup">
-          <h1>Старший фронт-энд девелопер</h1>
-          <h3><a href="#">Google</a></h3>
+    <header class="page-header">
+      <div class="container">
+        <div class="header-detail">
+          <div class="header-detail__head">
+            <img class="logo" :src="vacancy.img" alt="">
+            <div class="header-detail__head_main">
+              <div class="hgroup">
+                <h1>{{ vacancy.title}}</h1>
+                <h3><a href="#">{{ vacancy.company }}</a></h3>
+              </div>
+              <div class="header-detail__head_main-time">{{ vacancy.vacancyTime }}</div>
+            </div>
+          </div>
+          <hr>
+          <p class="header-detail__head_main-descr">{{ vacancy.descr }}.</p>
+          <div class="header-detail__footer">
+            <ul class="header-detail__head_main-params">
+              <li>
+                <i class="fa fa-map-marker"></i>
+                <span>{{ vacancy.location }}</span>
+              </li>
+
+              <li>
+                <i class="fa fa-briefcase"></i>
+                <span>{{ vacancy.worktime }}</span>
+              </li>
+
+              <li>
+                <i class="fa fa-money"></i>
+                <span>{{ vacancy.salary }}</span>
+              </li>
+            </ul>
+            <ul class="header-detail__head_main-params">
+              <li>
+                <i class="fa fa-clock-o"></i>
+                <span>40h / week</span>
+              </li>
+
+              <li>
+                <i class="fa fa-flask"></i>
+                <span>2+ years experience</span>
+              </li>
+
+              <li>
+                <i class="fa fa-certificate"></i>
+                <a href="#">{{ vacancy.educ }}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="button-group">
+            <ul class="social-icons">
+              <li class="title">Разместить на</li>
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+
+            <div class="action-buttons">
+              <a class="btn btn-primary" href="#">Разместить на linkedin</a>
+              <a class="btn btn-success" href="#">Откликнуться</a>
+            </div>
+          </div>
+
         </div>
-        <time datetime="2022-01-03 20:00">2 days ago</time>
-        <hr>
-        <p class="lead">You will help Google build next-generation web applications like Gmail, Google Docs, Google
-          Analytics, and the Google eBookstore and eBook readers. As a Front End Engineer at Google, you will specialize
-          in building responsive and elegant web UIs with AJAX and similar technologies. You may design or work on
-          frameworks for building scalable frontend applications. We are looking for engineers who are passionate about
-          and have experience building leading-edge user experience, including dynamic consumer experiences.</p>
+      </div>
+    </header>
+    <!-- END Page header -->
 
-        <ul class="details cols-3">
-          <li>
-            <i class="fa fa-map-marker"></i>
-            <span>Menlo Park, CA</span>
-          </li>
 
-          <li>
-            <i class="fa fa-briefcase"></i>
-            <span>Full time</span>
-          </li>
+    <!-- Main container -->
+    <main>
 
-          <li>
-            <i class="fa fa-money"></i>
-            <span>$90,000 - $110,000 / year</span>
-          </li>
+      <!-- Job detail -->
+      <section class="vacancy-info">
+        <div class="vacancy-info__container">
 
-          <li>
-            <i class="fa fa-clock-o"></i>
-            <span>40h / week</span>
-          </li>
+          <p>Google is and always will be an engineering company. We hire people with a broad set of technical skills who
+            are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions,
+            of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and
+            storage solutions, large-scale applications and entirely new platforms for developers around the world. From
+            AdWords to Chrome, Android to YouTube, Social to Local, Google engineers are changing the world one
+            technological achievement after another.</p>
 
-          <li>
-            <i class="fa fa-flask"></i>
-            <span>2+ years experience</span>
-          </li>
-
-          <li>
-            <i class="fa fa-certificate"></i>
-            <a href="#">Master or Bachelor</a>
-          </li>
-        </ul>
-
-        <div class="button-group">
-          <ul class="social-icons">
-            <li class="title">Разместить на</li>
-            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+          <br>
+          <h4>Responsibilities</h4>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam
+            malesuada erat ut turpis. Suspendisse urna nibh, viverra non.</p>
+          <ul>
+            <li>Build next-generation web applications with a focus on the client side.</li>
+            <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
+            <li>Explore and design dynamic and compelling consumer experiences.</li>
+            <li>Design and build scalable framework for web applications.</li>
           </ul>
 
-          <div class="action-buttons">
-            <a class="btn btn-primary" href="#">Разместить на linkedin</a>
-            <a class="btn btn-success" href="#">Откликнуться</a>
-          </div>
+          <br>
+          <h4>Minimum qualifications</h4>
+          <ul>
+            <li>BA/BS degree in a technical field or equivalent practical experience. </li>
+            <li>2 years of relevant work experience in software development.</li>
+            <li>Programming experience in C, C++ or Java.</li>
+            <li>Experience with AJAX, HTML and CSS.</li>
+          </ul>
+
+          <br>
+          <h4>Preferred qualifications</h4>
+          <ul>
+            <li>Interest in user interface design.</li>
+            <li>Web application development experience.</li>
+            <li>Experience working on cross-browser platforms.</li>
+            <li>Development experience designing object-oriented JavaScript.</li>
+            <li>Experience with user interface frameworks such as XUL, Flex and XAML.</li>
+            <li>Knowledge of user interface design.</li>
+          </ul>
+
         </div>
+      </section>
+      <!-- END Job detail -->
 
-      </div>
-    </div>
-  </header>
-  <!-- END Page header -->
-
-
-  <!-- Main container -->
-  <main>
-
-    <!-- Job detail -->
-    <section>
-      <div class="container">
-
-        <p>Google is and always will be an engineering company. We hire people with a broad set of technical skills who
-          are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions,
-          of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and
-          storage solutions, large-scale applications and entirely new platforms for developers around the world. From
-          AdWords to Chrome, Android to YouTube, Social to Local, Google engineers are changing the world one
-          technological achievement after another.</p>
-
-        <br>
-        <h4>Responsibilities</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam
-          malesuada erat ut turpis. Suspendisse urna nibh, viverra non.</p>
-        <ul>
-          <li>Build next-generation web applications with a focus on the client side.</li>
-          <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
-          <li>Explore and design dynamic and compelling consumer experiences.</li>
-          <li>Design and build scalable framework for web applications.</li>
-        </ul>
-
-        <br>
-        <h4>Minimum qualifications</h4>
-        <ul>
-          <li>BA/BS degree in a technical field or equivalent practical experience. </li>
-          <li>2 years of relevant work experience in software development.</li>
-          <li>Programming experience in C, C++ or Java.</li>
-          <li>Experience with AJAX, HTML and CSS.</li>
-        </ul>
-
-        <br>
-        <h4>Preferred qualifications</h4>
-        <ul>
-          <li>Interest in user interface design.</li>
-          <li>Web application development experience.</li>
-          <li>Experience working on cross-browser platforms.</li>
-          <li>Development experience designing object-oriented JavaScript.</li>
-          <li>Experience with user interface frameworks such as XUL, Flex and XAML.</li>
-          <li>Knowledge of user interface design.</li>
-        </ul>
-
-      </div>
-    </section>
-    <!-- END Job detail -->
-
-  </main>
-  <!-- END Main container -->
+    </main>
+    <!-- END Main container -->
   </div>
 </template>
 
@@ -130,6 +132,8 @@ export default {
     return {
       loading: false,
       vacancyList: [],
+      vacancy: {},
+      vacancyaId: '',
       testVacancyList: [
         {
           id: 1, title: 'Помощник бухгалтера', img: require('~/assets/img/companyIcons/Marvel.jpeg'), company: 'ГК Марвел', location: 'Санкт-Петербург', worktime: 'Full-Time', link: 'job-detail.html', salary: 'ЗП: 50 050', educ: 'Высшее', vacancyTime: '02.02.2022', descr: 'Официальное трудоустройство с первого рабочего дня в соответствии с ТК РФ. Уютный офис в шаговой доступности от метро Фрунзенская .Расширенный компенсационный пакет. Скидки на продукцию партнеров компании.', category: 'Финансы'
@@ -195,6 +199,12 @@ export default {
       ],
     }
   },
+  mounted () {
+    this.getVacancy()
+  },
+  // created () {
+  //   this.getVacancies()
+  // },
   methods: {
     onSubmit () {
       this.login()
@@ -202,16 +212,104 @@ export default {
     onSearch () {
       console.log('Уже ищу!!!')
     },
-    async getVacancy () {
-      try {
-        const response = await this.$axios.get('/api/v1/vacancy')
-        this.vacancyList = response.data.data
-        // eslint-disable-next-line no-console
-        console.log(this.vacancyList)
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
-    },
+    // async getVacancies () {
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/vacancies')
+    //     this.vacancyList = response.data.data
+    //     // eslint-disable-next-line no-console
+    //     console.log(this.vacancyList)
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
+    getVacancy () {
+      this.vacancyId = this.$route.params.vacancy_id
+      this.vacancy = this.testVacancyList[this.vacancyId-1]
+    }
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/shop/vacancy', { params: { package_id: this.productId } })
+    //     this.vacancy = response.data.data
+
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
   }
 }
 </script>
+
+<style lang="scss">
+.main__wrapp {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+}
+.page-header {
+  display: flex;
+  height: 700px;
+  flex-direction: column;
+  background: url('~/assets/img/bg-banner2.jpg') no-repeat top center;
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 100px;
+  display: flex;
+}
+.header-detail {
+  width: 80%;
+  background-color: white;
+  &__head {
+    display: flex;
+    padding-top: 10px;
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      width: 75%;
+      &-time {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+      }
+      &-descr {
+        display: flex;
+        padding: 10px;
+      }
+      &-params {
+        display: flex;
+        li {
+          width: 30%;
+        }
+      }
+    }
+  }
+}
+.button-group {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  max-width: 300px;
+  img {
+    width: 240px;
+  }
+}
+.vacancy-info {
+  display: flex;
+  justify-content: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    max-width: 90%;
+  }
+}
+
+</style>
