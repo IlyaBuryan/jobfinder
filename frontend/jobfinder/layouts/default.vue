@@ -10,13 +10,12 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
-  components: {Header, Footer}
-
-}
+  components: { Header, Footer },
+};
 </script>
 
 <style scoped lang="scss">
@@ -24,5 +23,4 @@ export default {
   max-width: 100%;
   display: flex;
 }
-
 </style>

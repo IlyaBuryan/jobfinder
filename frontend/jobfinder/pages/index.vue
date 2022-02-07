@@ -3,14 +3,14 @@
     <body class="nav-on-header">
       <!-- Site header -->
       <header
-        class="site-header size-lg text-center"
-        :style="`background: url(${require('/assets/img/bg-banner1.jpg')}) no-repeat center`"
+        class="site-header"
+        :style="`background: url(${require('~/assets/img/bg-banner1.jpg')}) no-repeat center`"
       >
-        <div class="container main-window">
+        <div class="main-window">
           <div class="col-xs-12">
             <br><br>
             <h2 class="main-window__header">Мы предлагаем <mark>1,259</mark> вакансии прямо сейчас!</h2>
-            <h5 class="font-alt">Найди работу по душе уже через минуту</h5>
+            <h5 class="main-window__header-subtitle">Найди работу по душе уже через минуту</h5>
             <br /><br /><br />
           </div>
 
@@ -61,101 +61,26 @@
 
             <div class="body__container_vacancy">
               <!-- Job item -->
-              <div class="body__container_vacancy-item">
-                <a class="body__container_vacancy-item--link" href="job-detail.html">
-                  <div class="body__container_vacancy-item--link_info">
-                    <img src="../assets/img/logo-google.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Senior front-end developer</h4>
-                      <h5>Google</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Menlo park, CA</span>
-                      <span class="label label-success">Full-time</span>
-                    </div>
+              <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
+                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
+                <div class="vacancy-item__info">
+                  <div class="vacancy-item__info_main">
+                    <div class="vacancy-item__info_main-name">{{ item.title }}</div>
+                    <div class="vacancy-item__info_main-city">{{ item.location}}</div>
                   </div>
-                </a>
+                  <div class="vacancy-item__info_add">
+                    <div class="vacancy-item__info_add-company">{{ item.company }}</div>
+                    <div class="vacancy-item__info_add-worktime">{{ item.worktime }}</div>
+                  </div>
+                </div>
               </div>
-              <!-- END Job item -->
 
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-linkedin.png" alt="">
-                    <div class="hgroup">
-                      <h4>Software Engineer (Entry or Senior)</h4>
-                      <h5>Linkedin</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Livermore, CA</span>
-                      <span class="label label-warning">Part-time</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-envato.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Full Stack Web Developer</h4>
-                      <h5>Envato</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">San Francisco, CA</span>
-                      <span class="label label-info">Freelance</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-facebook.png" alt="" />
-                    <div class="hgroup">
-                      <h4>Web Applications Developer</h4>
-                      <h5>Facebook</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Lexington, MA</span>
-                      <span class="label label-danger">Internship</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
-              <!-- END Job item -->
-
-              <!-- Job item -->
-              <div class="col-xs-12">
-                <a class="item-block" href="job-detail.html">
-                  <header>
-                    <img src="../assets/img/logo-microsoft.jpg" alt="" />
-                    <div class="hgroup">
-                      <h4>Sr. SQL Server Developer</h4>
-                      <h5>Microsoft</h5>
-                    </div>
-                    <div class="header-meta">
-                      <span class="location">Palo Alto, CA</span>
-                      <span class="label label-success">Remote</span>
-                    </div>
-                  </header>
-                </a>
-              </div>
               <!-- END Job item -->
             </div>
 
             <br /><br />
             <p class="text-center">
-              <a class="btn btn-info" href="job-list.html"
-                >Просмотреть все вакансии</a
-              >
+              <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
           </div>
         </section>
@@ -191,26 +116,46 @@
 
         <!-- How it works -->
         <section>
-          <div class="container">
-            <div class="col-sm-12 col-md-6">
-              <header class="section-header text-left">
-                <span>Технология работы</span>
-                <h2>Как это устроено</h2>
+          <div class="text__container">
+            <div class="text__container_left">
+              <header class="text__container_left-title">
+                <span class="text__container_left-title--text">Поиск работы</span>
+                <div class="text__container_left-title--head">Как правильно искать работу</div>
               </header>
 
-              <p class="lead">
-                Pellentesque et pulvinar orci. Suspendisse sed euismod purus.
-                Pellentesque nunc ex, ultrices eu enim non, consectetur interdum
-                nisl. Nam congue interdum mauris, sed ultrices augue lacinia in.
-                Praesent turpis purus, faucibus in tempor vel, dictum ac eros.
+              <p class="story">
+                Искать работу – тоже работа. Это инструкция из 5 пунктов для человека
+                из любой индустрии и любого уровня, будь то первая работа после университета
+                или руководящая должность высокоуровневого специалиста.
               </p>
               <p>
-                Nulla quis felis et orci luctus semper sit amet id dui. Aenean
-                ultricies lectus nunc, vel rhoncus odio sagittis eu. Sed at
-                felis eu tortor mattis imperdiet et sed tortor. Nullam ac
-                porttitor arcu. Vivamus tristique elit id tempor lacinia. Donec
-                auctor at nibh eget tincidunt. Nulla facilisi. Nunc condimentum
-                dictum mattis.
+                1. Выбор индустрии
+                Индустрия – почва, на которой вы будете расти следующее время. Это может быть
+                диджитал, маркетинг, IT, финансы, продажи и т. д.
+                Если у вас нет опыта, подумайте, в какой сфере было бы интересно развиваться,
+                чем хотелось бы заниматься, чтобы работа приносила удовольствие.
+              </p>
+              <p>
+                2. Выбор компании.
+                Сайты для поиска работы – простой, но не эффективный способ. После изучения
+                индустрии обратите внимание на компании, которые кажутся привлекательными,
+                исходя из ваших ожиданий.
+
+                -- Выберите 10 таких компаний.
+                -- Найдите открытые вакансии в общем доступе.
+                -- Оцените, какие требования ставит компания, и какие есть у вас.
+                -- Подготовьте резюме, выделите ключевые навыки, которые соответствуют вакансии. Идеальных кандидатов с полным набором требований нет. Достаточно обладать несколькими важными. Не бойтесь рисковать!
+              </p>
+              <p>
+                3. Представьте свою роль в компании.
+                Приобретенная специальность не так важна. Всегда можно изменить
+                профессиональную жизнь в лучшую сторону. Главное в карьере – это
+                приобретенные навыки (hard skills) и личностные качества (soft skills).
+
+                Если каждый день читать профильные статьи и смотреть лекции, посещать
+                курсы и вебинары, то в какой-то момент вы начнете разбираться в сфере
+                вашего изучения и сформируете экспертное мнение. После нужно закрепить
+                это в практике, но начало положено.
               </p>
 
               <br /><br />
@@ -219,12 +164,12 @@
               >
             </div>
 
-            <div class="col-sm-12 col-md-6 hidden-xs hidden-sm">
+            <div class="text__container_right">
               <br />
               <img
                 class="center-block"
-                src="assets/img/how-it-works.png"
-                alt="how it works"
+                src="~/assets/img/Work_Life.jpg"
+                alt="how fined job"
               />
             </div>
           </div>
@@ -232,66 +177,28 @@
         <!-- END How it works -->
 
         <!-- Categories -->
-        <section class="bg-alt">
-          <div class="container">
-            <header class="section-header">
-              <span>Категории</span>
-              <h2>Популярные категории</h2>
-              <p>Здесь самые популярные категории</p>
+        <section class="category__container">
+          <div class="category__container_wrap">
+            <header class="category__container_header">
+              <span class="category__container_header-title">Категории</span>
+              <h2 class="category__container_header-head">Популярные категории</h2>
+              <p class="category__container_header-note">Здесь самые популярные категории</p>
             </header>
-
-            <div class="category-grid">
-              <a href="job-list-1.html">
-                <i class="fa fa-laptop"></i>
-                <h6>Technology</h6>
-                <p>
-                  Designer, Developer, IT Service, Front-end developer, Project
-                  management
-                </p>
-              </a>
-
-              <a href="job-list-2.html">
-                <i class="fa fa-line-chart"></i>
-                <h6>Accounting</h6>
-                <p>
-                  Finance, Tax service, Payroll manager, Book keeper, Human
-                  resource
-                </p>
-              </a>
-
-              <a href="job-list-3.html">
-                <i class="fa fa-medkit"></i>
-                <h6>Medical</h6>
-                <p>Doctor, Nurse, Hospotal, Dental service, Massagist</p>
-              </a>
-
-              <a href="job-list-1.html">
-                <i class="fa fa-cutlery"></i>
-                <h6>Food</h6>
-                <p>Restaurant, Food service, Coffe shop, Cashier, Waitress</p>
-              </a>
-
-              <a href="job-list-2.html">
-                <i class="fa fa-newspaper-o"></i>
-                <h6>Media</h6>
-                <p>Journalism, Newspaper, Reporter, Writer, Cameraman</p>
-              </a>
-
-              <a href="job-list-3.html">
-                <i class="fa fa-institution"></i>
-                <h6>Government</h6>
-                <p>Federal, Law, Human resource, Manager, Biologist</p>
-              </a>
+          </div>
+          <div class="category__block">
+            <div class="category__item" v-for="(category, id) in categoryList" :key="id">
+              <div class="category__item_img"><img class="category-img" :src="category.img"></div>
+              <div class="category__item_title">{{ category.name }}</div>
+              <div class="category__item_descr">{{ category.includes }}</div>
             </div>
           </div>
         </section>
-        <!-- END Categories -->
-
         <!-- Newsletter -->
-        <section class="bg-img text-center">
-          <div class="container">
-            <h2><strong>Подпишись</strong></h2>
-            <h6 class="font-alt">
+        <section class="subscribe"
+        :style="`background: url(${require('~/assets/img/bg-facts.jpg')}) no-repeat center`">
+          <div class="subscribe__container">
+            <h2><strong class="subscribe__container_title">Подпишись</strong></h2>
+            <h6 class="subscribe__container_note">
               Получай еженедельный топ новых вакансий на свой e-mail
             </h6>
             <br /><br />
@@ -299,7 +206,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  class="form-control input-lg"
+                  class="form-control-input input-lg"
                   placeholder="Твой e-mail"
                 />
                 <span class="input-group-btn">
@@ -338,8 +245,36 @@ export default {
         ],
         city: [{ required: true, message: 'название города обязательно', trigger: 'blur' }]
       },
-      loading: false
+      loading: false,
+      vacancyList: [
+        {
+          id: 1, title: 'Senior front-end developer', img: require('~/assets/img/logo-google.jpg'), company: 'Google', location: 'Москва', worktime: 'Full-Time', link: 'job-detail.html'
+        },
+        {
+          id: 2, title: 'Software Engineer (Entry or Senior)', img: require('~/assets/img/logo-linkedin.png'), company: 'Linkedin', location: 'Казань', worktime: 'Part-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 3, title: 'Full Stack Web Developer', img: require('~/assets/img/logo-envato.png'), company: 'Envato', location: 'Новосибирск', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 4, title: 'Web Applications Developer', img: require('~/assets/img/logo-facebook.png'), company: 'Facebook', location: 'Санкт-Петербург', worktime: 'Full-Time' , link: 'job-detail.html'
+        },
+        {
+          id: 5, title: 'Sr. SQL Server Developer', img: require('~/assets/img/logo-microsoft.jpg'), company: 'Microsoft', location: 'Владивосток', worktime: 'Remote' , link: 'job-detail.html'
+        },
+      ],
+      categoryList: [
+        { id: 1, name: 'Технологии', img: require('~/assets/img/1.png'), includes: ' Designer, Developer, IT Service, Front-end developer, Project management'},
+        { id: 2, name: 'Финансы', img: require('~/assets/img/2.png'), includes: ' Finance, Tax service, Payroll manager, Book keeper, Human resource'},
+        { id: 3, name: 'Медицина', img: require('~/assets/img/3.png'), includes: 'Doctor, Nurse, Hospotal, Dental service, Massagist'},
+        { id: 4, name: 'Производство продуктов', img: require('~/assets/img/4.png'), includes: 'Restaurant, Food service, Coffe shop, Cashier, Waitress'},
+        { id: 5, name: 'Медиа', img: require('~/assets/img/5.png'), includes: 'Journalism, Newspaper, Reporter, Writer, Cameraman'},
+        { id: 6, name: 'Государственная служба', img: require('~/assets/img/6.png'), includes: 'Federal, Law, Human resource, Manager, Biologist'},
+      ]
     }
+  },
+  mounted() {
+    this.getNewestVacancy()
   },
   methods: {
     onSubmit () {
@@ -357,12 +292,50 @@ export default {
     },
     onSearch () {
       console.log('Уже ищу!!!')
+    },
+    async getNewestVacancy () {
+      try {
+        const response = await this.$axios.get('/api/v1/newestvacancy')
+        this.vacancyList = response.data.data
+        // eslint-disable-next-line no-console
+        console.log(this.vacancyList)
+      } catch (e) {
+        this.$toast.error(e.response.data)
+      }
+    },
+    async getCategory () {
+      try {
+        const response = await this.$axios.get('/api/v1/categories')
+        this.categoryList = response.data.data
+        // eslint-disable-next-line no-console
+        console.log(this.categoryList)
+      } catch (e) {
+        this.$toast.error(e.response.data)
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
+.main-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.site-header {
+  display: flex;
+  height: 700px;
+  justify-content: center;
+}
+.header-job-search {
+  display: flex;
+  justify-content: center;
+}
+.wsearch-btn {
+  height: 100%;
+  border: none;
+}
 .main__wrapp {
   width: 100%;
 }
@@ -373,11 +346,9 @@ export default {
   line-height: 1.4;
   color: white;
   font-weight: 800;
-}
-h5 {
-  font-family: Arial,sans-serif;
-  font-size: 20px;
-  color: white;
+  &-subtitle {
+    text-align: center;
+  }
 }
 .site-header mark {
   color: #29aafe;;
@@ -434,20 +405,66 @@ body {
       flex-direction: column;
       align-items: center;
       width: 90%;
-      &-item {
-        display: flex;
-        width: 100%;
-        &--link {
-          width: 100%;
-          display: flex;
-          justify-content: space-around;
-          &_info {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-          }
-        }
+
+    }
+  }
+}
+.vacancy-item {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-around;
+  margin: 30px 0;
+  transition-property: border;
+  transition-duration: .2s;
+  &:hover {
+    border: 1px solid #29aafe;
+  }
+  &__img {
+    display: flex;
+    padding: 0 30px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 30px;
+    &_main {
+      display: flex;
+      justify-content: space-between;
+      &-name {
+        font-size: 36px;
+        line-height: 40px;
+        color: #55595c;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+      }
+      &-city {
+        color: #96a2b2;
+        line-height: 35px;
+        font-size: 30px;
+      }
+    }
+    &_add {
+      display: flex;
+      justify-content: space-between;
+      &-company {
+        font-size: 30px;
+        color: #96a2b2;
+      }
+      &-worktime {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 30px;
+        color: white;
+        font-weight: 400;
+        border-radius: 0;
+        padding: 4px 6px;
+        margin-top: 6px;
+        margin-left: 16px;
+        opacity: .85;
+        background-color: #5cb85c;
       }
     }
   }
@@ -473,21 +490,192 @@ body {
     }
   }
 }
-.main-window {
+.btn-more {
+    width: 250px;
+    height: 50px;
+    color: #fff;
+    background-color: #5bb7ed;
+    border-color: #5bb7ed;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.text__container {
+  display: flex;
+  justify-content: space-around;
+  &_left {
+    width: 40%;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      &--text {
+        color: #84878a;
+        font-family: Arial,sans-serif;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      &--head {
+        padding: 48px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 46px;
+        font-family: Arial,sans-serif;
+        color: #55595c;
+        text-transform: capitalize;
+        margin: 16px 0;
+        line-height: 1.4;
+        font-weight: 800;
+      }
+    }
+  }
+}
+.category__container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  &_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-title {
+      color: #84878a;
+      font-family: Arial,sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    &-head {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 46px;
+      font-family: Arial,sans-serif;
+      color: #55595c;
+      text-transform: capitalize;
+      margin: 16px 0;
+      line-height: 1.4;
+      font-weight: 800;
+      &::after {
+        content: "";
+        width: 60px;
+        height: 2px;
+        background-color: #29aafe;
+        margin-top: 50px;
+      }
+    }
+    &-note {
+      color: #84878a;
+      font-family: Arial,sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+}
+.category__block {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
   justify-content: space-around;
 }
-.site-header {
+.category__item {
   display: flex;
-  height: 700px;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+  padding: 30px;
+  transition-property: background-color;
+  transition-duration: .5s;
+  &_img {
+    width: 185px;
+  }
+  &_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 28px;
+    font-family: Arial,sans-serif;
+    color: #55595c;
+    text-transform: capitalize;
+    padding: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+    transition-property: color;
+    transition-duration: .5s;
+    &::after {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color:  #96a2b2;
+      margin-top: 50px;
 }
-.header-job-search {
+  }
+  &_descr {
+    display: flex;
+    padding: 24px;
+    text-align: center;
+    color: #96a2b2;
+    font-size: 20px;
+    line-height: 30px;
+    transition-property: color;
+    transition-duration: .5s;
+  }
+}
+.category__item:hover {
+  background-color: #29aafe;
+}
+.category__item:hover .category__item_title{
+  color: white;
+}
+.category__item:hover .category__item_title::after {
+  content: "";
+  background-color: white;
+}
+.category__item:hover .category__item_descr{
+  color: white;
+}
+.subscribe {
   display: flex;
   justify-content: center;
+  &__container {
+    display: flex;
+    height: 600px;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    &_title {
+      padding: 48px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 46px;
+      font-family: Arial,sans-serif;
+      color: white;
+      text-transform: capitalize;
+      margin: 16px 0;
+      line-height: 1.4;
+      font-weight: 800;
+      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
+    }
+    &_note {
+      display: flex;
+      padding: 24px;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 600;
+      text-shadow: -2px 2px 0 #55595c, 2px 2px 0 #55595c, 2px -2px 0 #55595c, -2px -2px 0 #55595c;
+    }
+    .form-control-input {
+      height: 48px;
+      width: 80%;
+    }
+  }
 }
-.wsearch-btn {
-  height: 100%;
-  border: none;
-}
+
 </style>
