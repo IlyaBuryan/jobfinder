@@ -5,6 +5,7 @@ from django.contrib import admin
 from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from lkcompanyapp.views import MessageOnResumeModelViewSet, LetterToWorkerModelViewSet
 from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
@@ -29,6 +30,8 @@ schema_view = get_schema_view(
 
 router.register('companyapp', CompanyCardModelViewSet)
 router.register('vacancyapp', VacancyModelViewSet)
+router.register('message_on_resume', MessageOnResumeModelViewSet)
+router.register('letter_to_worker', LetterToWorkerModelViewSet)
 
 
 
@@ -50,7 +53,7 @@ urlpatterns = [
     path('api/v1/api-auth/', include('rest_framework.urls')),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/logout/', LogoutAPIView.as_view(), name="logout")
+    path('api/v1/logout/', LogoutAPIView.as_view(), name="logout"),
     path('api/v1/categories/', CategoriesViewSet.as_view({'get': 'list'}), name='categories'),
 
 ]
