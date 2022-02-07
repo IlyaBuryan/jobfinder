@@ -157,24 +157,29 @@
             </div>
           </div>
           <!-- Job item -->
+
           <div class="vacancy-item" v-for="(item, id) in testVacancyList" :key="id">
-            <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
-            <div class="vacancy-item__info">
-              <div class="vacancy-item__info_main">
-                <div class="vacancy-item__info_main-name">{{ item.title }}</div>
-                <div class="vacancy-item__info_main-time">{{ item.vacancyTime}}</div>
+            <nuxt-link :to="`/vacancy/${item.id}`" style="textDecoration:none">
+              <div class="vacancy-item__block">
+                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
+                <div class="vacancy-item__info">
+                  <div class="vacancy-item__info_main">
+                    <div class="vacancy-item__info_main-name">{{ item.title }}</div>
+                    <div class="vacancy-item__info_main-time">{{ item.vacancyTime}}</div>
+                  </div>
+                  <div class="vacancy-item__info_add">
+                    <div class="vacancy-item__info_add-name">{{ item.company }}</div>
+                    <div class="vacancy-item__info_add-time">{{ item.worktime}}</div>
+                  </div>
+                  <div class="vacancy-item__info_descr"><p class="vacancy-item__info_description">{{ item.descr }}</p></div>
+                  <div class="vacancy-item__info_footer">
+                    <div class="vacancy-item__info_footer-city">{{ item.location }}</div>
+                    <div class="vacancy-item__info_footer-salary">{{ item.salary }}</div>
+                    <div class="vacancy-item__info_footer-education">{{ item.educ }}</div>
+                  </div>
+                </div>
               </div>
-              <div class="vacancy-item__info_add">
-                <div class="vacancy-item__info_add-name">{{ item.company }}</div>
-                <div class="vacancy-item__info_add-time">{{ item.worktime}}</div>
-              </div>
-              <div class="vacancy-item__info_descr"><p class="vacancy-item__info_description">{{ item.descr }}</p></div>
-              <div class="vacancy-item__info_footer">
-                <div class="vacancy-item__info_footer-city">{{ item.location }}</div>
-                <div class="vacancy-item__info_footer-salary">{{ item.salary }}</div>
-                <div class="vacancy-item__info_footer-education">{{ item.educ }}</div>
-              </div>
-            </div>
+            </nuxt-link>
           </div>
           <!-- END Job item first-->
 
@@ -347,16 +352,19 @@ export default {
   }
 }
 .vacancy-item {
-  display: flex;
-  cursor: pointer;
-  width: 100%;
-  justify-content: space-around;
-  margin: 30px 0;
-  transition-property: border;
-  transition-duration: .2s;
-  &:hover {
-    border: 1px solid #29aafe;
+  &__block {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    justify-content: space-around;
+    margin: 30px 0;
+    transition-property: border;
+    transition-duration: .2s;
+    // &:hover {
+    //   border: 1px solid #29aafe;
+    // }
   }
+
   &__img {
     display: flex;
     padding: 0 30px;
@@ -372,6 +380,7 @@ export default {
     justify-content: space-around;
     width: 100%;
     padding: 0 30px;
+    color: dimgray;
     &_main {
       display: flex;
       justify-content: space-between;
