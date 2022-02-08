@@ -5,6 +5,7 @@ from django.contrib import admin
 from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from lkcompanyapp.views import MessageOnResumeModelViewSet, LetterToWorkerModelViewSet
 from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
@@ -34,6 +35,7 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
