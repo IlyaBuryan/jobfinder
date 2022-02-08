@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'authapp',
     'workerapp',
     'companyapp',
+    'messageapp',
+    'lkcompanyapp',
     'lkworkerapp',
 
     # External apps
