@@ -13,8 +13,6 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
-from messageapp.wiews import MessageModelViewSet
-
 
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
@@ -23,7 +21,7 @@ router.register('vacancyapp', VacancyModelViewSet)
 router.register('worker', WorkerModelViewSet)
 router.register('resume', ResumeModelViewSet)
 router.register('work_experience', WorkExperienceModelViewSet)
-router.register('message', MessageModelViewSet)
+
 
 
 schema_view = get_schema_view(

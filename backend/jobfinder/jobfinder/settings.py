@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authapp',
     'workerapp',
     'companyapp',
+    'lkworkerapp',
 
     # External apps
     'rest_framework',
