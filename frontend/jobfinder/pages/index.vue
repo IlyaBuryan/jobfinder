@@ -3,14 +3,14 @@
     <body class="nav-on-header">
       <!-- Site header -->
       <header
-        class="site-header size-lg text-center"
+        class="site-header"
         :style="`background: url(${require('~/assets/img/bg-banner1.jpg')}) no-repeat center`"
       >
-        <div class="container main-window">
+        <div class="main-window">
           <div class="col-xs-12">
             <br><br>
             <h2 class="main-window__header">Мы предлагаем <mark>1,259</mark> вакансии прямо сейчас!</h2>
-            <h5 class="font-alt">Найди работу по душе уже через минуту</h5>
+            <h5 class="main-window__header-subtitle">Найди работу по душе уже через минуту</h5>
             <br /><br /><br />
           </div>
 
@@ -80,9 +80,7 @@
 
             <br /><br />
             <p class="text-center">
-              <a class="btn btn-more" href="job-list.html"
-                >Просмотреть все вакансии</a
-              >
+              <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
           </div>
         </section>
@@ -328,6 +326,7 @@ export default {
 .site-header {
   display: flex;
   height: 700px;
+  justify-content: center;
 }
 .header-job-search {
   display: flex;
@@ -347,6 +346,9 @@ export default {
   line-height: 1.4;
   color: white;
   font-weight: 800;
+  &-subtitle {
+    text-align: center;
+  }
 }
 .site-header mark {
   color: #29aafe;;

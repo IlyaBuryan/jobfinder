@@ -13,9 +13,18 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
+from messageapp.wiews import MessageModelViewSet
+
 
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
+router.register('companyapp', CompanyCardModelViewSet)
+router.register('vacancyapp', VacancyModelViewSet)
+router.register('worker', WorkerModelViewSet)
+router.register('resume', ResumeModelViewSet)
+router.register('work_experience', WorkExperienceModelViewSet)
+router.register('message', MessageModelViewSet)
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -26,18 +35,6 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
-
-
-router.register('companyapp', CompanyCardModelViewSet)
-router.register('vacancyapp', VacancyModelViewSet)
-router.register('message_on_resume', MessageOnResumeModelViewSet)
-router.register('letter_to_worker', LetterToWorkerModelViewSet)
-
-
-
-router.register('worker', WorkerModelViewSet)
-router.register('resume', ResumeModelViewSet)
-router.register('work_experience', WorkExperienceModelViewSet)
 
 
 urlpatterns = [
