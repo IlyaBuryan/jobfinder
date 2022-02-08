@@ -13,6 +13,9 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
+from messageapp.views import MessageModelViewSet
+
+from lkworkerapp.views import MessageToVacancyModelViewSet, LetterToCompanyModelViewSet
 
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
@@ -21,6 +24,11 @@ router.register('vacancyapp', VacancyModelViewSet)
 router.register('worker', WorkerModelViewSet)
 router.register('resume', ResumeModelViewSet)
 router.register('work_experience', WorkExperienceModelViewSet)
+router.register('message', MessageModelViewSet)
+router.register('message_on_resume', MessageOnResumeModelViewSet)
+router.register('letter_to_worker', LetterToWorkerModelViewSet)
+router.register('message_to_vacancy', MessageToVacancyModelViewSet)
+router.register('letter_to_company', LetterToCompanyModelViewSet)
 
 
 
