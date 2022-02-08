@@ -3,8 +3,8 @@
     <!-- Site footer -->
     <footer class="site-footer">
       <!-- Top section -->
-      <div class="container">
-        <div class="row">
+      <div class="footer__container">
+        <div class="footer__container_head">
           <div class="col-sm-12 col-md-6">
             <h6>О нас</h6>
             <p class="text-justify">
@@ -38,9 +38,9 @@
       <!-- END Top section -->
 
       <!-- Bottom section -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
+      <div class="footer__container_bottom">
+        <div class="footer__container_bottom-info">
+          <div class="footer__container_bottom-info-authors">
             <p class="copyright-text">
               Copyrights &copy; {{ new Date().getFullYear() }} Все права защищены
               <a href="http://themeforest.net/user/shamsoft"
@@ -49,7 +49,7 @@
             </p>
           </div>
 
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="footer__container_bottom-info-icons">
             <ul class="social-icons">
               <li>
                 <a class="facebook" href="#">
@@ -108,7 +108,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .text-justify {
   text-align: justify;
 }
@@ -163,6 +163,28 @@ export default {
 }
 .site-footer .social-icons a:after {
   display: none;
+}
+.footer__container {
+  display: flex;
+  padding: 20px;
+  &_head {
+    display: flex;
+    width: 100%;
+  }
+  &_bottom {
+    display: flex;
+    &-info {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      &--authors {
+        display: flex;
+      }
+      &--icons {
+        display: flex;
+      }
+    }
+  }
 }
 .copyright-text {
   margin: 0;

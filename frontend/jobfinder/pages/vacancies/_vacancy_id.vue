@@ -1,210 +1,126 @@
 <template>
-  <div class="main__wrapp">
-    <!-- Page header -->
-    <header class="header">
-      <div class="head__container">
-        <h1 class="text-center">Найти вакансии</h1>
-        <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящей работы</p>
-      </div>
-
-      <div class="filter__container">
-        <form action="#">
-
-          <div class="filter__container_header">
-            <div class="form-group col-xs-12 col-sm-4">
-              <input type="text" class="form-control"
-                placeholder="Ключевые слова: название должности, требования к навыкам, название компании">
-            </div>
-
-            <div class="form-group col-xs-12 col-sm-4">
-              <input type="text" class="form-control" placeholder="Местоположение: город, область или почтовый индекс">
-            </div>
-
-            <div class="form-group col-xs-12 col-sm-4">
-              <select class="form-control selectpicker" multiple>
-                <option selected>Все категории</option>
-                <option>Разработка</option>
-                <option>Дизайн</option>
-                <option>Работа с клиентами</option>
-                <option>Финансы</option>
-                <option>Здравоохранение</option>
-                <option>Продажи</option>
-                <option>Строительство</option>
-                <option>Маркетинг</option>
-                <option>Информационные технологии</option>
-                <option>Другое</option>
-              </select>
+  <div class="vacancy_wrapp">
+      <!-- Page header -->
+    <header class="page-header">
+      <div class="container">
+        <div class="header-detail">
+          <div class="header-detail__head">
+            <img class="logo" :src="vacancy.img" alt="">
+            <div class="header-detail__head_main">
+              <div class="hgroup">
+                <h1>{{ vacancy.title}}</h1>
+                <h3><a href="#">{{ vacancy.company }}</a></h3>
+              </div>
+              <div class="header-detail__head_main-time">{{ vacancy.vacancyTime }}</div>
             </div>
           </div>
-          <div class="filter__container_footer">
+          <hr>
+          <p class="header-detail__head_main-descr">{{ vacancy.descr }}.</p>
+          <div class="header-detail__footer">
+            <ul class="header-detail__head_main-params">
+              <li>
+                <i class="fa fa-map-marker"></i>
+                <span>{{ vacancy.location }}</span>
+              </li>
 
-            <div class="form-group col-xs-12 col-sm-4">
-              <h6>Режим работы</h6>
-              <div class="checkall-group">
-                <div class="checkbox">
-                  <input type="checkbox" id="contract1" name="contract" checked>
-                  <label for="contract1">Любой</label>
-                </div>
+              <li>
+                <i class="fa fa-briefcase"></i>
+                <span>{{ vacancy.worktime }}</span>
+              </li>
 
-                <div class="checkbox">
-                  <input type="checkbox" id="contract2" name="contract">
-                  <label for="contract2">Полная занятость <small>(354)</small></label>
-                </div>
+              <li>
+                <i class="fa fa-money"></i>
+                <span>{{ vacancy.salary }}</span>
+              </li>
+            </ul>
+            <ul class="header-detail__head_main-params">
+              <li>
+                <i class="fa fa-clock-o"></i>
+                <span>40h / week</span>
+              </li>
 
-                <div class="checkbox">
-                  <input type="checkbox" id="contract3" name="contract">
-                  <label for="contract3">Частичная занятость <small>(284)</small></label>
-                </div>
+              <li>
+                <i class="fa fa-flask"></i>
+                <span>2+ years experience</span>
+              </li>
 
-                <div class="checkbox">
-                  <input type="checkbox" id="contract4" name="contract">
-                  <label for="contract4">Стажировка <small>(169)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="contract5" name="contract">
-                  <label for="contract5">Фриланс <small>(480)</small></label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="form-group col-xs-12 col-sm-4">
-              <h6>Оплата в час</h6>
-              <div class="checkall-group">
-                <div class="checkbox">
-                  <input type="checkbox" id="rate1" name="rate" checked>
-                  <label for="rate1">Любая</label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="rate2" name="rate">
-                  <label for="rate2">$0 - $50 <small>(364)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="rate3" name="rate">
-                  <label for="rate3">$50 - $100 <small>(684)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="rate4" name="rate">
-                  <label for="rate4">$100 - $200 <small>(195)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="rate5" name="rate">
-                  <label for="rate5">$200+ <small>(39)</small></label>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="form-group col-xs-12 col-sm-4">
-              <h6>Ученая степень</h6>
-              <div class="checkall-group">
-                <div class="checkbox">
-                  <input type="checkbox" id="degree1" name="degree" checked>
-                  <label for="degree1">Все</label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="degree2" name="degree">
-                  <label for="degree2">Ассистент <small>(216)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="degree3" name="degree">
-                  <label for="degree3">Бакалавр <small>(569)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="degree4" name="degree">
-                  <label for="degree4">Магистр <small>(439)</small></label>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" id="degree5" name="degree">
-                  <label for="degree5">Докторская степень <small>(84)</small></label>
-                </div>
-              </div>
-            </div>
-
+              <li>
+                <i class="fa fa-certificate"></i>
+                <a href="#">{{ vacancy.educ }}</a>
+              </li>
+            </ul>
           </div>
 
           <div class="button-group">
+            <ul class="social-icons">
+              <li class="title">Разместить на</li>
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+
             <div class="action-buttons">
-              <button class="btn btn-primary">Применить фильтр</button>
+              <a class="btn btn-primary" href="#">Разместить на linkedin</a>
+              <a class="btn btn-success" href="#">Откликнуться</a>
             </div>
           </div>
 
-        </form>
-
+        </div>
       </div>
-
     </header>
     <!-- END Page header -->
 
 
     <!-- Main container -->
-    <main class="vacancy">
-      <section class="vacancy__list">
-        <div class="vacancy__container">
-          <div class="vacancy__container_head">
-            <div class="vacancy__container_head-title">
-              <br>
-              <h5>Мы нашли <strong>357</strong> совпадений, вы смотрите от <i>10</i> до <i>20</i></h5>
-            </div>
-          </div>
-          <!-- Job item -->
+    <main>
 
-          <div class="vacancy-item" v-for="(item, id) in testVacancyList" :key="id">
-            <nuxt-link :to="`/vacancies/${item.id}`" style="textDecoration:none">
-              <div class="vacancy-item__block">
-                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
-                <div class="vacancy-item__info">
-                  <div class="vacancy-item__info_main">
-                    <div class="vacancy-item__info_main-name">{{ item.title }}</div>
-                    <div class="vacancy-item__info_main-time">{{ item.vacancyTime}}</div>
-                  </div>
-                  <div class="vacancy-item__info_add">
-                    <div class="vacancy-item__info_add-name">{{ item.company }}</div>
-                    <div class="vacancy-item__info_add-time">{{ item.worktime}}</div>
-                  </div>
-                  <div class="vacancy-item__info_descr"><p class="vacancy-item__info_description">{{ item.descr }}</p></div>
-                  <div class="vacancy-item__info_footer">
-                    <div class="vacancy-item__info_footer-city">{{ item.location }}</div>
-                    <div class="vacancy-item__info_footer-salary">{{ item.salary }}</div>
-                    <div class="vacancy-item__info_footer-education">{{ item.educ }}</div>
-                  </div>
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
-          <!-- END Job item first-->
+      <!-- Job detail -->
+      <section class="vacancy-info">
+        <div class="vacancy-info__container">
 
-          <!-- Page navigation -->
-          <nav class="text-center">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <i class="ti-angle-left"></i>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <i class="ti-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!-- END Page navigation -->
+          <p>Google is and always will be an engineering company. We hire people with a broad set of technical skills who
+            are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions,
+            of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and
+            storage solutions, large-scale applications and entirely new platforms for developers around the world. From
+            AdWords to Chrome, Android to YouTube, Social to Local, Google engineers are changing the world one
+            technological achievement after another.</p>
+
+          <br>
+          <h4>Responsibilities</h4>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam
+            malesuada erat ut turpis. Suspendisse urna nibh, viverra non.</p>
+          <ul>
+            <li>Build next-generation web applications with a focus on the client side.</li>
+            <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
+            <li>Explore and design dynamic and compelling consumer experiences.</li>
+            <li>Design and build scalable framework for web applications.</li>
+          </ul>
+
+          <br>
+          <h4>Minimum qualifications</h4>
+          <ul>
+            <li>BA/BS degree in a technical field or equivalent practical experience. </li>
+            <li>2 years of relevant work experience in software development.</li>
+            <li>Programming experience in C, C++ or Java.</li>
+            <li>Experience with AJAX, HTML and CSS.</li>
+          </ul>
+
+          <br>
+          <h4>Preferred qualifications</h4>
+          <ul>
+            <li>Interest in user interface design.</li>
+            <li>Web application development experience.</li>
+            <li>Experience working on cross-browser platforms.</li>
+            <li>Development experience designing object-oriented JavaScript.</li>
+            <li>Experience with user interface frameworks such as XUL, Flex and XAML.</li>
+            <li>Knowledge of user interface design.</li>
+          </ul>
+
         </div>
       </section>
+      <!-- END Job detail -->
+
     </main>
     <!-- END Main container -->
   </div>
@@ -216,6 +132,8 @@ export default {
     return {
       loading: false,
       vacancyList: [],
+      vacancy: {},
+      vacancyaId: '',
       testVacancyList: [
         {
           id: 1, title: 'Помощник бухгалтера', img: require('~/assets/img/companyIcons/Marvel.jpeg'), company: 'ГК Марвел', location: 'Санкт-Петербург', worktime: 'Full-Time', link: 'job-detail.html', salary: 'ЗП: 50 050', educ: 'Высшее', vacancyTime: '02.02.2022', descr: 'Официальное трудоустройство с первого рабочего дня в соответствии с ТК РФ. Уютный офис в шаговой доступности от метро Фрунзенская .Расширенный компенсационный пакет. Скидки на продукцию партнеров компании.', category: 'Финансы'
@@ -281,19 +199,37 @@ export default {
       ],
     }
   },
+  mounted () {
+    this.getVacancy()
+  },
+  // created () {
+  //   this.getVacancies()
+  // },
   methods: {
     onSubmit () {
       this.login()
     },
     onSearch () {
       console.log('Уже ищу!!!')
-    }
+    },
     // async getVacancies () {
     //   try {
     //     const response = await this.$axios.get('/api/v1/vacancies')
     //     this.vacancyList = response.data.data
     //     // eslint-disable-next-line no-console
     //     console.log(this.vacancyList)
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
+    getVacancy () {
+      this.vacancyId = this.$route.params.vacancy_id
+      this.vacancy = this.testVacancyList[this.vacancyId-1]
+    }
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/shop/vacancy', { params: { package_id: this.productId } })
+    //     this.vacancy = response.data.data
+
     //   } catch (e) {
     //     this.$toast.error(e.response.data)
     //   }
@@ -308,121 +244,71 @@ export default {
   max-width: 100%;
   flex-direction: column;
 }
-.header {
+.page-header {
   display: flex;
   height: 700px;
   flex-direction: column;
-  background: url('~/assets/img/bg-banner2.jpg') no-repeat bottom center;
+  background: url('~/assets/img/bg-banner2.jpg') no-repeat top center;
   background-size: cover;
   align-items: center;
+  justify-content: center;
 }
-.head__container {
-  max-width: 1800px;
-  margin-top: 150px;
-}
-.filter__container {
+.container {
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 100px;
   display: flex;
-  flex-direction: column;
-  width: 90%;
-  &_header {
-    display: flex;
-  }
-  &_footer {
-    display: flex;
-  }
 }
-.vacancy {
-  display: flex;
-  flex-direction: column;
-  max-width: 1800px;
-  align-self: center;
-  &__list {
+.header-detail {
+  width: 80%;
+  background-color: white;
+  &__head {
     display: flex;
-    flex-direction: column;
-  }
-  &__container {
-    &_head {
-      display: flex;
-      justify-content: center;
-      &-title {
-        display: flex;
-        justify-content: center;
-      }
-    }
-  }
-}
-.vacancy-item {
-  &__block {
-    display: flex;
-    cursor: pointer;
-    width: 100%;
-    justify-content: space-around;
-    margin: 30px 0;
-    transition-property: border;
-    transition-duration: .2s;
-    // &:hover {
-    //   border: 1px solid #29aafe;
-    // }
-  }
-
-  &__img {
-    display: flex;
-    padding: 0 30px;
-    align-items: center;
-    max-width: 300px;
-    img {
-      width: 240px;
-    }
-  }
-  &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0 30px;
-    color: dimgray;
+    padding-top: 10px;
     &_main {
       display: flex;
       justify-content: space-between;
-      &-name {
-        font-size: 36px;
-        line-height: 40px;
-        color: #55595c;
-        font-family: Arial, sans-serif;
-        font-weight: 400;
+      width: 75%;
+      &-time {
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
       }
-      &-city {
-        color: #96a2b2;
-        line-height: 35px;
-        font-size: 30px;
+      &-descr {
+        display: flex;
+        padding: 10px;
       }
-    }
-    &_add {
-      display: flex;
-      justify-content: space-between;
-      &-company {
-        font-size: 30px;
-        color: #96a2b2;
-      }
-      &-worktime {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 30px;
-        color: white;
-        font-weight: 400;
-        border-radius: 0;
-        padding: 4px 6px;
-        margin-top: 6px;
-        margin-left: 16px;
-        opacity: .85;
-        background-color: #5cb85c;
+      &-params {
+        display: flex;
+        li {
+          width: 30%;
+        }
       }
     }
-    &_footer {
-      display: flex;
-      justify-content: space-between;
-      max-width: 50%;
-    }
+  }
+}
+.button-group {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  max-width: 300px;
+  img {
+    width: 240px;
+  }
+}
+.vacancy-info {
+  display: flex;
+  justify-content: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    max-width: 90%;
   }
 }
 
