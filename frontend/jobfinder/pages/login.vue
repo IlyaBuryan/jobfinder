@@ -87,6 +87,7 @@ export default {
           this.set_token(token.access);
           console.log(token);
           console.log("Ура мы авторизовались!");
+          this.$router.push("/");
         })
         .catch((error) => console.log(error));
     },
