@@ -27,7 +27,6 @@ class MessageOnResume(models.Model): #предложение на резюме
     vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now=True, verbose_name='Дата предложения')
     message = models.ForeignKey(Message, verbose_name='Отклик', on_delete=models.CASCADE)
-    # status = models.CharField(verbose_name='Статус', choices=statuses, default=1)
 
 
 class LetterToWorker(models.Model): #ответ на отклик работника
