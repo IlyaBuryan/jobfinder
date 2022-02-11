@@ -1,24 +1,25 @@
 <template>
   <div class="main__wrapp">
-    <!-- Page header -->
     <header class="header">
-     </header>
-      <div class="container no-shadow">
-        <h1 class="text-center">Личный кабинет</h1>
-      </div>
-    <div class="row">
+    </header>
 
-      <div class="col-1-3">
-        <img class="avatar" src="~/assets/img/ava.png" width="250" height="250" alt="avatar"/>
-      </div>
+     <div class="container no-shadow">
+      <h1 class="text-center">Личный кабинет</h1>
+     </div>
 
-      <div class="col-2-3">
-        <h2>{{ worker.first_name }} {{ worker.last_name }}</h2>
-        <p>{{ worker.phone }}</p>
-        <p>Данные о работнике</p>
-      </div>
-    </div>
-      <div class="tabs">
+     <section class="content">
+       <div class="content-wrap">
+          <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
+          <div class="cont-text" id=app>
+              <h2>Данные о работнике:</h2>
+              <div>
+                <h4>Имя:{{ workerId.first_name }}</h4>
+
+              </div>
+          </div>
+       </div>
+     </section>
+     <div class="tabs">
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
           <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
@@ -26,37 +27,69 @@
           <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
         </ul>
       </div>
-
   </div>
 </template>
 
 <script>
-  import { baseUrl, decode } from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
+
+import Cookies from "universal-cookie";
+import axios from "axios";
+import AuthError from "@/components/AuthError.vue";
+
   export default {
-    head() {
-      },
-    async asyncData({ $axios, params }) {
-      try {
-        let worker = await
-        $axios.$get('${baseUrl()}/worker/${workerId}/');
-        return { worker };
-      } catch (e) {
-        return { worker: [] };
+  components: { AuthError },
+  layout: "company",
+
+  data: () => ({
+    permission: "pending",
+    user: {},
+    workerId: "",
+    error: false,
+  }),
+
+  async mounted() {
+    await this.userRole();
+    this.checkPermission();
+  },
+
+  methods: {
+    checkPermission() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      if (token !== "" && this.user.role === 3) {
+        this.permission = "yes";
+      } else {
+        this.permission = "no";
       }
     },
-    data () {
-      return {
-        worker: {
-          first_name: "",
-          last_name: "",
-          phone: ""
-        }
+
+    async userRole() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+    },
+
+    async getWorker () {
+      try {
+        const response = await this.$axios.get('${baseUrl()}/worker/', { params: { workerId: this.workerId } })
+        this.workerId = response.data
+      } catch (e) {
+        this.$toast.error(e.response.data)
+      }
+    },
+
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
       };
-    }
-  };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
+  },
+};
 </script>
-
-
 
 <style scoped>
 
@@ -103,15 +136,34 @@
   margin-top: 150px;
 }
 
-.col-1-3 {
-  width: 33.3333333333%;
-  float: left;
-  margin-left:10px;
+.content {
+  background-color: #edeef0;
+  font-size: 18px;
+  font-style: normal;
+  color: #333333;
+  line-height: 1.4em;
+  letter-spacing: 0em;
 }
 
-.col-2-3 {
-  width: 66.6666666667%;
-  float: left;
+.content-wrap {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.item {}
+
+.cont-text {
+  margin-left: 40px;
+  margin-right: 10px;
+}
+
+.cont-text h2 {
+  margin-bottom: 30px;
+  font-size: 23px;
+  font-style: normal;
+  color: #333333;
+  line-height: 1.4em;
+  letter-spacing: 0em;
 }
 
 </style>
