@@ -116,7 +116,6 @@
 
 <script>
 import { baseUrl, decode } from "../store/constants.js";
-
 import Cookies from "universal-cookie";
 import axios from "axios";
 import AuthError from "@/components/AuthError.vue";
