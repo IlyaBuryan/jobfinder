@@ -82,6 +82,9 @@
             <p class="text-center">
               <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
+            <p class="text-center">
+              <nuxt-link class="btn btn-more" to="/account_company">Личный кабинет компании</nuxt-link>
+            </p>
           </div>
         </section>
         <!-- END Recent jobs -->
