@@ -177,7 +177,6 @@ export default {
           headers,
         })
         .then((response) => {
-          console.log(response.data);
           this.worker = response.data
           this.$router.push("/accountWorker");
         })
