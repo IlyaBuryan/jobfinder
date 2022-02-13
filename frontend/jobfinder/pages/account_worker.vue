@@ -13,8 +13,9 @@
           <div class="cont-text" id=app>
               <h2>Данные о работнике:</h2>
               <div>
-                <h4>Имя:{{ workerId.first_name }}</h4>
-
+                <h4>Имя:{{ worker.first_name }}</h4>
+                <h4>Фамилия:{{ worker.last_name }}</h4>
+                <p>Телефон:{{ worker.first_name }}</p>
               </div>
           </div>
        </div>
@@ -31,37 +32,43 @@
 </template>
 
 <script>
-import { baseUrl, decode } from "../store/constants.js";
-
-import Cookies from "universal-cookie";
+import {baseUrl, decode} from "../store/constants.js";
 import axios from "axios";
-import AuthError from "@/components/AuthError.vue";
+import Cookies from "universal-cookie";
 
-  export default {
-  components: { AuthError },
-  layout: "company",
+export default {
+  data: () => {
+    return {
+      user: {},
+      worker: {
+        first_name: '',
+        last_name: '',
+        phone: '',
+      }
+    }
+  },
 
-  data: () => ({
-    permission: "pending",
-    user: {},
-    workerId: "",
-    error: false,
-  }),
 
   async mounted() {
+    console.log('acc comm mounted');
+
     await this.userRole();
-    this.checkPermission();
+    this.getCard();
   },
 
   methods: {
-    checkPermission() {
+    getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      if (token !== "" && this.user.role === 3) {
-        this.permission = "yes";
-      } else {
-        this.permission = "no";
-      }
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+
+      axios
+        .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
+        .then((response) => {
+          this.worker = response.data;
+        })
+        .catch((error) => console.log(error));
     },
 
     async userRole() {
@@ -69,15 +76,13 @@ import AuthError from "@/components/AuthError.vue";
       let token = cookies.get("token");
       let userId = decode(token).user_id;
       let headers = this.get_headers(token);
-    },
 
-    async getWorker () {
-      try {
-        const response = await this.$axios.get('${baseUrl()}/worker/', { params: { workerId: this.workerId } })
-        this.workerId = response.data
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
+      await axios
+        .get(`${baseUrl()}/user/${userId}/`, {headers})
+        .then((response) => {
+          this.user = response.data;
+        })
+        .catch((error) => console.log(error));
     },
 
     get_headers(access) {
@@ -87,8 +92,8 @@ import AuthError from "@/components/AuthError.vue";
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
