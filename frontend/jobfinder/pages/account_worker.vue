@@ -15,7 +15,7 @@
               <div>
                 <h4>Имя:{{ worker.first_name }}</h4>
                 <h4>Фамилия:{{ worker.last_name }}</h4>
-                <p>Телефон:{{ worker.first_name }}</p>
+                <p>Телефон:{{ worker.phone }}</p>
               </div>
           </div>
        </div>
