@@ -25,7 +25,7 @@ class Resume(models.Model):
     courses = models.CharField(max_length=100, verbose_name='Курсы')
     info = models.TextField(verbose_name='Дополнительная информация')
     is_draft = models.BooleanField(default="false", verbose_name='Черновик')
-    worker = models.ForeignKey(Worker, verbose_name="Сотрудник", on_delete=models.CASCADE)
+    worker = models.ForeignKey(CustomUser, verbose_name="Сотрудник", on_delete=models.CASCADE)
 
 
 class WorkExperience(models.Model):

@@ -1,33 +1,39 @@
 <template>
   <div class="main__wrapp">
-    <header class="header">
-    </header>
+    <header class="header"></header>
 
-     <div class="container no-shadow">
+    <div class="container no-shadow">
       <h1 class="text-center">Личный кабинет</h1>
-     </div>
+    </div>
 
-     <section class="content">
-       <div class="content-wrap">
-          <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
-          <div class="cont-text" id=app>
-              <h2>Данные о работнике:</h2>
-              <div>
-                <h4>Имя:{{ workerId.first_name }}</h4>
-
-              </div>
+    <section class="content">
+      <div class="content-wrap">
+        <div class="item">
+          <img
+            src="~/assets/img/ava.png"
+            width="250"
+            height="250"
+            alt="avatar"
+          />
+        </div>
+        <div class="cont-text" id="app">
+          <h2>Данные о работнике:</h2>
+          <div>
+            <h4>Имя:{{ workerId.first_name }}</h4>
           </div>
-       </div>
-     </section>
-     <div class="tabs">
-        <ul class="breadcrumb">
-          <nuxt-link to="/workerCard" ></nuxt-link><li class="breadcrumb-item"><a href="#">МОЙ ПРОФИЛЬ</a></li>
-          <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
-          <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
-          <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
-          <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
-        </ul>
+        </div>
       </div>
+    </section>
+    <div class="tabs">
+      <ul class="breadcrumb">
+        <nuxt-link to="/workerCard"></nuxt-link>
+        <li class="breadcrumb-item"><a href="#">МОЙ ПРОФИЛЬ</a></li>
+        <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
+        <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
+        <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
+        <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -38,7 +44,7 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import AuthError from "@/components/AuthError.vue";
 
-  export default {
+export default {
   components: { AuthError },
   layout: "company",
 
@@ -72,12 +78,14 @@ import AuthError from "@/components/AuthError.vue";
       let headers = this.get_headers(token);
     },
 
-    async getWorker () {
+    async getWorker() {
       try {
-        const response = await this.$axios.get(`${baseUrl()}/worker/`, { params: { workerId: this.workerId } })
-        this.workerId = response.data
+        const response = await this.$axios.get(`${baseUrl()}/worker/`, {
+          params: { workerId: this.workerId },
+        });
+        this.workerId = response.data;
       } catch (e) {
-        this.$toast.error(e.response.data)
+        this.$toast.error(e.response.data);
       }
     },
 
@@ -93,7 +101,6 @@ import AuthError from "@/components/AuthError.vue";
 </script>
 
 <style scoped>
-
 .main__wrapp {
   display: flex;
   max-width: 100%;
@@ -112,8 +119,8 @@ import AuthError from "@/components/AuthError.vue";
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
-  margin-top:50px;
-  margin-bottom:50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .breadcrumb {
   width: 100%;
@@ -121,14 +128,14 @@ import AuthError from "@/components/AuthError.vue";
   display: center;
 }
 .container right {
-    display: justify;
-    margin-left: 10px;
+  display: justify;
+  margin-left: 10px;
 }
 .header {
   display: flex;
   height: 200px;
   flex-direction: column;
-  background: url('~/assets/img/bg-banner1.jpg') no-repeat bottom center;
+  background: url("~/assets/img/bg-banner1.jpg") no-repeat bottom center;
   background-size: cover;
   align-items: center;
 }
@@ -151,7 +158,8 @@ import AuthError from "@/components/AuthError.vue";
   margin-bottom: 50px;
 }
 
-.item {}
+.item {
+}
 
 .cont-text {
   margin-left: 40px;
@@ -166,5 +174,4 @@ import AuthError from "@/components/AuthError.vue";
   line-height: 1.4em;
   letter-spacing: 0em;
 }
-
 </style>
