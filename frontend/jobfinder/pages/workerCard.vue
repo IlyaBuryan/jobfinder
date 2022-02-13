@@ -178,12 +178,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          this.worker = {
-            first_name: "",
-            last_name: "",
-            phone: "",
-            birth_date: "",
-          };
+          this.worker = response.data
           this.$router.push("/accountWorker");
         })
         .catch(() =>

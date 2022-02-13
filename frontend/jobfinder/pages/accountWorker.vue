@@ -12,8 +12,11 @@
           <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
           <div class="cont-text" id=app>
               <h2>Данные о работнике:</h2>
-              <div>
-                <h4>Имя:{{ workerId.first_name }}</h4>
+              <div v-if="worker">
+                <h4>Имя:{{ worker.first_name }}</h4>
+                <h4>Фамилия:{{ worker.last_name }}</h4>
+                <h4>Дата рождения:{{ worker.birth_date }}</h4>
+                <h4>Телефон:{{ worker.phone }}</h4>
 
               </div>
           </div>
@@ -21,7 +24,7 @@
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
-          <nuxt-link to="/workerCard" ></nuxt-link><li class="breadcrumb-item"><a href="#">МОЙ ПРОФИЛЬ</a></li>
+          <nuxt-link to="/workerCard"><li class="breadcrumb-item">МОЙ ПРОФИЛЬ / </li></nuxt-link>
           <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
           <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
           <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
@@ -45,6 +48,7 @@ import AuthError from "@/components/AuthError.vue";
   data: () => ({
     permission: "pending",
     user: {},
+    worker: null,
     workerId: "",
     error: false,
   }),
@@ -52,6 +56,10 @@ import AuthError from "@/components/AuthError.vue";
   async mounted() {
     await this.userRole();
     this.checkPermission();
+
+  },
+  created() {
+    this.getWorker()
   },
 
   methods: {
@@ -68,14 +76,15 @@ import AuthError from "@/components/AuthError.vue";
     async userRole() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
+      this.workerIdId = decode(token).user_id;
       let headers = this.get_headers(token);
     },
 
     async getWorker () {
       try {
-        const response = await this.$axios.get(`${baseUrl()}/worker/`, { params: { workerId: this.workerId } })
-        this.workerId = response.data
+        const response = await this.$axios.get('${baseUrl()}/worker/', { params: { workerId: this.workerId } })
+        this.worker = response.data
+        console.log(this.worker)
       } catch (e) {
         this.$toast.error(e.response.data)
       }
