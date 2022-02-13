@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'messageapp',
     'lkcompanyapp',
     'lkworkerapp',
+    'newsapp',
 
     # External apps
     'rest_framework',
