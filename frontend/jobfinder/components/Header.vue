@@ -65,13 +65,19 @@
       <!-- END Navigation menu -->
 
       <!-- User account -->
-      <div class="login-wrapper">
+      <div v-if="!userData" class="login-wrapper">
         <NuxtLink class="btn btn-primary" to="/login"> Авторизация </NuxtLink>
         <p class="or">или</p>
         <NuxtLink class="btn btn-outline-dark" to="/register">
           Регистрация
         </NuxtLink>
       </div>
+      <nuxt-link to="/accountWorker">
+        <div v-if="userData" class="user-block">
+          <div class="user-block__image"><img src="~/assets/img/avatar-3.jpg"></div>
+          <div class="user-block__name"><p class="user-block__name_name">{{ userData.username }}</p></div>
+        </div>
+      </nuxt-link>
       <!-- END User account -->
     </div>
   </nav>
@@ -82,17 +88,24 @@
 import SingleLink from "@/components/SingleLink.vue";
 export default {
   components: { SingleLink },
+  props: {
+    userData: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data: () => ({
+    user: null,
     mouseOnMain: false,
     mouseOnVacancies: false,
     mouseOnResume: false,
     mouseOnCompanies: false,
     mouseOnPages: false,
   }),
-};
+}
 </script>
 
-<style scoped >
+<style scoped lang="scss">
 .navbar {
   width: 100%;
   background-color: transparent;
@@ -201,5 +214,26 @@ export default {
 }
 .or {
   margin: 0 30px;
+  color: white;
+}
+.user-block {
+  display: flex;
+  width: 200px;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid;
+  &__image {
+    display: flex;
+    height: 60px;
+  }
+  &__name {
+    display: flex;
+    &_name {
+      font-size: 14px;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :userData="user" />
 
     <div class="main-container">
       <nuxt />
@@ -10,11 +10,45 @@
 </template>
 
 <script>
+import { baseUrl, decode } from "../store/constants.js";
+import Cookies from "universal-cookie";
+import axios from "axios";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
   components: { Header, Footer },
+  data () {
+    return {
+      user: null
+    }
+  },
+  mounted () {
+    this.getUser()
+  },
+  methods: {
+    async getUser() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+
+      await axios
+        .get(`${baseUrl()}/user/${userId}/`, { headers })
+        .then((response) => {
+          this.user = response.data;
+          console.log(this.user)
+        })
+        .catch((error) => console.log(error));
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
+  }
 };
 </script>
 

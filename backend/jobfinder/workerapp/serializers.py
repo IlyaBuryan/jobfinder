@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from workerapp.models import Worker, Resume, WorkExperience
 
 
@@ -8,7 +9,9 @@ class WorkerModelSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class ResumeModelSerializer(ModelSerializer):
+class ResumeModelSerializer(serializers.ModelSerializer):
+    experience = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
+
     class Meta:
         model = Resume
         fields = '__all__'

@@ -83,7 +83,6 @@
               <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
             <p class="text-center">
-              <nuxt-link class="btn btn-more" to="/account_company">Личный кабинет компании</nuxt-link>
             </p>
           </div>
         </section>
@@ -233,6 +232,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'IndexPage',
   data () {
@@ -276,9 +276,10 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.getNewestVacancy()
-  },
+  // mounted() {
+  //   // this.getNewestVacancy()
+  //   this.getUser()
+  // },
   methods: {
     onSubmit () {
       this.login()
