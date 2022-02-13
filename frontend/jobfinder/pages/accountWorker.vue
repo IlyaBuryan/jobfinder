@@ -12,19 +12,12 @@
           <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
           <div class="cont-text" id=app>
               <h2>Данные о работнике:</h2>
-              <div v-if="worker">
-                <h4>Имя:{{ worker.first_name }}</h4>
-                <h4>Фамилия:{{ worker.last_name }}</h4>
-                <h4>Дата рождения:{{ worker.birth_date }}</h4>
-                <h4>Телефон:{{ worker.phone }}</h4>
-
               </div>
           </div>
        </div>
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
-          <nuxt-link to="/workerCard"><li class="breadcrumb-item">МОЙ ПРОФИЛЬ / </li></nuxt-link>
           <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
           <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
           <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
@@ -35,59 +28,11 @@
 </template>
 
 <script>
-import { baseUrl, decode } from "../store/constants.js";
-
-import Cookies from "universal-cookie";
-import axios from "axios";
-import AuthError from "@/components/AuthError.vue";
-
-  export default {
-  components: { AuthError },
-  layout: "company",
-
-  data: () => ({
-    permission: "pending",
-    user: {},
-    worker: null,
-    workerId: "",
-    error: false,
-  }),
-
-  async mounted() {
-    await this.userRole();
-    this.checkPermission();
-
-  },
-  created() {
-    this.getWorker()
-  },
-
-  methods: {
-    checkPermission() {
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      if (token !== "" && this.user.role === 3) {
-        this.permission = "yes";
-      } else {
-        this.permission = "no";
-      }
     },
 
     async userRole() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      this.workerIdId = decode(token).user_id;
-      let headers = this.get_headers(token);
-    },
-
-    async getWorker () {
-      try {
-        const response = await this.$axios.get('${baseUrl()}/worker/', { params: { workerId: this.workerId } })
-        this.worker = response.data
-        console.log(this.worker)
-      } catch (e) {
-        this.$toast.error(e.response.data)
-      }
     },
 
     get_headers(access) {
@@ -97,8 +42,6 @@ import AuthError from "@/components/AuthError.vue";
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  },
-};
 </script>
 
 <style scoped>
