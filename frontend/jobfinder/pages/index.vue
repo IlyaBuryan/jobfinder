@@ -12,7 +12,6 @@
             <h2 class="main-window__header">Мы предлагаем <mark>1,259</mark> вакансии прямо сейчас!</h2>
             <h5 class="main-window__header-subtitle">Найди работу по душе уже через минуту</h5>
             <br /><br /><br />
-            <button type="button" class="btn btn-primary" @click="getUser">Пользователь</button>
           </div>
 
           <form class="header-job-search">
@@ -84,7 +83,6 @@
               <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
             <p class="text-center">
-              <NuxtLink class="btn btn-more" to="/account_worker">Личный кабинет работника</NuxtLink>
             </p>
           </div>
         </section>

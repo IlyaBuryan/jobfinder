@@ -12,10 +12,6 @@
           <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
           <div class="cont-text" id=app>
               <h2>Данные о работнике:</h2>
-              <div>
-                <h4>Имя: {{ worker.first_name }}</h4>
-                <h4>Фамилия: {{ worker.last_name }}</h4>
-                <p>Телефон: {{ worker.phone }}</p>
               </div>
           </div>
        </div>
@@ -32,57 +28,11 @@
 </template>
 
 <script>
-import {baseUrl, decode} from "../store/constants.js";
-import axios from "axios";
-import Cookies from "universal-cookie";
-
-export default {
-  data: () => {
-    return {
-      user: {},
-      worker: {
-        first_name: '',
-        last_name: '',
-        phone: '',
-      }
-    }
-  },
-
-
-  async mounted() {
-    console.log('acc comm mounted');
-
-    await this.userRole();
-    this.getCard();
-  },
-
-  methods: {
-    getCard() {
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
-
-      axios
-        .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
-        .then((response) => {
-          this.worker = response.data;
-        })
-        .catch((error) => console.log(error));
     },
 
     async userRole() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
-
-      await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
-        .then((response) => {
-          this.user = response.data;
-        })
-        .catch((error) => console.log(error));
     },
 
     get_headers(access) {
@@ -92,8 +42,6 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
-}
 </script>
 
 <style scoped>

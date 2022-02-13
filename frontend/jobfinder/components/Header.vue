@@ -72,7 +72,7 @@
           Регистрация
         </NuxtLink>
       </div>
-      <nuxt-link to="/workercard">
+      <nuxt-link to="/accountWorker">
         <div v-if="userData" class="user-block">
           <div class="user-block__image"><img src="~/assets/img/avatar-3.jpg"></div>
           <div class="user-block__name"><p class="user-block__name_name">{{ userData.username }}</p></div>
