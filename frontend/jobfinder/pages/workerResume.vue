@@ -239,34 +239,39 @@ export default {
 
     sendCreateReq(event) {
       event.preventDefault();
-      this.worker.worker = this.user.id;
-      this.error = [];
+      if (this.experience.length > 0) {
+        this.worker.worker = this.user.id;
+        this.error = [];
 
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      let headers = this.get_headers(token);
+        const cookies = new Cookies();
+        let token = cookies.get("token");
+        let headers = this.get_headers(token);
 
-      axios
-        .post(`${baseUrl()}/resume/`, this.worker, {
-          headers,
-        })
-        .then((response) => {
-          this.worker = {
-            position: "",
-            education_types: "",
-            institution: "",
-            courses: "",
-            info: "",
-            is_draft: false,
-          };
-          this.experience.map((exp) => {
-            exp.resume.push(response.data.id);
-            this.saveExperience(headers, exp);
-          });
-        })
-        .catch(() =>
-          this.error.push("Ошибка при отправке формы, проверьте ввод!")
-        );
+        axios
+          .post(`${baseUrl()}/resume/`, this.worker, {
+            headers,
+          })
+          .then((response) => {
+            this.worker = {
+              position: "",
+              education_types: "",
+              institution: "",
+              courses: "",
+              info: "",
+              is_draft: false,
+            };
+            this.experience.map((exp) => {
+              exp.resume.push(response.data.id);
+              this.saveExperience(headers, exp);
+            });
+          })
+          .catch(() =>
+            this.error.push("Ошибка при отправке формы, проверьте ввод!")
+          );
+      } else {
+        this.error = [];
+        this.error.push("Вы не добавили опыт!");
+      }
     },
 
     saveExperience(headers, single_experience) {
