@@ -21,6 +21,7 @@
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
+          <nuxt-link to="/workerCard" ></nuxt-link><li class="breadcrumb-item"><a href="#">МОЙ ПРОФИЛЬ</a></li>
           <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
           <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
           <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
@@ -73,7 +74,7 @@ import AuthError from "@/components/AuthError.vue";
 
     async getWorker () {
       try {
-        const response = await this.$axios.get('${baseUrl()}/worker/', { params: { workerId: this.workerId } })
+        const response = await this.$axios.get(`${baseUrl()}/worker/`, { params: { workerId: this.workerId } })
         this.workerId = response.data
       } catch (e) {
         this.$toast.error(e.response.data)

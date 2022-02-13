@@ -184,6 +184,7 @@ export default {
             phone: "",
             birth_date: "",
           };
+          this.$router.push("/accountWorker");
         })
         .catch(() =>
           this.error.push("Ошибка при отправке формы, проверьте ввод!")
