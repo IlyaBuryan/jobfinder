@@ -13,9 +13,9 @@
           <div class="cont-text" id=app>
               <h2>Данные о работнике:</h2>
               <div>
-                <h4>Имя:{{ worker.first_name }}</h4>
-                <h4>Фамилия:{{ worker.last_name }}</h4>
-                <p>Телефон:{{ worker.phone }}</p>
+                <h4>Имя: {{ worker.first_name }}</h4>
+                <h4>Фамилия: {{ worker.last_name }}</h4>
+                <p>Телефон: {{ worker.phone }}</p>
               </div>
           </div>
        </div>
