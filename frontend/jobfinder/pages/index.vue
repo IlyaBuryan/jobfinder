@@ -83,7 +83,6 @@
               <nuxt-link class="btn btn-more" to="/vacancies">Просмотреть все вакансии</nuxt-link>
             </p>
             <p class="text-center">
-              <NuxtLink class="btn btn-more" to="/account_worker">Личный кабинет работника</NuxtLink>
             </p>
           </div>
         </section>
