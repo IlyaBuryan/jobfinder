@@ -41,12 +41,7 @@ export default {
   data: () => {
     return {
       user: {},
-      worker: {
-        first_name: '',
-        last_name: '',
-        birth_date: '',
-        phone: '',
-      }
+      worker: {}
     }
   },
 
