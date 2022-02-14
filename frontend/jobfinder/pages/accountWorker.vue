@@ -45,7 +45,6 @@
 </script>
 
 <style scoped>
-
 .main__wrapp {
   display: flex;
   max-width: 100%;
@@ -64,8 +63,8 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
-  margin-top:50px;
-  margin-bottom:50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .breadcrumb {
   width: 100%;
@@ -73,14 +72,14 @@
   display: center;
 }
 .container right {
-    display: justify;
-    margin-left: 10px;
+  display: justify;
+  margin-left: 10px;
 }
 .header {
   display: flex;
   height: 200px;
   flex-direction: column;
-  background: url('~/assets/img/bg-banner1.jpg') no-repeat bottom center;
+  background: url("~/assets/img/bg-banner1.jpg") no-repeat bottom center;
   background-size: cover;
   align-items: center;
 }
@@ -103,7 +102,8 @@
   margin-bottom: 50px;
 }
 
-.item {}
+.item {
+}
 
 .cont-text {
   margin-left: 40px;
@@ -118,5 +118,4 @@
   line-height: 1.4em;
   letter-spacing: 0em;
 }
-
 </style>

@@ -59,6 +59,7 @@
           <NuxtLink to="/">Работники</NuxtLink>
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
             <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
+            <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
           </ul>
         </li>
       </ul>
@@ -74,8 +75,12 @@
       </div>
       <nuxt-link to="/accountWorker">
         <div v-if="userData" class="user-block">
-          <div class="user-block__image"><img src="~/assets/img/avatar-3.jpg"></div>
-          <div class="user-block__name"><p class="user-block__name_name">{{ userData.username }}</p></div>
+          <div class="user-block__image">
+            <img src="~/assets/img/avatar-3.jpg" />
+          </div>
+          <div class="user-block__name">
+            <p class="user-block__name_name">{{ userData.username }}</p>
+          </div>
         </div>
       </nuxt-link>
       <!-- END User account -->
@@ -91,8 +96,8 @@ export default {
   props: {
     userData: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   data: () => ({
     user: null,
@@ -102,7 +107,7 @@ export default {
     mouseOnCompanies: false,
     mouseOnPages: false,
   }),
-}
+};
 </script>
 
 <style scoped lang="scss">
