@@ -17,6 +17,8 @@ from messageapp.views import MessageModelViewSet
 
 from lkworkerapp.views import MessageToVacancyModelViewSet, LetterToCompanyModelViewSet
 
+from newsapp.views import NewsModelViewSet
+
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
 router.register('companyapp', CompanyCardModelViewSet)
@@ -29,7 +31,7 @@ router.register('message_on_resume', MessageOnResumeModelViewSet)
 router.register('letter_to_worker', LetterToWorkerModelViewSet)
 router.register('message_to_vacancy', MessageToVacancyModelViewSet)
 router.register('letter_to_company', LetterToCompanyModelViewSet)
-
+router.register('news', NewsModelViewSet)
 
 
 schema_view = get_schema_view(
