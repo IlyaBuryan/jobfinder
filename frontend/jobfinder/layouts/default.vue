@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :userData="user" />
+    <Header :userData="user" :link="currWay" />
 
     <div class="main-container">
       <nuxt />
@@ -20,13 +20,21 @@ export default {
   components: { Header, Footer },
   data () {
     return {
-      user: null
+      user: null,
+      currWay: ''
     }
   },
   mounted () {
     this.getUser()
   },
   methods: {
+    checkLink () {
+      if (this.user.role === 2) {
+        this.currWay = '/accountWorker'
+      } else if (this.user.role === 3) {
+          this.currWay = '/accountCompany'
+      }
+    },
     async getUser() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -38,6 +46,7 @@ export default {
         .then((response) => {
           this.user = response.data;
           console.log(this.user)
+          this.checkLink()
         })
         .catch((error) => console.log(error));
     },

@@ -73,7 +73,7 @@
           Регистрация
         </NuxtLink>
       </div>
-      <nuxt-link to="/accountWorker">
+      <nuxt-link :to="`${link}`">
         <div v-if="userData" class="user-block">
           <div class="user-block__image">
             <img src="~/assets/img/avatar-3.jpg" />
@@ -83,6 +83,7 @@
           </div>
         </div>
       </nuxt-link>
+      <div v-if="userData" class="logout" @click="logout"><img class="logout__img" src="~/assets/img/logout58.png"></div>
       <!-- END User account -->
     </div>
   </nav>
@@ -91,6 +92,9 @@
 
 <script>
 import SingleLink from "@/components/SingleLink.vue";
+import {baseUrl, decode} from "../store/constants.js";
+import axios from "axios";
+import Cookies from "universal-cookie";
 export default {
   components: { SingleLink },
   props: {
@@ -98,6 +102,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    link: {
+      type: String,
+      default: () => ''
+    }
   },
   data: () => ({
     user: null,
@@ -107,6 +115,29 @@ export default {
     mouseOnCompanies: false,
     mouseOnPages: false,
   }),
+  methods: {
+    logout () {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+      let data = {refresh: 'token'}
+
+      axios
+        .post(`${baseUrl()}/logout/`, data)
+        .then((response) => {
+        token = response.data;
+        })
+        .catch((error) => console.log(error));
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
+  }
 };
 </script>
 
@@ -239,6 +270,12 @@ export default {
       color: white;
       margin-bottom: 0;
     }
+  }
+}
+.logout {
+  display: flex;
+  &__img {
+    height: 60px;
   }
 }
 </style>
