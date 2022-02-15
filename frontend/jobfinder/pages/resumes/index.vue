@@ -3,8 +3,8 @@
     <!-- Page header -->
     <header class="header">
       <div class="head__container">
-        <h1 class="text-center">Найти вакансии</h1>
-        <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящей работы</p>
+        <h1 class="text-center">Найти резюме</h1>
+        <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящего резюме</p>
       </div>
 
       <div class="filter__container">
@@ -13,7 +13,7 @@
           <div class="filter__container_header">
             <div class="form-group col-xs-12 col-sm-4">
               <input type="text" class="form-control"
-                placeholder="Ключевые слова: название должности, требования к навыкам, название компании">
+                placeholder="Ключевые слова: название должности">
             </div>
 
             <div class="form-group col-xs-12 col-sm-4">
@@ -158,32 +158,26 @@
           </div>
           <!-- Job item -->
 
-          <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
-            <nuxt-link :to="`/vacancies/${item.id}`" style="textDecoration:none">
+          <div class="vacancy-item" v-for="(item, id) in resumeList" :key="id">
+            <nuxt-link :to="`/resumes/${item.id}`" style="textDecoration:none">
               <div class="vacancy-item__block">
                 <div class="vacancy-item__info">
                   <div class="vacancy-item__info_main">
                     <div class="vacancy-item__info_main-name">{{ item.position }}</div>
-                    <div class="vacancy-item__info_main-name">{{ item.salary }}</div>
+                    <div class="vacancy-item__info_main-name"><img src="~/assets/img/ava-5.png" width="150" height="150" alt="avatar"></div>
                   </div>
+                   <div class="content">
+                    <div><b>Данные:</b> {{}}</div>
+                    <div><b>Телефон:</b> {{}}</div>
                   <br/>
+                  </div>
                   <div class="vacancy-item__info_footer">
-                    <div class="vacancy-item__info_footer-city">{{ item.city }}</div>
+                    <div class="vacancy-item__info_footer-city"><b>О себе:</b> {{ item.info }}</div>
                   </div>
-                  <br/>
-                  <div class="content">
-                    <div><b>Условия:</b> {{ item.conditions }}</div>
-                    <div><b>Обязанности:</b> {{ item.duties}}</div>
-                    <div><b>Требования:</b> {{ item.requirements }}</div>
-                    <br/>
-                    <div>{{ item.published_date }}</div>
-                  </div>
-                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">Компания {{ company.name }}</div>
                 </div>
               </div>
             </nuxt-link>
           </div>
-
           <!-- END Job item first-->
 
           <!-- Page navigation -->
@@ -222,13 +216,7 @@ export default {
   data: () => {
     return {
       user: {},
-      vacancyList: [],
-      companyList: [
-      {
-        id: "",
-        name: ""
-      }
-      ]
+      resumeList: [],
     }
   },
 
@@ -248,19 +236,12 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/vacancyapp/`, {headers})
+        .get(`${baseUrl()}/resume/`, {headers})
         .then((response) => {
-          this.vacancyList = response.data;
+          this.resumeList = response.data;
         })
         .catch((error) => console.log(error));
-
-    axios
-        .get(`${baseUrl()}/companyapp/`, {headers})
-        .then((response) => {
-          this.companyList = response.data;
-        })
-        .catch((error) => console.log(error));
-    },
+      },
 
     async userRole() {
       const cookies = new Cookies();
@@ -320,9 +301,8 @@ export default {
   text-align: left;
 }
 .vacancy {
-  justify-content: flex-start;
-  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   max-width: 1800px;
   min-width: 800px;
   align-self: center;
@@ -389,7 +369,7 @@ export default {
     }
     &_add {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       &-company {
         font-size: 36px;
         line-height: 40px;
@@ -411,10 +391,9 @@ export default {
     }
     &_footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       max-width: 50%;
     }
   }
 }
-
 </style>

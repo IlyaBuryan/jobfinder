@@ -40,7 +40,7 @@
         >
           <NuxtLink to="/">Резюме</NuxtLink>
           <ul v-if="mouseOnResume" class="nav-menu__ul_el">
-            <li><NuxtLink to="/">Список резюме</NuxtLink></li>
+            <li><NuxtLink to="/resumes">Список резюме</NuxtLink></li>
             <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
             <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
           </ul>
