@@ -124,7 +124,7 @@ export default {
       let data = {refresh: 'token'}
 
       axios
-        .post(`${baseUrl()}/logout/`, data)
+        .post(`${baseUrl()}/logout/`, {headers})
         .then((response) => {
         token = response.data;
         })

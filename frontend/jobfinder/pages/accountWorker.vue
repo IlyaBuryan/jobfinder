@@ -23,10 +23,48 @@
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">МОИ РЕЗЮМЕ</a></li>
-          <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
-          <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
-          <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
+          <nuxt-link to="/workerCard">
+            <li
+              :class="{
+                'tab-item': true,
+                'tab-item_active': activeTab === 'myProfile'}"
+              @click="changeActiveTab('myProfile')"
+            >
+            МОЙ ПРОФИЛЬ /
+            </li>
+          </nuxt-link>
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myResumes'}"
+            @click="changeActiveTab('myResumes')"
+          >
+          МОИ РЕЗЮМЕ /
+          </li>
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myRequests'}"
+            @click="changeActiveTab('myRequests')"
+          >
+          ОТКЛИКИ /
+          </li>
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myInvites'}"
+            @click="changeActiveTab('myInvites')"
+          >
+          ПРЕДЛОЖЕНИЯ /
+          </li>
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myLetters'}"
+            @click="changeActiveTab('myLetters')"
+          >
+          ПИСЬМА / 
+          </li>
         </ul>
       </div>
   </div>
@@ -41,7 +79,8 @@ export default {
   data: () => {
     return {
       user: {},
-      worker: {}
+      worker: {},
+      activeTab: 'myProfile'
     }
   },
 
@@ -54,6 +93,10 @@ export default {
   },
 
   methods: {
+    changeActiveTab(tab) {
+      this.activeTab = tab
+      console.log(`i am ${this.activeTab}`)
+    },
     getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -93,7 +136,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main__wrapp {
   display: flex;
   max-width: 100%;
@@ -151,7 +194,12 @@ export default {
   margin-bottom: 50px;
 }
 
-.item {
+.tab-item {
+  color:blue;
+  &_active {
+    color: white;
+    background-color: blue;
+  }
 }
 
 .cont-text {
