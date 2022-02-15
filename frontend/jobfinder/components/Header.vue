@@ -56,24 +56,34 @@
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
-          <NuxtLink to="/">Страницы</NuxtLink>
+          <NuxtLink to="/">Работники</NuxtLink>
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
-            <li><NuxtLink to="/">Вариант 1</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
+            <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
+            <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
           </ul>
         </li>
       </ul>
       <!-- END Navigation menu -->
 
       <!-- User account -->
-      <div class="login-wrapper">
+      <div v-if="!userData" class="login-wrapper">
         <NuxtLink class="btn btn-primary" to="/login"> Авторизация </NuxtLink>
         <p class="or">или</p>
         <NuxtLink class="btn btn-outline-dark" to="/register">
           Регистрация
         </NuxtLink>
       </div>
+      <nuxt-link :to="`${link}`">
+        <div v-if="userData" class="user-block">
+          <div class="user-block__image">
+            <img src="~/assets/img/avatar-3.jpg" />
+          </div>
+          <div class="user-block__name">
+            <p class="user-block__name_name">{{ userData.username }}</p>
+          </div>
+        </div>
+      </nuxt-link>
+      <div v-if="userData" class="logout" @click="logout"><img class="logout__img" src="~/assets/img/logout58.png"></div>
       <!-- END User account -->
     </div>
   </nav>
@@ -82,19 +92,56 @@
 
 <script>
 import SingleLink from "@/components/SingleLink.vue";
+import {baseUrl, decode} from "../store/constants.js";
+import axios from "axios";
+import Cookies from "universal-cookie";
 export default {
   components: { SingleLink },
+  props: {
+    userData: {
+      type: Object,
+      default: () => {},
+    },
+    link: {
+      type: String,
+      default: () => ''
+    }
+  },
   data: () => ({
+    user: null,
     mouseOnMain: false,
     mouseOnVacancies: false,
     mouseOnResume: false,
     mouseOnCompanies: false,
     mouseOnPages: false,
   }),
+  methods: {
+    logout () {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+      let data = {refresh: 'token'}
+
+      axios
+        .post(`${baseUrl()}/logout/`, data)
+        .then((response) => {
+        token = response.data;
+        })
+        .catch((error) => console.log(error));
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
+  }
 };
 </script>
 
-<style scoped >
+<style scoped lang="scss">
 .navbar {
   width: 100%;
   background-color: transparent;
@@ -203,5 +250,32 @@ export default {
 }
 .or {
   margin: 0 30px;
+  color: white;
+}
+.user-block {
+  display: flex;
+  width: 200px;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid;
+  &__image {
+    display: flex;
+    height: 60px;
+  }
+  &__name {
+    display: flex;
+    &_name {
+      font-size: 14px;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+}
+.logout {
+  display: flex;
+  &__img {
+    height: 60px;
+  }
 }
 </style>

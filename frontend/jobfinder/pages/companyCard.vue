@@ -116,7 +116,6 @@
 
 <script>
 import { baseUrl, decode } from "../store/constants.js";
-
 import Cookies from "universal-cookie";
 import axios from "axios";
 import AuthError from "@/components/AuthError.vue";
@@ -155,9 +154,8 @@ export default {
   }),
 
   async mounted() {
-    // TODO - убрать this.auth() после того как будет готова регистрация, авторизация
-    await this.auth();
     await this.userRole();
+    // await this.getOptions();
     this.checkPermission();
   },
 
@@ -165,12 +163,14 @@ export default {
     checkPermission() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      if (token !== "" && this.user.role === 1) {
+      if (token !== "" && this.user.role === 3) {
         this.permission = "yes";
       } else {
         this.permission = "no";
       }
     },
+
+    // getOptions() {},
 
     async userRole() {
       const cookies = new Cookies();
@@ -194,25 +194,6 @@ export default {
       return headers;
     },
 
-    // TODO - убрать this.auth() после того как будет готова регистрация, авторизация
-    auth() {
-      axios
-        .post(`${baseUrl()}/token/`, {
-          username: "django",
-          password: "django",
-        })
-        .then((response) => {
-          const token = response.data;
-          this.set_token(token.access);
-        })
-        .catch((error) => console.log(error));
-    },
-    // TODO - убрать this.auth() после того как будет готова регистрация, авторизация
-    set_token(token) {
-      const cookies = new Cookies();
-      cookies.set("token", token, { path: "/" });
-    },
-
     sendCreateReq(event) {
       event.preventDefault();
       this.company.user = this.user.id;
@@ -234,6 +215,7 @@ export default {
             company_details: "",
             description: "",
           };
+          this.$router.push('/accountCompany')
         })
         .catch(() => (this.error = true));
     },

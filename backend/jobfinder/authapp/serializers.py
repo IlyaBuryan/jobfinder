@@ -1,18 +1,26 @@
+from collections import OrderedDict
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from authapp.models import CustomUser
 
 
-class CustomUserModelSerializer(ModelSerializer):
+class CustomUserModelSerializer(serializers.ModelSerializer):
+    company = serializers.PrimaryKeyRelatedField(read_only=True)
+    worker = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = CustomUser
-        fields = ('id', 'password', 'username', 'email', 'role')
+        fields = ('id', 'password', 'username', 'email', 'role', 'company', 'worker')
 
     def create(self, validated_data):
         user = CustomUser.objects.create_user(**validated_data)
         return user
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret = OrderedDict(list(filter(lambda x: x[1], ret.items())))
+        return ret
 
 
 class LogoutSerializer(serializers.Serializer):
