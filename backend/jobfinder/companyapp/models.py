@@ -16,6 +16,7 @@ categories_choices = (
     (11, 'Другое')
 )
 
+
 class CompanyCard(models.Model):
     name = models.CharField(verbose_name='Наименование организации', max_length=64)
     categories = categories_choices
@@ -36,5 +37,7 @@ class Vacancy(models.Model):
                                         message='Превышена максимально допустимая длина')])
     requirements = models.TextField(verbose_name='Требования', validators=[MaxLengthValidator(limit_value=2500,
                                         message='Превышена максимально допустимая длина')])
-    published_date = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')
+    salary = models.CharField(verbose_name='Зарплата', max_length=64, null=True, blank=True)
+    city = models.CharField(verbose_name='Город', max_length=64, null=True, blank=True)
+    published_date = models.DateField(auto_now_add=True, verbose_name='Дата публикации')
     company_card = models.ForeignKey(CompanyCard, verbose_name='Организация', on_delete=models.CASCADE)

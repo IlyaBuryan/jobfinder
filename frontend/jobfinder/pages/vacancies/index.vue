@@ -161,11 +161,7 @@
           <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
             <nuxt-link :to="`/vacancies/${item.id}`" style="textDecoration:none">
               <div class="vacancy-item__block">
-                <div class="vacancy-item__img"><img class="company-logo" :src="item.img" alt=""></div>
                 <div class="vacancy-item__info">
-                  <div class="vacancy-item__info_main" v-for="(company, id) in companyList" :key="id">
-                    <div class="vacancy-item__info_main-name">Компания: {{ company.name }}</div>
-                  </div>
                   <div class="vacancy-item__info_main">
                     <div class="vacancy-item__info_main-name">{{ item.position }}</div>
                   </div>
@@ -315,7 +311,7 @@ export default {
   display: flex;
   flex-direction: column;
   max-width: 1800px;
-  align-self: center;
+  align-self: right;
   &__list {
     display: flex;
     flex-direction: column;
@@ -335,7 +331,7 @@ export default {
   &__block {
     display: flex;
     cursor: pointer;
-    width: 100%;
+    // width: 100%;
     justify-content: space-around;
     margin: 30px 0;
     transition-property: border;
@@ -345,15 +341,15 @@ export default {
     // }
   }
 
-  &__img {
-    display: flex;
-    padding: 0 30px;
-    align-items: center;
-    max-width: 300px;
-    img {
-      width: 240px;
-    }
-  }
+  // &__img {
+  //  display: flex;
+  //  padding: 0 30px;
+  //  align-items: center;
+  //  max-width: 300px;
+  //  img {
+  //    width: 240px;
+  //  }
+  //}
   &__info {
     display: flex;
     flex-direction: column;

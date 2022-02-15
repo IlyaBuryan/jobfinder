@@ -25,7 +25,7 @@ class MessageOnResume(models.Model): #предложение на резюме
     user = models.ManyToManyField(CustomUser, verbose_name='Пользователь')  # зачем здесь юзер? их же 3 в модели, может permission?
     resume = models.ManyToManyField(Resume, verbose_name='Резюме')
     vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now=True, verbose_name='Дата предложения')
+    date = models.DateField(auto_now_add=True, verbose_name='Дата предложения')
     message = models.ForeignKey(Message, verbose_name='Отклик', on_delete=models.CASCADE)
 
 
@@ -34,4 +34,4 @@ class LetterToWorker(models.Model): #ответ на отклик работни
                             validators=[MaxLengthValidator(limit_value=500,
                                                             message='Превышена максимально допустимая длина')])
     response_status = models.CharField(max_length=500, verbose_name='Статус ответа', choices=response_statuses)
-    date = models.DateTimeField(auto_now=True, verbose_name='Дата ответа')
+    date = models.DateField(auto_now_add=True, verbose_name='Дата ответа')

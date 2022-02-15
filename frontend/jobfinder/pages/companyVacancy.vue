@@ -56,6 +56,26 @@
                 v-model="vacancy.requirements"
               />
             </div>
+            <div class="form-group">
+              <label for="salComp">Зарплата</label>
+              <textarea
+                type="text"
+                id="salComp"
+                placeholder="Зарплата"
+                class="form-control"
+                v-model="vacancy.salary"
+              />
+            </div>
+            <div class="form-group">
+              <label for="cityComp">Город</label>
+              <textarea
+                type="text"
+                id="cityComp"
+                placeholder="Город"
+                class="form-control"
+                v-model="vacancy.city"
+              />
+            </div>
             <!-- END Fields -->
 
             <!-- Submit -->
@@ -116,6 +136,8 @@ export default {
       conditions: "",
       duties: "",
       requirements: "",
+      salary: "",
+      city: ""
     },
     error: false,
   }),
@@ -187,6 +209,8 @@ export default {
             conditions: "",
             duties: "",
             requirements: "",
+            salary: "",
+            city: ""
           };
         })
         .catch(() => (this.error = true));
