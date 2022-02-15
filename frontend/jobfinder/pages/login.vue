@@ -94,6 +94,7 @@ export default {
     set_token(token) {
       const cookies = new Cookies();
       cookies.set("token", token, { path: "/" });
+      this.$router.replace("/");
     },
   },
 };
