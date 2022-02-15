@@ -56,6 +56,26 @@
                 v-model="vacancy.requirements"
               />
             </div>
+            <div class="form-group">
+              <label for="salComp">Зарплата</label>
+              <textarea
+                type="text"
+                id="salComp"
+                placeholder="Зарплата"
+                class="form-control"
+                v-model="vacancy.salary"
+              />
+            </div>
+            <div class="form-group">
+              <label for="cityComp">Город</label>
+              <textarea
+                type="text"
+                id="cityComp"
+                placeholder="Город"
+                class="form-control"
+                v-model="vacancy.city"
+              />
+            </div>
             <!-- END Fields -->
 
             <!-- Submit -->
@@ -65,7 +85,7 @@
                   <span>Вы закончили?</span>
                   <h2>Отправляйте</h2>
                   <p>
-                    Пожалуйста, проверьте информацию о своей компании еще раз и
+                    Пожалуйста, проверьте информацию о своей вакансии еще раз и
                     нажмите кнопку ниже для доступа вашей компании к ресурсам
                     сайта.
                   </p>
@@ -76,7 +96,7 @@
                     class="btn btn-success btn-xl btn-round"
                     v-on:click="sendCreateReq"
                   >
-                    Добавьте информацию о своей компании.
+                    Добавьте информацию о своей вакансии
                   </button>
                 </p>
               </div>
@@ -116,6 +136,8 @@ export default {
       conditions: "",
       duties: "",
       requirements: "",
+      salary: "",
+      city: ""
     },
     error: false,
   }),
@@ -187,6 +209,8 @@ export default {
             conditions: "",
             duties: "",
             requirements: "",
+            salary: "",
+            city: ""
           };
         })
         .catch(() => (this.error = true));

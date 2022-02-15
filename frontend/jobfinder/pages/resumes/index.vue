@@ -3,8 +3,8 @@
     <!-- Page header -->
     <header class="header">
       <div class="head__container">
-        <h1 class="text-center">Найти вакансии</h1>
-        <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящей работы</p>
+        <h1 class="text-center">Найти резюме</h1>
+        <p class="lead text-center">Воспользуйтесь полями ниже для поиска подходящего резюме</p>
       </div>
 
       <div class="filter__container">
@@ -13,7 +13,7 @@
           <div class="filter__container_header">
             <div class="form-group col-xs-12 col-sm-4">
               <input type="text" class="form-control"
-                placeholder="Ключевые слова: название должности, требования к навыкам, название компании">
+                placeholder="Ключевые слова: название должности">
             </div>
 
             <div class="form-group col-xs-12 col-sm-4">
@@ -158,33 +158,31 @@
           </div>
           <!-- Job item -->
 
-          <div class="vacancy-item" v-for="(item, id) in vacancyList" :key="id">
-            <nuxt-link :to="`/vacancies/${item.id}`" style="textDecoration:none">
+          <div class="vacancy-item" v-for="(item, id) in resumeList" :key="id">
+            <nuxt-link :to="`/resumes/${item.id}`" style="textDecoration:none">
               <div class="vacancy-item__block">
                 <div class="vacancy-item__info">
                   <div class="vacancy-item__info_main">
                     <div class="vacancy-item__info_main-name">{{ item.position }}</div>
-                    <div class="vacancy-item__info_main-name">{{ item.salary }}</div>
+                    <div class="vacancy-item__info_main-name"><img src="~/assets/img/ava-5.png" width="150" height="150" alt="avatar"></div>
                   </div>
+                   <div class="vacancy-item__info_descr" v-for="worker in workerList" :key="worker.id" >
+                    <div><b>Данные:</b> {{ worker.first_name }} {{ worker.last_name }}</div>
+                    <div><b>Телефон:</b> {{ worker.phone }}</div>
+                   </div>
                   <br/>
-                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">
-                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ company.name }}</div>
+                  <div class="vacancy-item__info_descr" v-for="experience in experienceList" :key="experience.id" >
+                    <div><b>Место работы:</b> {{ experience.organization }}</div>
+                    <div><b>Должность:</b> {{ experience.position }}</div>
+                  <br/>
+                  </div>
                   <div class="vacancy-item__info_footer">
-                    <div class="vacancy-item__info_footer-city">{{ item.city }}</div>
-                  </div>
-                  <br/>
-                  <div class="content">
-                    <div><b>Условия:</b> {{ item.conditions }}</div>
-                    <div><b>Обязанности:</b> {{ item.duties}}</div>
-                    <div><b>Требования:</b> {{ item.requirements }}</div>
-                    <br/>
-                    <div>{{ item.published_date }}</div>
+                    <div class="vacancy-item__info_footer-city"><b>О себе:</b> {{ item.info }}</div>
                   </div>
                 </div>
               </div>
             </nuxt-link>
           </div>
-
           <!-- END Job item first-->
 
           <!-- Page navigation -->
@@ -223,8 +221,9 @@ export default {
   data: () => {
     return {
       user: {},
-      vacancyList: [],
-      companyList:[]
+      resumeList: [],
+      workerList: [],
+      experienceList: []
     }
   },
 
@@ -244,19 +243,26 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/vacancyapp/`, {headers})
+        .get(`${baseUrl()}/resume/`, {headers})
         .then((response) => {
-          this.vacancyList = response.data;
+          this.resumeList = response.data;
         })
         .catch((error) => console.log(error));
 
-    axios
-        .get(`${baseUrl()}/companyapp/`, {headers})
+      axios
+        .get(`${baseUrl()}/worker/`, {headers})
         .then((response) => {
-          this.companyList = response.data;
+          this.workerList = response.data;
         })
         .catch((error) => console.log(error));
-    },
+
+      axios
+        .get(`${baseUrl()}/work_experience/`, {headers})
+        .then((response) => {
+          this.experienceList = response.data;
+        })
+        .catch((error) => console.log(error));
+      },
 
     async userRole() {
       const cookies = new Cookies();
@@ -316,9 +322,8 @@ export default {
   text-align: left;
 }
 .vacancy {
-  justify-content: flex-start;
-  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   max-width: 1800px;
   min-width: 800px;
   align-self: center;
@@ -385,7 +390,7 @@ export default {
     }
     &_add {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       &-company {
         font-size: 36px;
         line-height: 40px;
@@ -407,10 +412,9 @@ export default {
     }
     &_footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       max-width: 50%;
     }
   }
 }
-
 </style>
