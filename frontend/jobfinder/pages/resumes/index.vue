@@ -166,9 +166,14 @@
                     <div class="vacancy-item__info_main-name">{{ item.position }}</div>
                     <div class="vacancy-item__info_main-name"><img src="~/assets/img/ava-5.png" width="150" height="150" alt="avatar"></div>
                   </div>
-                   <div class="content">
-                    <div><b>Данные:</b> {{}}</div>
-                    <div><b>Телефон:</b> {{}}</div>
+                   <div class="vacancy-item__info_descr" v-for="worker in workerList" :key="worker.id" >
+                    <div><b>Данные:</b> {{ worker.first_name }} {{ worker.last_name }}</div>
+                    <div><b>Телефон:</b> {{ worker.phone }}</div>
+                   </div>
+                  <br/>
+                  <div class="vacancy-item__info_descr" v-for="experience in experienceList" :key="experience.id" >
+                    <div><b>Место работы:</b> {{ experience.organization }}</div>
+                    <div><b>Должность:</b> {{ experience.position }}</div>
                   <br/>
                   </div>
                   <div class="vacancy-item__info_footer">
@@ -217,6 +222,8 @@ export default {
     return {
       user: {},
       resumeList: [],
+      workerList: [],
+      experienceList: []
     }
   },
 
@@ -239,6 +246,20 @@ export default {
         .get(`${baseUrl()}/resume/`, {headers})
         .then((response) => {
           this.resumeList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/worker/`, {headers})
+        .then((response) => {
+          this.workerList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/work_experience/`, {headers})
+        .then((response) => {
+          this.experienceList = response.data;
         })
         .catch((error) => console.log(error));
       },

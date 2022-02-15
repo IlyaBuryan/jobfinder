@@ -223,12 +223,7 @@ export default {
     return {
       user: {},
       vacancyList: [],
-      companyList: [
-      {
-        id: "",
-        name: ""
-      }
-      ]
+      companyList:[]
     }
   },
 
