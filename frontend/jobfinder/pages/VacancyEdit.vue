@@ -121,21 +121,50 @@ export default {
     error: false,
   }),
   async mounted() {
+    console.log(this.$route.query.id);
     await this.userRole();
     this.checkPermission();
     await this.fetchVacancy();
   },
   methods: {
-    async fetchVacancy() {
-      this.vacancy = await this.$axios.$get(
-        `${baseUrl()}/vacancyapp/${this.$route.params.id}`
-      );
+    fetchVacancy() {
+      //тестируй заходя сюда
+      //http://127.0.0.1:3000/VacancyEdit?id=2
+
+      // this.vacancy = await this.$axios.$get(
+      //   `${baseUrl()}/vacancyapp/${this.$route.params.id}`
+      // );
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      axios
+        .get(`${baseUrl()}/vacancyapp/${this.$route.query.id}/`, { headers })
+        .then((response) => {
+          this.vacancy = response.data;
+        })
+        .catch((error) => console.log(error));
     },
-    async updateVacancy() {
-      await this.$axios.$patch(
-        `${baseUrl()}/vacancyapp/${this.$route.params.id}`,
-        this.vacancy
-      );
+    updateVacancy(event) {
+      // await this.$axios.$patch(
+      event.preventDefault();
+      //   `${baseUrl()}/vacancyapp/${this.$route.params.id}`,
+      //   this.vacancy
+      // );
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      console.log(headers);
+      console.log(headers);
+      axios
+        .patch(
+          `${baseUrl()}/vacancyapp/${this.$route.query.id}/`,
+          this.vacancy,
+          { headers }
+        )
+        .then((response) => {
+          this.vacancy = response.data;
+        })
+        .catch((error) => console.log(error));
     },
     async deleteVacancy() {
       await this.$axios.$delete(
