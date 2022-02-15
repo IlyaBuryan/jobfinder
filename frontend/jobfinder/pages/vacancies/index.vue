@@ -167,6 +167,8 @@
                     <div class="vacancy-item__info_main-name">{{ item.salary }}</div>
                   </div>
                   <br/>
+                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">
+                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ company.name }}</div>
                   <div class="vacancy-item__info_footer">
                     <div class="vacancy-item__info_footer-city">{{ item.city }}</div>
                   </div>
@@ -178,7 +180,6 @@
                     <br/>
                     <div>{{ item.published_date }}</div>
                   </div>
-                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">Компания {{ company.name }}</div>
                 </div>
               </div>
             </nuxt-link>
