@@ -53,6 +53,9 @@
           <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
             <li><NuxtLink to="/companyCard">Заполнить карточку</NuxtLink></li>
             <li><NuxtLink to="/companyVacancy">Создать вакансию</NuxtLink></li>
+            <li>
+              <NuxtLink to="/vacancyEdit">Редактировать вакансию</NuxtLink>
+            </li>
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
@@ -83,7 +86,9 @@
           </div>
         </div>
       </nuxt-link>
-      <div v-if="userData" class="logout" @click="logout"><img class="logout__img" src="~/assets/img/logout58.png"></div>
+      <div v-if="userData" class="logout" @click="logout">
+        <img class="logout__img" src="~/assets/img/logout58.png" />
+      </div>
       <!-- END User account -->
     </div>
   </nav>
@@ -92,7 +97,7 @@
 
 <script>
 import SingleLink from "@/components/SingleLink.vue";
-import {baseUrl, decode} from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 export default {
@@ -104,8 +109,8 @@ export default {
     },
     link: {
       type: String,
-      default: () => ''
-    }
+      default: () => "",
+    },
   },
   data: () => ({
     user: null,
@@ -116,17 +121,17 @@ export default {
     mouseOnPages: false,
   }),
   methods: {
-    logout () {
+    logout() {
       const cookies = new Cookies();
       let token = cookies.get("token");
       let userId = decode(token).user_id;
       let headers = this.get_headers(token);
-      let data = {refresh: 'token'}
+      let data = { refresh: "token" };
 
       axios
-        .post(`${baseUrl()}/logout/`, {headers})
+        .post(`${baseUrl()}/logout/`, { headers })
         .then((response) => {
-        token = response.data;
+          token = response.data;
         })
         .catch((error) => console.log(error));
     },
@@ -137,7 +142,7 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
+  },
 };
 </script>
 
