@@ -23,46 +23,37 @@
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
-          <nuxt-link to="/workerCard">
-            <li
-              :class="{
+           <li :class="{
                 'tab-item': true,
                 'tab-item_active': activeTab === 'myProfile'}"
-              @click="changeActiveTab('myProfile')"
-            >
-            МОЙ ПРОФИЛЬ /
+              @click="changeActiveTab('myProfile')">
+              <nuxt-link to="/workerCard"> МОЙ ПРОФИЛЬ /</nuxt-link>
             </li>
-          </nuxt-link>
-          <nuxt-link to="/accountResume">
+
           <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myResumes'}"
-            @click="changeActiveTab('myResumes')"
-          >
-          МОИ РЕЗЮМЕ /
+            @click="changeActiveTab('myResumes')">
+            <nuxt-link to="/accountResume"> МОИ РЕЗЮМЕ /</nuxt-link>
           </li>
-          </nuxt-link>
-          <nuxt-link to="/">
+
           <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myRequests'}"
-            @click="changeActiveTab('myRequests')"
-          >
-          ОТКЛИКИ /
+            @click="changeActiveTab('myRequests')">
+            <nuxt-link to="/"> ОТКЛИКИ /</nuxt-link>
           </li>
-          </nuxt-link>
-          <nuxt-link to="/">
+
           <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myInvites'}"
-            @click="changeActiveTab('myInvites')"
-          >
-          ПРЕДЛОЖЕНИЯ /
+            @click="changeActiveTab('myInvites')">
+            <nuxt-link to="/"> ПРЕДЛОЖЕНИЯ /</nuxt-link>
           </li>
-          </nuxt-link>
+
           <li
             :class="{
               'tab-item': true,
@@ -72,7 +63,7 @@
           ПИСЬМА /
           </li>
         </ul>
-      </div>
+       </div>
   </div>
 </template>
 
