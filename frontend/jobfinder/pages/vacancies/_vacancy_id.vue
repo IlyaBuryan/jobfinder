@@ -5,27 +5,27 @@
       <div class="container">
         <div class="header-detail">
           <div class="header-detail__head">
-            <img class="logo" :src="vacancy.img" alt="">
+            <!-- <img class="logo" :src="vacancy.img" alt=""> -->
             <div class="header-detail__head_main">
               <div class="hgroup">
-                <h1>{{ vacancy.title}}</h1>
-                <h3><a href="#">{{ vacancy.company }}</a></h3>
+                <h1>{{ vacancy.position }}</h1>
+                <!-- <h3><a href="#">{{ company.name }}</a></h3> -->
               </div>
-              <div class="header-detail__head_main-time">{{ vacancy.vacancyTime }}</div>
+              <div class="header-detail__head_main-time">{{ vacancy.published_date }}</div>
             </div>
           </div>
           <hr>
-          <p class="header-detail__head_main-descr">{{ vacancy.descr }}.</p>
+          <p class="header-detail__head_main-descr">{{ vacancy.duties }}.</p>
           <div class="header-detail__footer">
             <ul class="header-detail__head_main-params">
               <li>
                 <i class="fa fa-map-marker"></i>
-                <span>{{ vacancy.location }}</span>
+                <span>{{ vacancy.city }}</span>
               </li>
 
               <li>
                 <i class="fa fa-briefcase"></i>
-                <span>{{ vacancy.worktime }}</span>
+                <span>{{ vacancy.conditions }}</span>
               </li>
 
               <li>
@@ -46,7 +46,7 @@
 
               <li>
                 <i class="fa fa-certificate"></i>
-                <a href="#">{{ vacancy.educ }}</a>
+                <a href="#">Высшее</a>
               </li>
             </ul>
           </div>
@@ -79,23 +79,17 @@
       <section class="vacancy-info">
         <div class="vacancy-info__container">
 
-          <p>Google is and always will be an engineering company. We hire people with a broad set of technical skills who
-            are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions,
-            of users. At Google, engineers not only revolutionize search, they routinely work on massive scalability and
-            storage solutions, large-scale applications and entirely new platforms for developers around the world. From
-            AdWords to Chrome, Android to YouTube, Social to Local, Google engineers are changing the world one
-            technological achievement after another.</p>
+          <p>{{ vacancy.duties }}</p>
 
           <br>
           <h4>Responsibilities</h4>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam
-            malesuada erat ut turpis. Suspendisse urna nibh, viverra non.</p>
-          <ul>
+          <p>{{ vacancy.requirements }}</p>
+          <!-- <ul>
             <li>Build next-generation web applications with a focus on the client side.</li>
             <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
             <li>Explore and design dynamic and compelling consumer experiences.</li>
             <li>Design and build scalable framework for web applications.</li>
-          </ul>
+          </ul> -->
 
           <br>
           <h4>Minimum qualifications</h4>
@@ -127,6 +121,9 @@
 </template>
 
 <script>
+import {baseUrl, decode} from "../../store/constants.js";
+import axios from "axios";
+import Cookies from "universal-cookie";
 export default {
   data () {
     return {
@@ -134,6 +131,9 @@ export default {
       vacancyList: [],
       vacancy: {},
       vacancyaId: '',
+      company: {},
+      companyList: [],
+      companyId: '',
       testVacancyList: [
         {
           id: 1, title: 'Помощник бухгалтера', img: require('~/assets/img/companyIcons/Marvel.jpeg'), company: 'ГК Марвел', location: 'Санкт-Петербург', worktime: 'Full-Time', link: 'job-detail.html', salary: 'ЗП: 50 050', educ: 'Высшее', vacancyTime: '02.02.2022', descr: 'Официальное трудоустройство с первого рабочего дня в соответствии с ТК РФ. Уютный офис в шаговой доступности от метро Фрунзенская .Расширенный компенсационный пакет. Скидки на продукцию партнеров компании.', category: 'Финансы'
@@ -199,43 +199,70 @@ export default {
       ],
     }
   },
-  mounted () {
-    this.getVacancy()
+async mounted() {
+    console.log('acc comm mounted');
+
+    await this.userRole();
+    this.getCard();
   },
-  // created () {
-  //   this.getVacancies()
-  // },
+
   methods: {
-    onSubmit () {
-      this.login()
+    getCard() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+
+      axios
+        .get(`${baseUrl()}/vacancyapp/`, {headers})
+        .then((response) => {
+          this.vacancyList = response.data;
+          this.vacancyId = this.$route.params.vacancy_id
+          this.vacancy = this.vacancyList[this.vacancyId-1]
+          console.log(this.vacancy)
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/companyapp/`, {headers})
+        .then((response) => {
+          this.companyList = response.data;
+          this.company = this.companyList[0]
+          console.log(this.companyList)
+        })
+        .catch((error) => console.log(error));
     },
-    onSearch () {
-      console.log('Уже ищу!!!')
+
+    async userRole() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let userId = decode(token).user_id;
+      let headers = this.get_headers(token);
+
+      await axios
+        .get(`${baseUrl()}/user/${userId}/`, {headers})
+        .then((response) => {
+          this.user = response.data;
+        })
+        .catch((error) => console.log(error));
     },
-    // async getVacancies () {
-    //   try {
-    //     const response = await this.$axios.get('/api/v1/vacancies')
-    //     this.vacancyList = response.data.data
-    //     // eslint-disable-next-line no-console
-    //     console.log(this.vacancyList)
-    //   } catch (e) {
-    //     this.$toast.error(e.response.data)
-    //   }
-    // },
+
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
     getVacancy () {
       this.vacancyId = this.$route.params.vacancy_id
-      this.vacancy = this.testVacancyList[this.vacancyId-1]
+      this.vacancy = this.vacancyList[this.vacancyId-1]
+      console.log(this.vacancy)
+      this.company = this.companyList[0]
     }
-    //   try {
-    //     const response = await this.$axios.get('/api/v1/shop/vacancy', { params: { package_id: this.productId } })
-    //     this.vacancy = response.data.data
-
-    //   } catch (e) {
-    //     this.$toast.error(e.response.data)
-    //   }
-    // },
   }
 }
+
 </script>
 
 <style lang="scss">
@@ -243,6 +270,9 @@ export default {
   display: flex;
   max-width: 100%;
   flex-direction: column;
+}
+.vacancy_wrapp {
+  width: 100%;
 }
 .page-header {
   display: flex;
