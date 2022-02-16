@@ -42,6 +42,9 @@
           >
           МОИ РЕЗЮМЕ /
           </li>
+          <div v-for="(resume, id) in resumeList" :key="id">
+              <div>{{ resume.position }}</div>
+          </div>
           </nuxt-link>
           <nuxt-link to="/">
           <li
@@ -86,6 +89,7 @@ export default {
     return {
       user: {},
       worker: {},
+      resumeList: [],
       activeTab: 'myProfile'
     }
   },
@@ -115,6 +119,14 @@ export default {
           this.worker = response.data;
         })
         .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/resume/`, {headers})
+        .then((response) => {
+          this.resumeList = response.data;
+        })
+        .catch((error) => console.log(error));
+      },
     },
 
     async userRole() {
@@ -139,7 +151,7 @@ export default {
       return headers;
     },
   }
-}
+
 </script>
 
 <style lang="scss" scoped>
