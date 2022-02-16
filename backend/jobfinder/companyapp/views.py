@@ -10,10 +10,6 @@ class CompanyCardModelViewSet(ModelViewSet):
     serializer_class = CompanyCardModelSerializer
     permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        user = self.request.user
-        return CompanyCard.objects.filter(user=user)
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
