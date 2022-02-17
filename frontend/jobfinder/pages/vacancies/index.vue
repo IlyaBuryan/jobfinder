@@ -250,7 +250,7 @@ export default {
         })
         .catch((error) => console.log(error));
 
-    axios
+      axios
         .get(`${baseUrl()}/companyapp/`, {headers})
         .then((response) => {
           this.companyList = response.data;
