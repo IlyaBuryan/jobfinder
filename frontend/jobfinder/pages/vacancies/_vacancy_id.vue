@@ -200,9 +200,6 @@ export default {
     }
   },
 async mounted() {
-    console.log('acc comm mounted');
-
-    await this.userRole();
     this.getCard();
   },
 
@@ -229,20 +226,6 @@ async mounted() {
           this.companyList = response.data;
           this.company = this.companyList[0]
           console.log(this.companyList)
-        })
-        .catch((error) => console.log(error));
-    },
-
-    async userRole() {
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
-
-      await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
-        .then((response) => {
-          this.user = response.data;
         })
         .catch((error) => console.log(error));
     },
