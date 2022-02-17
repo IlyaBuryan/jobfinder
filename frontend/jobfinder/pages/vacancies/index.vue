@@ -222,15 +222,15 @@ export default {
   data: () => {
     return {
       vacancyList: [],
-      companyList:[{
-        name:""
-      }]
+      companyList:{
+        id:"name"
+      }
     }
   },
 
   computed: {
-    getCompanyName: function(){
-      return this.companyList.name;
+    getCompanyName(){
+      return `${this.companyList.name}`
     }
   },
 

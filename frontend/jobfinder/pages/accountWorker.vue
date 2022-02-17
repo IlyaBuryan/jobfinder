@@ -33,6 +33,7 @@
             МОЙ ПРОФИЛЬ /
             </li>
           </nuxt-link>
+          <nuxt-link to="/accountResume">
           <li
             :class="{
               'tab-item': true,
@@ -41,6 +42,7 @@
           >
           МОИ РЕЗЮМЕ /
           </li>
+          </nuxt-link>
           <li
             :class="{
               'tab-item': true,
@@ -63,7 +65,7 @@
               'tab-item_active': activeTab === 'myLetters'}"
             @click="changeActiveTab('myLetters')"
           >
-          ПИСЬМА / 
+          ПИСЬМА /
           </li>
         </ul>
       </div>
