@@ -167,8 +167,8 @@
                     <div class="vacancy-item__info_main-name">{{ item.salary }}</div>
                   </div>
                   <br/>
-                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">
-                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ company.name }}</div>
+                  <div class="vacancy-item__info_descr">
+                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ getCompanyName }}</div>
                   <div class="vacancy-item__info_footer">
                     <div class="vacancy-item__info_footer-city">{{ item.city }}</div>
                   </div>
@@ -184,7 +184,6 @@
               </div>
             </nuxt-link>
           </div>
-
           <!-- END Job item first-->
 
           <!-- Page navigation -->
@@ -223,10 +222,17 @@ export default {
   data: () => {
     return {
       vacancyList: [],
-      companyList:[]
+      companyList:[{
+        name:""
+      }]
     }
   },
 
+  computed: {
+    getCompanyName: function(){
+      return this.companyList.name;
+    }
+  },
 
   async mounted() {
     console.log('acc comm mounted');
