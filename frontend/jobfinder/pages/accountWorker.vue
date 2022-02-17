@@ -33,7 +33,7 @@
             МОЙ ПРОФИЛЬ /
             </li>
           </nuxt-link>
-          <nuxt-link to="/accountResume">
+<!--          <nuxt-link to="/accountResume">-->
           <li
             :class="{
               'tab-item': true,
@@ -41,8 +41,10 @@
             @click="changeActiveTab('myResumes')"
           >
           МОИ РЕЗЮМЕ /
+                <WorkersResumes :resumesData="ResumeList"/>
+
           </li>
-          </nuxt-link>
+<!--          </nuxt-link>-->
           <li
             :class="{
               'tab-item': true,
@@ -73,16 +75,19 @@
 </template>
 
 <script>
+import WorkersResumes from "@/components/WorkersResumes";
 import {baseUrl, decode} from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
 export default {
+  components: {WorkersResumes},
   data: () => {
     return {
       user: {},
       worker: {},
-      activeTab: 'myProfile'
+      activeTab: 'myProfile',
+      resumeList: []
     }
   },
 

@@ -158,7 +158,7 @@
           </div>
           <!-- Job item -->
 
-          <div class="vacancy-item" v-for="(item, id) in resumeList" :key="id">
+          <div class="vacancy-item" v-for="(item, id) in resumeData" :key="id">
             <nuxt-link :to="`/resumes/${item.id}`" style="textDecoration:none">
               <div class="vacancy-item__block">
                 <div class="vacancy-item__info">
