@@ -229,7 +229,6 @@ export default {
 
 
   async mounted() {
-    console.log('acc comm mounted');
 
     await this.userRole();
     this.getCard();
