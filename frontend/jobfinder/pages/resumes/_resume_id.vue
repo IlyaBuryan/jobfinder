@@ -131,9 +131,9 @@ export default {
   data () {
     return {
       loading: false,
-      vacancyList: [],
-      vacancy: {},
-      vacancyaId: '',
+      workerList: [],
+      worker: {},
+      workerId: '',
       testVacancyList: [
         {
           id: 1, title: 'Помощник бухгалтера', img: require('~/assets/img/companyIcons/Marvel.jpeg'), company: 'ГК Марвел', location: 'Санкт-Петербург', worktime: 'Full-Time', link: 'job-detail.html', salary: 'ЗП: 50 050', educ: 'Высшее', vacancyTime: '02.02.2022', descr: 'Официальное трудоустройство с первого рабочего дня в соответствии с ТК РФ. Уютный офис в шаговой доступности от метро Фрунзенская .Расширенный компенсационный пакет. Скидки на продукцию партнеров компании.', category: 'Финансы'
@@ -202,6 +202,9 @@ export default {
   mounted () {
     this.getVacancy()
   },
+  // created () {
+  //   this.getVacancies()
+  // },
   methods: {
     onSubmit () {
       this.login()
@@ -209,10 +212,28 @@ export default {
     onSearch () {
       console.log('Уже ищу!!!')
     },
+    // async getVacancies () {
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/vacancies')
+    //     this.vacancyList = response.data.data
+    //     // eslint-disable-next-line no-console
+    //     console.log(this.vacancyList)
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
     getVacancy () {
       this.vacancyId = this.$route.params.vacancy_id
       this.vacancy = this.testVacancyList[this.vacancyId-1]
     }
+    //   try {
+    //     const response = await this.$axios.get('/api/v1/shop/vacancy', { params: { package_id: this.productId } })
+    //     this.vacancy = response.data.data
+
+    //   } catch (e) {
+    //     this.$toast.error(e.response.data)
+    //   }
+    // },
   }
 }
 </script>
