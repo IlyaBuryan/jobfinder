@@ -23,42 +23,42 @@
      </section>
      <div class="tabs">
         <ul class="breadcrumb">
-          <nuxt-link to="/workerCard">
-            <li
-              :class="{
+           <li :class="{
                 'tab-item': true,
                 'tab-item_active': activeTab === 'myProfile'}"
-              @click="changeActiveTab('myProfile')"
-            >
-            МОЙ ПРОФИЛЬ /
+              @click="changeActiveTab('myProfile')">
+              <nuxt-link to="/workerCard"> МОЙ ПРОФИЛЬ /</nuxt-link>
             </li>
-          </nuxt-link>
-          <nuxt-link to="/accountResume">
-          <li
+
+            <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myResumes'}"
-            @click="changeActiveTab('myResumes')"
-          >
-          МОИ РЕЗЮМЕ /
+            @click="changeActiveTab('myResumes')">
+            <nuxt-link to="/accountResume"> МОИ РЕЗЮМЕ /</nuxt-link>
+            <div v-for="(item, id) in resumeList" :key="id">
+              <div>{{ item.position }}</div>
+              <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
+              <nuxt-link class="btn btn-more" to="">Удалить</nuxt-link>
+            </div>
           </li>
-          </nuxt-link>
+
           <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myRequests'}"
-            @click="changeActiveTab('myRequests')"
-          >
-          ОТКЛИКИ /
+            @click="changeActiveTab('myRequests')">
+            <nuxt-link to="/"> ОТКЛИКИ /</nuxt-link>
           </li>
+
           <li
             :class="{
               'tab-item': true,
               'tab-item_active': activeTab === 'myInvites'}"
-            @click="changeActiveTab('myInvites')"
-          >
-          ПРЕДЛОЖЕНИЯ /
+            @click="changeActiveTab('myInvites')">
+            <nuxt-link to="/"> ПРЕДЛОЖЕНИЯ /</nuxt-link>
           </li>
+
           <li
             :class="{
               'tab-item': true,
@@ -82,7 +82,9 @@ export default {
     return {
       user: {},
       worker: {},
-      activeTab: 'myProfile'
+      resumeList: [],
+      activeTab: 'myProfile',
+      activeTab: 'myResumes',
     }
   },
 
@@ -95,10 +97,6 @@ export default {
   },
 
   methods: {
-    changeActiveTab(tab) {
-      this.activeTab = tab
-      console.log(`i am ${this.activeTab}`)
-    },
     getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -109,6 +107,13 @@ export default {
         .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
         .then((response) => {
           this.worker = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/resume/`, {headers})
+        .then((response) => {
+          this.resumeList = response.data;
         })
         .catch((error) => console.log(error));
     },
@@ -133,6 +138,11 @@ export default {
       };
       headers["Authorization"] = "Bearer " + access;
       return headers;
+    },
+
+    changeActiveTab(tab) {
+      this.activeTab = tab
+      console.log(`i am ${this.activeTab}`)
     },
   }
 }

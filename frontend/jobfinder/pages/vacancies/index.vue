@@ -167,8 +167,8 @@
                     <div class="vacancy-item__info_main-name">{{ item.salary }}</div>
                   </div>
                   <br/>
-                  <div class="vacancy-item__info_descr" v-for="company in companyList" :key="company.id">
-                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ company.name }}</div>
+                  <div class="vacancy-item__info_descr">
+                  <img src="~/assets/img/office_icon.png" alt="icon"> {{ getCompanyName }}</div>
                   <div class="vacancy-item__info_footer">
                     <div class="vacancy-item__info_footer-city">{{ item.city }}</div>
                   </div>
@@ -184,7 +184,6 @@
               </div>
             </nuxt-link>
           </div>
-
           <!-- END Job item first-->
 
           <!-- Page navigation -->
@@ -222,17 +221,21 @@ import Cookies from "universal-cookie";
 export default {
   data: () => {
     return {
-      user: {},
       vacancyList: [],
-      companyList:[]
+      companyList:{
+        id:"name"
+      }
     }
   },
 
+  computed: {
+    getCompanyName(){
+      return `${this.companyList.name}`
+    }
+  },
 
   async mounted() {
     console.log('acc comm mounted');
-
-    await this.userRole();
     this.getCard();
   },
 
@@ -240,7 +243,6 @@ export default {
     getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
       let headers = this.get_headers(token);
 
       axios
@@ -254,20 +256,6 @@ export default {
         .get(`${baseUrl()}/companyapp/`, {headers})
         .then((response) => {
           this.companyList = response.data;
-        })
-        .catch((error) => console.log(error));
-    },
-
-    async userRole() {
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
-
-      await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
-        .then((response) => {
-          this.user = response.data;
         })
         .catch((error) => console.log(error));
     },
