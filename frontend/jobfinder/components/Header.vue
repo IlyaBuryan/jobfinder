@@ -52,6 +52,9 @@
           <NuxtLink to="/">Компании</NuxtLink>
           <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
             <li><NuxtLink to="/companyCard">Заполнить карточку</NuxtLink></li>
+            <li>
+              <NuxtLink to="/companyEdit">Редактировать карточку</NuxtLink>
+            </li>
             <li><NuxtLink to="/companyVacancy">Создать вакансию</NuxtLink></li>
             <li>
               <NuxtLink to="/vacancyEdit">Редактировать вакансию</NuxtLink>
