@@ -41,8 +41,6 @@
             @click="changeActiveTab('myResumes')"
           >
           МОИ РЕЗЮМЕ /
-                <WorkersResumes :resumesData="ResumeList"/>
-
           </li>
 <!--          </nuxt-link>-->
           <li
@@ -71,6 +69,7 @@
           </li>
         </ul>
       </div>
+      <WorkersResumes v-if="activeTab==='myResumes'" :resumesData="resumeList" :worker="worker" />
   </div>
 </template>
 
@@ -87,7 +86,8 @@ export default {
       user: {},
       worker: {},
       activeTab: 'myProfile',
-      resumeList: []
+      resumeList: [],
+      testResumeList: [{id:1, position: 'Frontend Developer', first_name: 'Mike', last_name: 'Ger', phone: '89152235768', }]
     }
   },
 
@@ -114,6 +114,15 @@ export default {
         .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
         .then((response) => {
           this.worker = response.data;
+          console.log(this.worker)
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/resume/`, {headers})
+        .then((response) => {
+          this.resumeList = response.data;
+          console.log(this.resumeList)
         })
         .catch((error) => console.log(error));
     },
