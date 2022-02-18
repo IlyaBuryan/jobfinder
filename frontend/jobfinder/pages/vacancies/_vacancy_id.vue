@@ -221,7 +221,7 @@ async mounted() {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/companyapp/`, {headers})
+        .get(`${baseUrl()}/company_card/`, {headers})
         .then((response) => {
           this.companyList = response.data;
           this.company = this.companyList[0]

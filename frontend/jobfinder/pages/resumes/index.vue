@@ -250,7 +250,7 @@ export default {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/worker/`, {headers})
+        .get(`${baseUrl()}/worker_card/`, {headers})
         .then((response) => {
           this.workerList = response.data;
         })

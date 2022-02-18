@@ -253,7 +253,7 @@ export default {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/companyapp/`, {headers})
+        .get(`${baseUrl()}/company_card/`, {headers})
         .then((response) => {
           this.companyList = response.data;
         })
