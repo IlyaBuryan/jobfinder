@@ -72,15 +72,15 @@
       <!-- END Navigation menu -->
 
       <!-- User account -->
-      <div v-if="!userData" class="login-wrapper">
+      <div v-if="!is_logged" class="login-wrapper">
         <NuxtLink class="btn btn-primary" to="/login"> Авторизация </NuxtLink>
         <p class="or">или</p>
         <NuxtLink class="btn btn-outline-dark" to="/register">
           Регистрация
         </NuxtLink>
       </div>
-      <nuxt-link :to="`${link}`">
-        <div v-if="userData" class="user-block">
+      <nuxt-link :to="`${link}`" v-if="is_logged">
+        <div class="user-block">
           <div class="user-block__image">
             <img src="~/assets/img/avatar-3.jpg" />
           </div>
@@ -89,7 +89,7 @@
           </div>
         </div>
       </nuxt-link>
-      <div v-if="userData" class="logout" @click="logout">
+      <div v-if="is_logged && userData" class="logout" @click="logout">
         <img class="logout__img" src="~/assets/img/logout58.png" />
       </div>
       <!-- END User account -->
@@ -115,6 +115,11 @@ export default {
       default: () => "",
     },
   },
+
+  mounted() {
+    this.checkUserLogin();
+  },
+
   data: () => ({
     user: null,
     mouseOnMain: false,
@@ -122,19 +127,31 @@ export default {
     mouseOnResume: false,
     mouseOnCompanies: false,
     mouseOnPages: false,
+    is_logged: false,
   }),
   methods: {
+    checkUserLogin() {
+      const cookies = new Cookies();
+      const token = cookies.get("token");
+      if (token !== "") {
+        this.is_logged = true;
+      } else {
+        this.is_logged = false;
+      }
+    },
     logout() {
       const cookies = new Cookies();
-      let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
-      let data = { refresh: "token" };
-
+      const token = cookies.get("token");
+      const token_refresh = cookies.get("token_refresh");
+      const headers = this.get_headers(token);
+      const data = { refresh: token_refresh };
       axios
-        .post(`${baseUrl()}/logout/`, { headers })
+        .post(`${baseUrl()}/logout/`, data, { headers })
         .then((response) => {
-          token = response.data;
+          cookies.set("token", "", { path: "/" });
+          cookies.set("token_refresh", "", { path: "/" });
+          this.checkUserLogin();
+          console.log("Пользователь успешно разлогинился");
         })
         .catch((error) => console.log(error));
     },

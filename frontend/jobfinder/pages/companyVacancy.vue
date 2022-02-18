@@ -137,7 +137,7 @@ export default {
       duties: "",
       requirements: "",
       salary: "",
-      city: ""
+      city: "",
     },
     error: false,
   }),
@@ -210,7 +210,7 @@ export default {
             duties: "",
             requirements: "",
             salary: "",
-            city: ""
+            city: "",
           };
         })
         .catch(() => (this.error = true));

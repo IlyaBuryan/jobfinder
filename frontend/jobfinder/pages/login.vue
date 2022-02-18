@@ -84,8 +84,7 @@ export default {
         })
         .then((response) => {
           const token = response.data;
-          this.set_token(token.access);
-          console.log(token);
+          this.set_token(token);
           console.log("Ура мы авторизовались!");
           this.$router.push("/");
         })
@@ -94,7 +93,8 @@ export default {
 
     set_token(token) {
       const cookies = new Cookies();
-      cookies.set("token", token, { path: "/" });
+      cookies.set("token", token.access, { path: "/" });
+      cookies.set("token_refresh", token.refresh, { path: "/" });
     },
   },
 };

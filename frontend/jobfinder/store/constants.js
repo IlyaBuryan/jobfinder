@@ -5,6 +5,11 @@ export const baseUrl = () => {
 };
 
 export const decode = (jwt) => {
-    const token_parts = jwt.split(/\./);
-    return JSON.parse(window.atob(token_parts[1]));
+    try {
+        const token_parts = jwt.split(/\./);
+        return JSON.parse(window.atob(token_parts[1]));
+    }
+    catch {
+        return 1
+    }
 };

@@ -1,79 +1,90 @@
 <template>
   <div class="main__wrapp">
-    <header class="header">
-    </header>
+    <header class="header"></header>
 
-     <div class="container no-shadow">
+    <div class="container no-shadow">
       <h1 class="text-center">Личный кабинет</h1>
-     </div>
+    </div>
 
-     <section class="content">
-       <div class="content-wrap">
-          <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
-          <div class="cont-text">
-            <h2>Данные о работнике:</h2>
-              <div v-if="worker">
-                <h4>Имя: {{ worker.first_name }}</h4>
-                <h4>Фамилия: {{ worker.last_name }}</h4>
-                <p>Дата рождения: {{ worker.birth_date }}</p>
-                <p>Телефон: {{ worker.phone }}</p>
-              </div>
+    <section class="content">
+      <div class="content-wrap">
+        <div class="item">
+          <img
+            src="~/assets/img/ava.png"
+            width="250"
+            height="250"
+            alt="avatar"
+          />
+        </div>
+        <div class="cont-text">
+          <h2>Данные о работнике:</h2>
+          <div v-if="worker">
+            <h4>Имя: {{ worker.first_name }}</h4>
+            <h4>Фамилия: {{ worker.last_name }}</h4>
+            <p>Дата рождения: {{ worker.birth_date }}</p>
+            <p>Телефон: {{ worker.phone }}</p>
           </div>
-       </div>
-     </section>
-     <div class="tabs">
-        <ul class="breadcrumb">
-          <nuxt-link to="/workerCard">
-            <li
-              :class="{
-                'tab-item': true,
-                'tab-item_active': activeTab === 'myProfile'}"
-              @click="changeActiveTab('myProfile')"
-            >
-            МОЙ ПРОФИЛЬ /
-            </li>
-          </nuxt-link>
-          <nuxt-link to="/accountResume">
+        </div>
+      </div>
+    </section>
+    <div class="tabs">
+      <ul class="breadcrumb">
+        <nuxt-link to="/workerCard">
           <li
             :class="{
               'tab-item': true,
-              'tab-item_active': activeTab === 'myResumes'}"
+              'tab-item_active': activeTab === 'myProfile',
+            }"
+            @click="changeActiveTab('myProfile')"
+          >
+            МОЙ ПРОФИЛЬ /
+          </li>
+        </nuxt-link>
+        <nuxt-link to="/accountResume">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myResumes',
+            }"
             @click="changeActiveTab('myResumes')"
           >
-          МОИ РЕЗЮМЕ /
+            МОИ РЕЗЮМЕ /
           </li>
-          </nuxt-link>
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myRequests'}"
-            @click="changeActiveTab('myRequests')"
-          >
+        </nuxt-link>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myRequests',
+          }"
+          @click="changeActiveTab('myRequests')"
+        >
           ОТКЛИКИ /
-          </li>
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myInvites'}"
-            @click="changeActiveTab('myInvites')"
-          >
+        </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myInvites',
+          }"
+          @click="changeActiveTab('myInvites')"
+        >
           ПРЕДЛОЖЕНИЯ /
-          </li>
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myLetters'}"
-            @click="changeActiveTab('myLetters')"
-          >
+        </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myLetters',
+          }"
+          @click="changeActiveTab('myLetters')"
+        >
           ПИСЬМА /
-          </li>
-        </ul>
-      </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import {baseUrl, decode} from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -82,13 +93,12 @@ export default {
     return {
       user: {},
       worker: {},
-      activeTab: 'myProfile'
-    }
+      activeTab: "myProfile",
+    };
   },
 
-
   async mounted() {
-    console.log('acc comm mounted');
+    console.log("acc comm mounted");
 
     await this.userRole();
     this.getCard();
@@ -96,8 +106,8 @@ export default {
 
   methods: {
     changeActiveTab(tab) {
-      this.activeTab = tab
-      console.log(`i am ${this.activeTab}`)
+      this.activeTab = tab;
+      console.log(`i am ${this.activeTab}`);
     },
     getCard() {
       const cookies = new Cookies();
@@ -106,7 +116,7 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
+        .get(`${baseUrl()}/worker/${this.user.worker}`, { headers })
         .then((response) => {
           this.worker = response.data;
         })
@@ -120,7 +130,7 @@ export default {
       let headers = this.get_headers(token);
 
       await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
+        .get(`${baseUrl()}/user/${userId}/`, { headers })
         .then((response) => {
           this.user = response.data;
         })
@@ -134,8 +144,8 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -197,7 +207,7 @@ export default {
 }
 
 .tab-item {
-  color:blue;
+  color: blue;
   &_active {
     color: white;
     background-color: blue;
