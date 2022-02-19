@@ -28,7 +28,7 @@
     </section>
     <div class="tabs">
       <ul class="breadcrumb">
-        <nuxt-link to="/workerCard">
+        <nuxt-link to="/companyCard">
           <li
             :class="{
               'tab-item': true,
@@ -39,17 +39,15 @@
             МОЙ ПРОФИЛЬ /
           </li>
         </nuxt-link>
-        <nuxt-link to="/accountResume">
-          <li
+           <li
             :class="{
               'tab-item': true,
-              'tab-item_active': activeTab === 'myResumes',
+              'tab-item_active': activeTab === 'myVacancies',
             }"
-            @click="changeActiveTab('myResumes')"
+            @click="changeActiveTab('myVacancies')"
           >
-            МОИ РЕЗЮМЕ /
+            МОИ ВАКАНСИИ /
           </li>
-        </nuxt-link>
         <li
           :class="{
             'tab-item': true,
@@ -78,23 +76,25 @@
           ПИСЬМА /
         </li>
       </ul>
-      <MyVacancy/>
+      <CompanyVacancies v-if="activeTab==='myVacancies'" :resumesData="resumeList" />
     </div>
   </div>
 </template>
 
 <script>
+import CompanyVacancies from "@/components/CompanyVacancies";
 import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
 export default {
+  components: { CompanyVacancies },
   data: () => {
     return {
       user: {},
       company: {},
-      activeTab: "myProfile",
-
+      activeTab: "myVacancies",
+      vacancyList: [],
     };
   },
 
@@ -116,6 +116,13 @@ export default {
         .get(`${baseUrl()}/companyapp/${this.user.company}`, { headers })
         .then((response) => {
           this.company = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/vacancyapp/`, { headers })
+        .then((response) => {
+          this.vacancyList = response.data;
         })
         .catch((error) => console.log(error));
     },
