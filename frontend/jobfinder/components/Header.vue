@@ -65,7 +65,11 @@
           <NuxtLink to="/">Работники</NuxtLink>
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
             <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
+            <li>
+              <NuxtLink to="/workerEdit">Редактировать карточку</NuxtLink>
+            </li>
             <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
+            <li><NuxtLink to="/resumeEdit">Редактировать резюме</NuxtLink></li>
           </ul>
         </li>
       </ul>
