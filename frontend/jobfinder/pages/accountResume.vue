@@ -1,79 +1,95 @@
 <template>
   <div class="main__wrapp">
-    <header class="header">
-    </header>
+    <header class="header"></header>
 
-     <div class="container no-shadow">
+    <div class="container no-shadow">
       <h1 class="text-center">Личный кабинет</h1>
-     </div>
+    </div>
 
-     <section class="content">
-       <div class="content-wrap">
-          <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
-          <div class="cont-text">
-            <h2>Данные о работнике:</h2>
-              <div v-if="worker">
-                <h4>Имя: {{ worker.first_name }}</h4>
-                <h4>Фамилия: {{ worker.last_name }}</h4>
-                <p>Дата рождения: {{ worker.birth_date }}</p>
-                <p>Телефон: {{ worker.phone }}</p>
-              </div>
+    <section class="content">
+      <div class="content-wrap">
+        <div class="item">
+          <img
+            src="~/assets/img/ava.png"
+            width="250"
+            height="250"
+            alt="avatar"
+          />
+        </div>
+        <div class="cont-text">
+          <h2>Данные о работнике:</h2>
+          <div v-if="worker">
+            <h4>Имя: {{ worker.first_name }}</h4>
+            <h4>Фамилия: {{ worker.last_name }}</h4>
+            <p>Дата рождения: {{ worker.birth_date }}</p>
+            <p>Телефон: {{ worker.phone }}</p>
           </div>
-       </div>
-     </section>
-     <div class="tabs">
-        <ul class="breadcrumb">
-           <li :class="{
-                'tab-item': true,
-                'tab-item_active': activeTab === 'myProfile'}"
-              @click="changeActiveTab('myProfile')">
-              <nuxt-link to="/workerCard"> МОЙ ПРОФИЛЬ /</nuxt-link>
-            </li>
-
-            <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myResumes'}"
-            @click="changeActiveTab('myResumes')">
-            <nuxt-link to="/accountResume"> МОИ РЕЗЮМЕ /</nuxt-link>
-            <div v-for="(item, id) in resumeList" :key="id">
-              <div>{{ item.position }}</div>
-              <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
-              <nuxt-link class="btn btn-more" to="">Удалить</nuxt-link>
-            </div>
-          </li>
-
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myRequests'}"
-            @click="changeActiveTab('myRequests')">
-            <nuxt-link to="/"> ОТКЛИКИ /</nuxt-link>
-          </li>
-
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myInvites'}"
-            @click="changeActiveTab('myInvites')">
-            <nuxt-link to="/"> ПРЕДЛОЖЕНИЯ /</nuxt-link>
-          </li>
-
-          <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myLetters'}"
-            @click="changeActiveTab('myLetters')"
-          >
-          ПИСЬМА /
-          </li>
-        </ul>
+        </div>
       </div>
+    </section>
+    <div class="tabs">
+      <ul class="breadcrumb">
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myProfile',
+          }"
+          @click="changeActiveTab('myProfile')"
+        >
+          <nuxt-link to="/workerCard"> МОЙ ПРОФИЛЬ /</nuxt-link>
+        </li>
+
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myResumes',
+          }"
+          @click="changeActiveTab('myResumes')"
+        >
+          <nuxt-link to="/accountResume"> МОИ РЕЗЮМЕ /</nuxt-link>
+          <div v-for="(item, id) in resumeList" :key="id">
+            <div>{{ item.position }}</div>
+            <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
+            <nuxt-link class="btn btn-more" to="">Удалить</nuxt-link>
+          </div>
+        </li>
+
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myRequests',
+          }"
+          @click="changeActiveTab('myRequests')"
+        >
+          <nuxt-link to="/"> ОТКЛИКИ /</nuxt-link>
+        </li>
+
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myInvites',
+          }"
+          @click="changeActiveTab('myInvites')"
+        >
+          <nuxt-link to="/"> ПРЕДЛОЖЕНИЯ /</nuxt-link>
+        </li>
+
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myLetters',
+          }"
+          @click="changeActiveTab('myLetters')"
+        >
+          ПИСЬМА /
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import {baseUrl, decode} from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -83,14 +99,13 @@ export default {
       user: {},
       worker: {},
       resumeList: [],
-      activeTab: 'myProfile',
-      activeTab: 'myResumes',
-    }
+      activeTab: "myProfile",
+      activeTab: "myResumes",
+    };
   },
 
-
   async mounted() {
-    console.log('acc comm mounted');
+    console.log("acc comm mounted");
 
     await this.userRole();
     this.getCard();
@@ -104,14 +119,14 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/worker/${this.user.worker}`, {headers})
+        .get(`${baseUrl()}/worker/${this.user.worker}`, { headers })
         .then((response) => {
           this.worker = response.data;
         })
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/resume/`, {headers})
+        .get(`${baseUrl()}/resume/`, { headers })
         .then((response) => {
           this.resumeList = response.data;
         })
@@ -125,7 +140,7 @@ export default {
       let headers = this.get_headers(token);
 
       await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
+        .get(`${baseUrl()}/user/${userId}/`, { headers })
         .then((response) => {
           this.user = response.data;
         })
@@ -141,11 +156,11 @@ export default {
     },
 
     changeActiveTab(tab) {
-      this.activeTab = tab
-      console.log(`i am ${this.activeTab}`)
+      this.activeTab = tab;
+      console.log(`i am ${this.activeTab}`);
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -207,7 +222,7 @@ export default {
 }
 
 .tab-item {
-  color:blue;
+  color: blue;
   &_active {
     color: white;
     background-color: blue;

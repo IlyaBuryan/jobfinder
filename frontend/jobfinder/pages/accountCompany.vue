@@ -1,7 +1,6 @@
 <template>
   <div class="main__wrapp">
-    <header class="header">
-    </header>
+    <header class="header"></header>
 
     <div class="container no-shadow">
       <h1 class="text-center">Личный кабинет</h1>
@@ -9,15 +8,21 @@
 
     <section class="content">
       <div class="content-wrap">
-        <div class="item"><img src="~/assets/img/ava.png" width="250" height="250" alt="avatar"></div>
-        <div class="cont-text" id=app>
+        <div class="item">
+          <img
+            src="~/assets/img/ava.png"
+            width="250"
+            height="250"
+            alt="avatar"
+          />
+        </div>
+        <div class="cont-text" id="app">
           <h2>Данные о компании:</h2>
-          <p>{{company.name}}</p>
-          <p>ИНН: {{company.itn}}</p>
-          <p>Отрасль: {{company.category}}</p>
-          <p>Детали: {{company.company_details}}</p>
-          <p>Описание: {{company.description}}</p>
-
+          <p>{{ company.name }}</p>
+          <p>ИНН: {{ company.itn }}</p>
+          <p>Отрасль: {{ company.category }}</p>
+          <p>Детали: {{ company.company_details }}</p>
+          <p>Описание: {{ company.description }}</p>
         </div>
       </div>
     </section>
@@ -33,7 +38,7 @@
 </template>
 
 <script>
-import {baseUrl, decode} from "../store/constants.js";
+import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
@@ -42,18 +47,17 @@ export default {
     return {
       user: {},
       company: {
-        name: '',
-        itn: '',
-        category: '',
-        company_details: '',
-        description: '',
-      }
-    }
+        name: "",
+        itn: "",
+        category: "",
+        company_details: "",
+        description: "",
+      },
+    };
   },
 
-
   async mounted() {
-    console.log('acc comm mounted');
+    console.log("acc comm mounted");
 
     await this.userRole();
     this.getCard();
@@ -67,7 +71,7 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/companyapp/${this.user.company}`, {headers})
+        .get(`${baseUrl()}/companyapp/${this.user.company}`, { headers })
         .then((response) => {
           this.company = response.data;
         })
@@ -81,7 +85,7 @@ export default {
       let headers = this.get_headers(token);
 
       await axios
-        .get(`${baseUrl()}/user/${userId}/`, {headers})
+        .get(`${baseUrl()}/user/${userId}/`, { headers })
         .then((response) => {
           this.user = response.data;
         })
@@ -95,12 +99,11 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-
 .main__wrapp {
   display: flex;
   max-width: 100%;
@@ -141,7 +144,7 @@ export default {
   display: flex;
   height: 200px;
   flex-direction: column;
-  background: url('~/assets/img/bg-banner1.jpg') no-repeat bottom center;
+  background: url("~/assets/img/bg-banner1.jpg") no-repeat bottom center;
   background-size: cover;
   align-items: center;
 }
@@ -181,5 +184,4 @@ export default {
   line-height: 1.4em;
   letter-spacing: 0em;
 }
-
 </style>

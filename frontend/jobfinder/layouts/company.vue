@@ -17,29 +17,33 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   components: { Header, Footer },
-  data () {
+  data() {
     return {
-      user: null
-    }
+      user: { username: "" },
+    };
   },
-  mounted () {
-    this.getUser()
+  mounted() {
+    this.getUser();
   },
   methods: {
     async getUser() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
+      if (token !== "") {
+        let userId = decode(token).user_id;
+        let headers = this.get_headers(token);
 
-      await axios
-        .get(`${baseUrl()}/user/${userId}/`, { headers })
-        .then((response) => {
-          this.user = response.data;
-          console.log(this.user)
-        })
-        .catch((error) => console.log(error));
+        await axios
+          .get(`${baseUrl()}/user/${userId}/`, { headers })
+          .then((response) => {
+            this.user = response.data;
+            console.log(this.user);
+            this.checkLink();
+          })
+          .catch((error) => console.log(error));
+      }
     },
+
     get_headers(access) {
       let headers = {
         "Content-Type": "application/json",
@@ -47,7 +51,7 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
+  },
 };
 </script>
 

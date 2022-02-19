@@ -18,37 +18,39 @@ import Footer from "@/components/Footer.vue";
 
 export default {
   components: { Header, Footer },
-  data () {
+  data() {
     return {
-      user: null,
-      currWay: ''
-    }
+      user: { username: "" },
+      currWay: "",
+    };
   },
-  mounted () {
-    this.getUser()
+  mounted() {
+    this.getUser();
   },
   methods: {
-    checkLink () {
+    checkLink() {
       if (this.user.role === 2) {
-        this.currWay = '/accountWorker'
+        this.currWay = "/accountWorker";
       } else if (this.user.role === 3) {
-          this.currWay = '/accountCompany'
+        this.currWay = "/accountCompany";
       }
     },
     async getUser() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
-      let headers = this.get_headers(token);
+      if (token !== "") {
+        let userId = decode(token).user_id;
+        let headers = this.get_headers(token);
 
-      await axios
-        .get(`${baseUrl()}/user/${userId}/`, { headers })
-        .then((response) => {
-          this.user = response.data;
-          console.log(this.user)
-          this.checkLink()
-        })
-        .catch((error) => console.log(error));
+        await axios
+          .get(`${baseUrl()}/user/${userId}/`, { headers })
+          .then((response) => {
+            this.user = response.data;
+            console.log(this.user);
+            this.checkLink();
+          })
+          .catch((error) => console.log(error));
+      }
     },
     get_headers(access) {
       let headers = {
@@ -57,7 +59,7 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-  }
+  },
 };
 </script>
 

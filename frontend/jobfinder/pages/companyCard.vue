@@ -215,7 +215,7 @@ export default {
             company_details: "",
             description: "",
           };
-          this.$router.push('/accountCompany')
+          this.$router.push("/accountCompany");
         })
         .catch(() => (this.error = true));
     },
