@@ -28,11 +28,57 @@
     </section>
     <div class="tabs">
       <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">МОИ ВАКАНСИИ</a></li>
-        <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
-        <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
-        <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
+        <nuxt-link to="/workerCard">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myProfile',
+            }"
+            @click="changeActiveTab('myProfile')"
+          >
+            МОЙ ПРОФИЛЬ /
+          </li>
+        </nuxt-link>
+        <nuxt-link to="/accountResume">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myResumes',
+            }"
+            @click="changeActiveTab('myResumes')"
+          >
+            МОИ РЕЗЮМЕ /
+          </li>
+        </nuxt-link>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myRequests',
+          }"
+          @click="changeActiveTab('myRequests')"
+        >
+          ОТКЛИКИ /
+        </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myInvites',
+          }"
+          @click="changeActiveTab('myInvites')"
+        >
+          ПРЕДЛОЖЕНИЯ /
+        </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myLetters',
+          }"
+          @click="changeActiveTab('myLetters')"
+        >
+          ПИСЬМА /
+        </li>
       </ul>
+      <MyVacancy/>
     </div>
   </div>
 </template>
@@ -46,13 +92,9 @@ export default {
   data: () => {
     return {
       user: {},
-      company: {
-        name: "",
-        itn: "",
-        category: "",
-        company_details: "",
-        description: "",
-      },
+      company: {},
+      activeTab: "myProfile",
+
     };
   },
 
@@ -98,6 +140,10 @@ export default {
       };
       headers["Authorization"] = "Bearer " + access;
       return headers;
+    },
+    changeActiveTab(tab) {
+      this.activeTab = tab;
+      console.log(`i am ${this.activeTab}`);
     },
   },
 };
