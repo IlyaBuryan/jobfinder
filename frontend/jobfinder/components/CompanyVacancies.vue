@@ -1,13 +1,17 @@
 <template>
-  <div class="content_vacancy" v-for="vacancy in vacancyData" :key="vacancy.id>
-    <div class="content-wrap">
-      <div class="cont-text-vacancy">{{ vacancy.position }}</div>
-    </div>
-    <div class="button">
-      <button class="btn btn-success btn-xl" style="background-color: #32CD32; border-color: #32CD32" href="#">Редактировать</button>
-    </div>
+  <div>
+    <div class="content_vacancy" v-for="(vacancy, id) in vacancyData" :key="id">
+      <div class="content-wrap-vacancy">
+        <div class="cont-text-vacancy">
+          <h3>{{ vacancy.position }}</h3>
+        </div>
+      </div>
       <div class="button">
-      <button class="btn btn-success btn-xl" style="background-color: #E9967A; border-color: #E9967A" href="#">Удалить</button>
+        <button class="btn btn-success btn-xl" style="background-color: #32CD32; border-color: #32CD32" href="#">Редактировать</button>
+      </div>
+      <div class="button">
+        <button class="btn btn-success btn-xl" style="background-color: #E9967A; border-color: #E9967A" href="#">Удалить</button>
+      </div>
     </div>
   </div>
 </template>
@@ -17,12 +21,8 @@
 export default {
   props: {
     vacancyData: {
-      type: Object,
+      type: Array,
       default: () => {},
-    },
-    link: {
-      type: String,
-      default: () => "",
     },
   },
 }
@@ -37,11 +37,12 @@ export default {
   line-height: 1.4em;
   letter-spacing: 0em;
   display:flex;
+  margin-bottom:10px;
 }
 
-.content-wrap {
+.content-wrap-vacancy {
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .tab-item {

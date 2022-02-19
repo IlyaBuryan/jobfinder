@@ -76,7 +76,7 @@
           ПИСЬМА /
         </li>
       </ul>
-      <CompanyVacancies v-if="activeTab==='myVacancies'" :resumesData="resumeList" />
+      <CompanyVacancies v-if="activeTab==='myVacancies'" :vacancyData="vacancyList" />
     </div>
   </div>
 </template>
