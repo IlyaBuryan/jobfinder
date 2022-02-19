@@ -1,6 +1,6 @@
 from workerapp.serializers import WorkerModelSerializer, ResumeModelSerializer, \
     WorkExperienceModelSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from workerapp.models import Worker, Resume, WorkExperience
 
 
@@ -17,6 +17,11 @@ class WorkerModelViewSet(viewsets.ModelViewSet):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class WorkerListView(generics.ListAPIView):
+    queryset = Worker.objects.all()
+    serializer_class = WorkerModelSerializer
 
 
 class ResumeModelViewSet(viewsets.ModelViewSet):

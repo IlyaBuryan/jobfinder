@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from authapp.serializers import CustomUserModelSerializer
 
 from authapp.models import CustomUser
 
@@ -26,6 +26,17 @@ class Resume(models.Model):
     info = models.TextField(verbose_name='Дополнительная информация')
     is_draft = models.BooleanField(default="false", verbose_name='Черновик')
     worker = models.ForeignKey(CustomUser, verbose_name="Сотрудник", on_delete=models.CASCADE)
+
+    @property
+    def worker_info(self):
+        id_user = CustomUserModelSerializer(self.worker).data['id']
+        user_card = Worker.objects.filter(user=id_user).first()
+        data = {
+            'first_name': user_card.first_name,
+            'last_name': user_card.last_name,
+            'phone': user_card.phone
+        }
+        return data
 
 
 class WorkExperience(models.Model):

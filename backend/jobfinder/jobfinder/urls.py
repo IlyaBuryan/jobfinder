@@ -2,11 +2,11 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
-from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet
+from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from lkcompanyapp.views import MessageOnResumeModelViewSet, LetterToWorkerModelViewSet
-from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet
+from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet, CompanyCardListView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
@@ -56,6 +56,8 @@ urlpatterns = [
 
     path('api/v1/', include(router.urls)),
     path('api/v1/api-auth/', include('rest_framework.urls')),
+    path('api/v1/company_card/', CompanyCardListView.as_view()),
+    path('api/v1/worker_card/', WorkerListView.as_view()),
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/logout/', LogoutAPIView.as_view(), name="logout"),
