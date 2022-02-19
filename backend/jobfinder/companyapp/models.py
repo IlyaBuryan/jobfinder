@@ -41,3 +41,7 @@ class Vacancy(models.Model):
     city = models.CharField(verbose_name='Город', max_length=64, null=True, blank=True)
     published_date = models.DateField(auto_now_add=True, verbose_name='Дата публикации')
     company_card = models.ForeignKey(CompanyCard, verbose_name='Организация', on_delete=models.CASCADE)
+
+    @property
+    def company_name(self):
+        return self.company_card.name

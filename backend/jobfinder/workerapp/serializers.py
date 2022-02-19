@@ -10,6 +10,7 @@ class WorkerModelSerializer(ModelSerializer):
 
 
 class ResumeModelSerializer(serializers.ModelSerializer):
+    worker_info = serializers.ReadOnlyField()
     experience = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
 
     class Meta:
