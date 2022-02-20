@@ -61,8 +61,8 @@
             </ul>
 
             <div class="action-buttons">
-              <a class="btn btn-primary" href="#">Разместить на linkedin</a>
               <a class="btn btn-success" href="#">Откликнуться</a>
+              <Message></Message>
             </div>
           </div>
 
@@ -121,10 +121,12 @@
 </template>
 
 <script>
+import Message from "@/components/Message.vue";
 import {baseUrl, decode} from "../../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 export default {
+  components: { Message },
   data () {
     return {
       loading: false,
