@@ -1,22 +1,42 @@
 <template>
   <div>
-    <div class="content_vacancy" v-for="(vacancy, id) in vacancyData" :key="id">
+    <div
+      class="content_vacancy"
+      v-for="vacancy in vacancyData"
+      :key="vacancy.id"
+    >
       <div class="content-wrap-vacancy">
         <div class="cont-text-vacancy">
           <h3>{{ vacancy.position }}</h3>
         </div>
       </div>
       <div class="button">
-        <button class="btn btn-success btn-xl" style="background-color: #32CD32; border-color: #32CD32" href="#">Редактировать</button>
+        <nuxt-link :to="`/vacancyEdit?id=${vacancy.id}`">
+          <button
+            class="btn btn-success btn-xl"
+            style="background-color: #32cd32; border-color: #32cd32"
+          >
+            Редактировать
+          </button>
+        </nuxt-link>
       </div>
       <div class="button">
-        <button class="btn btn-success btn-xl" style="background-color: #E9967A; border-color: #E9967A" href="#">Удалить</button>
+        <button
+          class="btn btn-success btn-xl"
+          style="background-color: #e9967a; border-color: #e9967a"
+          @click="deleteVacancy(vacancy.id, $event)"
+        >
+          Удалить
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { baseUrl } from "../store/constants.js";
+import Cookies from "universal-cookie";
+import axios from "axios";
 
 export default {
   props: {
@@ -27,9 +47,32 @@ export default {
     company: {
       type: Object,
       default: () => {},
-    }
+    },
   },
-}
+
+  methods: {
+    deleteVacancy(id, event) {
+      event.preventDefault();
+      location.reload();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      axios
+        .delete(`${baseUrl()}/vacancyapp/${id}/`, { headers })
+        .then((response) => {
+          console.log("Ваканси удалена");
+        })
+        .catch((error) => console.log(error));
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -40,18 +83,18 @@ export default {
   color: #333333;
   line-height: 1.4em;
   letter-spacing: 0em;
-  display:flex;
-  margin-bottom:10px;
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .content-wrap-vacancy {
-  margin-left:30px;
+  margin-left: 30px;
   display: flex;
   margin-bottom: 20px;
 }
 
 .tab-item {
-  color:blue;
+  color: blue;
   &_active {
     color: white;
     background-color: blue;
@@ -59,7 +102,7 @@ export default {
 }
 
 .cont-text-vacancy {
-  margin-top:20px;
+  margin-top: 20px;
   margin-left: 40px;
   margin-right: 10px;
 }
@@ -83,5 +126,4 @@ export default {
   margin: 20px 0 0 0;
   text-align: right;
 }
-
 </style>
