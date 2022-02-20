@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div
+    <nuxt-link
+      :to="`/vacancies/${vacancy.id}`"
       class="content_vacancy"
       v-for="vacancy in vacancyData"
       :key="vacancy.id"
@@ -29,7 +30,7 @@
           Удалить
         </button>
       </div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 
@@ -108,6 +109,9 @@ export default {
 }
 .button {
   margin-left: 10px;
+}
+.button:hover * {
+  color: #333333;
 }
 
 .cont-text h2 {
