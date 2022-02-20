@@ -1,39 +1,39 @@
 <template>
-  <div class="vacancy_wrapp">
+  <div class="resume_wrapp">
     <!-- Page header -->
     <header class="page-header">
       <div class="container">
         <div class="header-detail">
           <div class="header-detail__head">
-            <!-- <img class="logo" :src="vacancy.img" alt=""> -->
+            <!-- <img class="logo" :src="resume.img" alt=""> -->
             <div class="header-detail__head_main">
               <div class="hgroup">
-                <h1>{{ vacancy.position }}</h1>
-                <h3><a href="#">{{ company.company_name }}</a></h3>
+                <h1>{{ resume.position }}</h1>
+                <!-- <h3><a href="#">{{ resume.worker_info.first_name }} {{ resume.worker_info.last_name }}</a></h3> -->
               </div>
               <div class="header-detail__head_main-time">
-                {{ vacancy.published_date }}
+                {{ resume.published_date }}
               </div>
             </div>
           </div>
           <hr />
-          <p class="header-detail__head_main-descr">{{ vacancy.duties }}.</p>
+          <p class="header-detail__head_main-descr">{{ resume.institution }}.</p>
           <div class="header-detail__footer">
             <ul class="header-detail__head_main-params">
               <li>
                 <i class="fa fa-map-marker"></i>
-                <span>{{ vacancy.city }}</span>
+                <span>{{ resume.courses }}</span>
               </li>
 
-              <li>
+              <!-- <li>
                 <i class="fa fa-briefcase"></i>
-                <span>{{ vacancy.conditions }}</span>
-              </li>
+                <span>{{ resume.conditions }}</span>
+              </li> -->
 
-              <li>
+              <!-- <li>
                 <i class="fa fa-money"></i>
-                <span>{{ vacancy.salary }}</span>
-              </li>
+                <span>{{ resume.salary }}</span>
+              </li> -->
             </ul>
             <ul class="header-detail__head_main-params">
               <li>
@@ -73,7 +73,7 @@
             </ul>
 
             <div class="action-buttons">
-              <a class="btn btn-success" href="#">Откликнуться</a>
+              <a class="btn btn-success" href="#">Отправить предложение</a>
               <Message></Message>
             </div>
           </div>
@@ -85,13 +85,11 @@
     <!-- Main container -->
     <main>
       <!-- Job detail -->
-      <section class="vacancy-info">
-        <div class="vacancy-info__container">
-          <p>{{ vacancy.duties }}</p>
-
+      <section class="resume-info">
+        <div class="resume-info__container">
           <br />
-          <h4>Responsibilities</h4>
-          <p>{{ vacancy.requirements }}</p>
+          <h4>О себе</h4>
+          <p>{{ resume.info }}</p>
           <!-- <ul>
             <li>Build next-generation web applications with a focus on the client side.</li>
             <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
@@ -146,11 +144,12 @@ export default {
   data() {
     return {
       loading: false,
-      vacancyList: [],
-      vacancy: {},
-      company: {},
-      companyList: [],
-      companyId: "",
+      resumeList: [],
+      resume: {},
+      worker: {},
+      workerList: [],
+      workerId: "",
+
     };
   },
   async mounted() {
@@ -165,21 +164,21 @@ export default {
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/vacancyapp/${this.$route.params.vacancy_id}`, {
+        .get(`${baseUrl()}/resume/${this.$route.params.resume_id}`, {
           headers,
         })
         .then((response) => {
-          this.vacancy = response.data;
-          console.log(this.vacancy);
+          this.resume = response.data;
+          console.log(this.resume);
         })
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/company_card/`, { headers })
+        .get(`${baseUrl()}/worker_card/`, { headers })
         .then((response) => {
-          this.companyList = response.data;
-          this.company = this.companyList[0];
-          console.log(this.companyList);
+          this.workerList = response.data;
+          this.worker = this.workerList[0];
+          console.log(this.workerList);
         })
         .catch((error) => console.log(error));
     },
@@ -191,11 +190,11 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-    getVacancy() {
-      this.vacancyId = this.$route.params.vacancy_id;
-      this.vacancy = this.vacancyList[this.vacancyId - 1];
-      console.log(this.vacancy);
-      this.company = this.companyList[0];
+    getResume() {
+      this.resumeId = this.$route.params.resume_id;
+      this.resume = this.resumeList[this.resumeId - 1];
+      console.log(this.resume);
+      this.worker = this.workerList[0];
     },
   },
 };
@@ -207,7 +206,7 @@ export default {
   max-width: 100%;
   flex-direction: column;
 }
-.vacancy_wrapp {
+.resume_wrapp {
   width: 100%;
 }
 .page-header {
@@ -267,7 +266,7 @@ export default {
     width: 240px;
   }
 }
-.vacancy-info {
+.resume-info {
   display: flex;
   justify-content: center;
   &__container {
