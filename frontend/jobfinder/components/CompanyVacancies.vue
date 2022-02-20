@@ -24,6 +24,10 @@ export default {
       type: Array,
       default: () => {},
     },
+    company: {
+      type: Object,
+      default: () => {},
+    }
   },
 }
 </script>
@@ -41,6 +45,7 @@ export default {
 }
 
 .content-wrap-vacancy {
+  margin-left:30px;
   display: flex;
   margin-bottom: 20px;
 }

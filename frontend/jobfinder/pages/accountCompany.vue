@@ -76,7 +76,8 @@
           ПИСЬМА /
         </li>
       </ul>
-      <CompanyVacancies v-if="activeTab==='myVacancies'" :vacancyData="vacancyList" />
+      <CompanyVacancies v-if="activeTab==='myVacancies'" :vacancyData="vacancyList"
+      :company="company"/>
     </div>
   </div>
 </template>
@@ -217,11 +218,18 @@ export default {
 }
 
 .content-wrap {
+  margin-top: 40px;
+  margin-left:30px;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
-.item {
+.tab-item {
+  color:blue;
+  &_active {
+    color: white;
+    background-color: blue;
+  }
 }
 
 .cont-text {
