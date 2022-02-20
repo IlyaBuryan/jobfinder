@@ -28,7 +28,7 @@
     </section>
     <div class="tabs">
       <ul class="breadcrumb">
-        <nuxt-link to="/companyCard">
+        <nuxt-link :to="`/companyEdit?id=${company.id}`">
           <li
             :class="{
               'tab-item': true,
@@ -36,18 +36,18 @@
             }"
             @click="changeActiveTab('myProfile')"
           >
-            МОЙ ПРОФИЛЬ /
+            РЕДАКТИРОВАНИЕ ПРОФИЛЯ /
           </li>
         </nuxt-link>
-           <li
-            :class="{
-              'tab-item': true,
-              'tab-item_active': activeTab === 'myVacancies',
-            }"
-            @click="changeActiveTab('myVacancies')"
-          >
-            МОИ ВАКАНСИИ /
-          </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myVacancies',
+          }"
+          @click="changeActiveTab('myVacancies')"
+        >
+          МОИ ВАКАНСИИ /
+        </li>
         <li
           :class="{
             'tab-item': true,
@@ -76,8 +76,11 @@
           ПИСЬМА /
         </li>
       </ul>
-      <CompanyVacancies v-if="activeTab==='myVacancies'" :vacancyData="vacancyList"
-      :company="company"/>
+      <CompanyVacancies
+        v-if="activeTab === 'myVacancies'"
+        :vacancyData="vacancyList"
+        :company="company"
+      />
     </div>
   </div>
 </template>
@@ -117,6 +120,7 @@ export default {
         .get(`${baseUrl()}/companyapp/${this.user.company}`, { headers })
         .then((response) => {
           this.company = response.data;
+          console.log(response.data);
         })
         .catch((error) => console.log(error));
 
@@ -219,13 +223,13 @@ export default {
 
 .content-wrap {
   margin-top: 40px;
-  margin-left:30px;
+  margin-left: 30px;
   display: flex;
   margin-bottom: 40px;
 }
 
 .tab-item {
-  color:blue;
+  color: blue;
   &_active {
     color: white;
     background-color: blue;
