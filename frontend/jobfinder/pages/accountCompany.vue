@@ -10,7 +10,7 @@
       <div class="content-wrap">
         <div class="item">
           <img
-            src="~/assets/img/ava.png"
+            src="~/assets/img/ava_company.png"
             width="250"
             height="250"
             alt="avatar"
@@ -78,6 +78,16 @@
       </ul>
       <CompanyVacancies
         v-if="activeTab === 'myVacancies'"
+        :vacancyData="vacancyList"
+        :company="company"
+      />
+      <MessageVacancy
+        v-if="activeTab === 'myRequests'"
+        :vacancyData="vacancyList"
+        :company="company"
+      />
+      <InvitesResume
+        v-if="activeTab === 'myInvites'"
         :vacancyData="vacancyList"
         :company="company"
       />

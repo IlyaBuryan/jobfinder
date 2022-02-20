@@ -1,7 +1,6 @@
 <template>
   <div>
-    <nuxt-link
-      :to="`/vacancies/${vacancy.id}`"
+    <div
       class="content_vacancy"
       v-for="vacancy in vacancyData"
       :key="vacancy.id"
@@ -10,27 +9,24 @@
         <div class="cont-text-vacancy">
           <h3>{{ vacancy.position }}</h3>
         </div>
-      </div>
-      <div class="button">
-        <nuxt-link :to="`/vacancyEdit?id=${vacancy.id}`">
-          <button
+        <div>
+           <h4>Данные работника: {{ vacancy.company_name }}</h4>
+           <h4><em>откликнулся {{ vacancy.published_date }}</em></h4>
+           <br/>
+           <h4>Телефон: {{ vacancy.city }}</h4>
+           <h4>Образование: </h4>
+           <h4>Доп. информация: </h4>
+        </div>
+        <div>
+        <button
             class="btn btn-success btn-xl"
             style="background-color: #32cd32; border-color: #32cd32"
           >
-            Редактировать
+            Отправить ответ
           </button>
-        </nuxt-link>
+        </div>
       </div>
-      <div class="button">
-        <button
-          class="btn btn-success btn-xl"
-          style="background-color: #e9967a; border-color: #e9967a"
-          @click="deleteVacancy(vacancy.id, $event)"
-        >
-          Удалить
-        </button>
-      </div>
-    </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -50,29 +46,6 @@ export default {
       default: () => {},
     },
   },
-
-  methods: {
-    deleteVacancy(id, event) {
-      event.preventDefault();
-      location.reload();
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      let headers = this.get_headers(token);
-      axios
-        .delete(`${baseUrl()}/vacancyapp/${id}/`, { headers })
-        .then((response) => {
-          console.log("Ваканси удалена");
-        })
-        .catch((error) => console.log(error));
-    },
-    get_headers(access) {
-      let headers = {
-        "Content-Type": "application/json",
-      };
-      headers["Authorization"] = "Bearer " + access;
-      return headers;
-    },
-  },
 };
 </script>
 
@@ -89,8 +62,9 @@ export default {
 }
 
 .content-wrap-vacancy {
-  margin-left: 200px;
+  margin-left: 300px;
   display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
@@ -103,15 +77,9 @@ export default {
 }
 
 .cont-text-vacancy {
-  margin-top: 20px;
-  margin-left: 40px;
-  margin-right: 10px;
-}
-.button {
-  margin-left: 10px;
-}
-.button:hover * {
-  color: #333333;
+  margin:5px auto 5px;
+  margin-left:300px;
+
 }
 
 .cont-text h2 {
