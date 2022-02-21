@@ -199,16 +199,6 @@ export default {
         })
         .catch((error) => console.log(error));
 
-      // await axios
-      //   .get(`${baseUrl()}/companyapp/${this.vacancy.company_card}`, {
-      //     headers,
-      //   })
-      //   .then((response) => {
-      //     this.company = response.data;
-      //     console.log(this.company);
-      //   })
-      //   .catch((error) => console.log(error));
-
       await axios
         .get(`${baseUrl()}/resume/`, {
           headers,
