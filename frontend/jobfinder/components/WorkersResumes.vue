@@ -1,127 +1,116 @@
 <template>
-  <div class="main__wrapp">
-    <h1>Этом мое резюме №1</h1>
-            <!-- Job item -->
-    <div class="vacancy-item" v-for="(item, id) in resumeData" :key="id">
-      <nuxt-link :to="`/resumes/${item.id}`" style="textDecoration:none">
-        <div class="vacancy-item__block">
-          <div class="vacancy-item__info">
-            <div class="vacancy-item__info_main">
-              <div class="vacancy-item__info_main-name">{{ item.position }}</div>
-              <div class="vacancy-item__info_main-name"><img src="~/assets/img/ava-5.png" width="150" height="150" alt="avatar"></div>
-            </div>
-              <div class="vacancy-item__info_descr">
-              <div><b>Данные:</b> {{ worker.first_name }} {{ worker.last_name }}</div>
-              <div><b>Телефон:</b> {{ worker.phone }}</div>
-              </div>
-            <br/>
-            <div class="vacancy-item__info_descr" v-for="(experience, id) in item.experience" :key="id">
-              <div><b>Место работы:</b> {{ experience.organization }}</div>
-              <div><b>Должность:</b> {{ experience.position }}</div>
-            <br/>
-            </div>
-            <div class="vacancy-item__info_footer">
-              <div class="vacancy-item__info_footer-city"><b>О себе:</b> {{ item.info }}</div>
-            </div>
-          </div>
+  <div>
+    <nuxt-link
+      :to="`/resumes/${resume.id}`"
+      class="content_resume"
+      v-for="resume in resumeData"
+      :key="resume.id"
+      >
+      <div class="content-wrap-resume">
+        <div class="cont-text-resume">
+          <h3>{{ resume.position }}</h3>
         </div>
-      </nuxt-link>
-    </div>
-          <!-- END Job item first-->
+      </div>
+      <div class="button">
+        <nuxt-link :to="`/resumeEdit?id=${resume.id}`">
+          <button
+            class="btn btn-success btn-xl"
+            style="background-color: #32cd32; border-color: #32cd32"
+          >
+            Редактировать
+          </button>
+        </nuxt-link>
+      </div>
+      <div class="button">
+        <button
+          class="btn btn-success btn-xl"
+          style="background-color: #e9967a; border-color: #e9967a"
+          @click="deleteResume(resume.id, $event)"
+        >
+          Удалить
+        </button>
+      </div>
+    </nuxt-link>
   </div>
 </template>
 
 <script>
+import { baseUrl } from "../store/constants.js";
+import Cookies from "universal-cookie";
+import axios from "axios";
+
 
 export default {
   props: {
     resumeData: {
       type: Array,
       default: () => [],
-      resumeList: []
     },
     worker: {
       type: Object,
       default: () => {},
+    },
+  },
 
-    }
+ methods: {
+    deleteResume(id, event) {
+      event.preventDefault();
+      location.reload();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      axios
+        .delete(`${baseUrl()}/resume/${id}/`, { headers })
+        .then((response) => {
+          console.log("Резюме удалено");
+        })
+        .catch((error) => console.log(error));
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
+    },
   },
 };
-// export default {
-//   name: "WorkersResumes"
-// }
 </script>
 
-<style scoped lang="scss">
-.main__wrapp {
-  display: flex;
-  max-width: 100%;
-  flex-direction: column;
-}
-.page-header .container.no-shadow {
-  border: 1px solid #eee;
-  box-shadow: none;
-  justify-content: space-between;
-}
-.page-header .container.no-shadow h1 {
-  color: #373a3c;
-}
-.tabs {
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
- margin-top: 50px;
-  margin-bottom: 50px;
-}
-.breadcrumb {
-  width: 100%;
-  justify-content: center;
-  display: center;
-}
-.container right {
-  display: justify;
-  margin-left: 10px;
-}
-.header {
-  display: flex;
-  height: 200px;
-  flex-direction: column;
-  background: url("~/assets/img/bg-banner1.jpg") no-repeat bottom center;
-  background-size: cover;
-  align-items: center;
-}
-.head__container {
-  max-width: 1800px;
-  margin-top: 150px;
-}
-
-.content {
-  background-color: #edeef0;
+<style scoped>
+.content_resume {
+  background-color: #ddeeff;
   font-size: 18px;
   font-style: normal;
   color: #333333;
   line-height: 1.4em;
   letter-spacing: 0em;
-}
-
-.content-wrap {
   display: flex;
-  margin-bottom: 50px;
-}-->
-
+  margin-bottom: 10px;
+}
+.content-wrap-resume {
+  margin-left: 200px;
+  display: flex;
+  margin-bottom: 20px;
+}
 .tab-item {
-  color:blue;
+  color: blue;
   &_active {
     color: white;
     background-color: blue;
   }
 }
-
-.cont-text {margin-left: 40px;
+.cont-text-resume {
+  margin-top: 20px;
+  margin-left: 40px;
   margin-right: 10px;
 }
-
+.button {
+  margin-left: 10px;
+}
+.button:hover * {
+  color: #333333;
+}
 .cont-text h2 {
   margin-bottom: 30px;
   font-size: 23px;
@@ -130,5 +119,12 @@ export default {
   line-height: 1.4em;
   letter-spacing: 0em;
 }
-
+.btn-xl {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 20px;
+  font-size: 14px;
+  margin: 20px 0 0 0;
+  text-align: right;
+}
 </style>
