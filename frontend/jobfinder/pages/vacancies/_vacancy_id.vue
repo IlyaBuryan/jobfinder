@@ -9,7 +9,9 @@
             <div class="header-detail__head_main">
               <div class="hgroup">
                 <h1>{{ vacancy.position }}</h1>
-                <h3><a href="#">{{ company.company_name }}</a></h3>
+                <h3>
+                  <a href="#">{{ company_name }}</a>
+                </h3>
               </div>
               <div class="header-detail__head_main-time">
                 {{ vacancy.published_date }}
@@ -73,8 +75,44 @@
             </ul>
 
             <div class="action-buttons">
-              <a class="btn btn-success" href="#">Откликнуться</a>
-              <Message></Message>
+              <div class="form-group">
+                <label for="catComp"
+                  >Выберите резюме, которым хотите откликнуться</label
+                >
+                <select
+                  v-model="resume"
+                  class="form-control"
+                  aria-label="Default select example"
+                >
+                  <option disabled value="">Выберите один из вариантов</option>
+                  <option
+                    v-for="option in options"
+                    :key="option.id"
+                    v-bind:value="option.id"
+                  >
+                    {{ option.id }} - {{ option.position }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Сопроводительное письмо</label>
+                <textarea
+                  type="text"
+                  id="message"
+                  placeholder="Напишите письмо"
+                  class="form-control"
+                  v-model="message"
+                />
+              </div>
+              <p class="text-center">
+                <button
+                  class="btn btn-success btn-xl btn-round"
+                  v-on:click="sendCreateReq"
+                >
+                  Откликнуться
+                </button>
+              </p>
+              <!-- <Message></Message> -->
             </div>
           </div>
         </div>
@@ -87,47 +125,29 @@
       <!-- Job detail -->
       <section class="vacancy-info">
         <div class="vacancy-info__container">
+          <br />
+          <h4>Position</h4>
+          <p>{{ vacancy.position }}</p>
+
+          <br />
+          <h4>Conditions</h4>
+          <p>{{ vacancy.conditions }}</p>
+
+          <br />
+          <h4>Duties</h4>
           <p>{{ vacancy.duties }}</p>
 
           <br />
           <h4>Responsibilities</h4>
           <p>{{ vacancy.requirements }}</p>
-          <!-- <ul>
-            <li>Build next-generation web applications with a focus on the client side.</li>
-            <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
-            <li>Explore and design dynamic and compelling consumer experiences.</li>
-            <li>Design and build scalable framework for web applications.</li>
-          </ul> -->
 
           <br />
-          <h4>Minimum qualifications</h4>
-          <ul>
-            <li>
-              BA/BS degree in a technical field or equivalent practical
-              experience.
-            </li>
-            <li>
-              2 years of relevant work experience in software development.
-            </li>
-            <li>Programming experience in C, C++ or Java.</li>
-            <li>Experience with AJAX, HTML and CSS.</li>
-          </ul>
+          <h4>Salary</h4>
+          <p>{{ vacancy.salary }}</p>
 
           <br />
-          <h4>Preferred qualifications</h4>
-          <ul>
-            <li>Interest in user interface design.</li>
-            <li>Web application development experience.</li>
-            <li>Experience working on cross-browser platforms.</li>
-            <li>
-              Development experience designing object-oriented JavaScript.
-            </li>
-            <li>
-              Experience with user interface frameworks such as XUL, Flex and
-              XAML.
-            </li>
-            <li>Knowledge of user interface design.</li>
-          </ul>
+          <h4>City</h4>
+          <p>{{ vacancy.city }}</p>
         </div>
       </section>
       <!-- END Job detail -->
@@ -146,11 +166,13 @@ export default {
   data() {
     return {
       loading: false,
-      vacancyList: [],
       vacancy: {},
-      company: {},
-      companyList: [],
-      companyId: "",
+      company_name: "",
+      user: "",
+      vacancy: "",
+      resume: "",
+      message: "",
+      options: [],
     };
   },
   async mounted() {
@@ -158,28 +180,42 @@ export default {
   },
 
   methods: {
-    getCard() {
+    async getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
+      this.user = decode(token).user_id;
       let headers = this.get_headers(token);
 
-      axios
+      await axios
         .get(`${baseUrl()}/vacancyapp/${this.$route.params.vacancy_id}`, {
           headers,
         })
         .then((response) => {
           this.vacancy = response.data;
+          this.company = response.company_card;
+          this.company_name = response.company_name;
+
           console.log(this.vacancy);
         })
         .catch((error) => console.log(error));
 
-      axios
-        .get(`${baseUrl()}/company_card/`, { headers })
+      // await axios
+      //   .get(`${baseUrl()}/companyapp/${this.vacancy.company_card}`, {
+      //     headers,
+      //   })
+      //   .then((response) => {
+      //     this.company = response.data;
+      //     console.log(this.company);
+      //   })
+      //   .catch((error) => console.log(error));
+
+      await axios
+        .get(`${baseUrl()}/resume/`, {
+          headers,
+        })
         .then((response) => {
-          this.companyList = response.data;
-          this.company = this.companyList[0];
-          console.log(this.companyList);
+          this.options = response.data;
+          console.log(this.options);
         })
         .catch((error) => console.log(error));
     },
@@ -191,11 +227,33 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-    getVacancy() {
-      this.vacancyId = this.$route.params.vacancy_id;
-      this.vacancy = this.vacancyList[this.vacancyId - 1];
-      console.log(this.vacancy);
-      this.company = this.companyList[0];
+
+    sendCreateReq(event) {
+      event.preventDefault();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+
+      const data = {
+        user: this.user,
+        vacancy: this.vacancy.id,
+        resume: this.resume,
+        message: this.message,
+        is_viewed: true,
+      };
+
+      console.log(data);
+
+      axios
+        .post(`${baseUrl()}/message_to_vacancy/`, data, {
+          headers,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.resume = "";
+          this.$router.push("/accountWorker");
+        })
+        .catch(() => (this.error = true));
     },
   },
 };

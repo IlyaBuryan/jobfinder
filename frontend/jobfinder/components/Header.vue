@@ -149,11 +149,11 @@ export default {
       const token_refresh = cookies.get("token_refresh");
       const headers = this.get_headers(token);
       const data = { refresh: token_refresh };
+      cookies.set("token", "", { path: "/" });
+      cookies.set("token_refresh", "", { path: "/" });
       axios
         .post(`${baseUrl()}/logout/`, data, { headers })
         .then((response) => {
-          cookies.set("token", "", { path: "/" });
-          cookies.set("token_refresh", "", { path: "/" });
           this.checkUserLogin();
           console.log("Пользователь успешно разлогинился");
         })
