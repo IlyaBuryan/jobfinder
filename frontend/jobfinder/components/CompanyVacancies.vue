@@ -43,7 +43,7 @@ export default {
   props: {
     vacancyData: {
       type: Array,
-      default: () => {},
+      default: () => [],
     },
     company: {
       type: Object,
