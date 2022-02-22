@@ -30,8 +30,6 @@
           <NuxtLink to="/">Вакансии</NuxtLink>
           <ul v-if="mouseOnVacancies" class="nav-menu__ul_el">
             <li><NuxtLink to="/vacancies">Список вакансий</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
           </ul>
         </li>
         <li
@@ -41,8 +39,6 @@
           <NuxtLink to="/">Резюме</NuxtLink>
           <ul v-if="mouseOnResume" class="nav-menu__ul_el">
             <li><NuxtLink to="/resumes">Список резюме</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 2</NuxtLink></li>
-            <li><NuxtLink to="/">Вариант 3</NuxtLink></li>
           </ul>
         </li>
         <li
@@ -52,24 +48,14 @@
           <NuxtLink to="/">Компании</NuxtLink>
           <ul v-if="mouseOnCompanies" class="nav-menu__ul_el">
             <li><NuxtLink to="/companyCard">Заполнить карточку</NuxtLink></li>
-            <li>
-              <NuxtLink to="/companyEdit">Редактировать карточку</NuxtLink>
-            </li>
             <li><NuxtLink to="/companyVacancy">Создать вакансию</NuxtLink></li>
-            <li>
-              <NuxtLink to="/vacancyEdit">Редактировать вакансию</NuxtLink>
-            </li>
           </ul>
         </li>
         <li @mouseover="mouseOnPages = true" @mouseleave="mouseOnPages = false">
           <NuxtLink to="/">Работники</NuxtLink>
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
             <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
-            <li>
-              <NuxtLink to="/workerEdit">Редактировать карточку</NuxtLink>
-            </li>
             <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
-            <li><NuxtLink to="/resumeEdit">Редактировать резюме</NuxtLink></li>
           </ul>
         </li>
       </ul>
@@ -157,7 +143,7 @@ export default {
           this.checkUserLogin();
           console.log("Пользователь успешно разлогинился");
         })
-        .catch((error) => console.log(error));
+        .catch(() => this.checkUserLogin());
     },
     get_headers(access) {
       let headers = {

@@ -1,24 +1,26 @@
 <template>
   <div>
-    <div
-      class="content_vacancy"
-      v-for="vacancy in vacancyData"
-      :key="vacancy.id"
-    >
+    <div class="content_vacancy" v-for="item in messagesData" :key="item.id">
       <div class="content-wrap-vacancy">
         <div class="cont-text-vacancy">
-          <h3>{{ vacancy.position }}</h3>
+          <h3>{{ item.vacancy.position }}</h3>
+          <h4>Город: {{ item.vacancy.city }}</h4>
+        </div>
+        <br />
+        <div>
+          <h4>Имя: {{ item.resume.worker_info.first_name }}</h4>
+          <h4>Фамилия: {{ item.resume.worker_info.last_name }}</h4>
+          <h4>Почта: {{ item.user.email }}</h4>
+          <h4>Телефон: {{ item.resume.worker_info.phone }}</h4>
+          <h4>Образование: {{ item.resume.institution }}</h4>
+          <h4>
+            <em>откликнулся {{ item.vacancy.published_date }}</em>
+          </h4>
+          <h4>Должность в резюме: {{ item.resume.position }}</h4>
+          <br />
         </div>
         <div>
-           <h4>Данные работника: {{ vacancy.company_name }}</h4>
-           <h4><em>откликнулся {{ vacancy.published_date }}</em></h4>
-           <br/>
-           <h4>Телефон: {{ vacancy.city }}</h4>
-           <h4>Образование: </h4>
-           <h4>Доп. информация: </h4>
-        </div>
-        <div>
-        <button
+          <button
             class="btn btn-success btn-xl"
             style="background-color: #32cd32; border-color: #32cd32"
           >
@@ -31,18 +33,10 @@
 </template>
 
 <script>
-import { baseUrl } from "../store/constants.js";
-import Cookies from "universal-cookie";
-import axios from "axios";
-
 export default {
   props: {
-    vacancyData: {
+    messagesData: {
       type: Array,
-      default: () => {},
-    },
-    company: {
-      type: Object,
       default: () => {},
     },
   },
@@ -70,16 +64,11 @@ export default {
 
 .tab-item {
   color: blue;
-  &_active {
-    color: white;
-    background-color: blue;
-  }
 }
 
 .cont-text-vacancy {
-  margin:5px auto 5px;
-  margin-left:300px;
-
+  margin: 5px auto 5px;
+  margin-left: 300px;
 }
 
 .cont-text h2 {

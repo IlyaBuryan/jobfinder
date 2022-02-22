@@ -55,9 +55,11 @@
           }"
           @click="changeActiveTab('myRequests')"
         >
-          ОТКЛИКИ /
+          ОТКЛИКИ
         </li>
-        <li
+
+        <!-- Предложения только для воркеров -->
+        <!-- <li
           :class="{
             'tab-item': true,
             'tab-item_active': activeTab === 'myInvites',
@@ -65,8 +67,10 @@
           @click="changeActiveTab('myInvites')"
         >
           ПРЕДЛОЖЕНИЯ /
-        </li>
-        <li
+        </li> -->
+
+        <!-- ПОКА заомментил, не уверен что это должно быть тут -->
+        <!-- <li
           :class="{
             'tab-item': true,
             'tab-item_active': activeTab === 'myLetters',
@@ -74,7 +78,7 @@
           @click="changeActiveTab('myLetters')"
         >
           ПИСЬМА /
-        </li>
+        </li> -->
       </ul>
       <CompanyVacancies
         v-if="activeTab === 'myVacancies'"
@@ -83,14 +87,14 @@
       />
       <MessageVacancy
         v-if="activeTab === 'myRequests'"
-        :vacancyData="vacancyList"
-        :company="company"
+        :messagesData="messagesList"
       />
-      <InvitesResume
+      <!-- Предложения только для воркеров -->
+      <!-- <InvitesResume
         v-if="activeTab === 'myInvites'"
-        :vacancyData="vacancyList"
+        :letterData="lettersList"
         :company="company"
-      />
+      /> -->
     </div>
   </div>
 </template>
@@ -109,6 +113,7 @@ export default {
       company: {},
       activeTab: "myVacancies",
       vacancyList: [],
+      messagesList: [],
     };
   },
 
@@ -130,7 +135,6 @@ export default {
         .get(`${baseUrl()}/companyapp/${this.user.company}`, { headers })
         .then((response) => {
           this.company = response.data;
-          console.log(response.data);
         })
         .catch((error) => console.log(error));
 
@@ -138,6 +142,15 @@ export default {
         .get(`${baseUrl()}/vacancyapp/`, { headers })
         .then((response) => {
           this.vacancyList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/message_to_vacancy/`, { headers })
+        .then((response) => {
+          this.messagesList = response.data;
+          console.log("---------------------------");
+          console.log(this.messagesList);
         })
         .catch((error) => console.log(error));
     },
@@ -240,10 +253,6 @@ export default {
 
 .tab-item {
   color: blue;
-  &_active {
-    color: white;
-    background-color: blue;
-  }
 }
 
 .cont-text {

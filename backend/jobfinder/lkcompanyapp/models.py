@@ -26,7 +26,6 @@ class MessageOnResume(models.Model): #предложение на резюме
     resume = models.ForeignKey(Resume, verbose_name='Резюме', on_delete=models.CASCADE)
     vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True, verbose_name='Дата предложения')
-    # message = models.ForeignKey(Message, verbose_name='Отклик', on_delete=models.CASCADE)
     message = models.TextField(verbose_name='Отклик', blank=True)
     is_viewed = models.BooleanField(default=False, verbose_name='Просмотрено')
 
