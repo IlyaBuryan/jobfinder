@@ -22,8 +22,8 @@ response_statuses = (
 
 
 class MessageOnResume(models.Model): #предложение на резюме
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь')  # зачем здесь юзер? их же 3 в модели, может permission?
-    resume = models.ForeignKey(Resume, verbose_name='Резюме')
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)  # зачем здесь юзер? их же 3 в модели, может permission?
+    resume = models.ForeignKey(Resume, verbose_name='Резюме', on_delete=models.CASCADE)
     vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True, verbose_name='Дата предложения')
     # message = models.ForeignKey(Message, verbose_name='Отклик', on_delete=models.CASCADE)
