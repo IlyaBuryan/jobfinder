@@ -46,6 +46,7 @@
             }"
             @click="changeActiveTab('myResumes')"
           >
+
             МОИ РЕЗЮМЕ /
           </li>
 <!--        </nuxt-link>-->
@@ -56,7 +57,7 @@
           }"
           @click="changeActiveTab('myRequests')"
         >
-          ОТКЛИКИ /
+          МОИ ОТКЛИКИ НА ВАКАНСИИ/
         </li>
         <li
           :class="{
@@ -65,19 +66,19 @@
           }"
           @click="changeActiveTab('myInvites')"
         >
-          ПРЕДЛОЖЕНИЯ /
+          ПРЕДЛОЖЕНИЯ ОТ РАБОТОДАТЕЛЕЙ /
         </li>
-        <li
-          :class="{
-            'tab-item': true,
-            'tab-item_active': activeTab === 'myLetters',
-          }"
-          @click="changeActiveTab('myLetters')"
-        >
-          ПИСЬМА /
-        </li>
+<!--        <li-->
+<!--          :class="{-->
+<!--            'tab-item': true,-->
+<!--            'tab-item_active': activeTab === 'myLetters',-->
+<!--          }"-->
+<!--          @click="changeActiveTab('myLetters')"-->
+<!--        >-->
+<!--          ПИСЬМА /-->
+<!--        </li>-->
       </ul>
-      <WorkersResumes v-if="activeTab==='myResumes'" :resumeData="resumeList" :worker="worker" />
+      <WorkersResumes v-if="activeTab==='myResumes'" :resumeData="resumeList" />
     </div>
   </div>
 </template>
@@ -126,7 +127,7 @@ export default {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/resume/`, {headers})
+        .get(`${baseUrl()}/my_resumes/`, {headers})
         .then((response) => {
           this.resumeList = response.data;
         })
