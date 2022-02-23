@@ -9,16 +9,19 @@ class WorkerModelSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class WorkExperienceModelSerializer(ModelSerializer):
+    class Meta:
+        model = WorkExperience
+        fields = '__all__'
+
+
 class ResumeModelSerializer(serializers.ModelSerializer):
     worker_info = serializers.ReadOnlyField()
-    experience = serializers.PrimaryKeyRelatedField(read_only=True, many=True)
+    experience = WorkExperienceModelSerializer(read_only=True, many=True)
 
     class Meta:
         model = Resume
         fields = '__all__'
 
 
-class WorkExperienceModelSerializer(ModelSerializer):
-    class Meta:
-        model = WorkExperience
-        fields = '__all__'
+
