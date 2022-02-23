@@ -74,9 +74,11 @@
           <div class="user-block__image">
             <img src="~/assets/img/avatar-3.jpg" />
           </div>
-          <div class="user-block__name">
-            <p class="user-block__name_name">{{ userData.username }}</p>
-          </div>
+          <nuxt-link to="/accountWorker">
+            <div class="user-block__name">
+              <p class="user-block__name_name">{{ userData.username }}</p>
+            </div>
+          </nuxt-link>
         </div>
       </nuxt-link>
       <div v-if="is_logged && userData" class="logout" @click="logout">

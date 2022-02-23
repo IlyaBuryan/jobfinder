@@ -81,10 +81,16 @@
       </ul>
     </div>
     <div v-for="(item, id) in resumeList" :key="id" class="my-resume">
-      <nuxt-link :to="`/resumes/1`"></nuxt-link><div class="my-resume__name">{{ item.position }}</div>
-      <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
-      <div class="btn btn-more"  @click="getItemId">{{ item.id }}</div>
+      <nuxt-link :to="`/resumes/${item.id}`"><div class="my-resume__name">{{ item.position }}</div></nuxt-link>
+      <nuxt-link class="btn btn-more" to="/edit">Редактировать</nuxt-link>
+      <div class="btn btn-more"  @click="getItemId">Удалить</div>
     </div>
+    <nuxt-link to="/workerResume">
+      <div class="new-resume">
+        <button class="btn btn-more">Добавить резюме</button>
+      </div>
+    </nuxt-link>
+
   </div>
 </template>
 
@@ -255,5 +261,10 @@ export default {
     align-items: center;
     background-color: antiquewhite;
   }
+}
+.new-resume {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
 }
 </style>
