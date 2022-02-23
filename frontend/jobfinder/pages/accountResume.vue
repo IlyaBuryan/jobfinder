@@ -82,7 +82,7 @@
     </div>
     <div v-for="(item, id) in resumeList" :key="id" class="my-resume">
       <nuxt-link :to="`/resumes/${item.id}`"><div class="my-resume__name">{{ item.position }}</div></nuxt-link>
-      <nuxt-link class="btn btn-more" to="/edit">Редактировать</nuxt-link>
+      <nuxt-link class="btn btn-more" to="/resumeEdit">Редактировать</nuxt-link>
       <div class="btn btn-more"  @click="getItemId">Удалить</div>
     </div>
     <nuxt-link to="/workerResume">
