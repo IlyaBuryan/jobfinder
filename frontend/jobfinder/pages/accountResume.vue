@@ -29,31 +29,28 @@
     </section>
     <div class="tabs">
       <ul class="breadcrumb">
-        <li
-          :class="{
-            'tab-item': true,
-            'tab-item_active': activeTab === 'myProfile',
-          }"
-          @click="changeActiveTab('myProfile')"
-        >
-          <nuxt-link to="/workerCard"> МОЙ ПРОФИЛЬ /</nuxt-link>
-        </li>
-
-        <li
-          :class="{
-            'tab-item': true,
-            'tab-item_active': activeTab === 'myResumes',
-          }"
-          @click="changeActiveTab('myResumes')"
-        >
-          <nuxt-link to="/accountResume"> МОИ РЕЗЮМЕ /</nuxt-link>
-          <div v-for="(item, id) in resumeList" :key="id">
-            <div>{{ item.position }}</div>
-            <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
-            <nuxt-link class="btn btn-more" to="">Удалить</nuxt-link>
-          </div>
-        </li>
-
+        <nuxt-link to="/workerCard">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myProfile',
+            }"
+            @click="changeActiveTab('myProfile')"
+          >
+            МОЙ ПРОФИЛЬ /
+          </li>
+        </nuxt-link>
+        <nuxt-link to="/accountResume">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myResumes',
+            }"
+            @click="changeActiveTab('myResumes')"
+          >
+            МОИ РЕЗЮМЕ /
+          </li>
+        </nuxt-link>
         <li
           :class="{
             'tab-item': true,
@@ -61,9 +58,8 @@
           }"
           @click="changeActiveTab('myRequests')"
         >
-          <nuxt-link to="/"> ОТКЛИКИ /</nuxt-link>
+          ОТКЛИКИ /
         </li>
-
         <li
           :class="{
             'tab-item': true,
@@ -71,9 +67,8 @@
           }"
           @click="changeActiveTab('myInvites')"
         >
-          <nuxt-link to="/"> ПРЕДЛОЖЕНИЯ /</nuxt-link>
+          ПРЕДЛОЖЕНИЯ /
         </li>
-
         <li
           :class="{
             'tab-item': true,
@@ -84,6 +79,11 @@
           ПИСЬМА /
         </li>
       </ul>
+    </div>
+    <div v-for="(item, id) in resumeList" :key="id" class="my-resume">
+      <nuxt-link :to="`/resumes/1`"></nuxt-link><div class="my-resume__name">{{ item.position }}</div>
+      <nuxt-link class="btn btn-more" to="">Редактировать</nuxt-link>
+      <div class="btn btn-more"  @click="getItemId">{{ item.id }}</div>
     </div>
   </div>
 </template>
@@ -96,6 +96,7 @@ import Cookies from "universal-cookie";
 export default {
   data: () => {
     return {
+      resumeId: '',
       user: {},
       worker: {},
       resumeList: [],
@@ -112,6 +113,9 @@ export default {
   },
 
   methods: {
+    getItemId() {
+      console.log(this.resumeList[0].id)
+    },
     getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -129,6 +133,7 @@ export default {
         .get(`${baseUrl()}/resume/`, { headers })
         .then((response) => {
           this.resumeList = response.data;
+          console.log(this.resumeList)
         })
         .catch((error) => console.log(error));
     },
@@ -181,9 +186,7 @@ export default {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
   margin-top: 50px;
-  margin-bottom: 50px;
 }
 .breadcrumb {
   width: 100%;
@@ -241,5 +244,16 @@ export default {
   color: #333333;
   line-height: 1.4em;
   letter-spacing: 0em;
+}
+.my-resume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__name {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    background-color: antiquewhite;
+  }
 }
 </style>
