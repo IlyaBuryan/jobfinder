@@ -10,7 +10,7 @@
       <div class="content-wrap">
         <div class="item">
           <img
-            src="~/assets/img/ava.png"
+            src="~/assets/img/ava_company.png"
             width="250"
             height="250"
             alt="avatar"
@@ -28,31 +28,92 @@
     </section>
     <div class="tabs">
       <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">МОИ ВАКАНСИИ</a></li>
-        <li class="breadcrumb-item"><a href="#">ОТКЛИКИ</a></li>
-        <li class="breadcrumb-item"><a href="#">ПРЕДЛОЖЕНИЯ</a></li>
-        <li class="breadcrumb-item"><a href="#">ПИСЬМА</a></li>
+        <nuxt-link :to="`/companyEdit?id=${company.id}`">
+          <li
+            :class="{
+              'tab-item': true,
+              'tab-item_active': activeTab === 'myProfile',
+            }"
+            @click="changeActiveTab('myProfile')"
+          >
+            РЕДАКТИРОВАНИЕ ПРОФИЛЯ /
+          </li>
+        </nuxt-link>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myVacancies',
+          }"
+          @click="changeActiveTab('myVacancies')"
+        >
+          МОИ ВАКАНСИИ /
+        </li>
+        <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myRequests',
+          }"
+          @click="changeActiveTab('myRequests')"
+        >
+          ОТКЛИКИ
+        </li>
+
+        <!-- Предложения только для воркеров -->
+        <!-- <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myInvites',
+          }"
+          @click="changeActiveTab('myInvites')"
+        >
+          ПРЕДЛОЖЕНИЯ /
+        </li> -->
+
+        <!-- ПОКА заомментил, не уверен что это должно быть тут -->
+        <!-- <li
+          :class="{
+            'tab-item': true,
+            'tab-item_active': activeTab === 'myLetters',
+          }"
+          @click="changeActiveTab('myLetters')"
+        >
+          ПИСЬМА /
+        </li> -->
       </ul>
+      <CompanyVacancies
+        v-if="activeTab === 'myVacancies'"
+        :vacancyData="vacancyList"
+        :company="company"
+      />
+      <MessageVacancy
+        v-if="activeTab === 'myRequests'"
+        :messagesData="messagesList"
+      />
+      <!-- Предложения только для воркеров -->
+      <!-- <InvitesResume
+        v-if="activeTab === 'myInvites'"
+        :letterData="lettersList"
+        :company="company"
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
+import CompanyVacancies from "@/components/CompanyVacancies";
 import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
 
 export default {
+  components: { CompanyVacancies },
   data: () => {
     return {
       user: {},
-      company: {
-        name: "",
-        itn: "",
-        category: "",
-        company_details: "",
-        description: "",
-      },
+      company: {},
+      activeTab: "myVacancies",
+      vacancyList: [],
+      messagesList: [],
     };
   },
 
@@ -74,6 +135,22 @@ export default {
         .get(`${baseUrl()}/companyapp/${this.user.company}`, { headers })
         .then((response) => {
           this.company = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/vacancyapp/`, { headers })
+        .then((response) => {
+          this.vacancyList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/message_to_vacancy/`, { headers })
+        .then((response) => {
+          this.messagesList = response.data;
+          console.log("---------------------------");
+          console.log(this.messagesList);
         })
         .catch((error) => console.log(error));
     },
@@ -98,6 +175,10 @@ export default {
       };
       headers["Authorization"] = "Bearer " + access;
       return headers;
+    },
+    changeActiveTab(tab) {
+      this.activeTab = tab;
+      console.log(`i am ${this.activeTab}`);
     },
   },
 };
@@ -164,11 +245,14 @@ export default {
 }
 
 .content-wrap {
+  margin-top: 40px;
+  margin-left: 30px;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
-.item {
+.tab-item {
+  color: blue;
 }
 
 .cont-text {

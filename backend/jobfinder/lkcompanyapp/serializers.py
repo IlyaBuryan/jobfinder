@@ -2,6 +2,7 @@ from rest_framework.serializers import ModelSerializer
 
 from .models import MessageOnResume, LetterToWorker
 
+
 class MessageOnResumeModelSerializer(ModelSerializer):
     class Meta:
         model = MessageOnResume
