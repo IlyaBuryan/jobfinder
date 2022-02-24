@@ -249,28 +249,12 @@ export default {
     permission: "pending",
     user: {},
     worker: {
-      // experience: {
-      //   organization: "",
-      //   start: "",
-      //   end: "",
-      //   position: "",
-      //   functions: "",
-      //   resume: [],
-      // },
       position: "",
       education_types: "",
       institution: "",
       courses: "",
       info: "",
       is_draft: false,
-    },
-    experience: {
-      organization: "",
-      start: "",
-      end: "",
-      position: "",
-      functions: "",
-      resume: [],
     },
     error: [],
     options: [
@@ -317,28 +301,24 @@ export default {
         );
     },
 
-    async updateExperience(event) {
+    updateExperience(event) {
       event.preventDefault();
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
-      console.log(headers);
-      await axios
-        .patch(
-          `${baseUrl()}/work_experience/${this.$route.query.id}/`,
-          this.experience,
-          {
-            headers,
-          },
-          console.log(this.experience)
-        )
-        .then((response) => {
-          console.log("Зашли");
-          this.experience = response.data;
-        })
-        .catch(() =>
-          this.error.push("Ошибка при отправке формы, проверьте ввод!")
-        );
+
+      console.log(this.worker.experience);
+
+      this.worker.experience.map((item) => {
+        axios
+          .patch(`${baseUrl()}/work_experience/${item.id}/`, item, { headers })
+          .then((response) => {
+            console.log("Зашли");
+          })
+          .catch(() =>
+            this.error.push("Ошибка при отправке формы, проверьте ввод!")
+          );
+      });
     },
     checkPermission() {
       const cookies = new Cookies();
