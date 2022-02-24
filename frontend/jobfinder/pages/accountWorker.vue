@@ -95,7 +95,7 @@ export default {
     return {
       user: {},
       worker: {},
-      activeTab: "myProfile",
+      activeTab: "myResumes",
       resumeList: [],
     };
   },
