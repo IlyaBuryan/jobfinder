@@ -1,12 +1,13 @@
 from rest_framework.serializers import ModelSerializer
 from authapp.serializers import CustomUserModelSerializer
 from companyapp.serializers import VacancyModelSerializer
-from workerapp.serializers import ResumeModelSerializer, WorkerModelSerializer
+from workerapp.serializers import ResumeModelSerializer
+from rest_framework import serializers
 
-from lkworkerapp.models import MessageToVacancy, LetterToCompany
+from lkworkerapp.models import MessageToVacancy
 
 
-class MessageToVacancyModelSerializer(ModelSerializer):
+class MessageToVacancyDetailModelSerializer(ModelSerializer):
     user = CustomUserModelSerializer(read_only=True)
     vacancy = VacancyModelSerializer(read_only=True)
     resume = ResumeModelSerializer(read_only=True)
@@ -16,7 +17,7 @@ class MessageToVacancyModelSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class LetterToCompanyModelSerializer(ModelSerializer):
+class MessageToVacancyCommonModelSerializer(ModelSerializer):
     class Meta:
-        model = LetterToCompany
+        model = MessageToVacancy
         fields = '__all__'

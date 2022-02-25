@@ -3,6 +3,11 @@
     <div class="content_vacancy" v-for="item in messagesData" :key="item.id">
       <div class="content-wrap-vacancy">
         <div class="cont-text-vacancy">
+          <p v-if="item.response_status == ''">Ожидает вашего ответа</p>
+          <p style="color: red" v-if="item.response_status == '1'">Отказано</p>
+          <p style="color: green" v-if="item.response_status == '2'">
+            Выслано приглашение
+          </p>
           <h3>{{ item.vacancy.position }}</h3>
           <h4>Город: {{ item.vacancy.city }}</h4>
         </div>
@@ -21,10 +26,16 @@
         </div>
         <div>
           <button
-            class="btn btn-success btn-xl"
-            style="background-color: #32cd32; border-color: #32cd32"
+            class="btn btn-danger btn-xl"
+            @click="refuseResponseStatus(item)"
           >
-            Отправить ответ
+            Отказать
+          </button>
+          <button
+            class="btn btn-success btn-xl"
+            @click="inviteResponseStatus(item)"
+          >
+            Пригласить
           </button>
         </div>
       </div>
@@ -33,11 +44,92 @@
 </template>
 
 <script>
+import Cookies from "universal-cookie";
+import axios from "axios";
+import { baseUrl } from "../store/constants.js";
+
 export default {
   props: {
     messagesData: {
       type: Array,
       default: () => {},
+    },
+  },
+
+  data: () => {
+    return {
+      user: "",
+      resume: "",
+      vacancy: "",
+    };
+  },
+
+  mounted() {
+    this.collectIds();
+    this.markViewed();
+  },
+
+  methods: {
+    collectIds() {
+      this.messagesData.map((item) => {
+        this.user = item.user.id;
+        this.resume = item.resume.id;
+        this.vacancy = item.vacancy.id;
+      });
+    },
+
+    getIds(item) {
+      let new_item = {
+        ...item,
+      };
+      new_item.user = this.user;
+      new_item.resume = this.resume;
+      new_item.vacancy = this.vacancy;
+
+      return new_item;
+    },
+
+    markViewed() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      this.messagesData.map((item) => {
+        item.is_viewed = true;
+        const newItem = this.getIds(item);
+        axios.patch(`${baseUrl()}/message_to_vacancy/${newItem.id}/`, newItem, {
+          headers,
+        });
+      });
+    },
+
+    refuseResponseStatus(item) {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      item.response_status = 1;
+      const newItem = this.getIds(item);
+      axios.patch(`${baseUrl()}/message_to_vacancy/${newItem.id}/`, newItem, {
+        headers,
+      });
+    },
+
+    inviteResponseStatus(item) {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      item.response_status = 2;
+      const newItem = this.getIds(item);
+      axios.patch(`${baseUrl()}/message_to_vacancy/${newItem.id}/`, newItem, {
+        headers,
+      });
+    },
+
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
     },
   },
 };

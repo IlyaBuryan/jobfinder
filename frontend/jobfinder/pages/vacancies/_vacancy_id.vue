@@ -229,7 +229,6 @@ export default {
         vacancy: this.vacancy.id,
         resume: this.resume,
         message: this.message,
-        is_viewed: true,
       };
 
       console.log(data);
