@@ -1,7 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from rest_framework import status
-from rest_framework.test import APIRequestFactory, force_authenticate, APIClient
+from rest_framework.test import APIRequestFactory, force_authenticate, APIClient, APITestCase
 
 from .models import CustomUser
 from .views import CustomUserModelViewSet
@@ -36,5 +37,12 @@ class TestCustomUserViewSet(TestCase):
         response = client.get(f'{self.url}{self.user.id}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def test_bearer_token(self):
+        user = CustomUser.objects.get(id=1)
+
+        refresh = RefreshToken.for_user(user)
+        return {"HTTP_AUTHORIZATION": f'Bearer {refresh.access_token}'}
+
     def tearDown(self) -> None:
         pass
+
