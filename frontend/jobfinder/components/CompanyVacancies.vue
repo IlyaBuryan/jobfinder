@@ -45,7 +45,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    company: {
+    user: {
       type: Object,
       default: () => {},
     },

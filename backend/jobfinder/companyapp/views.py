@@ -32,6 +32,17 @@ class VacancyModelViewSet(ModelViewSet):
     serializer_class = VacancyModelSerializer
 
 
+class VacancyListView(generics.ListAPIView):
+    queryset = Vacancy.objects.all()
+    serializer_class = VacancyModelSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        card = CompanyCard.objects.filter(user=user).first()
+        vacancies = Vacancy.objects.filter(company_card=card)
+        return vacancies
+
+
 class CategoriesViewSet(ViewSet):
     def list(self, request):
         return Response(categories_choices)
