@@ -50,18 +50,6 @@
                 v-model="worker.institution"
               />
             </div>
-
-            <!-- <div
-              v-for="item in worker.experience"
-              :key="item.functions"
-              class="border border-info rounded exp"
-            >
-              <p>{{ item.organization }}</p>
-              <p>{{ item.position }}</p>
-              <p>{{ item.start }}</p>
-              <p>{{ item.end }}</p>
-              <p>{{ item.functions }}</p>
-            </div> -->
             <div
               v-for="item in worker.experience"
               :key="item.functions"
@@ -123,8 +111,19 @@
                 />
               </div>
             </div>
+            <button
+              class="btn btn-success btn-xl btn-round"
+              @click="updateExperience"
+            >
+              Сохраните изменения в опыте работы.
+            </button>
+
+            <br />
+            <br />
             <div class="form-group">
-              <label for="experienceBut">Ваш опыт</label>
+              <label for="experienceBut"
+                >Добавьте новые записи в вашем опыте работы</label
+              >
               <br />
               <button
                 @click="changeShowModal"
@@ -134,20 +133,6 @@
                 Нажмите, чтобы добавить опыт
               </button>
             </div>
-
-            <!-- <div v-if="experience.length > 0">
-              <div
-                v-for="item in experience"
-                :key="item.functions"
-                class="border border-info rounded exp"
-              >
-                <p>{{ item.organization }}</p>
-                <p>{{ item.position }}</p>
-                <p>{{ item.start }}</p>
-                <p>{{ item.end }}</p>
-                <p>{{ item.functions }}</p>
-              </div>
-            </div> -->
 
             <div class="form-group">
               <label for="coursesComp">Курсы</label>
@@ -200,13 +185,13 @@
                     class="btn btn-success btn-xl btn-round"
                     @click="updateResume"
                   >
-                    Сохраните изменения в основном резюме.
+                    Сохраните изменения в резюме.
                   </button>
                   <button
                     class="btn btn-success btn-xl btn-round"
-                    @click="updateExperience"
+                    @click="deleteResume"
                   >
-                    Сохраните изменения в опыте работы.
+                    Удалить записи в резюме.
                   </button>
                 </p>
               </div>
@@ -249,14 +234,6 @@ export default {
     permission: "pending",
     user: {},
     worker: {
-      // experience: {
-      //   organization: "",
-      //   start: "",
-      //   end: "",
-      //   position: "",
-      //   functions: "",
-      //   resume: [],
-      // },
       position: "",
       education_types: "",
       institution: "",
@@ -264,15 +241,8 @@ export default {
       info: "",
       is_draft: false,
     },
-    experience: {
-      organization: "",
-      start: "",
-      end: "",
-      position: "",
-      functions: "",
-      resume: [],
-    },
     error: [],
+    experience: [],
     options: [
       [1, "Среднее"],
       [2, "Среднее профессиональное"],
@@ -306,7 +276,28 @@ export default {
       let token = cookies.get("token");
       let headers = this.get_headers(token);
       axios
-        .patch(`${baseUrl()}/resume/${this.$route.query.id}/`, this.worker, {
+        .patch(
+          `${baseUrl()}/resume/${this.$route.query.id}/`,
+          this.worker,
+          {
+            headers,
+          },
+          console.log(this.worker)
+        )
+        .then((response) => {
+          this.worker = response.data;
+        })
+        .catch(() =>
+          this.error.push("Ошибка при отправке формы, проверьте ввод!")
+        );
+    },
+    deleteResume(event) {
+      event.preventDefault();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      axios
+        .delete(`${baseUrl()}/resume/${this.$route.query.id}/`, {
           headers,
         })
         .then((response) => {
@@ -317,29 +308,25 @@ export default {
         );
     },
 
-    async updateExperience(event) {
+    updateExperience(event) {
       event.preventDefault();
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
-      console.log(headers);
-      await axios
-        .patch(
-          `${baseUrl()}/work_experience/${this.$route.query.id}/`,
-          this.experience,
-          {
-            headers,
-          },
-          console.log(this.experience)
-        )
-        .then((response) => {
-          console.log("Зашли");
-          this.experience = response.data;
-        })
-        .catch(() =>
-          this.error.push("Ошибка при отправке формы, проверьте ввод!")
-        );
+      console.log(this.worker.experience);
+      this.worker.experience.map((item) => {
+        axios
+          .patch(`${baseUrl()}/work_experience/${item.id}/`, item, { headers })
+          .then((response) => {
+            console.log("Зашли");
+          })
+          .catch(() =>
+            this.error.push("Ошибка при отправке формы, проверьте ввод!")
+          );
+      });
+      this.saveExperience();
     },
+
     checkPermission() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -382,18 +369,25 @@ export default {
     addExperience(value) {
       this.experience.push(value);
     },
-  },
 
-  saveExperience(headers, single_experience) {
-    axios
-      .post(`${baseUrl()}/work_experience/`, single_experience, {
-        headers,
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.$router.push("/");
-      })
-      .catch(() => this.error.push("Вероятно вы не добавили опыт!"));
+    saveExperience() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      console.log(this.experience);
+      this.experience.map((item) => {
+        axios
+          .post(`${baseUrl()}/work_experience/`, item, {
+            headers,
+          })
+          .then((response) => {
+            console.log(response.data);
+            console.log("Зашли в saveExperience!");
+            this.worker.experience.push(item);
+          })
+          .catch(() => this.error.push("Вероятно вы не добавили новый опыт!"));
+      });
+    },
   },
 };
 </script>
