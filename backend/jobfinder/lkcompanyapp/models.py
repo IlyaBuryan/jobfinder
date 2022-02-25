@@ -23,4 +23,4 @@ class MessageOnResume(models.Model):
     response_status = models.CharField(verbose_name='Статус ответа',
                                        choices=response_statuses,
                                        blank=True,
-                                       max_length=15)
+                                       max_length=1)
