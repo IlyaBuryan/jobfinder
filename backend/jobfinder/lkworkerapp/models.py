@@ -6,11 +6,12 @@ from authapp.models import CustomUser
 
 
 class MessageToVacancy(models.Model):
-    vacancy = models.ManyToManyField(Vacancy, verbose_name='Вакансия')
-    user = models.ManyToManyField(CustomUser, verbose_name='Пользователь')
-    message = models.ForeignKey(Message, verbose_name='Отклик', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     resume = models.ForeignKey(Resume, verbose_name='Резюме', on_delete=models.CASCADE)
+    vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True, verbose_name='Дата отклика на вакансию')
+    message = models.TextField(verbose_name='Отклик', blank=True)
+    is_viewed = models.BooleanField(default=False, verbose_name='Просмотрено')
 
 
 class LetterToCompany(models.Model):

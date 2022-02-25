@@ -191,6 +191,7 @@ export default {
           this.company = response.data;
         })
         .catch((error) => console.log(error));
+      this.$router.push("/accountCompany");
     },
     async deleteCompany(event) {
       event.preventDefault();

@@ -307,7 +307,7 @@ export default {
           this.error.push("Ошибка при отправке формы, проверьте ввод!")
         );
     },
-
+    
     updateExperience(event) {
       event.preventDefault();
       const cookies = new Cookies();
