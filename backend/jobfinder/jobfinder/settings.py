@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # External apps
     'rest_framework',
+    'rest_framework_simplejwt',
     'drf_yasg',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
