@@ -1,13 +1,13 @@
 from newsapp.serializers import NewsModelSerializer
 from rest_framework import viewsets
 from newsapp.models import News
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import AllowAny
 
 
 class NewsModelViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsModelSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user

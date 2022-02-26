@@ -66,9 +66,22 @@
               <span class="body-header__new">Свежее</span>
               <h2 class="body-header__head">Новости</h2>
             </header>
-
-            <News :newsList="newsList" />
-
+            <div class="news__container">
+              <div class="news-item" v-for="item in testNews" :key="item.id">
+                <div class="news-item__title">
+                  {{ item.title }}
+                </div>
+                <div class="news-item__text">
+                  {{ item.text }}
+                </div>
+                <div class="news-item__date">
+                  {{ item.date_publish }}
+                </div>
+                <!-- <div class="news-item__user">
+                  {{ item.user }}
+                </div> -->
+              </div>
+            </div>
 
             <br /><br />
             <!-- <p class="text-center">
@@ -245,10 +258,8 @@
 <script>
 import axios from "axios";
 import Cookies from "universal-cookie";
-import News from '@/components/News.vue'
 export default {
   name: "IndexPage",
-  component: { News },
   data() {
     return {
       findForm: {
@@ -273,6 +284,11 @@ export default {
         ],
       },
       loading: false,
+      testNews: [
+        {id: 1, title: 'Новые технологии', text: 'Это текст первой новости. Дальше будут другие.', date_publish: '24.02.2022', user: 'Администратор'},
+        {id: 2, title: 'Новые ужасы трудоустройства', text: 'Это текст уже второй новости. Дальше будут другие.', date_publish: '25.02.2022', user: 'Администратор'},
+        {id: 3, title: 'Новые ужасы новой реальности работодателей', text: 'Это текст уже третьей новости. Обещаем доподлинно: дальше будут другие и еще больше и еще интереснее.', date_publish: '26.02.2022', user: 'Администратор'}
+      ],
       newsList: [],
       vacancyList: [
         {
@@ -364,27 +380,11 @@ export default {
     };
   },
   mounted() {
-    this.getUser()
+    this.getNews()
   },
   methods: {
     onSearch() {
       console.log("Уже ищу!!!");
-    },
-    async getNews() {
-      const cookies = new Cookies();
-      let token = cookies.get("token");
-      if (token !== "") {
-        let userId = decode(token).user_id;
-        let headers = this.get_headers(token);
-
-        await axios
-          .get('http://127.0.0.1:8000/api/v1/news/', { headers })
-          .then((response) => {
-            this.newsList = response.data;
-            console.log(this.newsList);
-          })
-          .catch((error) => console.log(error));
-      }
     },
     get_headers(access) {
       let headers = {
@@ -396,6 +396,16 @@ export default {
     async getCategory() {
       try {
         const response = await this.$axios.get("/api/v1/categories");
+        this.categoryList = response.data.data;
+        // eslint-disable-next-line no-console
+        console.log(this.categoryList);
+      } catch (e) {
+        this.$toast.error(e.response.data);
+      }
+    },
+    async getNews() {
+      try {
+        const response = await this.$axios.get('http://127.0.0.1:8000/api/v1/news/');
         this.categoryList = response.data.data;
         // eslint-disable-next-line no-console
         console.log(this.categoryList);
