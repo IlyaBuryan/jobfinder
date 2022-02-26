@@ -64,48 +64,18 @@
           <div class="body__container">
             <header class="body-header">
               <span class="body-header__new">Свежее</span>
-              <h2 class="body-header__head">Новейшие вакансии</h2>
+              <h2 class="body-header__head">Новости</h2>
             </header>
 
-            <div class="body__container_vacancy">
-              <!-- Job item -->
-              <div
-                class="vacancy-item"
-                v-for="(item, id) in vacancyList"
-                :key="id"
-              >
-                <div class="vacancy-item__img">
-                  <img class="company-logo" :src="item.img" alt="" />
-                </div>
-                <div class="vacancy-item__info">
-                  <div class="vacancy-item__info_main">
-                    <div class="vacancy-item__info_main-name">
-                      {{ item.title }}
-                    </div>
-                    <div class="vacancy-item__info_main-city">
-                      {{ item.location }}
-                    </div>
-                  </div>
-                  <div class="vacancy-item__info_add">
-                    <div class="vacancy-item__info_add-company">
-                      {{ item.company }}
-                    </div>
-                    <div class="vacancy-item__info_add-worktime">
-                      {{ item.worktime }}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <News :newsList="newsList" />
 
-              <!-- END Job item -->
-            </div>
 
             <br /><br />
-            <p class="text-center">
+            <!-- <p class="text-center">
               <nuxt-link class="btn btn-more" to="/vacancies"
                 >Просмотреть все вакансии</nuxt-link
               >
-            </p>
+            </p> -->
             <p class="text-center"></p>
           </div>
         </section>
@@ -273,8 +243,12 @@
 </template>
 
 <script>
+import axios from "axios";
+import Cookies from "universal-cookie";
+import News from '@/components/News.vue'
 export default {
   name: "IndexPage",
+  component: { News },
   data() {
     return {
       findForm: {
@@ -299,6 +273,7 @@ export default {
         ],
       },
       loading: false,
+      newsList: [],
       vacancyList: [
         {
           id: 1,
@@ -388,36 +363,35 @@ export default {
       ],
     };
   },
-  // mounted() {
-  //   // this.getNewestVacancy()
-  //   this.getUser()
-  // },
+  mounted() {
+    this.getUser()
+  },
   methods: {
-    onSubmit() {
-      this.login();
-    },
-    login() {
-      console.log("OK");
-      // this.loading = true
-      // const data = Object.assign({}, this.loginForm)
-      // try {
-      //   await this.axios.get('', { data })
-      // } catch (e) {
-      // }
-      // this.loading = false
-    },
     onSearch() {
       console.log("Уже ищу!!!");
     },
-    async getNewestVacancy() {
-      try {
-        const response = await this.$axios.get("/api/v1/newestvacancy");
-        this.vacancyList = response.data.data;
-        // eslint-disable-next-line no-console
-        console.log(this.vacancyList);
-      } catch (e) {
-        this.$toast.error(e.response.data);
+    async getNews() {
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      if (token !== "") {
+        let userId = decode(token).user_id;
+        let headers = this.get_headers(token);
+
+        await axios
+          .get('http://127.0.0.1:8000/api/v1/news/', { headers })
+          .then((response) => {
+            this.newsList = response.data;
+            console.log(this.newsList);
+          })
+          .catch((error) => console.log(error));
       }
+    },
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
     },
     async getCategory() {
       try {
