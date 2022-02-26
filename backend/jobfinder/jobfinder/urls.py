@@ -17,6 +17,8 @@ from lkworkerapp.views import MessageToVacancyModelViewSet
 
 from newsapp.views import NewsModelViewSet
 
+
+
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
 router.register('companyapp', CompanyCardModelViewSet)
@@ -28,6 +30,7 @@ router.register('message', MessageModelViewSet)
 router.register('message_on_resume', MessageOnResumeModelViewSet)
 router.register('message_to_vacancy', MessageToVacancyModelViewSet)
 router.register('news', NewsModelViewSet)
+
 
 
 schema_view = get_schema_view(
@@ -59,5 +62,6 @@ urlpatterns = [
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/logout/', LogoutAPIView.as_view(), name="logout"),
     path('api/v1/categories/', CategoriesViewSet.as_view({'get': 'list'}), name='categories'),
+    path('api/v1/my_resumes/', MyResumesListView.as_view()),
 
 ]

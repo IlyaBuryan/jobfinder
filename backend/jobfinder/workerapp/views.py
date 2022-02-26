@@ -32,3 +32,17 @@ class ResumeModelViewSet(viewsets.ModelViewSet):
 class WorkExperienceModelViewSet(viewsets.ModelViewSet):
     queryset = WorkExperience.objects.all()
     serializer_class = WorkExperienceModelSerializer
+
+
+class MyResumesListView(generics.ListAPIView):
+    serializer_class = ResumeModelSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Resume.objects.filter(worker=user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)
