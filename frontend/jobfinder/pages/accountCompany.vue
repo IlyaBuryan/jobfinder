@@ -147,7 +147,7 @@ export default {
         .then((response) => {
           this.messagesList = response.data;
           console.log("---------------------------");
-          console.log(this.messagesList);
+          console.log(response.data);
         })
         .catch((error) => console.log(error));
     },

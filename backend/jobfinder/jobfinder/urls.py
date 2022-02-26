@@ -2,12 +2,9 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
-from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView, MyResumesListView
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from lkcompanyapp.views import MessageOnResumeModelViewSet, LetterToWorkerModelViewSet
-from companyapp.views import CompanyCardModelViewSet, VacancyModelViewSet, CategoriesViewSet, \
-    CompanyCardListView, VacancyListView
+from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView
+from lkcompanyapp.views import MessageOnResumeModelViewSet
+from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet, CompanyCardListView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
@@ -16,7 +13,7 @@ from authapp.views import CustomUserModelViewSet, LogoutAPIView
 
 from messageapp.views import MessageModelViewSet
 
-from lkworkerapp.views import MessageToVacancyModelViewSet, LetterToCompanyModelViewSet
+from lkworkerapp.views import MessageToVacancyModelViewSet
 
 from newsapp.views import NewsModelViewSet
 
@@ -31,9 +28,7 @@ router.register('resume', ResumeModelViewSet)
 router.register('work_experience', WorkExperienceModelViewSet)
 router.register('message', MessageModelViewSet)
 router.register('message_on_resume', MessageOnResumeModelViewSet)
-router.register('letter_to_worker', LetterToWorkerModelViewSet)
 router.register('message_to_vacancy', MessageToVacancyModelViewSet)
-router.register('letter_to_company', LetterToCompanyModelViewSet)
 router.register('news', NewsModelViewSet)
 
 

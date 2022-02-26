@@ -1,20 +1,27 @@
 from django.db import models
-from messageapp.models import Message
+
+from authapp.models import CustomUser
 from companyapp.models import Vacancy
 from workerapp.models import Resume
-from authapp.models import CustomUser
+
+response_statuses = (
+    (1, 'Отказ'),
+    (2, 'Приглашение')
+)
 
 
 class MessageToVacancy(models.Model):
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
-    resume = models.ForeignKey(Resume, verbose_name='Резюме', on_delete=models.CASCADE)
-    vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия', on_delete=models.CASCADE)
-    data = models.DateField(auto_now_add=True, verbose_name='Дата отклика на вакансию')
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь',
+                             on_delete=models.CASCADE)
+    resume = models.ForeignKey(Resume, verbose_name='Резюме',
+                               on_delete=models.CASCADE)
+    vacancy = models.ForeignKey(Vacancy, verbose_name='Вакансия',
+                                on_delete=models.CASCADE)
+    data = models.DateField(auto_now_add=True,
+                            verbose_name='Дата отклика на вакансию')
     message = models.TextField(verbose_name='Отклик', blank=True)
     is_viewed = models.BooleanField(default=False, verbose_name='Просмотрено')
-
-
-class LetterToCompany(models.Model):
-    data = models.DateField(auto_now_add=True, verbose_name='Дата ответа')
-    letter_to_company = models.ForeignKey(MessageToVacancy, verbose_name='Ответ на отклик', on_delete=models.CASCADE)
-    text = models.TextField(blank=True, verbose_name='Письмо')
+    response_status = models.CharField(verbose_name='Статус ответа',
+                                       choices=response_statuses,
+                                       blank=True,
+                                       max_length=1)

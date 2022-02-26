@@ -1,7 +1,7 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
-from .models import MessageOnResume, LetterToWorker
-from .serializers import MessageOnResumeModelSerializer, LetterToWorkerSerializer
+from .models import MessageOnResume
+from .serializers import MessageOnResumeModelSerializer
 
 
 class MessageOnResumeModelViewSet(ModelViewSet):
@@ -17,9 +17,3 @@ class MessageOnResumeModelViewSet(ModelViewSet):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
-
-
-class LetterToWorkerModelViewSet(ModelViewSet):
-    queryset = LetterToWorker.objects.all()
-    serializer_class = LetterToWorkerSerializer
-
