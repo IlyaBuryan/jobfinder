@@ -55,19 +55,18 @@
           }"
           @click="changeActiveTab('myRequests')"
         >
-          ОТКЛИКИ
+          ОТКЛИКИ ОТ РАБОТНИКОВ /
         </li>
 
-        <!-- Предложения только для воркеров -->
-        <!-- <li
+        <li
           :class="{
             'tab-item': true,
             'tab-item_active': activeTab === 'myInvites',
           }"
           @click="changeActiveTab('myInvites')"
         >
-          ПРЕДЛОЖЕНИЯ /
-        </li> -->
+          МОИ ПРЕДЛОЖЕНИЯ НА РЕЗЮМЕ
+        </li>
 
         <!-- ПОКА заомментил, не уверен что это должно быть тут -->
         <!-- <li
@@ -83,14 +82,12 @@
       <CompanyVacancies
         v-if="activeTab === 'myVacancies'"
         :vacancyData="vacancyList"
-        :company="company"
       />
       <MessageVacancy
         v-if="activeTab === 'myRequests'"
         :messagesData="messagesList"
       />
-      <!-- Предложения только для воркеров -->
-      <!-- <InvitesResume
+      <InvitesResume
         v-if="activeTab === 'myInvites'"
         :letterData="lettersList"
         :company="company"
@@ -139,7 +136,7 @@ export default {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/vacancyapp/`, { headers })
+        .get(`${baseUrl()}/my_vacancies/`, { headers })
         .then((response) => {
           this.vacancyList = response.data;
         })
