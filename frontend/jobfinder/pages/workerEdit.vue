@@ -158,6 +158,7 @@ export default {
         .catch(() =>
           this.error.push("Ошибка при отправке формы, проверьте ввод!")
         );
+      this.$router.push("/accountWorker");
     },
     async deleteWorker(event) {
       event.preventDefault();

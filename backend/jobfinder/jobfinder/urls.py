@@ -2,7 +2,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
-from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView
+from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView, MyResumesListView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from lkcompanyapp.views import MessageOnResumeModelViewSet, LetterToWorkerModelViewSet
@@ -20,6 +20,8 @@ from lkworkerapp.views import MessageToVacancyModelViewSet, LetterToCompanyModel
 
 from newsapp.views import NewsModelViewSet
 
+
+
 router = DefaultRouter()
 router.register('user', CustomUserModelViewSet)
 router.register('companyapp', CompanyCardModelViewSet)
@@ -33,6 +35,7 @@ router.register('letter_to_worker', LetterToWorkerModelViewSet)
 router.register('message_to_vacancy', MessageToVacancyModelViewSet)
 router.register('letter_to_company', LetterToCompanyModelViewSet)
 router.register('news', NewsModelViewSet)
+
 
 
 schema_view = get_schema_view(
@@ -64,5 +67,6 @@ urlpatterns = [
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/logout/', LogoutAPIView.as_view(), name="logout"),
     path('api/v1/categories/', CategoriesViewSet.as_view({'get': 'list'}), name='categories'),
+    path('api/v1/my_resumes/', MyResumesListView.as_view()),
 
 ]
