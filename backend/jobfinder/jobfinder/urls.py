@@ -2,9 +2,9 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
 from django.contrib import admin
-from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView
+from workerapp.views import WorkerModelViewSet, ResumeModelViewSet, WorkExperienceModelViewSet, WorkerListView, MyResumesListView
 from lkcompanyapp.views import MessageOnResumeModelViewSet
-from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet, CompanyCardListView
+from companyapp.views import CompanyCardModelViewSet,VacancyModelViewSet, CategoriesViewSet, CompanyCardListView, VacancyListView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
