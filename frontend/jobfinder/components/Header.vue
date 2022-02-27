@@ -15,12 +15,6 @@
         <li @mouseover="mouseOnMain = true" @mouseleave="mouseOnMain = false">
           <NuxtLink class="active" to="/">Главная</NuxtLink>
           <ul v-if="mouseOnMain" class="nav-menu__ul_el">
-            <li>
-              <NuxtLink to="/">Вариант 1</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/">Вариант 2</NuxtLink>
-            </li>
           </ul>
         </li>
         <li
@@ -56,12 +50,6 @@
           <ul v-if="mouseOnPages" class="nav-menu__ul_el">
             <li><NuxtLink to="/workerCard">Заполнить карточку</NuxtLink></li>
             <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
-          </ul>
-        </li>
-       <li @mouseover="mouseOnNews = true" @mouseleave="mouseOnNews = false">
-          <NuxtLink to="/">Новости</NuxtLink>
-          <ul v-if="mouseOnNews" class="nav-menu__ul_el">
-            <li><NuxtLink to="/news">Последние новости</NuxtLink></li>
           </ul>
         </li>
       </ul>
@@ -123,7 +111,6 @@ export default {
     mouseOnResume: false,
     mouseOnCompanies: false,
     mouseOnPages: false,
-    mouseOnNews: false,
     is_logged: false,
   }),
   methods: {
