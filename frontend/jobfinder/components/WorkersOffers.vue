@@ -9,7 +9,7 @@
             Принято приглашение
           </p>
           <h3>{{ item.vacancy.position }}</h3>
-          <h4>Город: {{ item.vacancy.company_card }}</h4>
+          <h4>Город: {{ item.vacancy.city }}</h4>
         </div>
         <br />
 
