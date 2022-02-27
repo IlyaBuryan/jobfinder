@@ -29,7 +29,7 @@
 
               <li>
                 <i class="fa fa-briefcase"></i>
-                <span>{{ vacancy.conditions }}</span>
+                <span>{{ vacancy.company_name }}</span>
               </li>
 
               <li>
@@ -269,7 +269,7 @@ export default {
 .container {
   justify-content: center;
   max-width: 100%;
-  margin-top: 100px;
+  margin-top: 150px;
   display: flex;
 }
 .header-detail {
