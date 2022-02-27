@@ -67,7 +67,7 @@
               <h2 class="body-header__head">Новости</h2>
             </header>
             <div class="news__container">
-              <div class="news-item" v-for="item in testNews" :key="item.id">
+              <div class="news-item" v-for="(item) in newsList" :key="item.id">
                 <div class="news-item__title">
                   {{ item.title }}
                 </div>
@@ -285,10 +285,11 @@ export default {
       },
       loading: false,
       testNews: [
-        {id: 1, title: 'Новые технологии', text: 'Это текст первой новости. Дальше будут другие.', date_publish: '24.02.2022', user: 'Администратор'},
-        {id: 2, title: 'Новые ужасы трудоустройства', text: 'Это текст уже второй новости. Дальше будут другие.', date_publish: '25.02.2022', user: 'Администратор'},
-        {id: 3, title: 'Новые ужасы новой реальности работодателей', text: 'Это текст уже третьей новости. Обещаем доподлинно: дальше будут другие и еще больше и еще интереснее.', date_publish: '26.02.2022', user: 'Администратор'}
+        {id: 1, title: 'Время лучших: итоги Рейтинга работодателей России hh.ru 2021', text: 'О рекордах.В этом году Рейтинг работодателей России hh.ru побил свои же рекорды: в два раза выросло число участников (1923 компании) и в полтора раза — финалистов.Сертификат лучшего работодателя в этом году получат 783 компании.', date_publish: '17.02.2022', user: 'Администратор'},
+        {id: 2, title: 'Обзоры рынка труда: коротко о самом важном', text: 'Рынок труда — зеркало того, что происходит на рынке в целом. С марта 2020 года и по сей день пандемия коронавируса оказывает сильное влияние на нашу реальность. Чтобы вы могли держать руку на пульсе, мы наблюдали динамику рынка труда на hh.ru еженедельно, а начиная с мая 2021 года, мы продолжим делиться здесь ежемесячными отчетами.', date_publish: '08.02.2022', user: 'Администратор'},
+        {id: 3, title: 'Как и зачем мы меняем форму заполнения вакансии?', text: 'Мы заметили, что заполнить форму новой вакансии за один подход бывает сложно. Поэтому решили разделить ее на три шага, а часть полей и вовсе заполнить за вас. Рассказываем, как будет выглядеть обновленная форма.', date_publish: '21.01.2022', user: 'Администратор'}
       ],
+      res: [],
       newsList: [],
       vacancyList: [
         {
@@ -406,9 +407,12 @@ export default {
     async getNews() {
       try {
         const response = await this.$axios.get('http://127.0.0.1:8000/api/v1/news/');
-        this.categoryList = response.data.data;
+        this.res = response.data
+        this.newsList = JSON.stringify(this.res);
         // eslint-disable-next-line no-console
-        console.log(this.categoryList);
+        console.log(this.res)
+        console.log(this.newsList)
+        // console.log(JSON.parse(JSON.stringify(this.res[0])).id)
       } catch (e) {
         this.$toast.error(e.response.data);
       }
