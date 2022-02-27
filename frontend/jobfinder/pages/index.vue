@@ -255,6 +255,9 @@
 </template>
 
 <script>
+import { baseUrl, decode } from "../store/constants.js";
+import axios from "axios";
+
 export default {
   name: "IndexPage",
   data() {
@@ -415,7 +418,7 @@ export default {
 
     async getNews() {
 
-      await axios
+      axios
         .get(`${baseUrl()}/news/`)
         .then((response) => {
           this.newsList = response.data;
