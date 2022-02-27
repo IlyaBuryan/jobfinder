@@ -127,6 +127,13 @@ export default {
         .catch((error) => console.log(error));
 
       axios
+        .get(`${baseUrl()}/my_resumes/`, {headers})
+        .then((response) => {
+          this.resumeList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
         .get(`${baseUrl()}/message_on_resume/`, { headers })
         .then((response) => {
           this.offersList = response.data;
