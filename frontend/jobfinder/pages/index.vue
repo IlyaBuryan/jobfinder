@@ -64,48 +64,31 @@
           <div class="body__container">
             <header class="body-header">
               <span class="body-header__new">Свежее</span>
-              <h2 class="body-header__head">Новейшие вакансии</h2>
+              <h2 class="body-header__head">Новости</h2>
             </header>
-
-            <div class="body__container_vacancy">
-              <!-- Job item -->
-              <div
-                class="vacancy-item"
-                v-for="(item, id) in vacancyList"
-                :key="id"
-              >
-                <div class="vacancy-item__img">
-                  <img class="company-logo" :src="item.img" alt="" />
+            <div class="news__container">
+              <div class="news-item" v-for="(item) in newsList" :key="item.id">
+                <div class="news-item__title">
+                  {{ item.title }}
                 </div>
-                <div class="vacancy-item__info">
-                  <div class="vacancy-item__info_main">
-                    <div class="vacancy-item__info_main-name">
-                      {{ item.title }}
-                    </div>
-                    <div class="vacancy-item__info_main-city">
-                      {{ item.location }}
-                    </div>
-                  </div>
-                  <div class="vacancy-item__info_add">
-                    <div class="vacancy-item__info_add-company">
-                      {{ item.company }}
-                    </div>
-                    <div class="vacancy-item__info_add-worktime">
-                      {{ item.worktime }}
-                    </div>
-                  </div>
+                <div class="news-item__text">
+                  {{ item.text }}
                 </div>
+                <div class="news-item__date">
+                  {{ item.date_publish }}
+                </div>
+                <!-- <div class="news-item__user">
+                  {{ item.user }}
+                </div> -->
               </div>
-
-              <!-- END Job item -->
             </div>
 
             <br /><br />
-            <p class="text-center">
+            <!-- <p class="text-center">
               <nuxt-link class="btn btn-more" to="/vacancies"
                 >Просмотреть все вакансии</nuxt-link
               >
-            </p>
+            </p> -->
             <p class="text-center"></p>
           </div>
         </section>
@@ -273,6 +256,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import Cookies from "universal-cookie";
 export default {
   name: "IndexPage",
   data() {
@@ -299,6 +284,13 @@ export default {
         ],
       },
       loading: false,
+      testNews: [
+        {id: 1, title: 'Время лучших: итоги Рейтинга работодателей России hh.ru 2021', text: 'О рекордах.В этом году Рейтинг работодателей России hh.ru побил свои же рекорды: в два раза выросло число участников (1923 компании) и в полтора раза — финалистов.Сертификат лучшего работодателя в этом году получат 783 компании.', date_publish: '17.02.2022', user: 'Администратор'},
+        {id: 2, title: 'Обзоры рынка труда: коротко о самом важном', text: 'Рынок труда — зеркало того, что происходит на рынке в целом. С марта 2020 года и по сей день пандемия коронавируса оказывает сильное влияние на нашу реальность. Чтобы вы могли держать руку на пульсе, мы наблюдали динамику рынка труда на hh.ru еженедельно, а начиная с мая 2021 года, мы продолжим делиться здесь ежемесячными отчетами.', date_publish: '08.02.2022', user: 'Администратор'},
+        {id: 3, title: 'Как и зачем мы меняем форму заполнения вакансии?', text: 'Мы заметили, что заполнить форму новой вакансии за один подход бывает сложно. Поэтому решили разделить ее на три шага, а часть полей и вовсе заполнить за вас. Рассказываем, как будет выглядеть обновленная форма.', date_publish: '21.01.2022', user: 'Администратор'}
+      ],
+      res: [],
+      newsList: [],
       vacancyList: [
         {
           id: 1,
@@ -388,36 +380,19 @@ export default {
       ],
     };
   },
-  // mounted() {
-  //   // this.getNewestVacancy()
-  //   this.getUser()
-  // },
+  mounted() {
+    this.getNews()
+  },
   methods: {
-    onSubmit() {
-      this.login();
-    },
-    login() {
-      console.log("OK");
-      // this.loading = true
-      // const data = Object.assign({}, this.loginForm)
-      // try {
-      //   await this.axios.get('', { data })
-      // } catch (e) {
-      // }
-      // this.loading = false
-    },
     onSearch() {
       console.log("Уже ищу!!!");
     },
-    async getNewestVacancy() {
-      try {
-        const response = await this.$axios.get("/api/v1/newestvacancy");
-        this.vacancyList = response.data.data;
-        // eslint-disable-next-line no-console
-        console.log(this.vacancyList);
-      } catch (e) {
-        this.$toast.error(e.response.data);
-      }
+    get_headers(access) {
+      let headers = {
+        "Content-Type": "application/json",
+      };
+      headers["Authorization"] = "Bearer " + access;
+      return headers;
     },
     async getCategory() {
       try {
@@ -425,6 +400,19 @@ export default {
         this.categoryList = response.data.data;
         // eslint-disable-next-line no-console
         console.log(this.categoryList);
+      } catch (e) {
+        this.$toast.error(e.response.data);
+      }
+    },
+    async getNews() {
+      try {
+        const response = await this.$axios.get('http://127.0.0.1:8000/api/v1/news/');
+        this.res = response.data
+        this.newsList = JSON.stringify(this.res);
+        // eslint-disable-next-line no-console
+        console.log(this.res)
+        console.log(this.newsList)
+        // console.log(JSON.parse(JSON.stringify(this.res[0])).id)
       } catch (e) {
         this.$toast.error(e.response.data);
       }

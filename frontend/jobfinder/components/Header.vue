@@ -58,6 +58,12 @@
             <li><NuxtLink to="/workerResume">Создать резюме</NuxtLink></li>
           </ul>
         </li>
+       <li @mouseover="mouseOnNews = true" @mouseleave="mouseOnNews = false">
+          <NuxtLink to="/">Новости</NuxtLink>
+          <ul v-if="mouseOnNews" class="nav-menu__ul_el">
+            <li><NuxtLink to="/news">Последние новости</NuxtLink></li>
+          </ul>
+        </li>
       </ul>
       <!-- END Navigation menu -->
 
@@ -117,6 +123,7 @@ export default {
     mouseOnResume: false,
     mouseOnCompanies: false,
     mouseOnPages: false,
+    mouseOnNews: false,
     is_logged: false,
   }),
   methods: {
