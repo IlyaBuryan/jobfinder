@@ -4,9 +4,6 @@
       <header class="page-header">
         <div class="container page-name">
           <h1 class="text-center">Отредактируйте вакансию</h1>
-          <!-- <p class="lead text-center">
-            Отредактируйте вакансию вашей компании!
-          </p> -->
         </div>
 
         <div class="container" v-if="permission == 'yes'">
