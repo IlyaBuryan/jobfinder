@@ -67,17 +67,6 @@
         >
           МОИ ПРЕДЛОЖЕНИЯ НА РЕЗЮМЕ
         </li>
-
-        <!-- ПОКА заомментил, не уверен что это должно быть тут -->
-        <!-- <li
-          :class="{
-            'tab-item': true,
-            'tab-item_active': activeTab === 'myLetters',
-          }"
-          @click="changeActiveTab('myLetters')"
-        >
-          ПИСЬМА /
-        </li> -->
       </ul>
       <CompanyVacancies
         v-if="activeTab === 'myVacancies'"
@@ -91,7 +80,8 @@
         v-if="activeTab === 'myInvites'"
         :letterData="lettersList"
         :company="company"
-      /> -->
+      />
+      -->
     </div>
   </div>
 </template>
@@ -111,6 +101,7 @@ export default {
       activeTab: "myVacancies",
       vacancyList: [],
       messagesList: [],
+      lettersList: [],
     };
   },
 
@@ -118,7 +109,7 @@ export default {
     console.log("acc comm mounted");
 
     await this.userRole();
-    this.getCard();
+    await this.getCard();
   },
 
   methods: {
@@ -146,8 +137,13 @@ export default {
         .get(`${baseUrl()}/message_to_vacancy/`, { headers })
         .then((response) => {
           this.messagesList = response.data;
-          console.log("---------------------------");
-          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/message_on_resume/`, { headers })
+        .then((response) => {
+          this.lettersList = response.data;
         })
         .catch((error) => console.log(error));
     },

@@ -1,21 +1,32 @@
 <template>
   <div>
-    <div
-      class="content_vacancy"
-      v-for="vacancy in vacancyData"
-      :key="vacancy.id"
-    >
+    <div class="content_vacancy" v-for="item in letterData" :key="item.id">
       <div class="content-wrap-vacancy">
         <div class="cont-text-vacancy">
-          <h3>Должность в резюме</h3>
+          <p v-if="item.response_status == ''">
+            Ваше приглашение еще не просмотрели
+          </p>
+          <p style="color: red" v-if="item.response_status == '1'">
+            Предложение не приняли
+          </p>
+          <p style="color: green" v-if="item.response_status == '2'">
+            Предложение приняли
+          </p>
+          <h3>{{ item.vacancy.position }}</h3>
+          <h4>Город: {{ item.vacancy.city }}</h4>
         </div>
+        <br />
         <div>
-           <h4>Данные работника: {{ vacancy.company_name }}</h4>
-           <h4><em>предложение отправлено {{ vacancy.published_date }}</em></h4>
-           <br/>
-           <h4>Телефон: {{ vacancy.city }}</h4>
-           <br/>
-           <p align="right">Статус: <em>не просмотрено</em></p>
+          <h4>Имя: {{ item.resume.worker_info.first_name }}</h4>
+          <h4>Фамилия: {{ item.resume.worker_info.last_name }}</h4>
+          <h4>Почта: {{ item.user.email }}</h4>
+          <h4>Телефон: {{ item.resume.worker_info.phone }}</h4>
+          <h4>Образование: {{ item.resume.institution }}</h4>
+          <h4>
+            <em>откликнулся {{ item.vacancy.published_date }}</em>
+          </h4>
+          <h4>Должность в резюме: {{ item.resume.position }}</h4>
+          <br />
         </div>
       </div>
     </div>
@@ -29,7 +40,7 @@ import axios from "axios";
 
 export default {
   props: {
-    vacancyData: {
+    letterData: {
       type: Array,
       default: () => {},
     },
@@ -69,9 +80,8 @@ export default {
 }
 
 .cont-text-vacancy {
-  margin:5px auto 5px;
-  margin-left:300px;
-
+  margin: 5px auto 5px;
+  margin-left: 300px;
 }
 
 .cont-text h2 {
