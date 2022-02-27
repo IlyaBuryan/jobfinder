@@ -79,6 +79,7 @@
 <!--        </li>-->
       </ul>
       <WorkersResumes v-if="activeTab==='myResumes'" :resumeData="resumeList" />
+      <WorkersOffers v-if="activeTab==='myInvites'" :resumeData="offersList" />
     </div>
   </div>
 </template>
@@ -97,6 +98,7 @@ export default {
       worker: {},
       activeTab: "myResumes",
       resumeList: [],
+      offersList: [],
     };
   },
 
@@ -130,6 +132,15 @@ export default {
         .get(`${baseUrl()}/my_resumes/`, {headers})
         .then((response) => {
           this.resumeList = response.data;
+        })
+        .catch((error) => console.log(error));
+
+      axios
+        .get(`${baseUrl()}/message_on_resume/`, { headers })
+        .then((response) => {
+          this.offersList = response.data;
+          console.log("---------------------------");
+          console.log(response.data);
         })
         .catch((error) => console.log(error));
     },

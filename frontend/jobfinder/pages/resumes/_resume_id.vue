@@ -73,8 +73,8 @@
             </ul>
 
             <div class="action-buttons">
-              <a class="btn btn-success" href="#">Отправить предложение</a>
-              <Message></Message>
+              <button class="btn btn-success" v-on:click="sendCreateOff">Отправить предложение</button>
+<!--              <Message></Message>-->
             </div>
           </div>
         </div>
@@ -149,6 +149,9 @@ export default {
       worker: {},
       workerList: [],
       workerId: "",
+      user: "",
+      vacancy: "",
+      resume: "",
 
     };
   },
@@ -195,6 +198,33 @@ export default {
       this.resume = this.resumeList[this.resumeId - 1];
       console.log(this.resume);
       this.worker = this.workerList[0];
+    },
+
+    sendCreateOff(event) {
+      event.preventDefault();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+
+      const data = {
+        user: this.user,
+        vacancy: this.vacancy.id,
+        resume: this.resume,
+        message: this.message,
+      };
+
+      console.log(data);
+
+      axios
+        .post(`${baseUrl()}/message_on_resume/`, data, {
+          headers,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.resume = "";
+          this.$router.push("/accountCompany");
+        })
+        .catch(() => (this.error = true));
     },
   },
 };
