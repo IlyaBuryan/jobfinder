@@ -79,7 +79,7 @@
 <!--        </li>-->
       </ul>
       <WorkersResumes v-if="activeTab==='myResumes'" :resumeData="resumeList" />
-      <WorkersOffers v-if="activeTab==='myInvites'" :resumeData="offersList" />
+      <WorkersOffers v-if="activeTab==='myInvites'" :messagesData="offersList" />
     </div>
   </div>
 </template>
