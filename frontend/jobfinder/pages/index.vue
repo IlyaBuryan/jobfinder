@@ -62,114 +62,52 @@
         <!-- Recent jobs -->
         <section class="body">
           <div class="body__container">
-            <header class="body-header">
-              <span class="body-header__new">Свежее</span>
-              <h2 class="body-header__head">Новости</h2>
-            </header>
-            <div class="news__container">
-              <div class="news-item" v-for="(item) in newsList" :key="item.id">
-                <div class="news-item__title">
-                  {{ item.title }}
-                </div>
-                <div class="news-item__text">
-                  {{ item.text }}
-                </div>
-                <div class="news-item__date">
-                  {{ item.date_publish }}
-                </div>
-                <!-- <div class="news-item__user">
-                  {{ item.user }}
-                </div> -->
+          <header class="body-header">
+              <h3 class="body-header__head">Правила и описание портала</h3>
+              <h5><b>Описание</b></h5>
+              <div align="left" style="text-indent:20px">
+                <p>Общество с ограниченной ответственностью «Топ Джоб»,именуемое в дальнейшем «Исполнитель», предоставляет любому физическому лицу, именуемому в дальнейшем «Работник», услуги по содействию в трудоустройстве и иных видах занятости посредством предоставления различных сервисов Сайтов Исполнителя.
+                 Предоставляет любому физическому лицу или юридической организации, именуемому в дальнейшем «Компания», услуги по размещение вакансий, отправлений предложений на резюме, посредством предоставления различных сервисов Сайтов Исполнителя.
+                 Безусловным принятием (акцептом) условий настоящей оферты считается регистрация на сайте или совершение любых действий, направленных на какое-либо использование Сайтов Исполнителя.
+                </p>
               </div>
-            </div>
-
+              <p align="left">Регистрация на Сайте — процедура создания аккаунта на Сайте и получения Работником или Компанией учетной информации. Регистрация производится на основании данных, добровольно и осознанно предоставляемых через регистрационные формы Сайта</p>
+              <h5><b>Правила</b></h5>
+              <div align="left" style="text-indent:20px">
+              <p><b>1.1</b> Исполнитель обязуется предоставить возможность Работнику размещать Резюме на Сайте, искать вакансии, опубликованные на Сайте и создавать на них отклики.</p>
+              <p><b>1.2</b> Исполнитель обязуется предоставить возможность Компании размещать Вакансии на Сайте, искать резюме, опубликованные на Сайте и отправлять на них предложения.</p>
+              <p><b>1.3</b> В соответствии с Федеральным законом от 27.07.2006 г. № 152-ФЗ «О персональных данных» Соискатель в целях, указанных в п.2.3 настоящего Соглашения, выражает согласие Исполнителю на осуществление со всеми персональными данными, указанными Соискателем при регистрации на Сайте или в последующем на Сайте,
+               в том числе в соответствующем Резюме, следующих действий: сбор, систематизация, накопление, хранение, уточнение (обновление или изменение), использование, предоставление, доступ, блокирование, уничтожение, поиск и сбор информации.</p>
+              <p><b>1.4</b> Используя Сайт, Пользователь обязуется не нарушать или пытаться нарушать информационную безопасность Сайта, что включает в себя.</p>
+              </div>
+          </header>
             <br /><br />
-            <!-- <p class="text-center">
+            <p class="text-center">
               <nuxt-link class="btn btn-more" to="/vacancies"
                 >Просмотреть все вакансии</nuxt-link
               >
-            </p> -->
+            </p>
             <p class="text-center"></p>
           </div>
         </section>
         <!-- END Recent jobs -->
-
-        <!-- Facts -->
-        <section class="bg-img bg-repeat no-overlay section-sm">
-          <div class="container">
-            <div class="row">
-              <div class="counter col-md-3 col-sm-6">
-                <p><span data-from="0" data-to="6890"></span>+</p>
-                <h6>Вакансии</h6>
-              </div>
-
-              <div class="counter col-md-3 col-sm-6">
-                <p><span data-from="0" data-to="1200"></span>+</p>
-                <h6>Клиентов</h6>
-              </div>
-
-              <div class="counter col-md-3 col-sm-6">
-                <p><span data-from="0" data-to="36800"></span>+</p>
-                <h6>Резюме</h6>
-              </div>
-
-              <div class="counter col-md-3 col-sm-6">
-                <p><span data-from="0" data-to="15400"></span>+</p>
-                <h6>Компаний</h6>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- END Facts -->
 
         <!-- How it works -->
         <section>
           <div class="text__container">
             <div class="text__container_left">
               <header class="text__container_left-title">
-                <span class="text__container_left-title--text"
-                  >Поиск работы</span
-                >
                 <div class="text__container_left-title--head">
-                  Как правильно искать работу
+                  Новости
                 </div>
               </header>
 
-              <p class="story">
-                Искать работу – тоже работа. Это инструкция из 5 пунктов для
-                человека из любой индустрии и любого уровня, будь то первая
-                работа после университета или руководящая должность
-                высокоуровневого специалиста.
-              </p>
-              <p>
-                1. Выбор индустрии Индустрия – почва, на которой вы будете расти
-                следующее время. Это может быть диджитал, маркетинг, IT,
-                финансы, продажи и т. д. Если у вас нет опыта, подумайте, в
-                какой сфере было бы интересно развиваться, чем хотелось бы
-                заниматься, чтобы работа приносила удовольствие.
-              </p>
-              <p>
-                2. Выбор компании. Сайты для поиска работы – простой, но не
-                эффективный способ. После изучения индустрии обратите внимание
-                на компании, которые кажутся привлекательными, исходя из ваших
-                ожиданий. -- Выберите 10 таких компаний. -- Найдите открытые
-                вакансии в общем доступе. -- Оцените, какие требования ставит
-                компания, и какие есть у вас. -- Подготовьте резюме, выделите
-                ключевые навыки, которые соответствуют вакансии. Идеальных
-                кандидатов с полным набором требований нет. Достаточно обладать
-                несколькими важными. Не бойтесь рисковать!
-              </p>
-              <p>
-                3. Представьте свою роль в компании. Приобретенная специальность
-                не так важна. Всегда можно изменить профессиональную жизнь в
-                лучшую сторону. Главное в карьере – это приобретенные навыки
-                (hard skills) и личностные качества (soft skills). Если каждый
-                день читать профильные статьи и смотреть лекции, посещать курсы
-                и вебинары, то в какой-то момент вы начнете разбираться в сфере
-                вашего изучения и сформируете экспертное мнение. После нужно
-                закрепить это в практике, но начало положено.
-              </p>
-
+              <div class="content" v-for="item in newsList" :key="item.id">
+                <h4><b>{{ item.title }}</b></h4>
+                <p>{{ item.text }}</p>
+                <div align="right"><em>{{ item.date_publish }}</em></div>
+                <br />
+              </div>
               <br /><br />
               <a class="btn btn-primary" href="page-typography.html"
                 >Подробнее</a
@@ -216,6 +154,7 @@
           </div>
         </section>
         <!-- Newsletter -->
+
         <section
           class="subscribe"
           :style="`background: url(${require('~/assets/img/bg-facts.jpg')}) no-repeat center`"
@@ -256,12 +195,14 @@
 </template>
 
 <script>
+import { baseUrl, decode } from "../store/constants.js";
 import axios from "axios";
-import Cookies from "universal-cookie";
+
 export default {
   name: "IndexPage",
   data() {
     return {
+      newsList: [],
       findForm: {
         name: "",
         city: "",
@@ -284,13 +225,6 @@ export default {
         ],
       },
       loading: false,
-      testNews: [
-        {id: 1, title: 'Время лучших: итоги Рейтинга работодателей России hh.ru 2021', text: 'О рекордах.В этом году Рейтинг работодателей России hh.ru побил свои же рекорды: в два раза выросло число участников (1923 компании) и в полтора раза — финалистов.Сертификат лучшего работодателя в этом году получат 783 компании.', date_publish: '17.02.2022', user: 'Администратор'},
-        {id: 2, title: 'Обзоры рынка труда: коротко о самом важном', text: 'Рынок труда — зеркало того, что происходит на рынке в целом. С марта 2020 года и по сей день пандемия коронавируса оказывает сильное влияние на нашу реальность. Чтобы вы могли держать руку на пульсе, мы наблюдали динамику рынка труда на hh.ru еженедельно, а начиная с мая 2021 года, мы продолжим делиться здесь ежемесячными отчетами.', date_publish: '08.02.2022', user: 'Администратор'},
-        {id: 3, title: 'Как и зачем мы меняем форму заполнения вакансии?', text: 'Мы заметили, что заполнить форму новой вакансии за один подход бывает сложно. Поэтому решили разделить ее на три шага, а часть полей и вовсе заполнить за вас. Рассказываем, как будет выглядеть обновленная форма.', date_publish: '21.01.2022', user: 'Администратор'}
-      ],
-      res: [],
-      newsList: [],
       vacancyList: [
         {
           id: 1,
@@ -380,19 +314,37 @@ export default {
       ],
     };
   },
+
   mounted() {
-    this.getNews()
+    this.getNews();
   },
+
   methods: {
+    onSubmit() {
+      this.login();
+    },
+    login() {
+      console.log("OK");
+      // this.loading = true
+      // const data = Object.assign({}, this.loginForm)
+      // try {
+      //   await this.axios.get('', { data })
+      // } catch (e) {
+      // }
+      // this.loading = false
+    },
     onSearch() {
       console.log("Уже ищу!!!");
     },
-    get_headers(access) {
-      let headers = {
-        "Content-Type": "application/json",
-      };
-      headers["Authorization"] = "Bearer " + access;
-      return headers;
+    async getNewestVacancy() {
+      try {
+        const response = await this.$axios.get("/api/v1/newestvacancy");
+        this.vacancyList = response.data.data;
+        // eslint-disable-next-line no-console
+        console.log(this.vacancyList);
+      } catch (e) {
+        this.$toast.error(e.response.data);
+      }
     },
     async getCategory() {
       try {
@@ -404,18 +356,14 @@ export default {
         this.$toast.error(e.response.data);
       }
     },
+
     async getNews() {
-      try {
-        const response = await this.$axios.get('http://127.0.0.1:8000/api/v1/news/');
-        this.res = response.data
-        this.newsList = JSON.stringify(this.res);
-        // eslint-disable-next-line no-console
-        console.log(this.res)
-        console.log(this.newsList)
-        // console.log(JSON.parse(JSON.stringify(this.res[0])).id)
-      } catch (e) {
-        this.$toast.error(e.response.data);
-      }
+      await axios
+        .get(`${baseUrl()}/news/`)
+        .then((response) => {
+          this.newsList = response.data;
+        })
+        .catch((error) => console.log(error));
     },
   },
 };
@@ -479,7 +427,6 @@ export default {
     font-size: 46px;
     font-family: Arial, sans-serif;
     color: #55595c;
-    text-transform: capitalize;
     margin: 16px 0;
     line-height: 1.4;
     font-weight: 800;
