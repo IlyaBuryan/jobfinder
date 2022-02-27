@@ -1,4 +1,3 @@
-главна
 <template>
   <div class="main__wrapp">
     <body class="nav-on-header">
@@ -65,22 +64,12 @@
           <div class="body__container">
             <header class="body-header">
               <span class="body-header__new">Свежее</span>
-              <h2 class="body-header__head">Новейшие вакансии</h2>
+              <h2 class="body-header__head">Новости</h2>
             </header>
 
-             <div class="news__container">
-              <div class="news-item" v-for="item in newsList" :key="item.id">
-                <div class="news-item__title">
-                  {{ item.title }}
-                </div>
-                <div class="news-item__text">
-                  {{ item.text }}
-                </div>
-                <div class="news-item__date">
-                  {{ item.date_publish }}
-                </div>
-              </div>
-            </div>
+            <New
+               :newsData="newsList"
+            />
 
             <br /><br />
             <p class="text-center">
@@ -417,13 +406,14 @@ export default {
     },
 
     async getNews() {
-
-      axios
-        .get(`${baseUrl()}/news/`)
-        .then((response) => {
-          this.newsList = response.data;
-        })
-        .catch((error) => console.log(error));
+      try {
+        const response = await this.$axios.get('http://127.0.0.1:8000/api/v1/news/');
+        this.newsList = response.data.data;
+        // eslint-disable-next-line no-console
+        console.log(this.newsList);
+      } catch (e) {
+        this.$toast.error(e.response.data);
+      }
     },
   },
 };
