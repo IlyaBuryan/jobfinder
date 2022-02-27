@@ -92,7 +92,7 @@
                   class="btn btn-success btn-xl btn-round"
                   v-on:click="sendCreateReq"
                 >
-                  Откликнуться
+                  Отправить приглашение
                 </button>
               </p>
             </div>

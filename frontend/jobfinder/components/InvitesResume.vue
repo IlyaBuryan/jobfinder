@@ -23,7 +23,7 @@
           <h4>Телефон: {{ item.resume.worker_info.phone }}</h4>
           <h4>Образование: {{ item.resume.institution }}</h4>
           <h4>
-            <em>откликнулся {{ item.vacancy.published_date }}</em>
+            <em>Предложение отправлено {{ item.vacancy.published_date }}</em>
           </h4>
           <h4>Должность в резюме: {{ item.resume.position }}</h4>
           <br />
