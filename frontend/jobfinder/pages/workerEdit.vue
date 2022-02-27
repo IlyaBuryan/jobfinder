@@ -143,7 +143,6 @@ export default {
     },
     updateWorker(event) {
       event.preventDefault();
-      // this.checkForm();
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
