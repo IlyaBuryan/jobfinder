@@ -50,18 +50,6 @@
                 v-model="worker.institution"
               />
             </div>
-
-            <!-- <div
-              v-for="item in worker.experience"
-              :key="item.functions"
-              class="border border-info rounded exp"
-            >
-              <p>{{ item.organization }}</p>
-              <p>{{ item.position }}</p>
-              <p>{{ item.start }}</p>
-              <p>{{ item.end }}</p>
-              <p>{{ item.functions }}</p>
-            </div> -->
             <div
               v-for="item in worker.experience"
               :key="item.functions"
@@ -123,32 +111,15 @@
                 />
               </div>
             </div>
-            <div class="form-group">
-              <label for="experienceBut">Ваш опыт</label>
-              <br />
-              <button
-                @click="changeShowModal"
-                id="experienceBut"
-                class="btn btn-primary"
-              >
-                Нажмите, чтобы добавить опыт
-              </button>
-            </div>
+            <button
+              class="btn btn-success btn-xl btn-round"
+              @click="updateExperience"
+            >
+              Сохраните изменения в опыте работы.
+            </button>
 
-            <!-- <div v-if="experience.length > 0">
-              <div
-                v-for="item in experience"
-                :key="item.functions"
-                class="border border-info rounded exp"
-              >
-                <p>{{ item.organization }}</p>
-                <p>{{ item.position }}</p>
-                <p>{{ item.start }}</p>
-                <p>{{ item.end }}</p>
-                <p>{{ item.functions }}</p>
-              </div>
-            </div> -->
-
+            <br />
+            <br />
             <div class="form-group">
               <label for="coursesComp">Курсы</label>
               <input
@@ -200,25 +171,19 @@
                     class="btn btn-success btn-xl btn-round"
                     @click="updateResume"
                   >
-                    Сохраните изменения в основном резюме.
+                    Сохраните изменения в резюме.
                   </button>
                   <button
                     class="btn btn-success btn-xl btn-round"
-                    @click="updateExperience"
+                    @click="deleteResume"
                   >
-                    Сохраните изменения в опыте работы.
+                    Удалить записи в резюме.
                   </button>
                 </p>
               </div>
             </section>
             <!-- END Submit -->
           </form>
-          <ModalWindow
-            v-if="showModal"
-            @change-modal="changeShowModal"
-            @add-experience="addExperience"
-          />
-          <!-- END Fields -->
         </div>
       </header>
     </form>
@@ -239,10 +204,9 @@ import { baseUrl, decode } from "../store/constants.js";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import AuthError from "@/components/AuthError.vue";
-import ModalWindow from "@/components/ModalWindow.vue";
 
 export default {
-  components: { AuthError, ModalWindow },
+  components: { AuthError },
   layout: "company",
 
   data: () => ({
@@ -262,7 +226,6 @@ export default {
       [2, "Среднее профессиональное"],
       [3, "Высшее"],
     ],
-    showModal: false,
   }),
 
   async mounted() {
@@ -290,7 +253,28 @@ export default {
       let token = cookies.get("token");
       let headers = this.get_headers(token);
       axios
-        .patch(`${baseUrl()}/resume/${this.$route.query.id}/`, this.worker, {
+        .patch(
+          `${baseUrl()}/resume/${this.$route.query.id}/`,
+          this.worker,
+          {
+            headers,
+          },
+          console.log(this.worker)
+        )
+        .then((response) => {
+          this.worker = response.data;
+        })
+        .catch(() =>
+          this.error.push("Ошибка при отправке формы, проверьте ввод!")
+        );
+    },
+    deleteResume(event) {
+      event.preventDefault();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+      axios
+        .delete(`${baseUrl()}/resume/${this.$route.query.id}/`, {
           headers,
         })
         .then((response) => {
@@ -306,9 +290,7 @@ export default {
       const cookies = new Cookies();
       let token = cookies.get("token");
       let headers = this.get_headers(token);
-
       console.log(this.worker.experience);
-
       this.worker.experience.map((item) => {
         axios
           .patch(`${baseUrl()}/work_experience/${item.id}/`, item, { headers })
@@ -320,6 +302,7 @@ export default {
           );
       });
     },
+
     checkPermission() {
       const cookies = new Cookies();
       let token = cookies.get("token");
@@ -351,29 +334,6 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-
-    changeShowModal(event) {
-      if (event) {
-        event.preventDefault();
-      }
-      this.showModal = !this.showModal;
-    },
-
-    addExperience(value) {
-      this.experience.push(value);
-    },
-  },
-
-  saveExperience(headers, single_experience) {
-    axios
-      .post(`${baseUrl()}/work_experience/`, single_experience, {
-        headers,
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.$router.push("/");
-      })
-      .catch(() => this.error.push("Вероятно вы не добавили опыт!"));
   },
 };
 </script>
