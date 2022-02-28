@@ -182,7 +182,7 @@ export default {
         .catch((error) => console.log(error));
 
       await axios
-        .get(`${baseUrl()}/resume/`, {
+        .get(`${baseUrl()}/my_resumes/`, {
           headers,
         })
         .then((response) => {
