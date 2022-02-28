@@ -2,16 +2,12 @@
   <div class="wrapper">
     <form class="form-data">
       <header class="page-header">
-        <div class="container page-name">
-          <h1 class="text-center">Отредактируйте информацию о себе</h1>
-        </div>
-
         <div class="container" v-if="permission == 'yes'">
           <p v-if="error[0]" class="alert alert-danger" role="alert">
             {{ error.join(", ") }}
           </p>
-
           <form class="form_container">
+          <h1 class="text-center">Отредактируйте информацию о себе</h1>
             <!-- Fields -->
             <div class="form-group">
               <label for="nameComp">Имя</label>

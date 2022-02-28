@@ -2,16 +2,12 @@
   <div class="wrapper">
     <form class="form-data">
       <header class="page-header">
-        <div class="container page-name">
-          <h1 class="text-center">Отредактируйте карточку своей компании</h1>
-        </div>
-
         <div class="container" v-if="permission == 'yes'">
           <p v-if="error" class="alert alert-danger" role="alert">
             Ошибка в заполнении формы. Обязательно заполните все поля!
           </p>
-
           <form class="form_container">
+            <h1 class="text-center">Отредактируйте карточку своей компании</h1>
             <!-- Fields -->
             <div class="form-group">
               <label for="nameComp">Название компании</label>

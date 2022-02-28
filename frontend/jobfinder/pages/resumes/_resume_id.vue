@@ -17,7 +17,9 @@
             </div>
           </div>
           <hr />
-          <p class="header-detail__head_main-descr">{{ resume.institution }}.</p>
+          <p class="header-detail__head_main-descr">
+            {{ resume.institution }}.
+          </p>
           <div class="header-detail__footer">
             <ul class="header-detail__head_main-params">
               <li>
@@ -54,27 +56,45 @@
           </div>
 
           <div class="button-group">
-            <ul class="social-icons">
-              <li class="title">Разместить на</li>
-              <li>
-                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a class="google-plus" href="#"
-                  ><i class="fa fa-google-plus"></i
-                ></a>
-              </li>
-              <li>
-                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-            </ul>
-
             <div class="action-buttons">
-              <a class="btn btn-success" href="#">Отправить предложение</a>
-              <Message></Message>
+              <div class="form-group">
+                <label for="catComp"
+                  >Выберите вакансию, на которую хотите пригласить
+                  человека</label
+                >
+                <select
+                  v-model="vacancy"
+                  class="form-control"
+                  aria-label="Default select example"
+                >
+                  <option disabled value="">Выберите один из вариантов</option>
+                  <option
+                    v-for="option in options"
+                    :key="option.id"
+                    v-bind:value="option.id"
+                  >
+                    {{ option.id }} - {{ option.position }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Сопроводительное письмо</label>
+                <textarea
+                  type="text"
+                  id="message"
+                  placeholder="Напишите письмо"
+                  class="form-control"
+                  v-model="message"
+                />
+              </div>
+              <p class="text-center">
+                <button
+                  class="btn btn-success btn-xl btn-round"
+                  v-on:click="sendCreateReq"
+                >
+                  Отправить приглашение
+                </button>
+              </p>
             </div>
           </div>
         </div>
@@ -85,47 +105,38 @@
     <!-- Main container -->
     <main>
       <!-- Job detail -->
-      <section class="resume-info">
-        <div class="resume-info__container">
+      <section class="vacancy-info">
+        <div class="vacancy-info__container">
           <br />
-          <h4>О себе</h4>
-          <p>{{ resume.info }}</p>
-          <!-- <ul>
-            <li>Build next-generation web applications with a focus on the client side.</li>
-            <li>Redesign UI's, implement new UI's, and pick up Java as necessary.</li>
-            <li>Explore and design dynamic and compelling consumer experiences.</li>
-            <li>Design and build scalable framework for web applications.</li>
-          </ul> -->
+          <h4>Позиция</h4>
+          <span>{{ resume.position }}</span>
+
+          <div
+            class="vacancy-item"
+            v-for="(item, id) in resume.experience"
+            :key="id"
+          >
+            <p>Организация {{ item.organization }}</p>
+            <p>Позиция {{ item.position }}</p>
+            <p>Функции {{ item.functions }}</p>
+            <p>Начало {{ item.start }}</p>
+            <p>Окончание {{ item.end }}</p>
+          </div>
+
+          <h4>Образование</h4>
+          <span>{{ resume.institution }}</span>
 
           <br />
-          <h4>Minimum qualifications</h4>
-          <ul>
-            <li>
-              BA/BS degree in a technical field or equivalent practical
-              experience.
-            </li>
-            <li>
-              2 years of relevant work experience in software development.
-            </li>
-            <li>Programming experience in C, C++ or Java.</li>
-            <li>Experience with AJAX, HTML and CSS.</li>
-          </ul>
+          <h4>Имя</h4>
+          <span>{{ resume.worker_info.first_name }}</span>
 
           <br />
-          <h4>Preferred qualifications</h4>
-          <ul>
-            <li>Interest in user interface design.</li>
-            <li>Web application development experience.</li>
-            <li>Experience working on cross-browser platforms.</li>
-            <li>
-              Development experience designing object-oriented JavaScript.
-            </li>
-            <li>
-              Experience with user interface frameworks such as XUL, Flex and
-              XAML.
-            </li>
-            <li>Knowledge of user interface design.</li>
-          </ul>
+          <h4>Фамилия</h4>
+          <span>{{ resume.worker_info.last_name }}</span>
+
+          <br />
+          <h4>Телефон</h4>
+          <span>{{ resume.worker_info.phone }}</span>
         </div>
       </section>
       <!-- END Job detail -->
@@ -139,46 +150,58 @@ import Message from "@/components/Message.vue";
 import { baseUrl, decode } from "../../store/constants.js";
 import axios from "axios";
 import Cookies from "universal-cookie";
+
 export default {
   components: { Message },
   data() {
     return {
-      loading: false,
-      resumeList: [],
-      resume: {},
-      worker: {},
-      workerList: [],
-      workerId: "",
+      resume: {
+        worker_info: {
+          first_name: "",
+          last_name: "",
+          phone: "",
+        },
+        position: "",
+        experience: [],
+        institution: "",
+      },
 
+      user: "",
+      vacancy: "",
+      message: "",
+      options: [],
     };
   },
   async mounted() {
-    this.getCard();
+    await this.getCard();
   },
 
   methods: {
     getCard() {
       const cookies = new Cookies();
       let token = cookies.get("token");
-      let userId = decode(token).user_id;
+      this.user = decode(token).user_id;
       let headers = this.get_headers(token);
 
       axios
-        .get(`${baseUrl()}/resume/${this.$route.params.resume_id}`, {
+        .get(`${baseUrl()}/resume/${this.$route.params.resume_id}/`, {
           headers,
         })
         .then((response) => {
           this.resume = response.data;
+          console.log("------------------------------");
+          console.log(response.data);
           console.log(this.resume);
         })
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/worker_card/`, { headers })
+        .get(`${baseUrl()}/my_vacancies/`, {
+          headers,
+        })
         .then((response) => {
-          this.workerList = response.data;
-          this.worker = this.workerList[0];
-          console.log(this.workerList);
+          this.options = response.data;
+          console.log(this.options);
         })
         .catch((error) => console.log(error));
     },
@@ -190,11 +213,32 @@ export default {
       headers["Authorization"] = "Bearer " + access;
       return headers;
     },
-    getResume() {
-      this.resumeId = this.$route.params.resume_id;
-      this.resume = this.resumeList[this.resumeId - 1];
-      console.log(this.resume);
-      this.worker = this.workerList[0];
+
+    sendCreateReq(event) {
+      event.preventDefault();
+      const cookies = new Cookies();
+      let token = cookies.get("token");
+      let headers = this.get_headers(token);
+
+      const data = {
+        user: this.user,
+        vacancy: this.vacancy,
+        resume: this.resume.id,
+        message: this.message,
+      };
+
+      console.log(data);
+
+      axios
+        .post(`${baseUrl()}/message_on_resume/`, data, {
+          headers,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.resume = "";
+          this.$router.push("/accountCompany");
+        })
+        .catch(() => (this.error = true));
     },
   },
 };
@@ -223,6 +267,16 @@ export default {
   max-width: 100%;
   margin-top: 100px;
   display: flex;
+}
+.vacancy-info {
+  display: flex;
+  justify-content: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    max-width: 90%;
+  }
 }
 .header-detail {
   width: 80%;
@@ -275,5 +329,20 @@ export default {
     padding: 50px;
     max-width: 90%;
   }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.vacancy-item {
+  display: flex;
+  flex-direction: column;
 }
 </style>

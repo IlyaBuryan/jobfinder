@@ -56,24 +56,6 @@
           </div>
 
           <div class="button-group">
-            <ul class="social-icons">
-              <li class="title">Разместить на</li>
-              <li>
-                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a class="google-plus" href="#"
-                  ><i class="fa fa-google-plus"></i
-                ></a>
-              </li>
-              <li>
-                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-              </li>
-            </ul>
-
             <div class="action-buttons">
               <div class="form-group">
                 <label for="catComp"
@@ -200,7 +182,7 @@ export default {
         .catch((error) => console.log(error));
 
       await axios
-        .get(`${baseUrl()}/resume/`, {
+        .get(`${baseUrl()}/my_resumes/`, {
           headers,
         })
         .then((response) => {
@@ -323,5 +305,16 @@ export default {
     padding: 50px;
     max-width: 90%;
   }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 </style>
