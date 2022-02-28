@@ -196,7 +196,7 @@ export default {
         .catch((error) => console.log(error));
 
       axios
-        .get(`${baseUrl()}/vacancyapp/`, {
+        .get(`${baseUrl()}/my_vacancies/`, {
           headers,
         })
         .then((response) => {
