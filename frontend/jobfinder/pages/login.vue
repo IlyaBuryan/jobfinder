@@ -50,10 +50,7 @@
         </form>
       </div>
       <div class="login-links">
-        <nuxt-link class="pull-left" to="/pass-restore"
-          >Забыли пароль?</nuxt-link
-        >
-        <nuxt-link class="pull-right" to="/register"
+        <nuxt-link class="pull-center" to="/register"
           >Зарегистрируйтесь</nuxt-link
         >
       </div>
@@ -263,10 +260,8 @@ a {
 .social-icons a.linkedin:hover {
   background-color: #007bb6;
 }
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
+.pull-center {
+  display: flex;
+  justify-content: center;
 }
 </style>
