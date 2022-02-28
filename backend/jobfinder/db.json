@@ -1,0 +1,1814 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2022-02-28T18:19:46.381Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "News object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2022-02-28T18:19:56.794Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "News object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2022-02-28T18:20:06.739Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "News object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 6,
+    "codename": "add_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 6,
+    "codename": "change_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 6,
+    "codename": "delete_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 6,
+    "codename": "view_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add resume",
+    "content_type": 7,
+    "codename": "add_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change resume",
+    "content_type": 7,
+    "codename": "change_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete resume",
+    "content_type": 7,
+    "codename": "delete_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view resume",
+    "content_type": 7,
+    "codename": "view_resume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add work experience",
+    "content_type": 8,
+    "codename": "add_workexperience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change work experience",
+    "content_type": 8,
+    "codename": "change_workexperience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete work experience",
+    "content_type": 8,
+    "codename": "delete_workexperience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view work experience",
+    "content_type": 8,
+    "codename": "view_workexperience"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add worker",
+    "content_type": 9,
+    "codename": "add_worker"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change worker",
+    "content_type": 9,
+    "codename": "change_worker"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete worker",
+    "content_type": 9,
+    "codename": "delete_worker"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view worker",
+    "content_type": 9,
+    "codename": "view_worker"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add company card",
+    "content_type": 10,
+    "codename": "add_companycard"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change company card",
+    "content_type": 10,
+    "codename": "change_companycard"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete company card",
+    "content_type": 10,
+    "codename": "delete_companycard"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view company card",
+    "content_type": 10,
+    "codename": "view_companycard"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add vacancy",
+    "content_type": 11,
+    "codename": "add_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change vacancy",
+    "content_type": 11,
+    "codename": "change_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete vacancy",
+    "content_type": 11,
+    "codename": "delete_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view vacancy",
+    "content_type": 11,
+    "codename": "view_vacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add message",
+    "content_type": 12,
+    "codename": "add_message"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change message",
+    "content_type": 12,
+    "codename": "change_message"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete message",
+    "content_type": 12,
+    "codename": "delete_message"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view message",
+    "content_type": 12,
+    "codename": "view_message"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add message on resume",
+    "content_type": 13,
+    "codename": "add_messageonresume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change message on resume",
+    "content_type": 13,
+    "codename": "change_messageonresume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete message on resume",
+    "content_type": 13,
+    "codename": "delete_messageonresume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view message on resume",
+    "content_type": 13,
+    "codename": "view_messageonresume"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add message to vacancy",
+    "content_type": 14,
+    "codename": "add_messagetovacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change message to vacancy",
+    "content_type": 14,
+    "codename": "change_messagetovacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete message to vacancy",
+    "content_type": 14,
+    "codename": "delete_messagetovacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view message to vacancy",
+    "content_type": 14,
+    "codename": "view_messagetovacancy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add news",
+    "content_type": 15,
+    "codename": "add_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change news",
+    "content_type": 15,
+    "codename": "change_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete news",
+    "content_type": 15,
+    "codename": "delete_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view news",
+    "content_type": 15,
+    "codename": "view_news"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add blacklisted token",
+    "content_type": 16,
+    "codename": "add_blacklistedtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change blacklisted token",
+    "content_type": 16,
+    "codename": "change_blacklistedtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete blacklisted token",
+    "content_type": 16,
+    "codename": "delete_blacklistedtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view blacklisted token",
+    "content_type": 16,
+    "codename": "view_blacklistedtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add outstanding token",
+    "content_type": 17,
+    "codename": "add_outstandingtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change outstanding token",
+    "content_type": 17,
+    "codename": "change_outstandingtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete outstanding token",
+    "content_type": 17,
+    "codename": "delete_outstandingtoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view outstanding token",
+    "content_type": 17,
+    "codename": "view_outstandingtoken"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "authapp",
+    "model": "customuser"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "workerapp",
+    "model": "resume"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "workerapp",
+    "model": "workexperience"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "workerapp",
+    "model": "worker"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "companyapp",
+    "model": "companycard"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "companyapp",
+    "model": "vacancy"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "messageapp",
+    "model": "message"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "lkcompanyapp",
+    "model": "messageonresume"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "lkworkerapp",
+    "model": "messagetovacancy"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "newsapp",
+    "model": "news"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "token_blacklist",
+    "model": "blacklistedtoken"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "token_blacklist",
+    "model": "outstandingtoken"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gthaq4hzqnqpfweoo5c4c2k0euj8n69d",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlm2FcdZSnrOEO3POIAcKU4qxN0hUgpo38y8lxlxW8u4NV3GSczZeHP63Qj5oXUHcsd6my3PdV0msrtiD9rsdRZ9Xg7376BgK9-6T-wihEEoggydsrgQCNQDAgFxpzErpZgcDehTDBmBM7vMElPyvXl_APAxOHg:1nOkcO:62IEqTMDp8obBe4r6eiDAsfTNUTmklWJ6l9px-26vwQ",
+    "expire_date": "2022-03-14T18:19:32.986Z"
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$7nTWx8cemi4yrtl9ULcyg1$U2RY+t8tuO4NI4OxkxsIE5A8N6v/rwP4khlq/hAeoKg=",
+    "last_login": "2022-02-28T18:19:32.953Z",
+    "is_superuser": true,
+    "username": "django",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:19:19.919Z",
+    "email": "django@mail.ru",
+    "role": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$lgxYqvStmXdiqfWgTg4qTw$sai5/LpIMlzBElFAZziron0auf111k7Valtmb6NDaQs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "aleksandra21031969",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:29:00.611Z",
+    "email": "aleksandra21031970@ya.ru",
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$ZkycZRxmnniYl7EUV3cDlu$IMNXftMByez4CpiFPIRn98O8YAyFfng7vzpibB080V0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ivan92",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:30:13.402Z",
+    "email": "ivan91@rambler.ru",
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$htyKKTfhYRsjumIqSxUlzU$qNCK4YV7HZdBnf4rM1wSXh0nS21R2ZFj1I5ogR/awzE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "fedor01071989",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:30:35.280Z",
+    "email": "fedor01071990@gmail.com",
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$egBtbhJ8DOoHpzaY1HLV7C$9jtxVAoREVDdHy0Umh3x1nhl/HsIp2pW1XlASV7ewrY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "david25",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:30:56.971Z",
+    "email": "david24@yandex.ru",
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$ZW9NosVEuRqsn5LsBH1m9f$MarVHnV897pRzcesMTnQeBrkvBsbezpJCKauMn9LGZU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "timofey5991",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:31:17.051Z",
+    "email": "timofey5992@ya.ru",
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$4K2xdq4KAsSKAh5pNI1nTO$fkROAmoC9Ias8q1oN/CWUre+No5Y2ZKrA3k8VoLT4Aw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nadejda20021995",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:31:49.919Z",
+    "email": "nadejda20021994@mail.ru",
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$y1CTCdTRRgAdDqpO4saJ4S$6JQRdDEChH85u9VP3oPvNwa//9gJwLooxSrFZbOgXdM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nikolay.chichikov",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:32:12.612Z",
+    "email": "nikolay.chichikov1@yandex.ru",
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$U1uvJbPePSXyTpCbhzuqdl$7w7j/9K6E8ilFk6nSRJueeOx5UjjzPmdo68XHCObkTo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "fedot16041991",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:32:32.569Z",
+    "email": "fedot16041992@yandex.ru",
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$fsxVx5a8lzDM4LwRdfxckN$JQVOQ1s4MKnfhq9fhVLLU8aXAuLcGiOCe/7tSe6zR00=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "kirill.klement",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:32:51.567Z",
+    "email": "kirill.klement1@yandex.ru",
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authapp.customuser",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$sfmIZHkrcxGUk799mbTq7p$eVhlPr0wKNnlX7TbN3axUts5+FrT6hGHVc7/J6o94SU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nina64",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-28T18:33:10.181Z",
+    "email": "nina59@mail.ru",
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "workerapp.worker",
+  "pk": 1,
+  "fields": {
+    "first_name": "Александра",
+    "last_name": "Чуличкова",
+    "phone": 89842787942,
+    "birth_date": "1969-03-21",
+    "user": 2
+  }
+},
+{
+  "model": "workerapp.worker",
+  "pk": 2,
+  "fields": {
+    "first_name": "Иван",
+    "last_name": "Поливанов",
+    "phone": 89581403167,
+    "birth_date": "1985-05-01",
+    "user": 3
+  }
+},
+{
+  "model": "workerapp.worker",
+  "pk": 3,
+  "fields": {
+    "first_name": "Федор",
+    "last_name": "Курицын",
+    "phone": 89491267211,
+    "birth_date": "1989-07-01",
+    "user": 4
+  }
+},
+{
+  "model": "workerapp.worker",
+  "pk": 4,
+  "fields": {
+    "first_name": "Давид",
+    "last_name": "Ягнятев",
+    "phone": 89359232776,
+    "birth_date": "1968-09-01",
+    "user": 5
+  }
+},
+{
+  "model": "workerapp.worker",
+  "pk": 5,
+  "fields": {
+    "first_name": "Тимофей",
+    "last_name": "Луньков",
+    "phone": 89797898833,
+    "birth_date": "1967-10-07",
+    "user": 6
+  }
+},
+{
+  "model": "workerapp.resume",
+  "pk": 1,
+  "fields": {
+    "position": "Менеджер по продажам",
+    "education_types": 3,
+    "institution": "Тульский государственный университет",
+    "courses": "Онлайн-курсы",
+    "info": "Умение чувствовать людей и располагать их к себе‚ четкое и грамотное выполнение своих обязанностей. Неординарный подход к решению задач  и коммуникабельность.",
+    "is_draft": false,
+    "worker": 2
+  }
+},
+{
+  "model": "workerapp.resume",
+  "pk": 2,
+  "fields": {
+    "position": "Менеджер по работе с клиентами",
+    "education_types": 3,
+    "institution": "Московский государственный университет имени М.В. Ломоносова",
+    "courses": "нет",
+    "info": "Общая информация о себе: Умение планировать и прогнозировать, решительность, энергичность, отзывчивость, креативность, стрессоустойчивость, гибкость, оптимизм.",
+    "is_draft": false,
+    "worker": 3
+  }
+},
+{
+  "model": "workerapp.resume",
+  "pk": 3,
+  "fields": {
+    "position": "Менеджер по строительству",
+    "education_types": 3,
+    "institution": "Новосибирский национальный исследовательский государственный университет",
+    "courses": "отсутствуют",
+    "info": "Коммуникабельность, целеустремленность, находчивость, пунктуальность, ответственность, трудолюбие. AutoCAD, Autodesk Revit, MS Outlook, Rhinoceros 3D, Битрикс 24",
+    "is_draft": false,
+    "worker": 4
+  }
+},
+{
+  "model": "workerapp.resume",
+  "pk": 4,
+  "fields": {
+    "position": "Продавец-консультант ПК",
+    "education_types": 3,
+    "institution": "Сибирский федеральный университет",
+    "courses": "нет",
+    "info": "Прямые продажи, консультирование по товару. Веду здоровый образ жизни, с утренними пробежками в парке, максимально настраиваясь на продуктивный рабочий день.",
+    "is_draft": false,
+    "worker": 5
+  }
+},
+{
+  "model": "workerapp.resume",
+  "pk": 5,
+  "fields": {
+    "position": "Менеджер",
+    "education_types": 3,
+    "institution": "Северо-Восточный федеральный университет имени М.К. Аммосова",
+    "courses": "онлайн",
+    "info": "Навыки межличностного общения, умение работать в команде, эффективное принятие решений, умение декомпозировать планы, навыки прямых продаж и работы с возражениями.",
+    "is_draft": false,
+    "worker": 6
+  }
+},
+{
+  "model": "workerapp.workexperience",
+  "pk": 1,
+  "fields": {
+    "organization": "ПрофиПК",
+    "start": "2007-02-01",
+    "end": "2019-04-03",
+    "position": "Продавец-консультант",
+    "functions": "Консультирование клиентов по различным вопросам, в том числе и техническим, касательно продаваемой компьютерной и бытовой техники.",
+    "resume": [
+      1
+    ]
+  }
+},
+{
+  "model": "workerapp.workexperience",
+  "pk": 2,
+  "fields": {
+    "organization": "ООО АвтоПрофи",
+    "start": "2014-05-07",
+    "end": "2019-09-05",
+    "position": "Продавец-консультант",
+    "functions": "Продажа автомобилей\n• Доп. страхование, страхование КАСКО и ОСАГО, СЖ и ГАП;\n• Карты ПНД и Assistance,;\n• Доп. Оборудования;\n• Постановка на учёт ГАИ;\n• Полное ведение и планирование сделки до заключительного этапа.",
+    "resume": [
+      2
+    ]
+  }
+},
+{
+  "model": "workerapp.workexperience",
+  "pk": 3,
+  "fields": {
+    "organization": "ПрофСтройМонтаж",
+    "start": "2015-04-02",
+    "end": "2020-07-03",
+    "position": "Менеджер проектов",
+    "functions": "Прораб, мастер СМР\nИнженер по эксплуатации\nРуководитель проектов",
+    "resume": [
+      3
+    ]
+  }
+},
+{
+  "model": "workerapp.workexperience",
+  "pk": 4,
+  "fields": {
+    "organization": "SmilePC",
+    "start": "2005-01-01",
+    "end": "2014-05-05",
+    "position": "Продавец-консультант",
+    "functions": "Продажи товаров, консультирование покупателей по ассортименту.",
+    "resume": [
+      4
+    ]
+  }
+},
+{
+  "model": "workerapp.workexperience",
+  "pk": 5,
+  "fields": {
+    "organization": "ООО Консалт Плюс",
+    "start": "2001-07-09",
+    "end": "2021-09-05",
+    "position": "Менеджер",
+    "functions": "Обработка входящих заявок, работа с теплой и холодной базой клиентов, обучение новых сотрудников, назначение и проведение встреч и консультаций.",
+    "resume": [
+      5
+    ]
+  }
+},
+{
+  "model": "companyapp.companycard",
+  "pk": 1,
+  "fields": {
+    "name": "ООО Авто-Премиум",
+    "category": 1,
+    "itn": 6073468391,
+    "company_details": "Автокредит, антикор, базовое сервисное обслуживание, лизинг, мойка, официальный автосервис, официальный дилер, постановка на учёт, техосмотр, предварительная запись, развал-схождение, тест-драйв, трейд-ин, шиномонтаж.",
+    "description": "Компания по продаже новых автомобилей, продажа автомобилей с пробегом. Абсолютное лидерство на рынке новых авто и авто с пробегом, также сервисное обслуживание и продажа з/ч.",
+    "user": 7
+  }
+},
+{
+  "model": "companyapp.companycard",
+  "pk": 2,
+  "fields": {
+    "name": "ООО ПрофСтрой",
+    "category": 6,
+    "itn": 5378729455,
+    "company_details": "Оказание широкого спектра услуг в сфере проектирования, строительства и управления строительными проектами физическим и юридическим лицам.",
+    "description": "Компания, занимается строительством, капитальным ремонтом и реконструкцией объектов жилищного фонда и промышленных зданий и сооружений.",
+    "user": 8
+  }
+},
+{
+  "model": "companyapp.companycard",
+  "pk": 3,
+  "fields": {
+    "name": "Байнет",
+    "category": 9,
+    "itn": 8235246529,
+    "company_details": "Имеется собственное сборочное производство компьютеров, в том числе ноутбуков, планшетов и смартфонов.",
+    "description": "Магазин бытовой техники, электроники, смартфонов, гаджетов, ноутбуков, компьютеров, комплектующих для ПК, оргтехники, офисной техники, сетевого оборудования, телевизоров, аудио-видео техники, Hi-Fi, музыкальных инструментов. Одни из лидеров рынка по продаже компьютерной, цифровой и бытовой техники в России.",
+    "user": 9
+  }
+},
+{
+  "model": "companyapp.companycard",
+  "pk": 4,
+  "fields": {
+    "name": "LightComp",
+    "category": 9,
+    "itn": 1283209080,
+    "company_details": "Компания также выпускает ноутбуки, компьютеры, мониторы, смартфоны, источники питания и компьютерные аксессуары под собственными марками.",
+    "description": "Российская компания, владелец розничной сети, специализирующейся на продаже компьютерной, цифровой и бытовой техники, а также производитель компьютеров, в том числе ноутбуков, планшетов и смартфонов (сборочное производство).",
+    "user": 10
+  }
+},
+{
+  "model": "companyapp.companycard",
+  "pk": 5,
+  "fields": {
+    "name": "LLC Consulting",
+    "category": 6,
+    "itn": 5846834303,
+    "company_details": "Проведение диагностики бизнеса, выявление «зоны роста» и «зоны провала», разработка и внедрение стратегии «прорыва», подъём на новый уровень конкурентоспособность бизнеса. повышение эффективности бизнес – процессов. управления.",
+    "description": "Компания, занимающаяся консультированием предприятий, руководителей и управленческих кадров по юридическим, финансовым, инвестиционным и другим вопросам.",
+    "user": 11
+  }
+},
+{
+  "model": "companyapp.vacancy",
+  "pk": 1,
+  "fields": {
+    "position": "Продавец-консультант",
+    "conditions": "Оформление и ведение трудовых отношений в соответствии с ТК РФ (оплачиваемый отпуск, больничный)\nВысокий уровень дохода, который зависит только от тебя.",
+    "duties": "Активные продажи автомобилей с пробегом, дополнительного оборудования и финансовых услуг;\nпроведение тест-драйвов.",
+    "requirements": "Успешный опыт работы в области продаж автомобилей с пробегом желателен;\nразвитые коммуникативные навыки, умение убеждать; общие знания устройства автомобиля.",
+    "salary": "По договорённости",
+    "city": "Ростов",
+    "published_date": "2022-02-28",
+    "company_card": 1
+  }
+},
+{
+  "model": "companyapp.vacancy",
+  "pk": 2,
+  "fields": {
+    "position": "Менеджер по продажам",
+    "conditions": "Оформление в соответствии ТК РФ, Испытательный срок: до 2 месяцев\nСтабильная БЕЗ ЗАДЕРЖЕК заработная плата (оклад + % + бонус).",
+    "duties": "Работа с входящими телефонными звонками (консультирование, ответы на вопросы). Без поиска клиентов! Привлечение клиентов для заключения договоров на строительство.",
+    "requirements": "Умение и желание работать на результат! Проактивность, готовность работать в высоком темпе.\nМотивация на достижение амбициозных целей.",
+    "salary": "Высокая",
+    "city": "Новокузнецк",
+    "published_date": "2022-02-28",
+    "company_card": 2
+  }
+},
+{
+  "model": "companyapp.vacancy",
+  "pk": 3,
+  "fields": {
+    "position": "Продавец-консультант",
+    "conditions": "Оплата ежемесячно: ставка + бонусы за перевыполнение плана + бонусы с продаж + надбавки за результаты аттестации. Постоянное наличие актуальной информации о технике.",
+    "duties": "Консультирование покупателей по ассортименту и техническим характеристикам продаваемой техники, мотивирование на покупку.",
+    "requirements": "Желание работать и развиваться в сфере продаж, коммуникабельность и ответственность, желателен опыт работы в продажах или промоушн.",
+    "salary": "По результатам собеседования",
+    "city": "Тула",
+    "published_date": "2022-02-28",
+    "company_card": 3
+  }
+},
+{
+  "model": "companyapp.vacancy",
+  "pk": 4,
+  "fields": {
+    "position": "Менеджер по продажам",
+    "conditions": "Работа разъездного характера (в пределах выделенной территории). \nОформление согласно ТК РФ с первого рабочего дня",
+    "duties": "Прямые продажи товаров компании. Предоставление оперативной обратной связи по запросам партнеров. Работа с базой партнеров: планирование работы, фиксация в CRM.",
+    "requirements": "Образование: высшее, среднее-профессионального.\nВладение ПК на уровне пользователя (MS Word, Excel, Internet).",
+    "salary": "Договорная.",
+    "city": "Люберцы",
+    "published_date": "2022-02-28",
+    "company_card": 4
+  }
+},
+{
+  "model": "companyapp.vacancy",
+  "pk": 5,
+  "fields": {
+    "position": "Менеджер по продажам",
+    "conditions": "Достойный фикс + бонус. Коллектив - дружный. Есть возможность прокачаться у доброжелательных коллег с разными компетенциями.",
+    "duties": "Полный цикл сделки (от приёма входящих обращений до закрытия сделки). Ведение деловых переговоров. Выстраивание партнёрских отношений.",
+    "requirements": "Повышенные работоспособность. Приветствуется опыт продаж консалтинговых услуг (СРО, лицензирование, сертификация). Начальник - добрый. Продукт - востребованный.",
+    "salary": "Договорная.",
+    "city": "Находка",
+    "published_date": "2022-02-28",
+    "company_card": 5
+  }
+},
+{
+  "model": "lkworkerapp.messagetovacancy",
+  "pk": 1,
+  "fields": {
+    "user": 11,
+    "resume": 1,
+    "vacancy": 5,
+    "data": "2022-02-28",
+    "message": "Добрый день! Прошу рассмотреть моё резюме.",
+    "is_viewed": true,
+    "response_status": "2"
+  }
+},
+{
+  "model": "newsapp.news",
+  "pk": 1,
+  "fields": {
+    "title": "MWC 2022: Realme показала флагман GT2 Pro",
+    "text": "Корпус GT2 Pro сделан из эко- материалов, по текстуре они напоминают бумагу. Есть три расцветки белая, зеленая и черная. Телефон весит 189 гр., а толщина 8,18 мм. Одна из главных фишек смартфона большой плоский экран с тонкими рамками. Еще экран один из самых ярких в своем классе 1400 нит.",
+    "date_publish": "2022-02-28"
+  }
+},
+{
+  "model": "newsapp.news",
+  "pk": 2,
+  "fields": {
+    "title": "Дом будущего: небоскреб превратили в пышный зеленеющий оазис",
+    "text": "Возвышающийся над Сингапуром на высоту 280 м небоскреб CapitaSpring построен по необычной схеме. Помимо того, что в здании можно найти около 80 000 растений, в небоскребе-оазисе есть специально выделенные зоны под амфитеатр, тренажерные залы (они расположены прямо «в джунглях») и кафе.",
+    "date_publish": "2022-02-28"
+  }
+},
+{
+  "model": "newsapp.news",
+  "pk": 3,
+  "fields": {
+    "title": "Анонсированы Honor Earbuds 3 Pro: первые наушники с датчиком температуры",
+    "text": "Дизайн «умных» часов вдохновлен традиционными механическими часами. Honor Watch GS 3 весят всего 44 г и имеют толщину 10,5 мм. Смарт-часы оснащены новым восьмиканальным сенсорным датчиком PPG и технологией Monitoring Engine на базе искусственного интеллекта.",
+    "date_publish": "2022-02-28"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "jti": "c7a51f915b41439b996b7969f7ba7052",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTYwOSwianRpIjoiYzdhNTFmOTE1YjQxNDM5Yjk5NmI3OTY5ZjdiYTcwNTIiLCJ1c2VyX2lkIjoyfQ.MmxdfiX_qc_ngyMAFRRZVdEqHHZ6XAglwQ6IKY8Ui18",
+    "created_at": "2022-02-28T18:33:29.492Z",
+    "expires_at": "2022-03-01T18:33:29Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "jti": "1b0c8882bfe24bba916bb73d036ade41",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTY3OCwianRpIjoiMWIwYzg4ODJiZmUyNGJiYTkxNmJiNzNkMDM2YWRlNDEiLCJ1c2VyX2lkIjozfQ.V7ieqaK4UlFxCM64pAdxurSIbZxADsJqL-nlwi95NxE",
+    "created_at": "2022-02-28T18:34:38.848Z",
+    "expires_at": "2022-03-01T18:34:38Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "jti": "a9ea11666f9d41409349889ed85d658a",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTczMSwianRpIjoiYTllYTExNjY2ZjlkNDE0MDkzNDk4ODllZDg1ZDY1OGEiLCJ1c2VyX2lkIjo0fQ.EA01yX9vbgYK6sjI7v5Yw2ChwfdiNYpptGYn2hIi7JA",
+    "created_at": "2022-02-28T18:35:31.429Z",
+    "expires_at": "2022-03-01T18:35:31Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 4,
+  "fields": {
+    "user": 5,
+    "jti": "8b1327a5e66144adaa5f2daacb9018b4",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTc3NiwianRpIjoiOGIxMzI3YTVlNjYxNDRhZGFhNWYyZGFhY2I5MDE4YjQiLCJ1c2VyX2lkIjo1fQ.Ws6yUgKxK4zrlgtggtopESltZTF3wa6AFA2aIcblGZU",
+    "created_at": "2022-02-28T18:36:16.925Z",
+    "expires_at": "2022-03-01T18:36:16Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 5,
+  "fields": {
+    "user": 6,
+    "jti": "4e34e8eb9d7c4d3aa7f03d9c7dae1c85",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTgyOCwianRpIjoiNGUzNGU4ZWI5ZDdjNGQzYWE3ZjAzZDljN2RhZTFjODUiLCJ1c2VyX2lkIjo2fQ.qB68bFX3k8xCxGoZGKOcZG6i8c2GIlHd3h4pPowCrjU",
+    "created_at": "2022-02-28T18:37:08.376Z",
+    "expires_at": "2022-03-01T18:37:08Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 6,
+  "fields": {
+    "user": 7,
+    "jti": "925a826a6be34ed7bd8d438703a7f4a6",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE1OTg2NywianRpIjoiOTI1YTgyNmE2YmUzNGVkN2JkOGQ0Mzg3MDNhN2Y0YTYiLCJ1c2VyX2lkIjo3fQ.kUoKqb1dOx-imO_FLejXTMp6Vn5ZB5jDmiRX40Gv0YI",
+    "created_at": "2022-02-28T18:37:47.008Z",
+    "expires_at": "2022-03-01T18:37:47Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 7,
+  "fields": {
+    "user": 8,
+    "jti": "3e9f000cdc554331855b55548fed3993",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDAxOCwianRpIjoiM2U5ZjAwMGNkYzU1NDMzMTg1NWI1NTU0OGZlZDM5OTMiLCJ1c2VyX2lkIjo4fQ.9rD_0EBapSLahJn3DywMYvpWqyZL9R8vX5lmK8RO0wU",
+    "created_at": "2022-02-28T18:40:18.379Z",
+    "expires_at": "2022-03-01T18:40:18Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "jti": "a52ebc0e991049839b7f260f5bf0d16e",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDA5MCwianRpIjoiYTUyZWJjMGU5OTEwNDk4MzliN2YyNjBmNWJmMGQxNmUiLCJ1c2VyX2lkIjo5fQ.wwvFy4-28NkXvX9Li5oQ4YFjI5u-CZbiC6WZsW6eeJ8",
+    "created_at": "2022-02-28T18:41:30.072Z",
+    "expires_at": "2022-03-01T18:41:30Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "jti": "e1efc09f042b4360bf42c8febd925d46",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDE3MywianRpIjoiZTFlZmMwOWYwNDJiNDM2MGJmNDJjOGZlYmQ5MjVkNDYiLCJ1c2VyX2lkIjoxMH0.fvhk3BC8GXEJl7l6QhqNcllcqYmMjX886Xpt32UwbB8",
+    "created_at": "2022-02-28T18:42:53.929Z",
+    "expires_at": "2022-03-01T18:42:53Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "jti": "0054f88ea2324ecfae0d8affe8d403a4",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDIxOSwianRpIjoiMDA1NGY4OGVhMjMyNGVjZmFlMGQ4YWZmZThkNDAzYTQiLCJ1c2VyX2lkIjoxMX0.vuEylClXSBXU24WlvjTvj3U1eoPzYhmCFLh9RTN1Dfk",
+    "created_at": "2022-02-28T18:43:39.075Z",
+    "expires_at": "2022-03-01T18:43:39Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 11,
+  "fields": {
+    "user": 2,
+    "jti": "c2d8907dd64a46f089bc5e93eba820fb",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDI3NiwianRpIjoiYzJkODkwN2RkNjRhNDZmMDg5YmM1ZTkzZWJhODIwZmIiLCJ1c2VyX2lkIjoyfQ.dcNm78r0bP1z8lPzYGpX8oNNdTY7Bo7KOwC4XhxLZLc",
+    "created_at": "2022-02-28T18:44:36.485Z",
+    "expires_at": "2022-03-01T18:44:36Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 12,
+  "fields": {
+    "user": 3,
+    "jti": "1732cd391c2940cf8e1cd56ceb964ebf",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MDgxMywianRpIjoiMTczMmNkMzkxYzI5NDBjZjhlMWNkNTZjZWI5NjRlYmYiLCJ1c2VyX2lkIjozfQ.WnkB-UItxfRH69Hq5XymCME_mt-iRi06lhupThDi5qw",
+    "created_at": "2022-02-28T18:53:33.211Z",
+    "expires_at": "2022-03-01T18:53:33Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 13,
+  "fields": {
+    "user": 4,
+    "jti": "9765dc46d1024cbbb1569db2b62696c5",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MTI5NywianRpIjoiOTc2NWRjNDZkMTAyNGNiYmIxNTY5ZGIyYjYyNjk2YzUiLCJ1c2VyX2lkIjo0fQ.Ox9qgwMlAAfpSSz2i_wQPeWk5xAgo5NDDe2HwZG039I",
+    "created_at": "2022-02-28T19:01:37.359Z",
+    "expires_at": "2022-03-01T19:01:37Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 14,
+  "fields": {
+    "user": 5,
+    "jti": "3fed0ed8b4b048dc99f1e200af6f2e76",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MTYxOCwianRpIjoiM2ZlZDBlZDhiNGIwNDhkYzk5ZjFlMjAwYWY2ZjJlNzYiLCJ1c2VyX2lkIjo1fQ.-b8rxlVh2_9YMoGJDQFv87b97Isl87jnA-tayTkfCOU",
+    "created_at": "2022-02-28T19:06:58.568Z",
+    "expires_at": "2022-03-01T19:06:58Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 15,
+  "fields": {
+    "user": 6,
+    "jti": "caa2009cb0034537a47f1813f6d9e185",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MTk4NiwianRpIjoiY2FhMjAwOWNiMDAzNDUzN2E0N2YxODEzZjZkOWUxODUiLCJ1c2VyX2lkIjo2fQ.t1wGmdquaA7zXWCM84Ug2egSJM6C-qWyufDm8Cy6WM4",
+    "created_at": "2022-02-28T19:13:06.593Z",
+    "expires_at": "2022-03-01T19:13:06Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 16,
+  "fields": {
+    "user": 6,
+    "jti": "6d8575a224024bb28ddd0f627f1e6a42",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MjI1MCwianRpIjoiNmQ4NTc1YTIyNDAyNGJiMjhkZGQwZjYyN2YxZTZhNDIiLCJ1c2VyX2lkIjo2fQ.iWV1PGOqO0aLv4nLnRt6XOh2uAX45pNdMvdcc27Ysq4",
+    "created_at": "2022-02-28T19:17:30.717Z",
+    "expires_at": "2022-03-01T19:17:30Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 17,
+  "fields": {
+    "user": 7,
+    "jti": "53bc7c998b664b7f995038350296e991",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MjQ1MSwianRpIjoiNTNiYzdjOTk4YjY2NGI3Zjk5NTAzODM1MDI5NmU5OTEiLCJ1c2VyX2lkIjo3fQ.Q1o44TixWKIwmWk07y8ra7I3rZK36VrXlNp21HnxVsU",
+    "created_at": "2022-02-28T19:20:51.968Z",
+    "expires_at": "2022-03-01T19:20:51Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 18,
+  "fields": {
+    "user": 8,
+    "jti": "6d903ef866b34005bfd1b94d2812a6c1",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2Mjc2MSwianRpIjoiNmQ5MDNlZjg2NmIzNDAwNWJmZDFiOTRkMjgxMmE2YzEiLCJ1c2VyX2lkIjo4fQ.q6O1NpcFGaiizSbF9spZ_FK9Frf2X4LuuFe4A_R77iU",
+    "created_at": "2022-02-28T19:26:01.085Z",
+    "expires_at": "2022-03-01T19:26:01Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 19,
+  "fields": {
+    "user": 9,
+    "jti": "a99ffa29a9dd4bcfbc3e1fcb3fb5b1d0",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MzAyOSwianRpIjoiYTk5ZmZhMjlhOWRkNGJjZmJjM2UxZmNiM2ZiNWIxZDAiLCJ1c2VyX2lkIjo5fQ.oNvugE4t9kLwCZj3XGta_A7XwHfRV-7YCf0Q4FRjdVo",
+    "created_at": "2022-02-28T19:30:29.627Z",
+    "expires_at": "2022-03-01T19:30:29Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 20,
+  "fields": {
+    "user": 10,
+    "jti": "605e14f0774141949cfc3bcd58ade34e",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2MzU0MCwianRpIjoiNjA1ZTE0ZjA3NzQxNDE5NDljZmMzYmNkNThhZGUzNGUiLCJ1c2VyX2lkIjoxMH0.VrA4i7WkhkZUvAf91bFXF2Yjitx_XQRwe7Xn9RTQy4Q",
+    "created_at": "2022-02-28T19:39:00.237Z",
+    "expires_at": "2022-03-01T19:39:00Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 21,
+  "fields": {
+    "user": 11,
+    "jti": "8330e0c079ee4d6fb14def879cbca38d",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2Mzg2NSwianRpIjoiODMzMGUwYzA3OWVlNGQ2ZmIxNGRlZjg3OWNiY2EzOGQiLCJ1c2VyX2lkIjoxMX0.TXaaPp2nmoktJhibQHuR9H3yOIxHNwiWLf9-jnXi7UE",
+    "created_at": "2022-02-28T19:44:25.530Z",
+    "expires_at": "2022-03-01T19:44:25Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 22,
+  "fields": {
+    "user": 3,
+    "jti": "690a5a888caa43e8bc588d589696f44c",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2NDMwNywianRpIjoiNjkwYTVhODg4Y2FhNDNlOGJjNTg4ZDU4OTY5NmY0NGMiLCJ1c2VyX2lkIjozfQ.b92GDa2PPR5If54Zcef0E8Vrb7lacwk3e32c51mYM8E",
+    "created_at": "2022-02-28T19:51:47.075Z",
+    "expires_at": "2022-03-01T19:51:47Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 23,
+  "fields": {
+    "user": 11,
+    "jti": "fd9f1055449b41f8bd003c0a41bb95d4",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2NDQzOCwianRpIjoiZmQ5ZjEwNTU0NDliNDFmOGJkMDAzYzBhNDFiYjk1ZDQiLCJ1c2VyX2lkIjoxMX0.volQZ4X-92FOS-8NZETWJUoqzDoVmAsmSuDsbcQyPBk",
+    "created_at": "2022-02-28T19:53:58.131Z",
+    "expires_at": "2022-03-01T19:53:58Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 24,
+  "fields": {
+    "user": 2,
+    "jti": "af66a84fd8784447bbcc8b47eec07517",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjE2NDQ2NCwianRpIjoiYWY2NmE4NGZkODc4NDQ0N2JiY2M4YjQ3ZWVjMDc1MTciLCJ1c2VyX2lkIjoyfQ.8o1Oa-7kAgG7FlJQnFVcsiahpHnztTiWZTLWbFDbMFU",
+    "created_at": "2022-02-28T19:54:24.507Z",
+    "expires_at": "2022-03-01T19:54:24Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 1,
+  "fields": {
+    "token": 1,
+    "blacklisted_at": "2022-02-28T18:34:28.089Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 2,
+  "fields": {
+    "token": 2,
+    "blacklisted_at": "2022-02-28T18:35:14.265Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 3,
+  "fields": {
+    "token": 3,
+    "blacklisted_at": "2022-02-28T18:36:01.732Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 4,
+  "fields": {
+    "token": 4,
+    "blacklisted_at": "2022-02-28T18:36:55.527Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 5,
+  "fields": {
+    "token": 5,
+    "blacklisted_at": "2022-02-28T18:37:37.194Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 6,
+  "fields": {
+    "token": 6,
+    "blacklisted_at": "2022-02-28T18:40:08.687Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 7,
+  "fields": {
+    "token": 7,
+    "blacklisted_at": "2022-02-28T18:41:12.699Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 8,
+  "fields": {
+    "token": 8,
+    "blacklisted_at": "2022-02-28T18:42:33.554Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 9,
+  "fields": {
+    "token": 9,
+    "blacklisted_at": "2022-02-28T18:43:28.928Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 10,
+  "fields": {
+    "token": 10,
+    "blacklisted_at": "2022-02-28T18:44:25.485Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 11,
+  "fields": {
+    "token": 11,
+    "blacklisted_at": "2022-02-28T18:53:15.981Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 12,
+  "fields": {
+    "token": 12,
+    "blacklisted_at": "2022-02-28T19:01:10.640Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 13,
+  "fields": {
+    "token": 13,
+    "blacklisted_at": "2022-02-28T19:06:40.290Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 14,
+  "fields": {
+    "token": 14,
+    "blacklisted_at": "2022-02-28T19:12:47.238Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 15,
+  "fields": {
+    "token": 15,
+    "blacklisted_at": "2022-02-28T19:17:26.923Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 16,
+  "fields": {
+    "token": 16,
+    "blacklisted_at": "2022-02-28T19:20:33.135Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 17,
+  "fields": {
+    "token": 17,
+    "blacklisted_at": "2022-02-28T19:25:26.522Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 18,
+  "fields": {
+    "token": 18,
+    "blacklisted_at": "2022-02-28T19:30:13.240Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 19,
+  "fields": {
+    "token": 19,
+    "blacklisted_at": "2022-02-28T19:38:42.860Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 20,
+  "fields": {
+    "token": 20,
+    "blacklisted_at": "2022-02-28T19:44:13.731Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 21,
+  "fields": {
+    "token": 21,
+    "blacklisted_at": "2022-02-28T19:51:37.445Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 22,
+  "fields": {
+    "token": 22,
+    "blacklisted_at": "2022-02-28T19:53:48.633Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 23,
+  "fields": {
+    "token": 23,
+    "blacklisted_at": "2022-02-28T19:54:17.173Z"
+  }
+}
+]
