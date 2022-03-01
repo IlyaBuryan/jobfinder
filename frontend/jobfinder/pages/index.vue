@@ -133,12 +133,12 @@
         <!-- How it works -->
         <section>
           <div class="text__container">
-            <div class="text__container_left">
-              <header class="text__container_left-title">
+            <!-- <div class="text__container_left"> -->
+            <!-- <header class="text__container_left-title">
                 <div class="text__container_left-title--head">Новости</div>
-              </header>
+              </header> -->
 
-              <div class="content" v-for="item in newsList" :key="item.id">
+            <!-- <div class="content" v-for="item in newsList" :key="item.id">
                 <h4>
                   <b>{{ item.title }}</b>
                 </h4>
@@ -148,11 +148,11 @@
                 </div>
                 <br />
               </div>
-              <br /><br />
-              <a class="btn btn-primary" href="page-typography.html"
+              <br /><br /> -->
+            <!-- <a class="btn btn-primary" href="page-typography.html"
                 >Подробнее</a
-              >
-            </div>
+              > -->
+            <!-- </div> -->
 
             <div class="text__container_right">
               <br />

@@ -33,7 +33,7 @@
             Авторизоваться
           </button>
 
-          <div class="login-footer">
+          <!-- <div class="login-footer">
             <h6>или залогиниться через</h6>
             <ul class="social-icons">
               <li>
@@ -46,7 +46,7 @@
                 <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
               </li>
             </ul>
-          </div>
+          </div> -->
         </form>
       </div>
       <div class="login-links">

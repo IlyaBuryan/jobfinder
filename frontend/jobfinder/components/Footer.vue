@@ -42,7 +42,8 @@
         <div class="footer__container_bottom-info">
           <div class="footer__container_bottom-info-authors">
             <p class="copyright-text">
-              Copyrights &copy; {{ new Date().getFullYear() }} Все права защищены
+              Copyrights &copy; {{ new Date().getFullYear() }} Все права
+              защищены
               <a href="http://themeforest.net/user/shamsoft"
                 >"Python's Style Group"</a
               >.
@@ -52,22 +53,34 @@
           <div class="footer__container_bottom-info-icons">
             <ul class="social-icons">
               <li>
-                <a class="facebook" href="#">
+                <a
+                  class="facebook"
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                >
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a class="twitter" href="#">
+                <a class="twitter" href="https://twitter.com/" target="_blank">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a class="linkedin" href="#">
+                <a
+                  class="linkedin"
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                >
                   <i class="fa fa-linkedin"></i>
                 </a>
               </li>
               <li>
-                <a class="instagram" href="#">
+                <a
+                  class="instagram"
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                >
                   <i class="fa fa-instagram"></i>
                 </a>
               </li>
