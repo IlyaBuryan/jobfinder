@@ -9,7 +9,6 @@
             <div class="header-detail__head_main">
               <div class="hgroup">
                 <h1>{{ resume.position }}</h1>
-                <!-- <h3><a href="#">{{ resume.worker_info.first_name }} {{ resume.worker_info.last_name }}</a></h3> -->
               </div>
               <div class="header-detail__head_main-time">
                 {{ resume.published_date }}
@@ -17,30 +16,28 @@
             </div>
           </div>
           <hr />
-          <p class="header-detail__head_main-descr">
-            {{ resume.institution }}.
-          </p>
+          <div class="header-detail__head_main-descr">
+            <h5>
+              {{ resume.worker_info.first_name }} {{ resume.worker_info.last_name }}
+            </h5>
+          </div>
           <div class="header-detail__footer">
             <ul class="header-detail__head_main-params">
               <li>
-                <i class="fa fa-map-marker"></i>
-                <span>{{ resume.courses }}</span>
+                <i class="fa fa-briefcase"></i>
+                <span>{{ resume.institution }}</span>
               </li>
 
-              <!-- <li>
-                <i class="fa fa-briefcase"></i>
-                <span>{{ resume.conditions }}</span>
-              </li> -->
+              <li>
+                <i class="fa fa-phone"></i>
+                <span> {{ resume.worker_info.phone }}</span>
+              </li>
 
-              <!-- <li>
-                <i class="fa fa-money"></i>
-                <span>{{ resume.salary }}</span>
-              </li> -->
             </ul>
             <ul class="header-detail__head_main-params">
               <li>
-                <i class="fa fa-clock-o"></i>
-                <span>40h / week</span>
+                <i class="fa fa-certificate"></i>
+                <a href="#">Высшее</a>
               </li>
 
               <li>
@@ -49,9 +46,10 @@
               </li>
 
               <li>
-                <i class="fa fa-certificate"></i>
-                <a href="#">Высшее</a>
+                <i class="fa fa-clock-o"></i>
+                <span>40h / week</span>
               </li>
+
             </ul>
           </div>
 
@@ -108,35 +106,33 @@
       <section class="vacancy-info">
         <div class="vacancy-info__container">
           <br />
-          <h4>Позиция</h4>
-          <span>{{ resume.position }}</span>
+          <h4>O себе</h4>
+          <span>{{ resume.info }}</span>
 
           <div
             class="vacancy-item"
             v-for="(item, id) in resume.experience"
             :key="id"
           >
-            <p>Организация {{ item.organization }}</p>
-            <p>Позиция {{ item.position }}</p>
-            <p>Функции {{ item.functions }}</p>
-            <p>Начало {{ item.start }}</p>
-            <p>Окончание {{ item.end }}</p>
+            <h4>Опыт работы</h4>
+            <p><b>Места предыдущей работы:</b> {{ item.organization }}</p>
+            <p><b>Должность:</b> {{ item.position }}</p>
+            <p><b>Обязанности:</b> {{ item.functions }}</p>
+            <p><b>Период:</b> {{ item.start }} - {{ item.end }}</p>
           </div>
 
           <h4>Образование</h4>
           <span>{{ resume.institution }}</span>
 
           <br />
-          <h4>Имя</h4>
-          <span>{{ resume.worker_info.first_name }}</span>
+          <h4>Курсы</h4>
+          <span>{{ resume.courses }}</span>
 
           <br />
-          <h4>Фамилия</h4>
-          <span>{{ resume.worker_info.last_name }}</span>
-
-          <br />
-          <h4>Телефон</h4>
+          <h4>Личные данные</h4>
+          <span>{{ resume.worker_info.first_name }} {{ resume.worker_info.last_name }}</span>
           <span>{{ resume.worker_info.phone }}</span>
+
         </div>
       </section>
       <!-- END Job detail -->
@@ -189,7 +185,6 @@ export default {
         })
         .then((response) => {
           this.resume = response.data;
-          console.log("------------------------------");
           console.log(response.data);
           console.log(this.resume);
         })
@@ -265,7 +260,7 @@ export default {
 .container {
   justify-content: center;
   max-width: 100%;
-  margin-top: 100px;
+  margin-top: 200px;
   display: flex;
 }
 .vacancy-info {

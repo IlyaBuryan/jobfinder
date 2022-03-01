@@ -28,7 +28,7 @@
               </li>
 
               <li>
-                <i class="fa fa-briefcase"></i>
+                <i class="fa fa-building"></i>
                 <span>{{ vacancy.company_name }}</span>
               </li>
 
@@ -108,27 +108,27 @@
       <section class="vacancy-info">
         <div class="vacancy-info__container">
           <br />
-          <h4>Position</h4>
+          <h4>Должность</h4>
           <p>{{ vacancy.position }}</p>
 
           <br />
-          <h4>Conditions</h4>
+          <h4>Условия</h4>
           <p>{{ vacancy.conditions }}</p>
 
           <br />
-          <h4>Duties</h4>
+          <h4>Обязанности</h4>
           <p>{{ vacancy.duties }}</p>
 
           <br />
-          <h4>Responsibilities</h4>
+          <h4>Требования</h4>
           <p>{{ vacancy.requirements }}</p>
 
           <br />
-          <h4>Salary</h4>
+          <h4>Зарплата</h4>
           <p>{{ vacancy.salary }}</p>
 
           <br />
-          <h4>City</h4>
+          <h4>Город</h4>
           <p>{{ vacancy.city }}</p>
         </div>
       </section>
@@ -251,7 +251,7 @@ export default {
 .container {
   justify-content: center;
   max-width: 100%;
-  margin-top: 150px;
+  margin-top: 200px;
   display: flex;
 }
 .header-detail {
