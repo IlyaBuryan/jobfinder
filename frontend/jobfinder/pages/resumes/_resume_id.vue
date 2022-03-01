@@ -9,7 +9,6 @@
             <div class="header-detail__head_main">
               <div class="hgroup">
                 <h1>{{ resume.position }}</h1>
-                <!-- <h3><a href="#">{{ resume.worker_info.first_name }} {{ resume.worker_info.last_name }}</a></h3> -->
               </div>
               <div class="header-detail__head_main-time">
                 {{ resume.published_date }}
@@ -34,10 +33,6 @@
                 <span> {{ resume.worker_info.phone }}</span>
               </li>
 
-              <!-- <li>
-                <i class="fa fa-money"></i>
-                <span>{{ resume.salary }}</span>
-              </li> -->
             </ul>
             <ul class="header-detail__head_main-params">
               <li>
