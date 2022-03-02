@@ -65,8 +65,11 @@
       </div>
       <nuxt-link :to="`${link}`" v-if="is_logged">
         <div class="user-block">
-          <div class="user-block__image">
+          <div v-if="userData.role===2" class="user-block__image">
             <img src="~/assets/img/avatar-3.jpg" />
+          </div>
+            <div v-if="userData.role===3" class="user-block__image">
+            <img src="~/assets/img/ava_company.png" />
           </div>
           <div class="user-block__name">
             <p class="user-block__name_name">{{ userData.username }}</p>
