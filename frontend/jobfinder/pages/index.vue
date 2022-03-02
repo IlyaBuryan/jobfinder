@@ -149,9 +149,9 @@
                 <br />
               </div>
               <br /><br />
-              <a class="btn btn-primary" href="page-typography.html"
+            <!-- <a class="btn btn-primary" href="page-typography.html"
                 >Подробнее</a
-              >
+              > -->
             </div>
 
             <div class="text__container_right">

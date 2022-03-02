@@ -56,7 +56,7 @@
             Зарегистрироваться
           </button>
 
-          <div class="login-footer">
+          <!-- <div class="login-footer">
             <h6>или зарегистрируйтесь через</h6>
             <ul class="social-icons">
               <li>
@@ -69,7 +69,7 @@
                 <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
               </li>
             </ul>
-          </div>
+          </div> -->
         </form>
       </div>
       <div class="login-links">
@@ -124,7 +124,7 @@ export default {
 }
 .logo-form {
   width: 360px;
-  margin-top: 150px;
+  // margin-top: 150px;
 }
 .role {
   display: flex;
